@@ -4,7 +4,7 @@ import { View, Text, ImageBackground, TouchableOpacity } from 'react-native'
 const CreateAccount = ({navigation}) => {
     return (
         <ImageBackground 
-            source={require('C:/Users/Ron/Projects/resonance/assets/source.gif')} 
+            source={require('../assets/source.gif')} 
             style={{
                 resizeMode: "cover", 
                 flex: 1,
