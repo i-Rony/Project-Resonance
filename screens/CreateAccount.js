@@ -19,7 +19,7 @@ const CreateAccount = ({navigation}) => {
                     alignItems: "center",
                 }} 
             >       
-                <TouchableOpacity 
+                <TouchableOpacity
                     style={{
                         justifyContent: "center",
                         alignItems: "center",
