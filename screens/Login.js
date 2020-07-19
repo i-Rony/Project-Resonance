@@ -4,7 +4,7 @@ import { View, Text, ImageBackground, TouchableOpacity } from 'react-native'
 const Login = ({navigation}) => {
     return (
         <ImageBackground 
-            source={require('C:/Users/Ron/Projects/resonance/assets/source.gif')} 
+            source={require('../assets/source.gif')} 
             style={{
                 resizeMode: "cover", 
                 flex: 1,
@@ -24,7 +24,7 @@ const Login = ({navigation}) => {
                     style={{
                         justifyContent: "center",
                         alignItems: "center",
-                        backgroundColor: "#0099FF",
+                        backgroundColor: "#ff7b00",
                         padding: 12,
                         zIndex: 4,
                         borderRadius: 30

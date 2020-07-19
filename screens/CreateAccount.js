@@ -4,7 +4,7 @@ import { View, Text, ImageBackground, TouchableOpacity } from 'react-native'
 const CreateAccount = ({navigation}) => {
     return (
         <ImageBackground 
-            source={require('C:/Users/Ron/Projects/resonance/assets/source.gif')} 
+            source={require('../assets/source.gif')} 
             style={{
                 resizeMode: "cover", 
                 flex: 1,
@@ -23,7 +23,7 @@ const CreateAccount = ({navigation}) => {
                     style={{
                         justifyContent: "center",
                         alignItems: "center",
-                        backgroundColor: "#0099FF",
+                        backgroundColor: "#ff7b00",
                         padding: 13,
                         paddingLeft: 22,
                         paddingRight: 22,
@@ -43,7 +43,7 @@ const CreateAccount = ({navigation}) => {
                     <TouchableOpacity
                         onPress={() => navigation.navigate('Login')}
                     >
-                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0099FF'}}> Login</Text>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#ff7b00'}}> Login</Text>
                     </TouchableOpacity> 
                 </View> 
 
@@ -52,7 +52,7 @@ const CreateAccount = ({navigation}) => {
                     style={{
                         justifyContent: "center",
                         alignItems: "center",
-                        backgroundColor: "#0099FF",
+                        backgroundColor: "#ff7b00",
                         padding: 13,
                         paddingLeft: 22,
                         paddingRight: 22,
