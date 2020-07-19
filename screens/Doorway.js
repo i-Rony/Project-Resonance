@@ -25,7 +25,6 @@ const Doorway = ({ navigation }) => {
                     style={{
                         justifyContent: "center",
                         alignItems: "center",
-                        //backgroundColor: "#ff7b00",
                         padding: 11,
                         marginBottom: 10,
                         zIndex: 4,
@@ -43,16 +42,6 @@ const Doorway = ({ navigation }) => {
                     fontWeight: 'bold',
                     color: 'white'
                 }}> / </Text>
-            {/* </View>
-            <View><Text>Or</Text></View>
-            <View
-                style={{
-                    zIndex: 1,
-                    flex: 1,
-                    justifyContent: "center",
-                    alignItems: "center",
-                }}
-            > */}
                 <TouchableOpacity
                     onPress={() => navigation.navigate('Login')}
                     style={{

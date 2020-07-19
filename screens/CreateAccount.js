@@ -1,73 +1,117 @@
-import React from 'react'
-import { View, Text, ImageBackground, TouchableOpacity } from 'react-native'
+import React from 'react';
+import { View, Text, ImageBackground, TouchableOpacity, TextInput } from 'react-native';
+import { Card } from 'react-native-elements';
 
-const CreateAccount = ({navigation}) => {
+function CreateAccount({ navigation }) {
+
     return (
-        <ImageBackground 
-            source={require('../assets/source.gif')} 
+        <ImageBackground
+            source={require('../assets/source.gif')}
             style={{
-                resizeMode: "cover", 
+                resizeMode: "cover",
                 flex: 1,
                 zIndex: 0
             }}
         >
-            <View 
+            <View
                 style={{
                     zIndex: 1,
                     flex: 1,
                     justifyContent: "center",
                     alignItems: "center",
-                }} 
-            >       
-                <TouchableOpacity 
-                    style={{
-                        justifyContent: "center",
-                        alignItems: "center",
-                        backgroundColor: "#ff7b00",
-                        padding: 13,
-                        paddingLeft: 22,
-                        paddingRight: 22,
-                        zIndex: 4,
-                        borderRadius: 30,
-                        marginBottom: 15
-                    }}
-                >
-                    <Text style={{ fontSize: 18 ,fontWeight: 'bold', color: 'white' }}>Create Account</Text>
-                </TouchableOpacity>      
-                
-
-                <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                    <Text style={{ fontSize: 12, fontWeight: 'bold', color: 'white' }}>
-                        If you have an account, you can directly 
-                    </Text>
-                    <TouchableOpacity
-                        onPress={() => navigation.navigate('Login')}
-                    >
-                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#ff7b00'}}> Login</Text>
-                    </TouchableOpacity> 
-                </View> 
-
-                {/* <TouchableOpacity 
-                    onPress={() => navigation.navigate('Login')}                    
-                    style={{
-                        justifyContent: "center",
-                        alignItems: "center",
-                        backgroundColor: "#ff7b00",
-                        padding: 13,
-                        paddingLeft: 22,
-                        paddingRight: 22,
-                        zIndex: 4,
-                        borderRadius: 30,
-                    }}
-                >
-                    <Text style={{ fontSize: 18, fontWeight: 'bold', color: 'white' }}>Login</Text>
-                </TouchableOpacity>             */}
+                }}
+            >
+                <Card title="Create Account" containerStyle={{ height: 540, width: 270, alignItems: 'center', borderRadius: 8 }}>
+                    <View style={{ justifyContent: "center", alignItems: 'center' }}>
+                        <TextInput
+                            style={{
+                                height: 45,
+                                width: 175,
+                                padding: 12,
+                                margin: 10,
+                                marginTop: 14,
+                                borderColor: 'black',
+                                borderWidth: 1,
+                                borderRadius: 20,
+                            }}
+                            placeholder='Username'
+                        />
+                        <TextInput
+                            style={{
+                                height: 45,
+                                width: 175,
+                                padding: 12,
+                                margin: 10,
+                                borderColor: 'black',
+                                borderWidth: 1,
+                                borderRadius: 20,
+                            }}
+                            placeholder='Email'
+                        />
+                        <TextInput
+                            style={{
+                                height: 45,
+                                width: 175,
+                                padding: 12,
+                                margin: 10,
+                                borderColor: 'black',
+                                borderWidth: 1,
+                                borderRadius: 20,
+                            }}
+                            secureTextEntry={true}
+                            placeholder='Password'
+                        />
+                        <TextInput
+                            style={{
+                                height: 45,
+                                width: 175,
+                                padding: 12,
+                                margin: 10,
+                                borderColor: 'black',
+                                borderWidth: 1,
+                                borderRadius: 20,
+                            }}
+                            secureTextEntry={true}
+                            placeholder="Confirm Password"
+                        />
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate('CreateAccount')}
+                            style={{
+                                width: 175,
+                                justifyContent: "center",
+                                alignItems: "center",
+                                padding: 10,
+                                marginTop: 60,
+                                zIndex: 4,
+                                borderRadius: 20,
+                                borderWidth: 2,
+                                borderColor: '#990077'
+                            }}
+                        >
+                            <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#990077' }}> Create Account </Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate('Doorway')}
+                            style={{
+                                width: 110,
+                                justifyContent: "center",
+                                alignItems: "center",
+                                padding: 8,
+                                marginTop: 22,
+                                zIndex: 4,
+                                borderRadius: 20,
+                                borderWidth: 2,
+                                borderColor: '#990077'
+                            }}
+                        >
+                            <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#990077' }}> Cancel </Text>
+                        </TouchableOpacity>
+                    </View>
+                </Card>
             </View>
         </ImageBackground>
+
     )
 }
 
 export default CreateAccount;
-
-
-
