@@ -1,7 +1,8 @@
-import React from 'react'
-import { View, Text, ImageBackground, TouchableOpacity } from 'react-native'
+import React from 'react'; 
+import { View, Text, ImageBackground, TouchableOpacity } from 'react-native';
 
 const Doorway = ({ navigation }) => {
+
     return (
         <ImageBackground
             source={require('../assets/source.gif')}
@@ -24,16 +25,16 @@ const Doorway = ({ navigation }) => {
                     style={{
                         justifyContent: "center",
                         alignItems: "center",
-                        backgroundColor: "#ff7b00",
-                        padding: 12,
+                        //backgroundColor: "#ff7b00",
+                        padding: 11,
                         marginBottom: 10,
                         zIndex: 4,
-                        borderRadius: 30,
-                        borderWidth: 1,
-                        borderColor: '#332323'
+                        borderRadius: 5,
+                        borderWidth: 2,
+                        borderColor: '#fff'
                     }}
                 >
-                    <Text style={{ fontSize: 24, fontWeight: 'bold', color: 'black' }}>Create Account</Text>
+                    <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#fff' }}>Create Account</Text>
                 </TouchableOpacity>
                 <Text style={{
                     justifyContent: "center",
@@ -57,16 +58,15 @@ const Doorway = ({ navigation }) => {
                     style={{
                         justifyContent: "center",
                         alignItems: "center",
-                        backgroundColor: "#ff7b00",
-                        padding: 12,
+                        padding: 11,
                         marginTop: 10,
                         zIndex: 4,
-                        borderRadius: 24,
-                        borderWidth: 1,
-                        borderColor: '#332323'
+                        borderRadius: 5,
+                        borderWidth: 2,
+                        borderColor: '#fff'
                     }}
                 >
-                    <Text style={{ fontSize: 24, fontWeight: 'bold', color: 'black' }}> Login </Text>
+                    <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#fff' }}> Login </Text>
                 </TouchableOpacity>
             </View>
         </ImageBackground>
