@@ -10,8 +10,8 @@ import Logo from '../assets/2.png'
 const StartScreen = ({navigation}) => {
 
     setTimeout(() => {
-        navigation.navigate('Login');
-    }, 3000);
+        navigation.navigate('Doorway');
+    }, 2500);
 
     return (
         <View style={{
