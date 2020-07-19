@@ -200,7 +200,7 @@ const CreateAccount = ({ navigation }) => {
 					</View>
 					<View style={styles.buttons}>
 						<TouchableOpacity
-							onPress={() => navigation.navigate('ScrollScreen')}
+							onPress={() => navigation.navigate('ChoiceScreen')}
 							style={styles.signIn}>
 							<Text style={[styles.textSign, {
 								color: '#fff'
