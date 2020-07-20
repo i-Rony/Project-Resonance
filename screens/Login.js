@@ -66,6 +66,7 @@ const Login = ({ navigation }) => {
 
 	if (!fontsLoaded) {
 		return <AppLoading />;
+
 	} else {
 
 		return (
@@ -159,6 +160,19 @@ const Login = ({ navigation }) => {
 								color: '#fff'
 							}]}>Forgot Password?</Text>                            
 						</TouchableOpacity>
+						<TouchableOpacity
+							onPress={() => navigation.navigate('Doorway')}
+							style={{
+								marginTop: 15,
+								padding: 1,
+								borderBottomColor: '#DD4482',
+								borderBottomWidth: 1
+							}} >
+							<Text style={{
+								fontSize: 18,
+								color: '#DD4482'
+							}}> Cancel </Text>
+						</TouchableOpacity>
 					</View>
 				</Animatable.View>
 			</View>
@@ -174,6 +188,7 @@ const {height} = Dimensions.get("screen");
 const height_logo = height * 0.10;
 
 const styles = StyleSheet.create({
+
 	container: {
 		flex: 1,
 		backgroundColor: '#DD4482'

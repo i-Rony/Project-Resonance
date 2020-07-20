@@ -19,7 +19,8 @@ const StartScreen = ({navigation}) => {
                     flex: 1,
                     alignItems: 'center',
                     justifyContent: 'center'
-                }}>
+                }}
+            >
                 <Image
                     source={require('../assets/6.png')}
                     style={{ width: 300,  height: 300 }}

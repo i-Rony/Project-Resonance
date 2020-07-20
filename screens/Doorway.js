@@ -80,6 +80,6 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         borderWidth: 2,
         borderColor: '#fff',
-        backgroundColor: 'rgba(255, 255, 255, 0.065)'
+        backgroundColor: 'rgba(255, 255, 255, 0.095)'
     }
 });
