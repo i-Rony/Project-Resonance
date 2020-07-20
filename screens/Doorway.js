@@ -1,24 +1,34 @@
-import React from 'react'; 
-import { Text, ImageBackground, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { Component } from 'react';
+import { Text, ImageBackground, TouchableOpacity, StyleSheet, BackHandler, Alert } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import { useFonts } from '@use-expo/font';
-import { AppLoading } from 'expo';
 
-const Doorway = ({ navigation }) => {
+function Doorway({ navigation }) {
 
-    let [fontsLoaded] = useFonts({
-		'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
-		'SemiBold': require('../assets/fonts/Montserrat-SemiBold.ttf'),
-		'Medium': require('../assets/fonts/Montserrat-Medium.ttf'),
-		'Light': require('../assets/fonts/Montserrat-Light.ttf'),
-		'Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
-	});
+    const handleBackButton = () => {
+        Alert.alert(
+            'Exit App ?',
+            '', [{
+                text: 'Cancel',
+                style: 'cancel'
+            }, {
+                text: 'OK',
+                onPress: () => BackHandler.exitApp()
+            }],
+            {
+                cancelable: false
+            }
+        );
+        return true;
+    }
 
-    if (!fontsLoaded) {
-		return <AppLoading />;
-	} else {
+
+    React.useEffect(() => {
+        navigation.addListener('focus', () => {
+            BackHandler.addEventListener('hardwareBackPress', handleBackButton);
+        });
+    });
 
     return (
         <ImageBackground
@@ -29,7 +39,7 @@ const Doorway = ({ navigation }) => {
                 zIndex: 0
             }}
         >
-            <Animatable.View                
+            <Animatable.View
                 animation='fadeIn'
                 delay={1000}
                 style={{
@@ -39,12 +49,15 @@ const Doorway = ({ navigation }) => {
                     alignItems: "center",
                 }}
             >
-                <Text style={{fontSize: 22, fontWeight: 'bold', color: '#fff'}}>Let's get started</Text>
+                <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#fff' }}>Let's get started</Text>
                 <Text>{"\n"}</Text>
-                <Text style={{fontSize: 13, color: '#ffffff'}}>Login to your account or signup for {"\n"}           an amazing experience</Text>
+                <Text style={{ fontSize: 13, color: '#ffffff' }}>Login to your account or signup for {"\n"}           an amazing experience</Text>
                 <Text>{"\n"}</Text>
                 <TouchableOpacity
-                    onPress={() => navigation.navigate('Login')}
+                    onPress={() => {
+                        BackHandler.removeEventListener('hardwareBackPress', handleBackButton);
+                        return navigation.navigate('Login')
+                    }}
                     style={[styles.TouchableOpacity, {
                         paddingLeft: 22,
                         paddingRight: 22,
@@ -52,10 +65,13 @@ const Doorway = ({ navigation }) => {
                 >
                     <Text style={{ fontSize: 18, color: '#fff' }}>Have an account? Login</Text>
                 </TouchableOpacity>
-                
+
                 <TouchableOpacity
-                    onPress={() => navigation.navigate('CreateAccount')}
-                    style={ styles.TouchableOpacity }
+                    onPress={() => {
+                        //BackHandler.removeEventListener('hardwareBackPress', handleBackButton);
+                        return navigation.navigate('CreateAccount')
+                    }}
+                    style={styles.TouchableOpacity}
                 >
                     <Text style={{ fontSize: 18, color: '#fff' }}> Join us, it's Free </Text>
                 </TouchableOpacity>
@@ -66,8 +82,8 @@ const Doorway = ({ navigation }) => {
                     paddingBottom: 16
                 }}>-----  Or, you may Log In with  -----</Text>
                 <TouchableOpacity
-                    style={[ styles.TouchableOpacity, { 
-                        backgroundColor: "#fff", 
+                    style={[styles.TouchableOpacity, {
+                        backgroundColor: "#fff",
                         padding: 11,
                         paddingLeft: 25,
                         paddingRight: 35
@@ -76,9 +92,9 @@ const Doorway = ({ navigation }) => {
                     <Text style={{ fontSize: 18 }}>
                         <FontAwesome
                             name="facebook"
-                            color='black'
+                            color="#3c3ab5"
                             size={20}
-                        />    Facebook 
+                        />    Facebook
                     </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
@@ -92,7 +108,7 @@ const Doorway = ({ navigation }) => {
                     <Text style={{ fontSize: 18 }}>
                         <FontAwesome
                             name="google"
-                            color='black'
+                            color="#ba4141"
                             size={20}
                         />    Google
                     </Text>
@@ -101,7 +117,7 @@ const Doorway = ({ navigation }) => {
         </ImageBackground>
 
     )
-   }
+
 }
 
 export default Doorway;

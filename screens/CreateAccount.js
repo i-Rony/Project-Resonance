@@ -6,6 +6,8 @@ import {
 	TextInput,
 	Platform,
 	StyleSheet,
+	BackHandler,
+	Alert
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -31,6 +33,22 @@ const CreateAccount = ({ navigation }) => {
 		check_textInputChange: false,
 		secureTextEntry: true,
 		confirm_secureTextEntry: true,
+	});
+
+	const handleBackButton = () => navigation.navigate('Doorway')
+
+	// const backButtonPress = () => {
+	// 	BackHandler.removeEventListener('hardwareBackPress', backButtonPress);
+	// 	BackHandler.addEventListener('hardwareBackPress', handleBackButton);
+	// 	navigation.navigate('Doorway');
+	// }
+
+	// BackHandler.addEventListener('hardwareBackPress', backButtonPress);
+	
+	React.useEffect(() => {
+		navigation.addListener('focus', () => {
+			BackHandler.addEventListener('hardwareBackPress', handleBackButton);
+		});
 	});
 
 	const textInputChange = (val) => {

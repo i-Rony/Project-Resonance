@@ -7,6 +7,8 @@ import {
 	Platform,
 	StyleSheet,
 	Dimensions,
+	BackHandler,
+	Alert
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -14,6 +16,23 @@ import Feather from 'react-native-vector-icons/Feather';
 
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
+
+const handleBackButton = () => {
+	Alert.alert(
+		'Exit App ?',
+		'', [{
+			text: 'Cancel',
+			style: 'cancel'
+		}, {
+			text: 'OK',
+			onPress: () => BackHandler.exitApp()
+		}],
+		{
+			cancelable: false
+		}
+	);
+	return true;
+}
 
 const Login = ({ navigation }) => {
 
@@ -33,6 +52,14 @@ const Login = ({ navigation }) => {
 		secureTextEntry: true,
 		confirm_secureTextEntry: true,
 	});
+
+	const backButtonPress = () => {
+		BackHandler.removeEventListener('hardwareBackPress', backButtonPress);
+		BackHandler.addEventListener('hardwareBackPress', handleBackButton);
+		navigation.navigate('Doorway');
+	}
+
+	BackHandler.addEventListener('hardwareBackPress', backButtonPress);
 
 	const textInputChange = (val) => {
 		if (val.length !== 0) {
