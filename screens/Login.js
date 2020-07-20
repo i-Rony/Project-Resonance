@@ -45,10 +45,9 @@ const Login = ({ navigation }) => {
 	const [data, setData] = React.useState({
 		username: '',
 		password: '',
-		confirm_password: '',
 		check_textInputChange: false,
 		secureTextEntry: true,
-		confirm_secureTextEntry: true,
+		
 	});
 
 	// const backButtonPress = () => {
@@ -144,7 +143,7 @@ const Login = ({ navigation }) => {
 							size={20}
 						/>
 						<TextInput
-							placeholder=""
+							placeholder="Your Password"
 							secureTextEntry={data.secureTextEntry ? true : false}
 							style={styles.textInput}
 							selectionColor="#DD4482"
@@ -173,7 +172,8 @@ const Login = ({ navigation }) => {
 					<View style={styles.buttons}>
 						<TouchableOpacity
                         	onPress={()=>navigation.navigate('MainScreen')}
-							style={styles.signIn}>
+							style={styles.signIn}
+						>
 							<Text style={[styles.textSign, {
 								color: '#fff'
 							}]}>Sign In</Text>
