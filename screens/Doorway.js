@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, ImageBackground, TouchableOpacity, StyleSheet } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 
@@ -57,6 +58,44 @@ const Doorway = ({ navigation }) => {
                     style={ styles.TouchableOpacity }
                 >
                     <Text style={{ fontSize: 18, color: '#fff' }}> Join us, it's Free </Text>
+                </TouchableOpacity>
+                <Text style={{
+                    color: "#fff",
+                    fontSize: 15,
+                    paddingTop: 2,
+                    paddingBottom: 16
+                }}>-----  Or, you may Log In with  -----</Text>
+                <TouchableOpacity
+                    style={[ styles.TouchableOpacity, { 
+                        backgroundColor: "#fff", 
+                        padding: 11,
+                        paddingLeft: 25,
+                        paddingRight: 35
+                    }]}
+                >
+                    <Text style={{ fontSize: 18 }}>
+                        <FontAwesome
+                            name="facebook"
+                            color='black'
+                            size={20}
+                        />    Facebook 
+                    </Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={[styles.TouchableOpacity, {
+                        backgroundColor: "#fff",
+                        padding: 11,
+                        paddingLeft: 20,
+                        paddingRight: 35
+                    }]}
+                >
+                    <Text style={{ fontSize: 18 }}>
+                        <FontAwesome
+                            name="google"
+                            color='black'
+                            size={20}
+                        />    Google
+                    </Text>
                 </TouchableOpacity>
             </Animatable.View>
         </ImageBackground>

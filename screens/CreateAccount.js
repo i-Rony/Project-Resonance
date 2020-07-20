@@ -206,19 +206,6 @@ const CreateAccount = ({ navigation }) => {
 								color: '#fff'
 							}]}>Create Account</Text>
 						</TouchableOpacity>
-						<TouchableOpacity
-							onPress={() => navigation.navigate('Doorway')}
-							style={{
-								marginTop: 17,
-								padding: 1,
-								borderBottomColor: '#DD4482',
-								borderBottomWidth: 1
-							}} >
-							<Text style={{
-								fontSize: 18,
-								color: '#DD4482'
-							}}> Cancel </Text>
-						</TouchableOpacity>
 					</View>
 
 					
