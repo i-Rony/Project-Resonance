@@ -5,6 +5,7 @@ import Login from './Login';
 import CreateAccount from './CreateAccount';
 import StartScreen from './StartScreen';
 import Doorway from './Doorway';
+import ChoiceScreen from './ChoiceScreen';
 
 const Stack = createStackNavigator();
 

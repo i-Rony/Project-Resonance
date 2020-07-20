@@ -1,5 +1,5 @@
 import React from 'react'; 
-import { Text, ImageBackground, TouchableOpacity } from 'react-native';
+import { Text, ImageBackground, TouchableOpacity, StyleSheet } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
 import { useFonts } from '@use-expo/font';
@@ -44,36 +44,17 @@ const Doorway = ({ navigation }) => {
                 <Text>{"\n"}</Text>
                 <TouchableOpacity
                     onPress={() => navigation.navigate('Login')}
-                    style={{
-                        justifyContent: "center",
-                        alignItems: "center",
-                        padding: 13,
+                    style={[styles.TouchableOpacity, {
                         paddingLeft: 22,
                         paddingRight: 22,
-                        zIndex: 4,
-                        borderRadius: 30,
-                        marginBottom: 15,
-                        borderWidth: 2,
-                        borderColor: '#fff'
-                    }}
+                    }]}
                 >
                     <Text style={{ fontSize: 18, color: '#fff' }}>Have an account? Login</Text>
                 </TouchableOpacity>
                 
                 <TouchableOpacity
                     onPress={() => navigation.navigate('CreateAccount')}
-                    style={{
-                        justifyContent: "center",
-                        alignItems: "center",
-                        padding: 13,
-                        paddingLeft: 50,
-                        paddingRight: 50,
-                        zIndex: 4,
-                        borderRadius: 30,
-                        marginBottom: 15,
-                        borderWidth: 2,
-                        borderColor: '#fff'
-                    }}
+                    style={ styles.TouchableOpacity }
                 >
                     <Text style={{ fontSize: 18, color: '#fff' }}> Join us, it's Free </Text>
                 </TouchableOpacity>
@@ -85,3 +66,20 @@ const Doorway = ({ navigation }) => {
 }
 
 export default Doorway;
+
+const styles = StyleSheet.create({
+
+    TouchableOpacity: {
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 13,
+        paddingLeft: 50,
+        paddingRight: 50,
+        zIndex: 4,
+        borderRadius: 30,
+        marginBottom: 15,
+        borderWidth: 2,
+        borderColor: '#fff',
+        backgroundColor: 'rgba(255, 255, 255, 0.065)'
+    }
+});
