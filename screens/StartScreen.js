@@ -1,29 +1,31 @@
 import React from 'react';
 import {  View, StatusBar, Image } from 'react-native';
-// import Logo from '../assets/1.png'
-import Logo from '../assets/2.png'
-// import Logo from '../assets/3.png'
-// import Logo from '../assets/4.png'
-// import Logo from '../assets/5.png'
+import {LinearGradient} from 'expo-linear-gradient';
 
 
 const StartScreen = ({navigation}) => {
 
     setTimeout(() => {
         navigation.navigate('Doorway');
-    }, 2500);
+    }, 3000);
 
     return (
-        <View style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: '#FFFFFF',
-            // backgroundColor: '#121640' //Logo 1
-            // backgroundColor: '#FFDE59' // Logo 4
-        }}>
-            <Image source={Logo} style={{ width: 300,  height: 300 }}/>
-        </View>
+        <LinearGradient
+                colors={['#FF0077', '#CC0077', '#990077', '#660077', '#330077']}
+                style={{flex: 1}}
+        >            
+            <View 
+                style={{
+                    flex: 1,
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                }}>
+                <Image
+                    source={require('../assets/6.png')}
+                    style={{ width: 300,  height: 300 }}
+                />           
+            </View>
+        </LinearGradient>
     );
 };
 
