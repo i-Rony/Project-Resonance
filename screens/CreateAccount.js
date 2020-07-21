@@ -33,22 +33,6 @@ const CreateAccount = ({ navigation }) => {
 		confirm_secureTextEntry: true,
 	});
 
-	// const handleBackButton = () => navigation.navigate('Doorway')
-
-	// const backButtonPress = () => {
-	// 	BackHandler.removeEventListener('hardwareBackPress', backButtonPress);
-	// 	BackHandler.addEventListener('hardwareBackPress', handleBackButton);
-	// 	navigation.navigate('Doorway');
-	// }
-
-	// BackHandler.addEventListener('hardwareBackPress', backButtonPress);
-	
-	// React.useEffect(() => {
-	// 	navigation.addListener('focus', () => {
-	// 		BackHandler.addEventListener('hardwareBackPress', handleBackButton);
-	// 	});
-	// });
-
 	const textInputChange = (val) => {
 		if (val.length !== 0) {
 			setData({
@@ -210,9 +194,17 @@ const CreateAccount = ({ navigation }) => {
 					</View>
 					<View style={styles.textPrivate}>
 						<Text style={styles.agreement}>By signing up, you agree to our</Text>
-						<Text style={[styles.color_textPrivate]}>{" "}Terms of service</Text>
-						<Text style={styles.agreement}>{" "}and</Text>
-						<Text style={[styles.color_textPrivate]}>{" "}Privacy policy</Text>
+						<TouchableOpacity onPress={() => { navigation.navigate('TermsOfService') }}
+							style={{ borderBottomColor: '#fff', borderBottomWidth: 1 }}
+						>
+							<Text style={[styles.color_textPrivate]}>Terms of service</Text>
+						</TouchableOpacity>
+						<Text style={styles.agreement}>{"  "}and{"  "}</Text>
+						<TouchableOpacity onPress={() => { navigation.navigate('PrivacyPolicy') }}
+							style={{ borderBottomColor: '#fff', borderBottomWidth: 1 }}
+						>
+							<Text style={[styles.color_textPrivate]}>Privacy policy</Text>
+						</TouchableOpacity>
 					</View>
 					<View style={styles.buttons}>
 						<TouchableOpacity
@@ -223,8 +215,6 @@ const CreateAccount = ({ navigation }) => {
 							}]}>Create Account</Text>
 						</TouchableOpacity>
 					</View>
-
-					
 				</Animatable.View>
 			</View>
 		);

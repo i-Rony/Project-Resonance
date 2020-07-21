@@ -7,6 +7,8 @@ import StartScreen from './StartScreen';
 import Doorway from './Doorway';
 import ChoiceScreen from './ChoiceScreen';
 import MainScreen from './MainScreen';
+import TermsOfService from './TermsOfService';
+import PrivacyPolicy from './PrivacyPolicy';
 
 const Stack = createStackNavigator();
 
@@ -18,6 +20,8 @@ const RootStackScreen = () => (
         <Stack.Screen name="CreateAccount" component={CreateAccount}/>
         <Stack.Screen name="ChoiceScreen" component={ChoiceScreen}/>
         <Stack.Screen name="MainScreen" component={MainScreen} />
+        <Stack.Screen name="TermsOfService" component={TermsOfService} />
+        <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
     </Stack.Navigator>
 );
 
