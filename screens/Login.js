@@ -7,8 +7,6 @@ import {
 	Platform,
 	StyleSheet,
 	Dimensions,
-	BackHandler,
-	Alert
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -17,22 +15,22 @@ import Feather from 'react-native-vector-icons/Feather';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 
-const handleBackButton = () => {
-	Alert.alert(
-		'Exit App ?',
-		'', [{
-			text: 'Cancel',
-			style: 'cancel'
-		}, {
-			text: 'OK',
-			onPress: () => BackHandler.exitApp()
-		}],
-		{
-			cancelable: false
-		}
-	);
-	return true;
-}
+// const handleBackButton = () => {
+// 	Alert.alert(
+// 		'Exit App ?',
+// 		'', [{
+// 			text: 'Cancel',
+// 			style: 'cancel'
+// 		}, {
+// 			text: 'OK',
+// 			onPress: () => BackHandler.exitApp()
+// 		}],
+// 		{
+// 			cancelable: false
+// 		}
+// 	);
+// 	return true;
+// }
 
 const Login = ({ navigation }) => {
 
@@ -47,19 +45,18 @@ const Login = ({ navigation }) => {
 	const [data, setData] = React.useState({
 		username: '',
 		password: '',
-		confirm_password: '',
 		check_textInputChange: false,
 		secureTextEntry: true,
-		confirm_secureTextEntry: true,
+		
 	});
 
-	const backButtonPress = () => {
-		BackHandler.removeEventListener('hardwareBackPress', backButtonPress);
-		BackHandler.addEventListener('hardwareBackPress', handleBackButton);
-		navigation.navigate('Doorway');
-	}
+	// const backButtonPress = () => {
+		// BackHandler.removeEventListener('hardwareBackPress', backButtonPress);
+		// BackHandler.addEventListener('hardwareBackPress', handleBackButton);
+		// navigation.navigate('Doorway');
+	// }
 
-	BackHandler.addEventListener('hardwareBackPress', backButtonPress);
+	// BackHandler.addEventListener('hardwareBackPress', backButtonPress);
 
 	const textInputChange = (val) => {
 		if (val.length !== 0) {
@@ -146,7 +143,7 @@ const Login = ({ navigation }) => {
 							size={20}
 						/>
 						<TextInput
-							placeholder=""
+							placeholder="Your Password"
 							secureTextEntry={data.secureTextEntry ? true : false}
 							style={styles.textInput}
 							selectionColor="#DD4482"
@@ -175,7 +172,8 @@ const Login = ({ navigation }) => {
 					<View style={styles.buttons}>
 						<TouchableOpacity
                         	onPress={()=>navigation.navigate('MainScreen')}
-							style={styles.signIn}>
+							style={styles.signIn}
+						>
 							<Text style={[styles.textSign, {
 								color: '#fff'
 							}]}>Sign In</Text>

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { Text, ImageBackground, TouchableOpacity, StyleSheet, BackHandler, Alert } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
@@ -24,7 +24,7 @@ function Doorway({ navigation }) {
     }
 
 
-    React.useEffect(() => {
+    useEffect(() => {
         navigation.addListener('focus', () => {
             BackHandler.addEventListener('hardwareBackPress', handleBackButton);
         });
@@ -55,8 +55,8 @@ function Doorway({ navigation }) {
                 <Text>{"\n"}</Text>
                 <TouchableOpacity
                     onPress={() => {
-                        BackHandler.removeEventListener('hardwareBackPress', handleBackButton);
-                        return navigation.navigate('Login')
+                        BackHandler.removeEventListener('hardwareBackPress', handleBackButton),
+                        navigation.navigate('Login')
                     }}
                     style={[styles.TouchableOpacity, {
                         paddingLeft: 22,
@@ -68,8 +68,8 @@ function Doorway({ navigation }) {
 
                 <TouchableOpacity
                     onPress={() => {
-                        //BackHandler.removeEventListener('hardwareBackPress', handleBackButton);
-                        return navigation.navigate('CreateAccount')
+                        BackHandler.removeEventListener('hardwareBackPress', handleBackButton),
+                        navigation.navigate('CreateAccount')
                     }}
                     style={styles.TouchableOpacity}
                 >
@@ -101,8 +101,8 @@ function Doorway({ navigation }) {
                     style={[styles.TouchableOpacity, {
                         backgroundColor: "#fff",
                         padding: 11,
-                        paddingLeft: 20,
-                        paddingRight: 35
+                        paddingLeft: 33,
+                        paddingRight: 43
                     }]}
                 >
                     <Text style={{ fontSize: 18 }}>
