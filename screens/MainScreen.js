@@ -21,7 +21,7 @@ const MainScreen = ({navigation}) => {
         return(
             <View>
                 <Text>
-                    Henlo User
+                    Henlo
                 </Text>
             </View>
         )
