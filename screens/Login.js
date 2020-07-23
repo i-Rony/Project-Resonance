@@ -11,11 +11,12 @@ import {
 import * as Animatable from 'react-native-animatable';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
+import {f, auth, database} from '../config/config';
 
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 
-const Login = ({ navigation }) => {
+function Login({ navigation }) {
 
 	let [fontsLoaded] = useFonts({
 		'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
@@ -30,8 +31,33 @@ const Login = ({ navigation }) => {
 		password: '',
 		check_textInputChange: false,
 		secureTextEntry: true,
-		
+		loggedIn: false,		
 	});
+
+	const logInUser = async(username, password) => {
+		if(username != '' && password != ''){
+			try{
+				let user = await auth.signInWithEmailAndPassword(username, password);
+				console.log(user);
+				setData({
+					...data,
+					loggedIn: true
+				});
+			} catch(error){
+				console.log(error);
+				setData({
+					...data,
+					loggedIn: false
+				});
+			}
+		} else {
+			alert('Invalid Username or Password');
+		}
+	}
+
+	if(data.loggedIn === true){
+		navigation.navigate('MainScreen')
+	}
 
 	const textInputChange = (val) => {
 		if (val.length !== 0) {
@@ -146,7 +172,7 @@ const Login = ({ navigation }) => {
 					
 					<View style={styles.buttons}>
 						<TouchableOpacity
-                        	onPress={()=>navigation.navigate('MainScreen')}
+                        	onPress={() => logInUser(data.username, data.password)}
 							style={styles.signIn}
 						>
 							<Text style={[styles.textSign, {

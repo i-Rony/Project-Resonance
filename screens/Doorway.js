@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import { Text, ImageBackground, TouchableOpacity, StyleSheet, BackHandler, Alert, ToastAndroid, Platform } from 'react-native';
 import * as Animatable from 'react-native-animatable';
+import {f, auth, database} from '../config/config';
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 function Doorway({ navigation }) {
 
-    const handleBackButton = () => {
+   const handleBackButton = () => {
         Alert.alert(
             'Exit App ?',
             '', [{
@@ -14,17 +15,18 @@ function Doorway({ navigation }) {
                 style: 'cancel'
             }, {
                 text: 'OK',
-                onPress: () => {
-                    if (Platform.OS === 'android') {
-                        ToastAndroid.show("We don't believe in 'good'-byes,\nHope to see you soon...", ToastAndroid.SHORT);
-                        setTimeout(() => {
-                            BackHandler.exitApp();
-                        }, 1000);
-                    }
-                    else {
-                        BackHandler.exitApp();
-                    }
-                }//end of onPress()
+                onPress: () => BackHandler.exitApp()
+                // onPress: () => {
+                //     if (Platform.OS === 'android') {
+                //         ToastAndroid.show("We don't believe in 'good'-byes,\nHope to see you soon...", ToastAndroid.SHORT);
+                //         setTimeout(() => {
+                //             BackHandler.exitApp();
+                //         }, 1000);
+                //     }
+                //     else {
+                //         BackHandler.exitApp();
+                //     }
+                // }//end of onPress()
             }],
             {
                 cancelable: false
@@ -33,7 +35,6 @@ function Doorway({ navigation }) {
         return true;
     }
 
-
     useEffect(() => {
         navigation.addListener('focus', () => {
             BackHandler.addEventListener('hardwareBackPress', handleBackButton);
@@ -41,6 +42,7 @@ function Doorway({ navigation }) {
     });
 
     return (
+
         <ImageBackground
             source={require('../assets/source.gif')}
             style={{
@@ -66,7 +68,7 @@ function Doorway({ navigation }) {
                 <TouchableOpacity
                     onPress={() => {
                         BackHandler.removeEventListener('hardwareBackPress', handleBackButton),
-                            navigation.navigate('Login')
+                        navigation.navigate('Login')
                     }}
                     style={[styles.TouchableOpacity, {
                         paddingLeft: 22,
@@ -79,7 +81,7 @@ function Doorway({ navigation }) {
                 <TouchableOpacity
                     onPress={() => {
                         BackHandler.removeEventListener('hardwareBackPress', handleBackButton),
-                            navigation.navigate('CreateAccount')
+                        navigation.navigate('CreateAccount')
                     }}
                     style={styles.TouchableOpacity}
                 >
