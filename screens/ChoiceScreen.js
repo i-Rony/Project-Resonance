@@ -1,6 +1,5 @@
 import React from 'react';
-import { Dimensions } from 'react-native';
-import BubbleSelect, { Bubble } from 'react-native-bubble-select';
+import { Dimensions, View, Text } from 'react-native';
 
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
@@ -23,17 +22,11 @@ const ChoiceScreen = ({navigation}) => {
 
 	} else {
         return(            
-            <BubbleSelect
-                onSelect={bubble => console.log('Selected: ', bubble.id)}
-                onDeselect={bubble => console.log('Deselected: ', bubble.id)}
-                width={width}
-                height={height}
-            >
-                <Bubble id="bubble-1" text="Bubble One" />
-                <Bubble id="bubble-2" text="Bubble Two" />
-                <Bubble id="bubble-3" text="Bubble Three" />
-                <Bubble id="bubble-4" text="Bubble Four" />
-            </BubbleSelect>            
+            <View>
+                <Text>
+                    Henlo Choices
+                </Text>
+            </View>      
         )
     }
 }
