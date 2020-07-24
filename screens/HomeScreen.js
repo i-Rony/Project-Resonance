@@ -6,7 +6,7 @@ import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 
 
-const MainScreen = ({navigation}) => {
+const HomeScreen = ({navigation}) => {
 
     let [fontsLoaded] = useFonts({
 		'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
@@ -56,4 +56,4 @@ const MainScreen = ({navigation}) => {
     }
 }
 
-export default MainScreen;
+export default HomeScreen;

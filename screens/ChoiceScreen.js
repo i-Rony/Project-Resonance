@@ -1,8 +1,9 @@
 import React from 'react';
-import { Dimensions, View, Text } from 'react-native';
+import { Dimensions, View, Text, TouchableOpacity } from 'react-native';
 
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
+import MainStack from './MainStack';
 
 
 const { width, height } = Dimensions.get('window');
@@ -21,13 +22,22 @@ const ChoiceScreen = ({navigation}) => {
 		return <AppLoading />;
 
 	} else {
-        return(            
-            <View>
+        return(
+            <>           
+            <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
                 <Text>
-                    Henlo Choices
+                    Please choose :-{"\n"}
                 </Text>
-            </View>      
-        )
+            </View>
+            <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+                <TouchableOpacity 
+                    onPress={() => navigation.navigate('MainStack')}
+                >
+                    <Text>Skip for now</Text>
+                </TouchableOpacity>
+            </View> 
+            </>     
+        );
     }
 }
 

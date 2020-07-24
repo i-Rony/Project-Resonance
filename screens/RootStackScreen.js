@@ -6,7 +6,7 @@ import CreateAccount from './CreateAccount';
 import StartScreen from './StartScreen';
 import Doorway from './Doorway';
 import ChoiceScreen from './ChoiceScreen';
-import MainScreen from './MainScreen';
+import MainStack from './MainStack';
 import TermsOfService from './TermsOfService';
 import PrivacyPolicy from './PrivacyPolicy';
 
@@ -19,7 +19,7 @@ const RootStackScreen = () => (
         <Stack.Screen name="Login" component={Login}/>
         <Stack.Screen name="CreateAccount" component={CreateAccount}/>
         <Stack.Screen name="ChoiceScreen" component={ChoiceScreen}/>
-        <Stack.Screen name="MainScreen" component={MainScreen} />
+        <Stack.Screen name="MainStack" component={MainStack} />
         <Stack.Screen name="TermsOfService" component={TermsOfService} />
         <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
     </Stack.Navigator>
