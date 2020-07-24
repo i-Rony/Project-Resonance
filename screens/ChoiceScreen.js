@@ -26,13 +26,7 @@ const ChoiceScreen = ({navigation}) => {
             <>           
             <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
                 <Text>
-                    We offer a variety of items, so please choose :-{"\n"}
-                    Blonde, Brunette, Petite, Milf, Asian, BBW, Latina, Natural Breasts,{"\n"}
-                    Silicon Breasts, Communist Guerrilla Girls (Best Seller for American Capitalists) [imported from Cuba],{"\n"}
-                    Dumb Orthodox Feminist Wo-'men' (Trending: new roleplay theme) [roleplay theme: 'without consent'],{"\n"}
-                    Anal Services (may include extra services, for more details please contact our nearest service center){"\n"}
-                    BDSM Services (may include extra services [free only for platinum members], for more details please contact our nearest service center){"\n"}
-                    Complimentary Message Services for gold or higher tier members.
+                    Please choose :-{"\n"}
                 </Text>
             </View>
             <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
