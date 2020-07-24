@@ -56,7 +56,7 @@ function Login({ navigation }) {
 	}
 
 	if(data.loggedIn === true){
-		navigation.navigate('MainScreen')
+		navigation.navigate('MainStack')
 	}
 
 	const textInputChange = (val) => {
