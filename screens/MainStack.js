@@ -15,7 +15,7 @@ import CollabScreen from './CollabScreen';
 import NotificationScreen from './NotificationScreen';
 
 const tabs = {
-    Home: { // < Screen name
+    Home: { 
       labelStyle: {
         color: '#5B37B7',
       },
@@ -28,8 +28,8 @@ const tabs = {
         activeColor: 'rgba(223,215,243,1)',
         inactiveColor: 'rgba(223,215,243,0)',
       },
-    },
-    Notifications: { // < Screen name
+    }, // end of Home
+    Notifications: { 
       labelStyle: {
         color: '#5B37B7',
       },
@@ -42,8 +42,8 @@ const tabs = {
         activeColor: 'rgba(223,215,243,1)',
         inactiveColor: 'rgba(223,215,243,0)',
       },
-    },
-    Event: { // < Screen name
+    }, // end of Notifications
+    Event: { 
       labelStyle: {
         color: '#5B37B7',
       },
@@ -55,9 +55,9 @@ const tabs = {
       background: {
         activeColor: 'rgba(223,215,243,1)',
         inactiveColor: 'rgba(223,215,243,0)',
-      },
+      }, // end of Event
     },
-    User: { // < Screen name
+    User: { 
       labelStyle: {
         color: '#1194AA',
       },
@@ -70,7 +70,7 @@ const tabs = {
         activeColor: 'rgba(207,235,239,1)',
         inactiveColor: 'rgba(207,235,239,0)',
       },
-    },
+    }, // end of User
   };  
 
 const Tab = createBottomTabNavigator();
