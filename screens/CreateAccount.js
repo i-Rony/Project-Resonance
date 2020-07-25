@@ -100,7 +100,7 @@ const CreateAccount = ({ navigation }) => {
 							size={20}
 						/>
 						<TextInput
-							placeholder="Email or Phone Number"
+							placeholder="Email Address"
 							style={styles.textInput}
 							keyboardType='default'
 							selectionColor="#DD4482"

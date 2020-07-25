@@ -49,6 +49,7 @@ function Login({ navigation }) {
 					...data,
 					loggedIn: false
 				});
+				alert('Invalid Username or Password');
 			}
 		} else {
 			alert('Invalid Username or Password');
@@ -113,7 +114,7 @@ function Login({ navigation }) {
 							size={20}
 						/>
 						<TextInput
-							placeholder="Email or Phone Number"
+							placeholder="Email Address"
 							style={styles.textInput}
 							keyboardType='default'
 							selectionColor="#DD4482"

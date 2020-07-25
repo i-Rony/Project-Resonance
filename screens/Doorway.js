@@ -23,18 +23,18 @@ function Doorway({ navigation }) {
                 style: 'cancel'
             }, {
                 text: 'OK',
-                onPress: () => BackHandler.exitApp()
-                // onPress: () => {
-                //     if (Platform.OS === 'android') {
-                //         ToastAndroid.show("We don't believe in 'good'-byes,\nHope to see you soon...", ToastAndroid.SHORT);
-                //         setTimeout(() => {
-                //             BackHandler.exitApp();
-                //         }, 1000);
-                //     }
-                //     else {
-                //         BackHandler.exitApp();
-                //     }
-                // }//end of onPress()
+                // onPress: () => BackHandler.exitApp()
+                onPress: () => {
+                    if (Platform.OS === 'android') {
+                        ToastAndroid.show("We don't believe in 'good'-byes,\nHope to see you soon...", ToastAndroid.SHORT);
+                        setTimeout(() => {
+                            BackHandler.exitApp();
+                        }, 1000);
+                    }
+                    else {
+                        BackHandler.exitApp();
+                    }
+                }//end of onPress()
             }],
             {
                 cancelable: false
