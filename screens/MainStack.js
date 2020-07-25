@@ -14,6 +14,7 @@ import EventScreen from './EventScreen';
 import CollabScreen from './CollabScreen';
 
 const tabs = {
+    
     Home: { // < Screen name
       labelStyle: {
         color: '#5B37B7',
@@ -27,8 +28,9 @@ const tabs = {
         activeColor: 'rgba(223,215,243,1)',
         inactiveColor: 'rgba(223,215,243,0)',
       },
-    },
-    Collab: { // < Screen name
+    }, // end Home tab
+
+    Collabs: { // < Screen name
       labelStyle: {
         color: '#5B37B7',
       },
@@ -41,8 +43,9 @@ const tabs = {
         activeColor: 'rgba(223,215,243,1)',
         inactiveColor: 'rgba(223,215,243,0)',
       },
-    },
-    Event: { // < Screen name
+    }, // end Collabs tab
+
+    Events: { // < Screen name
       labelStyle: {
         color: '#5B37B7',
       },
@@ -55,7 +58,23 @@ const tabs = {
         activeColor: 'rgba(223,215,243,1)',
         inactiveColor: 'rgba(223,215,243,0)',
       },
-    },
+    }, // end Events tab
+
+    Find: { // < Screen name
+        labelStyle: {
+            color: '#1194AA',
+        },
+        icon: {
+            component: SearchSVG,
+            activeColor: 'rgba(17,148,170,1)',
+            inactiveColor: 'rgba(0,0,0,1)',
+        },
+        background: {
+            activeColor: 'rgba(207,235,239,1)',
+            inactiveColor: 'rgba(207,235,239,0)',
+        },
+    }, // end find tab
+
     User: { // < Screen name
       labelStyle: {
         color: '#1194AA',
@@ -69,8 +88,9 @@ const tabs = {
         activeColor: 'rgba(207,235,239,1)',
         inactiveColor: 'rgba(207,235,239,0)',
       },
-    },
-  };  
+    } // end User tab
+
+  };  // end tabs
 
 const Tab = createBottomTabNavigator();
 
@@ -81,9 +101,9 @@ const MainStack = () => (
             <AnimatedTabBar tabs={tabs} {...props} />
           )}
     >
-        <Tab.Screen name="Event" component={EventScreen} />
+        <Tab.Screen name="Events" component={EventScreen} />
         <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Collab" component={CollabScreen} />
+        <Tab.Screen name="Collabs" component={CollabScreen} />
         <Tab.Screen name="User" component={UserScreen} />
 
     </Tab.Navigator>
