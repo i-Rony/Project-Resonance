@@ -12,6 +12,7 @@ import HomeScreen from './HomeScreen';
 import UserScreen from './UserScreen';
 import EventScreen from './EventScreen';
 import CollabScreen from './CollabScreen';
+import NotificationScreen from './NotificationScreen';
 
 const tabs = {
     Home: { // < Screen name
@@ -83,7 +84,7 @@ const MainStack = () => (
     >
         <Tab.Screen name="Event" component={EventScreen} />
         <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Notifications" component={CollabScreen} />
+        <Tab.Screen name="Notifications" component={NotificationScreen} />
         <Tab.Screen name="User" component={UserScreen} />
 
     </Tab.Navigator>
