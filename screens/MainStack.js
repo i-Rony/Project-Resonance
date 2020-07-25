@@ -6,6 +6,7 @@ import HomeSVG from '../svg/HomeSVG';
 import LikeSVG from '../svg/LikeSVG';
 import SearchSVG from '../svg/SearchSVG';
 import ProfileSVG from '../svg/ProfileSVG';
+import BellSVG from '../svg/BellSVG';
 
 import HomeScreen from './HomeScreen';
 import UserScreen from './UserScreen';
@@ -27,12 +28,12 @@ const tabs = {
         inactiveColor: 'rgba(223,215,243,0)',
       },
     },
-    Collab: { // < Screen name
+    Notif: { // < Screen name
       labelStyle: {
         color: '#5B37B7',
       },
       icon: {
-        component: LikeSVG,
+        component: BellSVG,
         activeColor: 'rgba(91,55,183,1)',
         inactiveColor: 'rgba(0,0,0,1)',
       },
@@ -82,7 +83,7 @@ const MainStack = () => (
     >
         <Tab.Screen name="Event" component={EventScreen} />
         <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Collab" component={CollabScreen} />
+        <Tab.Screen name="Notif" component={CollabScreen} />
         <Tab.Screen name="User" component={UserScreen} />
 
     </Tab.Navigator>
