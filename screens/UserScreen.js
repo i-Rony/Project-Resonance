@@ -22,6 +22,7 @@ const UserScreen = ({navigation}) => {
         return(
             <View
                 style={{
+                    backgroundColor: 'rgba(0,0,0,0.95)',
                     alignItems: "center",
                     justifyContent: "center",
                     flex: 1
@@ -33,7 +34,7 @@ const UserScreen = ({navigation}) => {
                         justifyContent: "center",
                     }}                    
                 >
-                    <Text>
+                    <Text style={{color: '#fff'}}>
                         User
                     </Text>
                 </TouchableOpacity>
