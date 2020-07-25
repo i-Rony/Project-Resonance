@@ -28,7 +28,7 @@ const tabs = {
         inactiveColor: 'rgba(223,215,243,0)',
       },
     },
-    Notif: { // < Screen name
+    Notifications: { // < Screen name
       labelStyle: {
         color: '#5B37B7',
       },
@@ -83,7 +83,7 @@ const MainStack = () => (
     >
         <Tab.Screen name="Event" component={EventScreen} />
         <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Notif" component={CollabScreen} />
+        <Tab.Screen name="Notifications" component={CollabScreen} />
         <Tab.Screen name="User" component={UserScreen} />
 
     </Tab.Navigator>
