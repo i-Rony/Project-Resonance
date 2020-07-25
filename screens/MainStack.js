@@ -6,6 +6,7 @@ import HomeSVG from '../svg/HomeSVG';
 import LikeSVG from '../svg/LikeSVG';
 import SearchSVG from '../svg/SearchSVG';
 import ProfileSVG from '../svg/ProfileSVG';
+// import HandshakeSVG from '../svg/HandshakeSVG';
 
 
 import HomeScreen from './HomeScreen';

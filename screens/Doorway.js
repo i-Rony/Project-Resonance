@@ -7,6 +7,14 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 function Doorway({ navigation }) {
 
+    f.auth().onAuthStateChanged(function(user) {
+        if(user){
+            navigation.navigate('MainStack')
+        } else {
+            console.log('Logged Out');
+        }
+    });
+
    const handleBackButton = () => {
         Alert.alert(
             'Exit App ?',
