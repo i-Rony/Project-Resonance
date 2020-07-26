@@ -117,7 +117,7 @@ function Login({ navigation }) {
 							placeholder="Email Address"
 							style={styles.textInput}
 							keyboardType='default'
-							selectionColor="#DD4482"
+							selectionColor="#E75A7C"
 							autoCapitalize="none"
 							onChangeText={(val) => textInputChange(val)}
 						/>
@@ -127,7 +127,7 @@ function Login({ navigation }) {
 							>
 								<Feather
 									name="check-circle"
-									color="#DD4482"
+									color="#E75A7C"
 									size={20}
 								/>
 							</Animatable.View>
@@ -148,7 +148,7 @@ function Login({ navigation }) {
 							placeholder="Your Password"
 							secureTextEntry={data.secureTextEntry ? true : false}
 							style={styles.textInput}
-							selectionColor="#DD4482"
+							selectionColor="#E75A7C"
 							autoCapitalize="none"
 							onChangeText={(val) => handlePasswordChange(val)}
 						/>
@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
 
 	container: {
 		flex: 1,
-		backgroundColor: '#DD4482'
+		backgroundColor: '#E75A7C'
 	},
 	header: {
 		alignItems: 'flex-end',
@@ -224,13 +224,13 @@ const styles = StyleSheet.create({
 	},
 	footer: {
 		flex: 1.5,
-		backgroundColor: '#000000',
+		backgroundColor: '#2C363F',
 		borderTopLeftRadius: 30,
 		borderTopRightRadius: 30,
 		paddingHorizontal: 30,
 	},
 	text_header: {
-		color: '#fff',
+		color: '#ffffff',
 		fontFamily: 'SemiBold',
 		fontSize: 28
 	},
@@ -266,9 +266,9 @@ const styles = StyleSheet.create({
 		lineHeight: 10,
 		letterSpacing: 2.5,
 		marginTop: 18,
-		backgroundColor: "#DD4482",
+		backgroundColor: "#E75A7C",
 		elevation: 12,
-		shadowColor: "#DD4482",
+		shadowColor: "#E75A7C",
 		shadowOffset: {
 			width: 0,
 			height: 4

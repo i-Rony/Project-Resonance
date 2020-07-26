@@ -103,7 +103,7 @@ const CreateAccount = ({ navigation }) => {
 							placeholder="Email Address"
 							style={styles.textInput}
 							keyboardType='default'
-							selectionColor="#DD4482"
+							selectionColor="#E75A7C"
 							autoCapitalize="none"
 							onChangeText={(val) => textInputChange(val)}
 						/>
@@ -113,7 +113,7 @@ const CreateAccount = ({ navigation }) => {
 							>
 								<Feather
 									name="check-circle"
-									color="#DD4482"
+									color="#E75A7C"
 									size={20}
 								/>
 							</Animatable.View>
@@ -134,7 +134,7 @@ const CreateAccount = ({ navigation }) => {
 							placeholder=""
 							secureTextEntry={data.secureTextEntry ? true : false}
 							style={styles.textInput}
-							selectionColor="#DD4482"
+							selectionColor="#E75A7C"
 							autoCapitalize="none"
 							onChangeText={(val) => handlePasswordChange(val)}
 						/>
@@ -170,7 +170,7 @@ const CreateAccount = ({ navigation }) => {
 							placeholder=""
 							secureTextEntry={data.confirm_secureTextEntry ? true : false}
 							style={styles.textInput}
-							selectionColor="#DD4482"
+							selectionColor="#E75A7C"
 							autoCapitalize="none"
 							onChangeText={(val) => handleConfirmPasswordChange(val)}
 						/>
@@ -228,7 +228,7 @@ export default CreateAccount;
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#DD4482'
+		backgroundColor: '#E75A7C'
 	},
 	header: {
 		alignItems: 'flex-end',
@@ -241,7 +241,7 @@ const styles = StyleSheet.create({
 
 	footer: {
 		flex: 7,
-		backgroundColor: '#000000',
+		backgroundColor: '#2C363F',
 		borderTopLeftRadius: 30,
 		borderTopRightRadius: 30,
 		paddingHorizontal: 30,
@@ -284,7 +284,7 @@ const styles = StyleSheet.create({
 		lineHeight: 10,
 		letterSpacing: 2.5,
 		marginTop: 10,
-		backgroundColor: "#DD4482",
+		backgroundColor: "#E75A7C",
 		elevation: 12,
 		shadowColor: "#a4d4ae",
 		shadowOffset: {
