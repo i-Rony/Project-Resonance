@@ -26,7 +26,7 @@ function Doorway({ navigation }) {
                 // onPress: () => BackHandler.exitApp()
                 onPress: () => {
                     if (Platform.OS === 'android') {
-                        ToastAndroid.show("We don't believe in 'good'-byes,\nHope to see you soon...", ToastAndroid.SHORT);
+                        ToastAndroid.show("We don't believe in 'good'-byes,\n\tHope to see you soon...", ToastAndroid.SHORT);
                         setTimeout(() => {
                             BackHandler.exitApp();
                         }, 1000);

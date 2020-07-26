@@ -3,7 +3,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AnimatedTabBar from '@gorhom/animated-tabbar';
 
 import HomeSVG from '../svg/HomeSVG';
-import LikeSVG from '../svg/LikeSVG';
 import SearchSVG from '../svg/SearchSVG';
 import ProfileSVG from '../svg/ProfileSVG';
 import BellSVG from '../svg/BellSVG';
@@ -11,7 +10,6 @@ import BellSVG from '../svg/BellSVG';
 import HomeScreen from './HomeScreen';
 import UserScreen from './UserScreen';
 import EventScreen from './EventScreen';
-import CollabScreen from './CollabScreen';
 import NotificationScreen from './NotificationScreen';
 
 const tabs = {
