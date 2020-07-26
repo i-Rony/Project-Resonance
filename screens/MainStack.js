@@ -17,59 +17,59 @@ import NotificationScreen from './NotificationScreen';
 const tabs = {
     Home: { 
       labelStyle: {
-        color: '#5B37B7',
+        color: '#ffffff'
       },
       icon: {
         component: HomeSVG,
-        activeColor: 'rgba(91,55,183,1)',
+        activeColor: 'rgba(255,255,255,1)',
         inactiveColor: 'rgba(0,0,0,1)',
       },
       background: {
-        activeColor: 'rgba(223,215,243,1)',
-        inactiveColor: 'rgba(223,215,243,0)',
-      },
+        activeColor: 'rgba(0,0,0,1)',
+        inactiveColor: 'rgba(255,255,255,0)'
+      }
     }, // end of Home
     Notifications: { 
       labelStyle: {
-        color: '#5B37B7',
+        color: '#ffffff'
       },
       icon: {
         component: BellSVG,
-        activeColor: 'rgba(91,55,183,1)',
+        activeColor: 'rgba(255,255,255,1)',
         inactiveColor: 'rgba(0,0,0,1)',
       },
       background: {
-        activeColor: 'rgba(223,215,243,1)',
-        inactiveColor: 'rgba(223,215,243,0)',
-      },
+        activeColor: 'rgba(0,0,0,1)',
+        inactiveColor: 'rgba(255,255,255,0)'
+      }
     }, // end of Notifications
     Event: { 
       labelStyle: {
-        color: '#5B37B7',
+        color: '#ffffff'
       },
       icon: {
         component: SearchSVG,
-        activeColor: 'rgba(91,55,183,1)',
+        activeColor: 'rgba(255,255,255,1)',
         inactiveColor: 'rgba(0,0,0,1)',
       },
       background: {
-        activeColor: 'rgba(223,215,243,1)',
-        inactiveColor: 'rgba(223,215,243,0)',
-      }, // end of Event
+        activeColor: 'rgba(0,0,0,1)',
+        inactiveColor: 'rgba(255,255,255,0)'
+      }
     },
     User: { 
       labelStyle: {
-        color: '#1194AA',
+        color: '#ffffff'
       },
       icon: {
         component: ProfileSVG,
-        activeColor: 'rgba(17,148,170,1)',
+        activeColor: 'rgba(255,255,255,1)',
         inactiveColor: 'rgba(0,0,0,1)',
       },
       background: {
-        activeColor: 'rgba(207,235,239,1)',
-        inactiveColor: 'rgba(207,235,239,0)',
-      },
+        activeColor: 'rgba(0,0,0,1)',
+        inactiveColor: 'rgba(255,255,255,0)'
+      }
     }, // end of User
   };  
 
@@ -82,10 +82,10 @@ const MainStack = () => (
             <AnimatedTabBar tabs={tabs} {...props} />
           )}
     >
-        <Tab.Screen name="Event" component={EventScreen} />
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Notifications" component={NotificationScreen} />
         <Tab.Screen name="User" component={UserScreen} />
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Event" component={EventScreen} />
+        <Tab.Screen name="Notifications" component={NotificationScreen} />
 
     </Tab.Navigator>
 );

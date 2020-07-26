@@ -1,44 +1,81 @@
-import React from 'react';
+'use strict';
+
+import React, { Component } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
+import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 
-import { useFonts } from '@use-expo/font';
-import { AppLoading } from 'expo';
+class NotificationScreen extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            myText: 'I\'m ready to get swiped!',
+            gestureName: 'none',
+            backgroundColor: 'rgba(255,255,255,0)'
+        };
+    }
 
-const NotificationScreen = ({navigation}) => {
+    onSwipeLeft(gestureState) {
+        //this.setState({ myText: 'You swiped left!' });
+        this.props.navigation.navigate('User');
+    }
 
-    let [fontsLoaded] = useFonts({
-		'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
-		'SemiBold': require('../assets/fonts/Montserrat-SemiBold.ttf'),
-		'Medium': require('../assets/fonts/Montserrat-Medium.ttf'),
-		'Light': require('../assets/fonts/Montserrat-Light.ttf'),
-		'Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
-    });
-    
-    if (!fontsLoaded) {
-		return <AppLoading />;
+    onSwipeRight(gestureState) {
+        //this.setState({ myText: 'You swiped right!' });
+        this.props.navigation.navigate('Event');
+    }
 
-	} else {
-        return(
-            <View
+    onSwipe(gestureName, gestureState) {
+        const { SWIPE_LEFT, SWIPE_RIGHT } = swipeDirections;
+        this.setState({ gestureName: gestureName });
+        switch (gestureName) {
+            case SWIPE_LEFT:
+                this.props.navigation.navigate('User');
+                break;
+            case SWIPE_RIGHT:
+                this.props.navigation.navigate('Event');
+                break;
+        }
+    }
+
+    render() {
+
+        const config = {
+            velocityThreshold: 0.5,
+            directionalOffsetThreshold: 800
+        };
+
+        return (
+            <GestureRecognizer
+                onSwipe={(direction, state) => this.onSwipe(direction, state)}
+                onSwipeLeft={(state) => this.onSwipeLeft(state)}
+                onSwipeRight={(state) => this.onSwipeRight(state)}
+                config={config}
                 style={{
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flex: 1
+                    flex: 1,
+                    backgroundColor: this.state.backgroundColor
                 }}
             >
-                <TouchableOpacity
+                <View
                     style={{
                         alignItems: "center",
                         justifyContent: "center",
-                    }}                    
+                        flex: 1
+                    }}
                 >
+                    <TouchableOpacity
+                        style={{
+                            alignItems: "center",
+                            justifyContent: "center",
+                        }}
+                    >
                     <Text>
                         Notifications
                     </Text>
-                </TouchableOpacity>
-            </View>
-        )
+                    </TouchableOpacity>
+                </View>
+            </GestureRecognizer>
+        );
     }
 }
 
