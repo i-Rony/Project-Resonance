@@ -5,7 +5,7 @@ import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 
 
-const CollabScreen = ({navigation}) => {
+const NotificationScreen = ({navigation}) => {
 
     let [fontsLoaded] = useFonts({
 		'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
@@ -34,7 +34,7 @@ const CollabScreen = ({navigation}) => {
                     }}                    
                 >
                     <Text>
-                        Collabs
+                        Notifications
                     </Text>
                 </TouchableOpacity>
             </View>
@@ -42,4 +42,4 @@ const CollabScreen = ({navigation}) => {
     }
 }
 
-export default CollabScreen;
+export default NotificationScreen;

@@ -12,7 +12,7 @@ import ProfileSVG from '../svg/ProfileSVG';
 import HomeScreen from './HomeScreen';
 import UserScreen from './UserScreen';
 import EventScreen from './EventScreen';
-import CollabScreen from './CollabScreen';
+import NotificationScreen from './NotificationScreen';
 
 const tabs = {
     
@@ -31,7 +31,7 @@ const tabs = {
       },
     }, // end Home tab
 
-    Collabs: { // < Screen name
+    Notifications: { // < Screen name
       labelStyle: {
         color: '#5B37B7',
       },
@@ -46,7 +46,7 @@ const tabs = {
       },
     }, // end Collabs tab
 
-    Events: { // < Screen name
+    Event: { // < Screen name
       labelStyle: {
         color: '#5B37B7',
       },
@@ -60,21 +60,6 @@ const tabs = {
         inactiveColor: 'rgba(223,215,243,0)',
       },
     }, // end Events tab
-
-    Find: { // < Screen name
-        labelStyle: {
-            color: '#1194AA',
-        },
-        icon: {
-            component: SearchSVG,
-            activeColor: 'rgba(17,148,170,1)',
-            inactiveColor: 'rgba(0,0,0,1)',
-        },
-        background: {
-            activeColor: 'rgba(207,235,239,1)',
-            inactiveColor: 'rgba(207,235,239,0)',
-        },
-    }, // end find tab
 
     User: { // < Screen name
       labelStyle: {
@@ -102,9 +87,9 @@ const MainStack = () => (
             <AnimatedTabBar tabs={tabs} {...props} />
           )}
     >
-        <Tab.Screen name="Events" component={EventScreen} />
+        <Tab.Screen name="Event" component={EventScreen} />
         <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Collabs" component={CollabScreen} />
+        <Tab.Screen name="Notifications" component={NotificationScreen} />
         <Tab.Screen name="User" component={UserScreen} />
 
     </Tab.Navigator>
