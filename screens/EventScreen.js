@@ -1,11 +1,23 @@
-import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, Text, TouchableOpacity, BackHandler } from 'react-native';
 
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 
 
 const EventScreen = ({navigation}) => {
+
+    const handleBackButton = () => {
+        BackHandler.removeEventListener('hardwareBackPress', handleBackButton), 
+        navigation.navigate('Home');
+        return true;
+    }
+
+    useEffect(() => {
+        navigation.addListener('focus', () => {
+            BackHandler.addEventListener('hardwareBackPress', handleBackButton);
+        });
+    });
 
     let [fontsLoaded] = useFonts({
 		'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),

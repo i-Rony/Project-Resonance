@@ -261,7 +261,7 @@ const styles = StyleSheet.create({
 		width: '60%',
 		height: 50,
 		justifyContent: 'center',
-        borderRadius: 40,
+		borderRadius: 40,
         
 		lineHeight: 10,
 		letterSpacing: 2.5,
