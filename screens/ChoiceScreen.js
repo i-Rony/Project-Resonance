@@ -3,7 +3,6 @@ import { Dimensions, View, Text, TouchableOpacity } from 'react-native';
 
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
-import MainStack from './MainStack';
 
 
 const { width, height } = Dimensions.get('window');
