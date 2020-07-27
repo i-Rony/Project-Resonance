@@ -102,7 +102,13 @@ const MainStack = () => (
 export default MainStack;
 
 const UserDrawer = () => (
-    <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />} drawerContentOptions={{ gestureEnabled: true }} >
+    <Drawer.Navigator 
+      drawerContent={props => <DrawerContent {...props} />} 
+      drawerContentOptions={{ gestureEnabled: true }} 
+      drawerStyle={{
+        backgroundColor: '#2C363F'
+      }}   
+    >
       <Drawer.Screen name='Profile' component={ProfileScreen} />
       <Drawer.Screen name='Collab' component={CollabScreen} />
     </Drawer.Navigator>
