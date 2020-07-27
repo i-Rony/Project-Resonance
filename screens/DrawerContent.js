@@ -43,7 +43,9 @@ export function DrawerContent(props) {
         return (
             <View style={{ flex: 1 }}>
                 <DrawerContentScrollView {...props}>
-                    <View style={styles.drawerContent}>
+                    <View 
+                        style={{flex: 1}}
+                    >
                         <View style={{ paddingLeft: 20 }}>
                             <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 15, }}>
                                 <View style={{ flexDirection: 'column' }}>
@@ -116,9 +118,6 @@ export function DrawerContent(props) {
 }
 
 const styles = StyleSheet.create({
-    drawerContent: {
-        flex: 1,
-    },
     name: {
         fontSize: 18,
         marginTop: 3,
