@@ -1,13 +1,9 @@
 import React, { useEffect } from 'react';
 import { View, Text, TouchableOpacity, BackHandler } from 'react-native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import ProfileScreen from './ProfileScreen';
-import CollabScreen from './CollabScreen';
 
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 
-const Drawer = createDrawerNavigator();
 
 const UserScreen = ({navigation}) => {
 
@@ -36,10 +32,11 @@ const UserScreen = ({navigation}) => {
 
 	} else {
         return(
-            <Drawer.Navigator>
-                <Drawer.Screen name='My Profile' component={ProfileScreen} />
-                <Drawer.Screen name='My Collabs' component={CollabScreen} />
-            </Drawer.Navigator>
+            <View>
+                <Text>
+                    Henlo
+                </Text>
+            </View>
         )
     }
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { View, Text, ImageBackground, TouchableOpacity, Dimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -9,11 +9,11 @@ const { width, height } = Dimensions.get("screen");
 
 const ProfileScreen = ({ navigation }) => {
 
-    useEffect(() => {
-        navigation.addListener('focus', () => {
-            navigation.openDrawer();
-        });
-    });
+    // useEffect(() => {
+    //     navigation.addListener('focus', () => {
+    //         navigation.openDrawer();
+    //     });
+    // });
 
     let [fontsLoaded] = useFonts({
         'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
@@ -36,7 +36,7 @@ const ProfileScreen = ({ navigation }) => {
                 }}
             >
                 <LinearGradient
-                    colors={['rgba(0, 204, 255, 0.6)', 'rgba(255, 0, 195, 0.6)']}
+                    colors={['rgba(44, 54, 63, 0.6)', 'rgba(231, 90, 124, 0.6)']}
                     style={{
                         flex: 1,
                     }}
