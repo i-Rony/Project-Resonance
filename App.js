@@ -1,10 +1,12 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import RootStackScreen from './screens/RootStackScreen';
+// import ProfileScreen from './screens/ProfileScreen';
 
 
 const App = () => {
   return (
+    // <ProfileScreen/>
       <NavigationContainer>
         <RootStackScreen />
       </NavigationContainer>
