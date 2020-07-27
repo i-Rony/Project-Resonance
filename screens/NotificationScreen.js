@@ -8,9 +8,8 @@ class NotificationScreen extends Component {
 
     constructor(props) {
         super(props);
+
         this.state = {
-            myText: 'I\'m ready to get swiped!',
-            gestureName: 'none',
             backgroundColor: 'rgba(255,255,255,0)'
         };
     }
@@ -27,7 +26,7 @@ class NotificationScreen extends Component {
 
     onSwipe(gestureName, gestureState) {
         const { SWIPE_LEFT, SWIPE_RIGHT } = swipeDirections;
-        this.setState({ gestureName: gestureName });
+        
         switch (gestureName) {
             case SWIPE_LEFT:
                 this.props.navigation.navigate('User');

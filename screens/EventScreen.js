@@ -8,7 +8,7 @@ import { AppLoading } from 'expo';
 const EventScreen = ({navigation}) => {
 
     const handleBackButton = () => {
-        BackHandler.removeEventListener('hardwareBackPress', handleBackButton), 
+        BackHandler.removeEventListener('hardwareBackPress', handleBackButton),
         navigation.navigate('Home');
         return true;
     }
