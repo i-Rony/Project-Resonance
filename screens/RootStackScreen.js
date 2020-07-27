@@ -9,6 +9,7 @@ import ChoiceScreen from './ChoiceScreen';
 import MainStack from './MainStack';
 import TermsOfService from './TermsOfService';
 import PrivacyPolicy from './PrivacyPolicy';
+import ProfileScreen from './ProfileScreen';
 
 const Stack = createStackNavigator();
 
@@ -22,6 +23,7 @@ const RootStackScreen = () => (
         <Stack.Screen name="MainStack" component={MainStack} />
         <Stack.Screen name="TermsOfService" component={TermsOfService} />
         <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
     </Stack.Navigator>
 );
 
