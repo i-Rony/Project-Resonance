@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    View, StyleSheet, 
+    View, StyleSheet, Text
 } from 'react-native';
 import {
     Title,
@@ -18,7 +18,7 @@ import JohnDoe from '../assets/kawaii.jpg'
 
 import { Ionicons } from '@expo/vector-icons';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import { faUserFriends } from '@fortawesome/free-solid-svg-icons';
+import { faUserFriends, faUser, faHandshake, faHeartbeat, faHammer } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 
 import { useFonts } from '@use-expo/font';
@@ -43,48 +43,91 @@ export function DrawerContent(props) {
         return (
             <View style={{ flex: 1 }}>
                 <DrawerContentScrollView {...props}>
-                    <View 
-                        style={{flex: 1}}
+                    <View
+                        style={{ flex: 1 }}
                     >
                         <View style={{ paddingLeft: 20 }}>
-                            <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 15, }}>
-                                <View style={{ flexDirection: 'column' }}>
-                                    <Title style={styles.name}>John Doe</Title>
-                                    <Caption style={styles.caption}>Kolkata</Caption>
+                            <View style={{ justifyContent: 'space-around', marginTop: 15, }}>
+                                <View style={{
+                                    flex: 1,
+                                    marginLeft: 22,
+                                    marginBottom: 17
+                                }}>
+                                    <Avatar.Image source={JohnDoe} size={110} />
                                 </View>
-                                <Avatar.Image source={JohnDoe} size={70} />
+                                <View>
+                                    <Title style={styles.name}>John Doe</Title>
+                                    <Caption style={styles.caption}><Text>1000{'\n'}Followers</Text></Caption>
+                                </View>
                             </View>
-                            <View style={styles.row}>
+                            {/* <View style={styles.row}>
                                 <View style={styles.section}>
                                     <Paragraph style={[styles.paragraph]}>2</Paragraph>
                                     <Caption style={styles.caption}>Contacts</Caption>
                                 </View>
-                            </View>
+                            </View> */}
                         </View>
 
                         <Drawer.Section style={styles.drawerSection}>
-                            <DrawerItem inactiveTintColor='#fff'
+                            <DrawerItem inactiveTintColor='#ffffff' activeBackgroundColor='#1976d2'
                                 icon={({ color, size }) => (
-                                    <FontAwesomeIcon 
-                                        icon={faUserFriends} 
-                                        color={color} 
-                                        size={size} 
-                                    />
-                                )}
-                                label="Profile" labelStyle={{ fontFamily: 'Medium', fontSize: 16 }}
-
-                                onPress={() => { props.navigation.navigate('Profile') }}
-                            />
-                            <DrawerItem inactiveTintColor='#fff'
-                                icon={({ color, size }) => (
-                                    <Icon name="inbox-arrow-down"
+                                    <FontAwesomeIcon
+                                        icon={faUser}
                                         color={color}
                                         size={size}
                                     />
                                 )}
-                                label="Collab" labelStyle={{ fontFamily: 'Medium', fontSize: 16 }}
+                                label="My Profile" labelStyle={{ fontFamily: 'Medium', fontSize: 16 }}
 
-                                onPress={() => { props.navigation.navigate('Collab') }}
+                                onPress={() => { props.navigation.navigate('My Profile') }}
+                            />
+                            <DrawerItem inactiveTintColor='#ffffff' activeBackgroundColor='#1976d2'
+                                icon={({ color, size }) => (
+                                    <FontAwesomeIcon
+                                        icon={faUserFriends}
+                                        color={color}
+                                        size={size}
+                                    />
+                                )}
+                                label="Connections" labelStyle={{ fontFamily: 'Medium', fontSize: 16 }}
+
+                                onPress={() => { props.navigation.navigate('Connections') }}
+                            />
+                            <DrawerItem inactiveTintColor='#ffffff' activeBackgroundColor='#1976d2'
+                                icon={({ color, size }) => (
+                                    <FontAwesomeIcon
+                                        icon={faHandshake}
+                                        color={color}
+                                        size={size}
+                                    />
+                                )}
+                                label="Collabs" labelStyle={{ fontFamily: 'Medium', fontSize: 16 }}
+
+                                onPress={() => { props.navigation.navigate('Collabs') }}
+                            />
+                            <DrawerItem inactiveTintColor='#ffffff' activeBackgroundColor='#1976d2'
+                                icon={({ color, size }) => (
+                                    <FontAwesomeIcon
+                                        icon={faHeartbeat}
+                                        color={color}
+                                        size={size}
+                                    />
+                                )}
+                                label="Activities" labelStyle={{ fontFamily: 'Medium', fontSize: 16 }}
+
+                                onPress={() => { props.navigation.navigate('Activities') }}
+                            />
+                            <DrawerItem inactiveTintColor='#ffffff' activeBackgroundColor='#1976d2'
+                                icon={({ color, size }) => (
+                                    <FontAwesomeIcon
+                                        icon={faHammer}
+                                        color={color}
+                                        size={size}
+                                    />
+                                )}
+                                label="Settings" labelStyle={{ fontFamily: 'Medium', fontSize: 16 }}
+
+                                onPress={() => { props.navigation.navigate('Settings') }}
                             />
 
                             {/* <DrawerItem inactiveTintColor='#fff' activeBackgroundColor='#1976d2'
@@ -97,12 +140,12 @@ export function DrawerContent(props) {
                                 label="About" labelStyle={{ fontFamily: 'Medium', fontSize: 16 }}
                                 onPress={() => { props.navigation.navigate('About') }}
                             /> */}
-                        </Drawer.Section> 
-                        
+                        </Drawer.Section>
+
                     </View>
                 </DrawerContentScrollView>
                 <Drawer.Section style={styles.bottomDrawerSection}>
-                    <DrawerItem inactiveTintColor='#fff' activeBackgroundColor='#1976d2'
+                    <DrawerItem inactiveTintColor='#fff'
                         icon={({ color, size }) => (
                             <Ionicons name="md-exit"
                                 color={color}
@@ -119,14 +162,18 @@ export function DrawerContent(props) {
 
 const styles = StyleSheet.create({
     name: {
-        fontSize: 18,
+        fontSize: 20,
         marginTop: 3,
+        marginLeft: 15,
         fontFamily: 'SemiBold',
     },
     caption: {
-        fontSize: 15,
+        fontSize: 14,
         lineHeight: 15,
-        fontFamily: 'Medium',
+        fontFamily: 'SemiBold',
+        borderColor: '#fff',
+        borderBottomWidth: 1,
+        paddingBottom: 20
     },
 
     section: {
@@ -143,7 +190,7 @@ const styles = StyleSheet.create({
     },
     drawerSection: {
         marginTop: 15,
-        backgroundColor: '#1976d2',
+        //backgroundColor: '#1976d2',
         paddingLeft: 20,
     },
 
