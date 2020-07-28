@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { View, Text, TouchableOpacity, BackHandler, Alert, ToastAndroid, Platform } from 'react-native';
-import { Swipeable } from 'react-native-gesture-handler';
 import { f, auth, database } from '../config/config';
 
 import { useFonts } from '@use-expo/font';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 
 import { useFonts } from '@use-expo/font';
@@ -6,6 +6,7 @@ import { AppLoading } from 'expo';
 
 
 const CollabScreen = ({navigation}) => {
+
 
     let [fontsLoaded] = useFonts({
 		'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),

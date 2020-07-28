@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { View, Text, ImageBackground, TouchableOpacity, Dimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import AnimateNumber from 'react-native-animate-number'
+
 
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
@@ -9,11 +11,13 @@ const { width, height } = Dimensions.get("screen");
 
 const ProfileScreen = ({ navigation }) => {
 
-    useEffect(() => {
-        navigation.addListener('focus', () => {
-            navigation.openDrawer();
-        });
-    });
+    // useEffect(() => {
+    //     navigation.addListener('focus', () => {
+    //         navigation.openDrawer();
+    //     });
+    // });
+
+    const posts = 93;
 
     let [fontsLoaded] = useFonts({
         'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
@@ -36,7 +40,7 @@ const ProfileScreen = ({ navigation }) => {
                 }}
             >
                 <LinearGradient
-                    colors={['rgba(0, 204, 255, 0.6)', 'rgba(255, 0, 195, 0.6)']}
+                    colors={['rgba(44, 54, 63, 0.6)', 'rgba(231, 90, 124, 0.6)']}
                     style={{
                         flex: 1,
                     }}
@@ -73,8 +77,9 @@ const ProfileScreen = ({ navigation }) => {
                                     color: 'white',
                                 }}
                             >
-                                93
-                                </Text>
+                                {posts != 0 ? <AnimateNumber value={posts} timing="easeOut" countBy={3}/> : 0 }
+
+                            </Text>
                             <Text
                                 style={{
                                     paddingTop: 0,
@@ -133,7 +138,16 @@ const ProfileScreen = ({ navigation }) => {
                         >
                             Tokyo, Japan
                             </Text>
-                        <TouchableOpacity style={{ left: width * 0.7, padding: 12, marginRight: -6, paddingHorizontal: 20, marginTop: -55, borderColor: 'white', borderWidth: 1.5, borderRadius: 12 }}>
+                        <TouchableOpacity style={{ 
+                            left: width * 0.7, 
+                            padding: 12, 
+                            marginRight: -6, 
+                            paddingHorizontal: 20, 
+                            marginTop: -55, 
+                            borderColor: 'white', 
+                            borderWidth: 1.5, 
+                            borderRadius: 12 
+                        }}>
                             <Text
                                 style={{
                                     fontFamily: 'Regular',
@@ -144,7 +158,6 @@ const ProfileScreen = ({ navigation }) => {
                             </Text>
                         </TouchableOpacity>
                     </View>
-
                 </LinearGradient>
             </ImageBackground>
         )
