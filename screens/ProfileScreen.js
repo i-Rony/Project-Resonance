@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, ImageBackground, TouchableOpacity, Dimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import AnimateNumber from 'react-native-animate-number'
+
 
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
@@ -14,6 +16,8 @@ const ProfileScreen = ({ navigation }) => {
     //         navigation.openDrawer();
     //     });
     // });
+
+    const posts = 93;
 
     let [fontsLoaded] = useFonts({
         'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
@@ -73,8 +77,9 @@ const ProfileScreen = ({ navigation }) => {
                                     color: 'white',
                                 }}
                             >
-                                93
-                                </Text>
+                                {posts != 0 ? <AnimateNumber value={posts} timing="easeOut" countBy={3}/> : 0 }
+
+                            </Text>
                             <Text
                                 style={{
                                     paddingTop: 0,
@@ -133,7 +138,16 @@ const ProfileScreen = ({ navigation }) => {
                         >
                             Tokyo, Japan
                             </Text>
-                        <TouchableOpacity style={{ left: width * 0.7, padding: 12, marginRight: -6, paddingHorizontal: 20, marginTop: -55, borderColor: 'white', borderWidth: 1.5, borderRadius: 12 }}>
+                        <TouchableOpacity style={{ 
+                            left: width * 0.7, 
+                            padding: 12, 
+                            marginRight: -6, 
+                            paddingHorizontal: 20, 
+                            marginTop: -55, 
+                            borderColor: 'white', 
+                            borderWidth: 1.5, 
+                            borderRadius: 12 
+                        }}>
                             <Text
                                 style={{
                                     fontFamily: 'Regular',

@@ -29,6 +29,7 @@
     "react-dom": "~16.11.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz",
     "react-native-animatable": "^1.3.3",
+    "react-native-animate-number": "^0.1.2",
     "react-native-bubble-select": "^0.6.0",
     "react-native-color-matrix-image-filters": "^5.2.5",
     "react-native-css-gradient": "^0.4.0",
