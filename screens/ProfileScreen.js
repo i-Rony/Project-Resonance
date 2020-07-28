@@ -158,7 +158,6 @@ const ProfileScreen = ({ navigation }) => {
                             </Text>
                         </TouchableOpacity>
                     </View>
-
                 </LinearGradient>
             </ImageBackground>
         )
