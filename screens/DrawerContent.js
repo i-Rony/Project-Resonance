@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
-    View, StyleSheet, Text
+    View, StyleSheet, Text, TouchableOpacity
 } from 'react-native';
 import {
     Title,
@@ -13,6 +13,7 @@ import {
     DrawerContentScrollView,
     DrawerItem
 } from '@react-navigation/drawer';
+import { Collapsible } from 'react-native-collapsible';
 
 import JohnDoe from '../assets/kawaii.jpg'
 
@@ -26,6 +27,7 @@ import { AppLoading } from 'expo';
 
 export function DrawerContent(props) {
 
+    const [isCollapsed, setIsCollapsed] = useState(false);
 
     let [fontsLoaded] = useFonts({
         'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
@@ -34,6 +36,40 @@ export function DrawerContent(props) {
         'Light': require('../assets/fonts/Montserrat-Light.ttf'),
         'Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
     });
+
+    const ProfilePicOptions = () => {
+
+        if (isCollapsed) {
+            return <></>;
+        }
+
+        return (
+            <View style={{
+                flex: 1,
+                alignItems: 'flex-end',
+                justifyContent: 'center',
+                padding: 10,
+                borderColor: '#fff',
+                borderBottomWidth: 1
+            }}>
+                <TouchableOpacity style={{ marginBottom: 5 }}>
+                    <Text style={{ color: '#fff' }}>
+                        View Picture
+                    </Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={{ marginBottom: 5 }}>
+                    <Text style={{ color: '#fff' }}>
+                        Edit Picture
+                    </Text>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <Text style={{ color: '#fff' }}>
+                        Delete Picture
+                    </Text>
+                </TouchableOpacity>
+            </View>
+        );
+    }
 
     if (!fontsLoaded) {
         return <AppLoading />;
@@ -51,25 +87,32 @@ export function DrawerContent(props) {
                                 <View style={{
                                     flex: 1,
                                     marginLeft: 22,
-                                    marginBottom: 17
+                                    marginBottom: 15
                                 }}>
-                                    <Avatar.Image source={JohnDoe} size={110} />
+                                    <TouchableOpacity onPress={() => setIsCollapsed(!isCollapsed)}>
+                                        <Avatar.Image source={JohnDoe} size={120} />
+                                    </TouchableOpacity>
                                 </View>
-                                <View>
+                                <View style={{
+                                    flex: 1,
+                                    borderColor: '#fff',
+                                    borderBottomWidth: 1
+                                }}>
                                     <Title style={styles.name}>John Doe</Title>
                                     <Caption style={styles.caption}><Text>1000{'\n'}Followers</Text></Caption>
                                 </View>
+                                {ProfilePicOptions()}
+                                {/* <Collapsible collapsed={isCollapsed}>
+                                        <Text style={{color: '#fff'}}>Options</Text>
+                                    </Collapsible> */}
                             </View>
-                            {/* <View style={styles.row}>
-                                <View style={styles.section}>
-                                    <Paragraph style={[styles.paragraph]}>2</Paragraph>
-                                    <Caption style={styles.caption}>Contacts</Caption>
-                                </View>
-                            </View> */}
                         </View>
 
                         <Drawer.Section style={styles.drawerSection}>
-                            <DrawerItem inactiveTintColor='#ffffff' activeBackgroundColor='#1976d2'
+                            <DrawerItem
+                                inactiveTintColor='#ffffff' 
+                                activeTintColor='rgba(0,0,0,1)'
+                                activeBackgroundColor='rgba(255,255,255,0.9)'
                                 icon={({ color, size }) => (
                                     <FontAwesomeIcon
                                         icon={faUser}
@@ -164,15 +207,13 @@ const styles = StyleSheet.create({
     name: {
         fontSize: 20,
         marginTop: 3,
-        marginLeft: 15,
+        marginLeft: 20,
         fontFamily: 'SemiBold',
     },
     caption: {
         fontSize: 14,
         lineHeight: 15,
         fontFamily: 'SemiBold',
-        borderColor: '#fff',
-        borderBottomWidth: 1,
         paddingBottom: 20
     },
 
