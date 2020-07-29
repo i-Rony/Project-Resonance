@@ -106,7 +106,7 @@ const UserDrawer = () => (
     drawerContent={props => <DrawerContent {...props} />}
     drawerContentOptions={{ gestureEnabled: true }}
     drawerStyle={{
-      backgroundColor: 'rgba(44,54,63,0.85)'
+      backgroundColor:  'rgba(231,90,124,0.85)'  //'rgba(44,54,63,0.85)'
     }}
   >
     <Drawer.Screen name='My Profile' component={ProfileScreen} />
