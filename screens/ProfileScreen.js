@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { View, Text, ImageBackground, TouchableOpacity, Dimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import AnimateNumber from 'react-native-animate-number'
@@ -11,13 +11,9 @@ const { width, height } = Dimensions.get("screen");
 
 const ProfileScreen = ({ navigation }) => {
 
-    // useEffect(() => {
-    //     navigation.addListener('focus', () => {
-    //         navigation.openDrawer();
-    //     });
-    // });
-
     const posts = 93;
+
+    const bio = 'You thought it was Kawaii Chan, but it was actually me, DIO. Aboslute Anime-freak. People call me weeb'
 
     let [fontsLoaded] = useFonts({
         'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
@@ -47,21 +43,31 @@ const ProfileScreen = ({ navigation }) => {
                     start={{ x: 1, y: 1 }}
                     end={{ x: 0, y: 0 }}
                 >
+
+                    {/*  UNCOMMENT THE CODE BELOW AND CHECK THE PROFILE PAGE, MAKE CHANGES ACCORDINGLY SUCH AS THE POST BALL, JUST DECREASE PADDING TOP AND DONE */}
+
                     {/* <View
                         style={{
                             justifyContent: 'flex-start',
                             alignItems: 'flex-start',
                             paddingTop: height*0.08,
-                            marginLeft: 10
+                            marginLeft: 10,
                         }}
                     >
-                        <Text>
-                            You thought it was Kawaii Chan
-                        </Text>
-                        <Text>
-                            But it was actually me, DIO
+                        <Text
+                            style={{
+                                fontSize: 15,
+                                fontFamily: 'Medium',
+                                color: 'white',
+                                width: width*0.7
+                            }}
+                            numberOfLines={5}
+                            textBreakStrategy='balanced'
+                        >
+                            {bio}
                         </Text>
                     </View> */}
+
                     <View
                         style={{
                             paddingTop: 225,
