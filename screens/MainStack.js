@@ -14,7 +14,11 @@ import EventScreen from './EventScreen';
 import NotificationScreen from './NotificationScreen';
 import ProfileScreen from './ProfileScreen';
 import CollabScreen from './CollabScreen';
+import ConnectionScreen from './ConnectionScreen';
+import ActivityScreen from './ActivityScreen';
+import SettingScreen from './SettingScreen';
 import { DrawerContent } from './DrawerContent';
+
 
 const tabs = {
   Home: {
@@ -110,10 +114,10 @@ const UserDrawer = () => (
     }}
   >
     <Drawer.Screen name='My Profile' component={ProfileScreen} />
-    <Drawer.Screen name='Connections' component={CollabScreen} />
+    <Drawer.Screen name='Connections' component={ConnectionScreen} />
     <Drawer.Screen name='Collabs' component={CollabScreen} />
-    <Drawer.Screen name='Activities' component={CollabScreen} />
-    <Drawer.Screen name='Settings' component={CollabScreen} />
+    <Drawer.Screen name='Activities' component={ActivityScreen} />
+    <Drawer.Screen name='Settings' component={SettingScreen} />
   </Drawer.Navigator>
 
 );

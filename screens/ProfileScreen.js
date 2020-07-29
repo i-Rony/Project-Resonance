@@ -47,6 +47,21 @@ const ProfileScreen = ({ navigation }) => {
                     start={{ x: 1, y: 1 }}
                     end={{ x: 0, y: 0 }}
                 >
+                    {/* <View
+                        style={{
+                            justifyContent: 'flex-start',
+                            alignItems: 'flex-start',
+                            paddingTop: height*0.08,
+                            marginLeft: 10
+                        }}
+                    >
+                        <Text>
+                            You thought it was Kawaii Chan
+                        </Text>
+                        <Text>
+                            But it was actually me, DIO
+                        </Text>
+                    </View> */}
                     <View
                         style={{
                             paddingTop: 225,
@@ -128,7 +143,7 @@ const ProfileScreen = ({ navigation }) => {
                             }}
                         >
                             Kawaii Chan
-                            </Text>
+                        </Text>
                         <Text
                             style={{
                                 fontFamily: 'Regular',
@@ -137,7 +152,7 @@ const ProfileScreen = ({ navigation }) => {
                             }}
                         >
                             Tokyo, Japan
-                            </Text>
+                        </Text>
                         <TouchableOpacity style={{ 
                             left: width * 0.7, 
                             padding: 12, 

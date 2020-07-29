@@ -5,7 +5,7 @@ import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 
 
-const CollabScreen = ({navigation}) => {
+const ConnectionScreen = ({navigation}) => {
 
 
     let [fontsLoaded] = useFonts({
@@ -35,7 +35,7 @@ const CollabScreen = ({navigation}) => {
                     }}                    
                 >
                     <Text>
-                        Collabs
+                        Connections
                     </Text>
                 </TouchableOpacity>
             </View>
@@ -43,4 +43,4 @@ const CollabScreen = ({navigation}) => {
     }
 }
 
-export default CollabScreen;
+export default ConnectionScreen;

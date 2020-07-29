@@ -158,18 +158,6 @@ export function DrawerContent(props) {
 
                                 onPress={() => { props.navigation.navigate('Settings') }}
                             />
-
-                            {/* <DrawerItem inactiveTintColor='#fff' activeBackgroundColor='#1976d2'
-                                icon={({ color, size }) => (
-                                    <Ionicons name="md-information-circle-outline"
-                                        color={color}
-                                        size={size}
-                                    />
-                                )}
-                                label="About" labelStyle={{ fontFamily: 'Medium', fontSize: 16 }}
-                                onPress={() => { props.navigation.navigate('About') }}
-                            /> */}
-
                             <DrawerItem inactiveTintColor='#fff'
                                 icon={({ color, size }) => (
                                     <FontAwesomeIcon
