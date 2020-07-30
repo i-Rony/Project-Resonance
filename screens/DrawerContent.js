@@ -1,25 +1,11 @@
 import React, { useState } from 'react';
-import {
-    View, StyleSheet, Text, TouchableOpacity
-} from 'react-native';
-import {
-    Title,
-    Caption,
-    Paragraph,
-    Drawer,
-    Avatar
-} from 'react-native-paper';
-import {
-    DrawerContentScrollView,
-    DrawerItem
-} from '@react-navigation/drawer';
-import { Collapsible } from 'react-native-collapsible';
+import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { Title, Caption, Drawer, Avatar } from 'react-native-paper';
+import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 
-import JohnDoe from '../assets/kawaii.jpg'
+import JohnDoe from '../assets/kawaii.jpg';
 
-import { Ionicons } from '@expo/vector-icons';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import { faUserFriends, faUser, faHandshake, faHeartbeat, faHammer } from '@fortawesome/free-solid-svg-icons';
+import { faUserFriends, faUser, faHandshake, faHeartbeat, faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 
 import { useFonts } from '@use-expo/font';
@@ -90,7 +76,7 @@ export function DrawerContent(props) {
                                     marginBottom: 15
                                 }}>
                                     <TouchableOpacity onPress={() => setIsCollapsed(!isCollapsed)}>
-                                        <Avatar.Image source={JohnDoe} size={120} />
+                                        <Avatar.Image source={JohnDoe} size={100} />
                                     </TouchableOpacity>
                                 </View>
                                 <View style={{
@@ -98,8 +84,8 @@ export function DrawerContent(props) {
                                     borderColor: '#fff',
                                     borderBottomWidth: 1
                                 }}>
-                                    <Title style={styles.name}>John Doe</Title>
-                                    <Caption style={styles.caption}><Text>1000{'\n'}Followers</Text></Caption>
+                                    <Title style={styles.name}>Kawaii Chan</Title>
+                                    <Caption style={styles.caption}><Text>1000 Followers</Text></Caption>
                                 </View>
                                 {ProfilePicOptions()}
                                 {/* <Collapsible collapsed={isCollapsed}>
@@ -163,7 +149,7 @@ export function DrawerContent(props) {
                             <DrawerItem inactiveTintColor='#ffffff' activeBackgroundColor='#1976d2'
                                 icon={({ color, size }) => (
                                     <FontAwesomeIcon
-                                        icon={faHammer}
+                                        icon={faCog}
                                         color={color}
                                         size={size}
                                     />
@@ -172,32 +158,21 @@ export function DrawerContent(props) {
 
                                 onPress={() => { props.navigation.navigate('Settings') }}
                             />
-
-                            {/* <DrawerItem inactiveTintColor='#fff' activeBackgroundColor='#1976d2'
+                            <DrawerItem inactiveTintColor='#fff'
                                 icon={({ color, size }) => (
-                                    <Ionicons name="md-information-circle-outline"
+                                    <FontAwesomeIcon
+                                        icon={faSignOutAlt}
                                         color={color}
                                         size={size}
                                     />
                                 )}
-                                label="About" labelStyle={{ fontFamily: 'Medium', fontSize: 16 }}
-                                onPress={() => { props.navigation.navigate('About') }}
-                            /> */}
+                                label="Sign Out" labelStyle={{ fontFamily: 'Medium', fontSize: 16 }}
+                            />
+                                    
                         </Drawer.Section>
 
                     </View>
                 </DrawerContentScrollView>
-                <Drawer.Section style={styles.bottomDrawerSection}>
-                    <DrawerItem inactiveTintColor='#fff'
-                        icon={({ color, size }) => (
-                            <Ionicons name="md-exit"
-                                color={color}
-                                size={size}
-                            />
-                        )}
-                        label="Sign Out" labelStyle={{ fontFamily: 'Medium', fontSize: 16 }}
-                    />
-                </Drawer.Section>
             </View>
         );
     }
@@ -207,14 +182,18 @@ const styles = StyleSheet.create({
     name: {
         fontSize: 20,
         marginTop: 3,
-        marginLeft: 20,
+        marginLeft: 18,
         fontFamily: 'SemiBold',
+        color: 'rgb(44,54,63)'
     },
     caption: {
-        fontSize: 14,
+        fontSize: 16,
         lineHeight: 15,
         fontFamily: 'SemiBold',
-        paddingBottom: 20
+        paddingBottom: 20,
+        marginLeft: 18,
+        marginTop: 8,
+        color: 'rgb(44,54,63)'
     },
 
     section: {
