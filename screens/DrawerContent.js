@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, ActivityIndicatorBase } from 'react-native';
 import { Title, Caption, Drawer, Avatar } from 'react-native-paper';
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 
@@ -14,6 +14,7 @@ import { AppLoading } from 'expo';
 export function DrawerContent(props) {
 
     const [isCollapsed, setIsCollapsed] = useState(false);
+    const [target_component, Activate] = useState('MyProfile');
 
     let [fontsLoaded] = useFonts({
         'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
@@ -57,6 +58,45 @@ export function DrawerContent(props) {
         );
     }
 
+    const activeBgColor = 'rgba(255,255,255,0.95)';
+    const activeTColor = 'rgba(0,0,0,1)';
+    const inactiveBgColor = 'rgba(0,0,0,0)';
+    const inactiveTColor = 'rgba(255,255,255,1)';
+
+    var components = {
+        MyProfile: {
+            TColor: activeTColor,
+            BgColor: activeBgColor
+        },
+        Connections: {
+            TColor: inactiveTColor,
+            BgColor: inactiveBgColor
+        },
+        Collabs: {
+            TColor: inactiveTColor,
+            BgColor: inactiveBgColor
+        },
+        Activities: {
+            TColor: inactiveTColor,
+            BgColor: inactiveBgColor
+        },
+        Settings: {
+            TColor: inactiveTColor,
+            BgColor: inactiveBgColor
+        }
+    };
+
+    components[target_component].TColor = activeTColor;
+    components[target_component].BgColor = activeBgColor;
+
+    for (component in components) {
+        if (component != target_component) {
+            components[component].TColor = inactiveTColor;
+            components[component].BgColor = inactiveBgColor;
+        }
+    }//end of for loop
+
+
     if (!fontsLoaded) {
         return <AppLoading />;
     } else {
@@ -96,9 +136,8 @@ export function DrawerContent(props) {
 
                         <Drawer.Section style={styles.drawerSection}>
                             <DrawerItem
-                                inactiveTintColor='#ffffff' 
-                                activeTintColor='rgba(0,0,0,1)'
-                                activeBackgroundColor='rgba(255,255,255,0.9)'
+                                inactiveTintColor={components.MyProfile.TColor}
+                                inactiveBackgroundColor={components.MyProfile.BgColor}
                                 icon={({ color, size }) => (
                                     <FontAwesomeIcon
                                         icon={faUser}
@@ -108,9 +147,14 @@ export function DrawerContent(props) {
                                 )}
                                 label="My Profile" labelStyle={{ fontFamily: 'Medium', fontSize: 16 }}
 
-                                onPress={() => { props.navigation.navigate('My Profile') }}
+                                onPress={() => {
+                                    Activate('MyProfile')
+                                    props.navigation.navigate('My Profile')
+                                }}
                             />
-                            <DrawerItem inactiveTintColor='#ffffff' activeBackgroundColor='#1976d2'
+                            <DrawerItem
+                                inactiveTintColor={components.Connections.TColor}
+                                inactiveBackgroundColor={components.Connections.BgColor}
                                 icon={({ color, size }) => (
                                     <FontAwesomeIcon
                                         icon={faUserFriends}
@@ -120,9 +164,14 @@ export function DrawerContent(props) {
                                 )}
                                 label="Connections" labelStyle={{ fontFamily: 'Medium', fontSize: 16 }}
 
-                                onPress={() => { props.navigation.navigate('Connections') }}
+                                onPress={() => {
+                                    Activate('Connections')
+                                    props.navigation.navigate('Connections')
+                                }}
                             />
-                            <DrawerItem inactiveTintColor='#ffffff' activeBackgroundColor='#1976d2'
+                            <DrawerItem
+                                inactiveTintColor={components.Collabs.TColor}
+                                inactiveBackgroundColor={components.Collabs.BgColor}
                                 icon={({ color, size }) => (
                                     <FontAwesomeIcon
                                         icon={faHandshake}
@@ -132,9 +181,14 @@ export function DrawerContent(props) {
                                 )}
                                 label="Collabs" labelStyle={{ fontFamily: 'Medium', fontSize: 16 }}
 
-                                onPress={() => { props.navigation.navigate('Collabs') }}
+                                onPress={() => {
+                                    Activate('Collabs')
+                                    props.navigation.navigate('Collabs')
+                                }}
                             />
-                            <DrawerItem inactiveTintColor='#ffffff' activeBackgroundColor='#1976d2'
+                            <DrawerItem
+                                inactiveTintColor={components.Activities.TColor}
+                                inactiveBackgroundColor={components.Activities.BgColor}
                                 icon={({ color, size }) => (
                                     <FontAwesomeIcon
                                         icon={faHeartbeat}
@@ -144,9 +198,14 @@ export function DrawerContent(props) {
                                 )}
                                 label="Activities" labelStyle={{ fontFamily: 'Medium', fontSize: 16 }}
 
-                                onPress={() => { props.navigation.navigate('Activities') }}
+                                onPress={() => {
+                                    Activate('Activities')
+                                    props.navigation.navigate('Activities')
+                                }}
                             />
-                            <DrawerItem inactiveTintColor='#ffffff' activeBackgroundColor='#1976d2'
+                            <DrawerItem
+                                inactiveTintColor={components.Settings.TColor}
+                                inactiveBackgroundColor={components.Settings.BgColor}
                                 icon={({ color, size }) => (
                                     <FontAwesomeIcon
                                         icon={faCog}
@@ -156,7 +215,10 @@ export function DrawerContent(props) {
                                 )}
                                 label="Settings" labelStyle={{ fontFamily: 'Medium', fontSize: 16 }}
 
-                                onPress={() => { props.navigation.navigate('Settings') }}
+                                onPress={() => {
+                                    Activate('Settings')
+                                    props.navigation.navigate('Settings')
+                                }}
                             />
                             <DrawerItem inactiveTintColor='#fff'
                                 icon={({ color, size }) => (
@@ -168,7 +230,7 @@ export function DrawerContent(props) {
                                 )}
                                 label="Sign Out" labelStyle={{ fontFamily: 'Medium', fontSize: 16 }}
                             />
-                                    
+
                         </Drawer.Section>
 
                     </View>
