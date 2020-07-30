@@ -13,7 +13,7 @@ import { AppLoading } from 'expo';
 
 export function DrawerContent(props) {
 
-    const [isCollapsed, setIsCollapsed] = useState(false);
+    const [isCollapsed, setIsCollapsed] = useState(true);
     const [target_component, Activate] = useState('MyProfile');
 
     let [fontsLoaded] = useFonts({
@@ -58,7 +58,7 @@ export function DrawerContent(props) {
         );
     }
 
-    const activeBgColor = 'rgba(255,255,255,0.95)';
+    const activeBgColor = 'rgba(255,255,255,0.9)';
     const activeTColor = 'rgba(0,0,0,1)';
     const inactiveBgColor = 'rgba(0,0,0,0)';
     const inactiveTColor = 'rgba(255,255,255,1)';
@@ -116,7 +116,7 @@ export function DrawerContent(props) {
                                     marginBottom: 15
                                 }}>
                                     <TouchableOpacity onPress={() => setIsCollapsed(!isCollapsed)}>
-                                        <Avatar.Image source={JohnDoe} size={100} />
+                                        <Avatar.Image source={JohnDoe} size={110} />
                                     </TouchableOpacity>
                                 </View>
                                 <View style={{
