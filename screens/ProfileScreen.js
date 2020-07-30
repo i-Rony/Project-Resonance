@@ -98,7 +98,7 @@ const ProfileScreen = ({ navigation }) => {
                                     color: 'white',
                                 }}
                             >
-                                {posts != 0 ? <AnimateNumber value={posts} timing="easeOut" countBy={3}/> : 0 }
+                                {posts != 0 ? <AnimateNumber value={posts} timing="linear" countBy={9}/> : 0 }
 
                             </Text>
                             <Text
