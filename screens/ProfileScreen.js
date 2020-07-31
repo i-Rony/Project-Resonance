@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useIsDrawerOpen } from '@react-navigation/drawer';
 import { View, Text, ImageBackground, TouchableOpacity, Dimensions, TextInput } from 'react-native';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -12,6 +13,8 @@ import { AppLoading } from 'expo';
 const { width, height } = Dimensions.get("screen");
 
 const ProfileScreen = ({ navigation }) => {
+
+    var isDrawerOpen = useIsDrawerOpen();
 
     const posts = 93;
 
@@ -40,7 +43,12 @@ const ProfileScreen = ({ navigation }) => {
     }
 
     function onSwipeRight(gestureState) {
-        navigation.navigate('Notifications');
+        if (isDrawerOpen) {
+            navigation.navigate('Notifications')
+        }
+        else {
+            navigation.openDrawer();
+        }
     }
 
     function onSwipe(gestureName, gestureState) {
@@ -50,8 +58,14 @@ const ProfileScreen = ({ navigation }) => {
             case SWIPE_LEFT:
                 navigation.navigate('Home');
                 break;
-            case SWIPE_RIGHT:
-                navigation.navigate('Notifications');
+            case SWIPE_RIGHT: {
+                if ( isDrawerOpen ) {
+                    navigation.navigate('Notifications')
+                }
+                else {
+                    navigation.openDrawer();
+                }
+            }
                 break;
         }
     }
