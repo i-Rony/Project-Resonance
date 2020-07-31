@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { View, Text, TouchableOpacity, BackHandler, Alert, ToastAndroid, Platform } from 'react-native';
-import { f, auth, database } from '../config/config';
 
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
@@ -50,18 +49,6 @@ const HomeScreen = ({ navigation }) => {
         'Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
     });
 
-    const signOutUser = () => {
-        auth.signOut()
-            .then(() => {
-                console.log('Logged Out...');
-            }).catch((error) => {
-                console.log('Error: ', error);
-            });
-
-        navigation.navigate('Doorway')
-    }
-
-
     if (!fontsLoaded) {
         return <AppLoading />;
 
@@ -79,10 +66,9 @@ const HomeScreen = ({ navigation }) => {
                         alignItems: "center",
                         justifyContent: "center",
                     }}
-                    onPress={() => signOutUser()}
                 >
                     <Text>
-                        Sign Out
+                        Hello
                     </Text>
                 </TouchableOpacity>
             </View>

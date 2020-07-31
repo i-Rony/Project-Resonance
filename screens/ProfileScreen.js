@@ -1,8 +1,9 @@
-import React from 'react';
-import { View, Text, ImageBackground, TouchableOpacity, Dimensions } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, ImageBackground, TouchableOpacity, Dimensions, TextInput} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import AnimateNumber from 'react-native-animate-number'
-
+import AnimateNumber from 'react-native-animate-number';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
@@ -15,6 +16,16 @@ const ProfileScreen = ({ navigation }) => {
 
     const bio = 'You thought it was Kawaii Chan, but it was actually me, DIO. Aboslute Anime-freak. People call me weeb'
 
+    const [isFollowing, setFollowing] = useState(false)
+
+    const togglefollow = () => {
+        if(isFollowing === true){
+            setFollowing(false);
+        } else {
+            setFollowing(true);
+        }
+    };
+    
     let [fontsLoaded] = useFonts({
         'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
         'SemiBold': require('../assets/fonts/Montserrat-SemiBold.ttf'),
@@ -43,30 +54,6 @@ const ProfileScreen = ({ navigation }) => {
                     start={{ x: 1, y: 1 }}
                     end={{ x: 0, y: 0 }}
                 >
-
-                    {/*  UNCOMMENT THE CODE BELOW AND CHECK THE PROFILE PAGE, MAKE CHANGES ACCORDINGLY SUCH AS THE POST BALL, JUST DECREASE PADDING TOP AND DONE */}
-
-                    {/* <View
-                        style={{
-                            justifyContent: 'flex-start',
-                            alignItems: 'flex-start',
-                            paddingTop: height*0.08,
-                            marginLeft: 10,
-                        }}
-                    >
-                        <Text
-                            style={{
-                                fontSize: 15,
-                                fontFamily: 'Medium',
-                                color: 'white',
-                                width: width*0.7
-                            }}
-                            numberOfLines={5}
-                            textBreakStrategy='balanced'
-                        >
-                            {bio}
-                        </Text>
-                    </View> */}
 
                     <View
                         style={{
@@ -116,25 +103,6 @@ const ProfileScreen = ({ navigation }) => {
 
                     <View
                         style={{
-                            flex: 0.5,
-                            justifyContent: 'center',
-                            alignItems: 'flex-start',
-                            marginLeft: 10,
-                        }}
-                    >
-                        <Text
-                            style={{
-                                color: 'white',
-                                fontFamily: 'Regular'
-                            }}
-                        >
-                            INSERT HIGHLIGHTS
-                            </Text>
-
-                    </View>
-
-                    <View
-                        style={{
                             flex: 1,
                             justifyContent: 'center',
                             alignItems: 'flex-start',
@@ -145,7 +113,9 @@ const ProfileScreen = ({ navigation }) => {
                             style={{
                                 fontFamily: 'Medium',
                                 fontSize: 30,
-                                color: 'white'
+                                color: 'white',
+                                flexDirection: 'column',
+                                flexWrap: 'wrap',
                             }}
                         >
                             Kawaii Chan
@@ -154,30 +124,80 @@ const ProfileScreen = ({ navigation }) => {
                             style={{
                                 fontFamily: 'Regular',
                                 fontSize: 22,
-                                color: 'white'
+                                color: 'white',
+                                flexDirection: 'column',
+                                flexWrap: 'wrap',
                             }}
                         >
                             Tokyo, Japan
                         </Text>
-                        <TouchableOpacity style={{ 
-                            left: width * 0.7, 
-                            padding: 12, 
-                            marginRight: -6, 
-                            paddingHorizontal: 20, 
-                            marginTop: -55, 
-                            borderColor: 'white', 
-                            borderWidth: 1.5, 
-                            borderRadius: 12 
-                        }}>
+                        <TouchableOpacity                         
+                            style={{ 
+                                flexDirection: 'column',
+                                flexWrap: 'wrap',
+                                left: width * 0.7, 
+                                padding: 12, 
+                                marginRight: -6, 
+                                paddingHorizontal: 20, 
+                                marginTop: -55, 
+                                borderColor: isFollowing === true ? 'rgba(231,90,124,1)' : 'white', 
+                                borderWidth: 1.5, 
+                                borderRadius: 12,
+                                backgroundColor: isFollowing === true ? 'rgba(231,90,124,1)' : 'transparent'
+                            }}    
+                            onPress={() => togglefollow()}                   
+                        >
+                            {isFollowing === true ? 
+
+                            <FontAwesomeIcon
+                                icon={faCheck}
+                                color='#2C363F'
+                                size={18}
+                                style={{
+                                    paddingHorizontal: 20,
+                                    padding: 10,
+                                    paddingRight: 26,
+                                    marginBottom: -1
+                                }}
+                            />
+                            
+                            
+                            : 
+
                             <Text
                                 style={{
                                     fontFamily: 'Regular',
                                     color: 'white'
-                                }}
+                                }}                                
                             >
                                 Follow
-                            </Text>
+                            </Text>                            
+
+                            }
+                            
                         </TouchableOpacity>
+                    </View>
+
+                    <View
+                        style={{
+                            flex: 0.5,
+                            alignItems: 'flex-start',
+                            marginLeft: 10,
+                            marginTop: -height*0.1
+                        }}
+                    >
+                        <Text
+                            style={{
+                                fontSize: 15,
+                                fontFamily: 'Medium',
+                                color: 'white',
+                                width: width*0.7
+                            }}
+                            numberOfLines={6}
+                            textBreakStrategy='balanced'
+                        >
+                            {bio}
+                        </Text>
                     </View>
                 </LinearGradient>
             </ImageBackground>
