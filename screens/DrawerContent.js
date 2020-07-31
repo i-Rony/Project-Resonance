@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, ActivityIndicatorBase } from 'react-native';
 import { Title, Caption, Drawer, Avatar } from 'react-native-paper';
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
+import { f, auth, database } from '../config/config';
+
 
 import JohnDoe from '../assets/kawaii.jpg';
 
@@ -23,6 +25,17 @@ export function DrawerContent(props) {
         'Light': require('../assets/fonts/Montserrat-Light.ttf'),
         'Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
     });
+
+    const signOutUser = () => {
+        auth.signOut()
+            .then(() => {
+                console.log('Logged Out...');
+            }).catch((error) => {
+                console.log('Error: ', error);
+            });
+
+        props.navigation.navigate('Doorway')
+    }
 
     const ProfilePicOptions = () => {
 
@@ -58,10 +71,10 @@ export function DrawerContent(props) {
         );
     }
 
-    const activeBgColor = 'rgba(255,255,255,0.9)';
-    const activeTColor = 'rgba(0,0,0,1)';
+    const activeBgColor = 'rgba(44,54,63,0.9)';  //'rgba(255,255,255,0.9)';
+    const activeTColor = 'rgba(214,219,210,1)';
     const inactiveBgColor = 'rgba(0,0,0,0)';
-    const inactiveTColor = 'rgba(255,255,255,1)';
+    const inactiveTColor = 'rgba(214,219,210,1)';
 
     var components = {
         MyProfile: {
@@ -81,6 +94,10 @@ export function DrawerContent(props) {
             BgColor: inactiveBgColor
         },
         Settings: {
+            TColor: inactiveTColor,
+            BgColor: inactiveBgColor
+        },
+        SignOut: {
             TColor: inactiveTColor,
             BgColor: inactiveBgColor
         }
@@ -122,7 +139,8 @@ export function DrawerContent(props) {
                                 <View style={{
                                     flex: 1,
                                     borderColor: '#fff',
-                                    borderBottomWidth: 1
+                                    borderBottomWidth: 1,
+                                    marginRight: 13
                                 }}>
                                     <Title style={styles.name}>Kawaii Chan</Title>
                                     <Caption style={styles.caption}><Text>1000 Followers</Text></Caption>
@@ -138,6 +156,12 @@ export function DrawerContent(props) {
                             <DrawerItem
                                 inactiveTintColor={components.MyProfile.TColor}
                                 inactiveBackgroundColor={components.MyProfile.BgColor}
+                                style={{
+                                    borderRadius: 22,
+                                    marginLeft: 4,
+                                    paddingHorizontal: 6
+                                    
+                                }}
                                 icon={({ color, size }) => (
                                     <FontAwesomeIcon
                                         icon={faUser}
@@ -155,6 +179,11 @@ export function DrawerContent(props) {
                             <DrawerItem
                                 inactiveTintColor={components.Connections.TColor}
                                 inactiveBackgroundColor={components.Connections.BgColor}
+                                style={{
+                                    borderRadius: 22,
+                                    marginLeft: 4,
+                                    paddingHorizontal: 6
+                                }}
                                 icon={({ color, size }) => (
                                     <FontAwesomeIcon
                                         icon={faUserFriends}
@@ -172,6 +201,11 @@ export function DrawerContent(props) {
                             <DrawerItem
                                 inactiveTintColor={components.Collabs.TColor}
                                 inactiveBackgroundColor={components.Collabs.BgColor}
+                                style={{
+                                    borderRadius: 22,
+                                    marginLeft: 4,
+                                    paddingHorizontal: 6
+                                }}
                                 icon={({ color, size }) => (
                                     <FontAwesomeIcon
                                         icon={faHandshake}
@@ -189,6 +223,11 @@ export function DrawerContent(props) {
                             <DrawerItem
                                 inactiveTintColor={components.Activities.TColor}
                                 inactiveBackgroundColor={components.Activities.BgColor}
+                                style={{
+                                    borderRadius: 22,
+                                    marginLeft: 4,
+                                    paddingHorizontal: 6
+                                }}
                                 icon={({ color, size }) => (
                                     <FontAwesomeIcon
                                         icon={faHeartbeat}
@@ -206,6 +245,11 @@ export function DrawerContent(props) {
                             <DrawerItem
                                 inactiveTintColor={components.Settings.TColor}
                                 inactiveBackgroundColor={components.Settings.BgColor}
+                                style={{
+                                    borderRadius: 22,
+                                    marginLeft: 4,
+                                    paddingHorizontal: 6
+                                }}
                                 icon={({ color, size }) => (
                                     <FontAwesomeIcon
                                         icon={faCog}
@@ -220,7 +264,14 @@ export function DrawerContent(props) {
                                     props.navigation.navigate('Settings')
                                 }}
                             />
-                            <DrawerItem inactiveTintColor='#fff'
+                            <DrawerItem 
+                                inactiveTintColor={components.SignOut.TColor}
+                                inactiveBackgroundColor={components.SignOut.BgColor}
+                                style={{
+                                    borderRadius: 22,
+                                    marginLeft: 4,
+                                    paddingHorizontal: 6
+                                }}
                                 icon={({ color, size }) => (
                                     <FontAwesomeIcon
                                         icon={faSignOutAlt}
@@ -229,6 +280,7 @@ export function DrawerContent(props) {
                                     />
                                 )}
                                 label="Sign Out" labelStyle={{ fontFamily: 'Medium', fontSize: 16 }}
+                                onPress={() => signOutUser()}
                             />
 
                         </Drawer.Section>
