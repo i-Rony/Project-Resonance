@@ -78,8 +78,8 @@ export function DrawerContent(props) {
 
     var components = {
         MyProfile: {
-            TColor: activeTColor,
-            BgColor: activeBgColor
+            TColor: inactiveTColor,
+            BgColor: inactiveBgColor
         },
         Connections: {
             TColor: inactiveTColor,
@@ -146,9 +146,7 @@ export function DrawerContent(props) {
                                     <Caption style={styles.caption}><Text>1000 Followers</Text></Caption>
                                 </View>
                                 {ProfilePicOptions()}
-                                {/* <Collapsible collapsed={isCollapsed}>
-                                        <Text style={{color: '#fff'}}>Options</Text>
-                                    </Collapsible> */}
+                                
                             </View>
                         </View>
 

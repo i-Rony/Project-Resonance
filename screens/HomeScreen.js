@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { View, Text, TouchableOpacity, BackHandler, Alert, ToastAndroid, Platform } from 'react-native';
+import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
@@ -49,29 +50,67 @@ const HomeScreen = ({ navigation }) => {
         'Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
     });
 
+    function onSwipeLeft(gestureState) {
+        navigation.navigate('Event');
+    }
+
+    function onSwipeRight(gestureState) {
+        navigation.navigate('User');
+    }
+
+    function onSwipe(gestureName, gestureState) {
+        const { SWIPE_LEFT, SWIPE_RIGHT } = swipeDirections;
+
+        switch (gestureName) {
+            case SWIPE_LEFT:
+                navigation.navigate('Event');
+                break;
+            case SWIPE_RIGHT:
+                navigation.navigate('User');
+                break;
+        }
+    }
+
     if (!fontsLoaded) {
         return <AppLoading />;
 
     } else {
+
+        const config = {
+            velocityThreshold: 0.5,
+            directionalOffsetThreshold: 800
+        };
+
         return (
-            <View
+            <GestureRecognizer
+                onSwipe={(direction, state) => onSwipe(direction, state)}
+                onSwipeLeft={(state) => onSwipeLeft(state)}
+                onSwipeRight={(state) => onSwipeRight(state)}
+                config={config}
                 style={{
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flex: 1
+                    flex: 1,
+                    backgroundColor: 'rgba(255,255,255,0)'
                 }}
             >
-                <TouchableOpacity
+                <View
                     style={{
                         alignItems: "center",
                         justifyContent: "center",
+                        flex: 1
                     }}
                 >
-                    <Text>
-                        Hello
+                    <TouchableOpacity
+                        style={{
+                            alignItems: "center",
+                            justifyContent: "center",
+                        }}
+                    >
+                        <Text>
+                            Hello
                     </Text>
-                </TouchableOpacity>
-            </View>
+                    </TouchableOpacity>
+                </View>
+            </GestureRecognizer>
         );
     }
 }
