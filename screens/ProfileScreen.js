@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, ImageBackground, TouchableOpacity, Dimensions, TextInput} from 'react-native';
+import { View, Text, ImageBackground, TouchableOpacity, Dimensions, TextInput } from 'react-native';
+import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 import { LinearGradient } from 'expo-linear-gradient';
 import AnimateNumber from 'react-native-animate-number';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -19,13 +20,13 @@ const ProfileScreen = ({ navigation }) => {
     const [isFollowing, setFollowing] = useState(false)
 
     const togglefollow = () => {
-        if(isFollowing === true){
+        if (isFollowing === true) {
             setFollowing(false);
         } else {
             setFollowing(true);
         }
     };
-    
+
     let [fontsLoaded] = useFonts({
         'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
         'SemiBold': require('../assets/fonts/Montserrat-SemiBold.ttf'),
@@ -34,174 +35,211 @@ const ProfileScreen = ({ navigation }) => {
         'Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
     });
 
+    function onSwipeLeft(gestureState) {
+        navigation.navigate('Home');
+    }
+
+    function onSwipeRight(gestureState) {
+        navigation.navigate('Notifications');
+    }
+
+    function onSwipe(gestureName, gestureState) {
+        const { SWIPE_LEFT, SWIPE_RIGHT } = swipeDirections;
+
+        switch (gestureName) {
+            case SWIPE_LEFT:
+                navigation.navigate('Home');
+                break;
+            case SWIPE_RIGHT:
+                navigation.navigate('Notifications');
+                break;
+        }
+    }
+
     if (!fontsLoaded) {
         return <AppLoading />;
     } else {
 
+        const config = {
+            velocityThreshold: 0.5,
+            directionalOffsetThreshold: 800
+        };
+
         return (
-            <ImageBackground
-                source={require('../assets/kawaii.jpg')}
+            <GestureRecognizer
+                onSwipe={(direction, state) => onSwipe(direction, state)}
+                onSwipeLeft={(state) => onSwipeLeft(state)}
+                onSwipeRight={(state) => onSwipeRight(state)}
+                config={config}
                 style={{
-                    resizeMode: "cover",
                     flex: 1,
+                    backgroundColor: 'rgba(255,255,255,0)'
                 }}
             >
-                <LinearGradient
-                    colors={['rgba(44, 54, 63, 0.6)', 'rgba(231, 90, 124, 0.6)']}
+                <ImageBackground
+                    source={require('../assets/kawaii.jpg')}
                     style={{
+                        resizeMode: "cover",
                         flex: 1,
                     }}
-                    start={{ x: 1, y: 1 }}
-                    end={{ x: 0, y: 0 }}
                 >
-
-                    <View
-                        style={{
-                            paddingTop: 225,
-                            paddingLeft: 0,
-                            overflow: 'hidden',
-                            marginLeft: -26,
-                        }}
-                    >
-                        <TouchableOpacity
-                            style={{
-                                width: 165,
-                                height: 165,
-                                paddingLeft: 4,
-                                borderColor: 'white',
-                                borderWidth: 1.5,
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                borderRadius: 100,
-
-                            }}
-                        >
-                            <Text
-                                style={{
-                                    fontFamily: 'Regular',
-                                    fontSize: 65,
-                                    marginBottom: -10,
-                                    marginTop: -10,
-                                    color: 'white',
-                                }}
-                            >
-                                {posts != 0 ? <AnimateNumber value={posts} timing="linear" countBy={9}/> : 0 }
-
-                            </Text>
-                            <Text
-                                style={{
-                                    paddingTop: 0,
-                                    fontFamily: 'Light',
-                                    fontSize: 22,
-                                    color: 'white'
-                                }}
-                            >
-                                Posts
-                                </Text>
-                        </TouchableOpacity>
-                    </View>
-
-                    <View
+                    <LinearGradient
+                        colors={['rgba(44, 54, 63, 0.6)', 'rgba(231, 90, 124, 0.6)']}
                         style={{
                             flex: 1,
-                            justifyContent: 'center',
-                            alignItems: 'flex-start',
-                            marginLeft: 10,
                         }}
+                        start={{ x: 1, y: 1 }}
+                        end={{ x: 0, y: 0 }}
                     >
-                        <Text
-                            style={{
-                                fontFamily: 'Medium',
-                                fontSize: 30,
-                                color: 'white',
-                                flexDirection: 'column',
-                                flexWrap: 'wrap',
-                            }}
-                        >
-                            Kawaii Chan
-                        </Text>
-                        <Text
-                            style={{
-                                fontFamily: 'Regular',
-                                fontSize: 22,
-                                color: 'white',
-                                flexDirection: 'column',
-                                flexWrap: 'wrap',
-                            }}
-                        >
-                            Tokyo, Japan
-                        </Text>
-                        <TouchableOpacity                         
-                            style={{ 
-                                flexDirection: 'column',
-                                flexWrap: 'wrap',
-                                left: width * 0.7, 
-                                padding: 12, 
-                                marginRight: -6, 
-                                paddingHorizontal: 20, 
-                                marginTop: -55, 
-                                borderColor: isFollowing === true ? 'rgba(231,90,124,1)' : 'white', 
-                                borderWidth: 1.5, 
-                                borderRadius: 12,
-                                backgroundColor: isFollowing === true ? 'rgba(231,90,124,1)' : 'transparent'
-                            }}    
-                            onPress={() => togglefollow()}                   
-                        >
-                            {isFollowing === true ? 
 
-                            <FontAwesomeIcon
-                                icon={faCheck}
-                                color='#2C363F'
-                                size={18}
+                        <View
+                            style={{
+                                paddingTop: 225,
+                                paddingLeft: 0,
+                                overflow: 'hidden',
+                                marginLeft: -26,
+                            }}
+                        >
+                            <TouchableOpacity
                                 style={{
-                                    paddingHorizontal: 20,
-                                    padding: 10,
-                                    paddingRight: 26,
-                                    marginBottom: -1
-                                }}
-                            />
-                            
-                            
-                            : 
+                                    width: 165,
+                                    height: 165,
+                                    paddingLeft: 4,
+                                    borderColor: 'white',
+                                    borderWidth: 1.5,
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    borderRadius: 100,
 
+                                }}
+                            >
+                                <Text
+                                    style={{
+                                        fontFamily: 'Regular',
+                                        fontSize: 65,
+                                        marginBottom: -10,
+                                        marginTop: -10,
+                                        color: 'white',
+                                    }}
+                                >
+                                    {posts != 0 ? <AnimateNumber value={posts} timing="linear" countBy={9} /> : 0}
+
+                                </Text>
+                                <Text
+                                    style={{
+                                        paddingTop: 0,
+                                        fontFamily: 'Light',
+                                        fontSize: 22,
+                                        color: 'white'
+                                    }}
+                                >
+                                    Posts
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
+
+                        <View
+                            style={{
+                                flex: 1,
+                                justifyContent: 'center',
+                                alignItems: 'flex-start',
+                                marginLeft: 10,
+                            }}
+                        >
+                            <Text
+                                style={{
+                                    fontFamily: 'Medium',
+                                    fontSize: 30,
+                                    color: 'white',
+                                    flexDirection: 'column',
+                                    flexWrap: 'wrap',
+                                }}
+                            >
+                                Kawaii Chan
+                        </Text>
                             <Text
                                 style={{
                                     fontFamily: 'Regular',
-                                    color: 'white'
-                                }}                                
+                                    fontSize: 22,
+                                    color: 'white',
+                                    flexDirection: 'column',
+                                    flexWrap: 'wrap',
+                                }}
                             >
-                                Follow
-                            </Text>                            
-
-                            }
-                            
-                        </TouchableOpacity>
-                    </View>
-
-                    <View
-                        style={{
-                            flex: 0.5,
-                            alignItems: 'flex-start',
-                            marginLeft: 10,
-                            marginTop: -height*0.1
-                        }}
-                    >
-                        <Text
-                            style={{
-                                fontSize: 15,
-                                fontFamily: 'Medium',
-                                color: 'white',
-                                width: width*0.7
-                            }}
-                            numberOfLines={6}
-                            textBreakStrategy='balanced'
-                        >
-                            {bio}
+                                Tokyo, Japan
                         </Text>
-                    </View>
-                </LinearGradient>
-            </ImageBackground>
-        )
+                            <TouchableOpacity
+                                style={{
+                                    flexDirection: 'column',
+                                    flexWrap: 'wrap',
+                                    left: width * 0.7,
+                                    padding: 12,
+                                    marginRight: -6,
+                                    paddingHorizontal: 20,
+                                    marginTop: -55,
+                                    borderColor: isFollowing === true ? 'rgba(231,90,124,1)' : 'white',
+                                    borderWidth: 1.5,
+                                    borderRadius: 12,
+                                    backgroundColor: isFollowing === true ? 'rgba(231,90,124,1)' : 'transparent'
+                                }}
+                                onPress={() => togglefollow()}
+                            >
+                                {isFollowing === true ?
+
+                                    <FontAwesomeIcon
+                                        icon={faCheck}
+                                        color='#2C363F'
+                                        size={18}
+                                        style={{
+                                            paddingHorizontal: 20,
+                                            padding: 10,
+                                            paddingRight: 26,
+                                            marginBottom: -1
+                                        }}
+                                    />
+
+
+                                    :
+
+                                    <Text
+                                        style={{
+                                            fontFamily: 'Regular',
+                                            color: 'white'
+                                        }}
+                                    >
+                                        Follow
+                            </Text>
+
+                                }
+
+                            </TouchableOpacity>
+                        </View>
+
+                        <View
+                            style={{
+                                flex: 0.5,
+                                alignItems: 'flex-start',
+                                marginLeft: 10,
+                                marginTop: -height * 0.1
+                            }}
+                        >
+                            <Text
+                                style={{
+                                    fontSize: 15,
+                                    fontFamily: 'Medium',
+                                    color: 'white',
+                                    width: width * 0.7
+                                }}
+                                numberOfLines={6}
+                                textBreakStrategy='balanced'
+                            >
+                                {bio}
+                            </Text>
+                        </View>
+                    </LinearGradient>
+                </ImageBackground>
+            </GestureRecognizer>
+        );
     }
 }
 

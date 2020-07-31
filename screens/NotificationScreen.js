@@ -9,9 +9,6 @@ class NotificationScreen extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            backgroundColor: 'rgba(255,255,255,0)'
-        };
     }
 
     onSwipeLeft(gestureState) {
@@ -52,7 +49,7 @@ class NotificationScreen extends Component {
                 config={config}
                 style={{
                     flex: 1,
-                    backgroundColor: this.state.backgroundColor
+                    backgroundColor: 'rgba(255,255,255,0)'
                 }}
             >
                 <View
