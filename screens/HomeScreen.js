@@ -78,7 +78,7 @@ const HomeScreen = ({ navigation }) => {
     var filtersInfo = {
         All: {
             isActive: true,
-            borderWidth: 1,
+            borderWidth: 1.5,
             textColor: filterActiveColor
         },
         Events: {
@@ -102,7 +102,7 @@ const HomeScreen = ({ navigation }) => {
             textColor: filterInactiveColor
         }
     }
-    
+
 
     if (filtersInfo['All'].isActive == true) {
 
@@ -111,7 +111,7 @@ const HomeScreen = ({ navigation }) => {
         }
 
         filtersInfo['All'].isActive = true
-        filtersInfo['All'].borderWidth = 1;
+        filtersInfo['All'].borderWidth = 1.5;
         filtersInfo['All'].textColor = filterActiveColor;
 
     }
@@ -120,7 +120,7 @@ const HomeScreen = ({ navigation }) => {
         for (filter in filtersInfo) {
 
             if (filtersInfo[filter].isActive == true) {
-                filtersInfo[filter].borderWidth = 1;
+                filtersInfo[filter].borderWidth = 1.5;
                 filtersInfo[filter].textColor = filterActiveColor;
             }
             else {
@@ -143,7 +143,7 @@ const HomeScreen = ({ navigation }) => {
                     style={[styles.filters, { borderWidth: filtersInfo['All'].borderWidth }]}
                     onPress={() => filtersInfo['All'].isActive = true}
                 >
-                    <Text style={{ color: filtersInfo['All'].textColor }}>All</Text>
+                    <Text style={{ color: filtersInfo['All'].textColor, fontSize: 15 }}>All</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={[styles.filters, { borderWidth: filtersInfo['Events'].borderWidth }]}
@@ -152,7 +152,7 @@ const HomeScreen = ({ navigation }) => {
                         filtersInfo['Events'].isActive = !filtersInfo['Events'].isActive;
                     }}
                 >
-                    <Text style={{ color: filtersInfo['Events'].textColor }}>Events</Text>
+                    <Text style={{ color: filtersInfo['Events'].textColor, fontSize: 15 }}>Events</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={[styles.filters, { borderWidth: filtersInfo['JamSessions'].borderWidth }]}
@@ -161,7 +161,7 @@ const HomeScreen = ({ navigation }) => {
                         filtersInfo['JamSessions'].isActive = !filtersInfo['JamSessions'].isActive;
                     }}
                 >
-                    <Text style={{ color: filtersInfo['JamSessions'].textColor }}>Jam Sessions</Text>
+                    <Text style={{ color: filtersInfo['JamSessions'].textColor, fontSize: 15 }}>Jam Sessions</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={[styles.filters, { borderWidth: filtersInfo['Collabs'].borderWidth }]}
@@ -170,7 +170,7 @@ const HomeScreen = ({ navigation }) => {
                         filtersInfo['Collabs'].isActive = !filtersInfo['Collabs'].isActive;
                     }}
                 >
-                    <Text style={{ color: filtersInfo['Collabs'].textColor }}>Collabs</Text>
+                    <Text style={{ color: filtersInfo['Collabs'].textColor, fontSize: 15 }}>Collabs</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={[styles.filters, { borderWidth: filtersInfo['People'].borderWidth }]}
@@ -179,7 +179,7 @@ const HomeScreen = ({ navigation }) => {
                         filtersInfo['People'].isActive = !filtersInfo['People'].isActive;
                     }}
                 >
-                    <Text style={{ color: filtersInfo['People'].textColor }}>People</Text>
+                    <Text style={{ color: filtersInfo['People'].textColor, fontSize: 15 }}>People</Text>
                 </TouchableOpacity>
             </ScrollView>
         </View>
@@ -237,7 +237,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: 'rgba(206,191,203,1)',
+        backgroundColor: 'rgba(206,191,203,1)', // 'rgba(44,54,63,0.5)', 
         borderRadius: 20,
         borderColor: 'rgba(138,173,213,1)',
         padding: 18,
