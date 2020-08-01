@@ -79,7 +79,7 @@ const HomeScreen = ({ navigation }) => {
 
 
     var filtersInfo = {
-        All: {
+        AllPosts: {
             isActive: filters_status[0]
         },
         Events: {
@@ -91,9 +91,19 @@ const HomeScreen = ({ navigation }) => {
         Collabs: {
             isActive: filters_status[3]
         },
-        People: {
+        Live: {
             isActive: filters_status[4]
         }
+    }
+
+    if (
+        filtersInfo['Events'].isActive === false && 
+        filtersInfo['JamSessions'].isActive === false && 
+        filtersInfo['Collabs'].isActive === false && 
+        filtersInfo['Live'].isActive === false
+        ) {
+
+        filtersInfo['AllPosts'].isActive = true;
     }
 
     const filterActiveColor = 'rgba(138,173,213,1)';
@@ -120,10 +130,10 @@ const HomeScreen = ({ navigation }) => {
                 showsHorizontalScrollIndicator={false}
             >
                 <TouchableOpacity
-                    style={[styles.filters, { borderWidth: filtersInfo['All'].borderWidth }]}
+                    style={[styles.filters, { borderWidth: filtersInfo['AllPosts'].borderWidth }]}
                     onPress={() => setFilterStatus([true, false, false, false, false])}
                 >
-                    <Text style={{ color: filtersInfo['All'].textColor, fontSize: 15 }}>All</Text>
+                    <Text style={{ color: filtersInfo['AllPosts'].textColor, fontSize: 15 }}>All Posts</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={[styles.filters, { borderWidth: filtersInfo['Events'].borderWidth }]}
@@ -150,12 +160,12 @@ const HomeScreen = ({ navigation }) => {
                     <Text style={{ color: filtersInfo['Collabs'].textColor, fontSize: 15 }}>Collabs</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={[styles.filters, { borderWidth: filtersInfo['People'].borderWidth }]}
+                    style={[styles.filters, { borderWidth: filtersInfo['Live'].borderWidth }]}
                     onPress={() => {
                         setFilterStatus([false, filters_status[1], filters_status[2], filters_status[3], !filters_status[4]]);
                     }}
                 >
-                    <Text style={{ color: filtersInfo['People'].textColor, fontSize: 15 }}>People</Text>
+                    <Text style={{ color: filtersInfo['Live'].textColor, fontSize: 15 }}>Live</Text>
                 </TouchableOpacity>
             </ScrollView>
         </View>
