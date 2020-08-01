@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
-import { View, Text, TouchableOpacity, BackHandler, Alert, ToastAndroid, Platform, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, BackHandler, Alert, ToastAndroid, Platform, StyleSheet, SafeAreaView } from 'react-native';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
+import Card from './Card';
 
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 import { ScrollView } from 'react-native-gesture-handler';
+import Constants from 'expo-constants';
+
 
 
 const HomeScreen = ({ navigation }) => {
@@ -205,25 +208,76 @@ const HomeScreen = ({ navigation }) => {
                     backgroundColor: 'rgba(255,255,255,0)'
                 }}
             >
-                <View
+                <SafeAreaView
                     style={{
-                        alignItems: "center",
-                        justifyContent: "center",
-                        flex: 1
+                        flex: 1,
+                        marginTop: Constants.statusBarHeight,
                     }}
                 >
-                    {filters}
-                    <TouchableOpacity
-                        style={{
-                            alignItems: "center",
-                            justifyContent: "center",
-                        }}
-                    >
-                        <Text>
-                            Hello
-                    </Text>
-                    </TouchableOpacity>
-                </View>
+                    <ScrollView>
+                        <View
+                            style={{
+                                alignItems: "center",
+                                justifyContent: "center",
+                                flex: 1
+                            }}
+                        >
+                            {filters}
+                            <TouchableOpacity
+                                style={{
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                }}
+                            >
+                                <Card>
+                                    <Text>
+                                        Hello
+                                    </Text>
+                                </Card>
+                                
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={{
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                }}
+                            >
+                                <Card>
+                                    <Text>
+                                        Hello
+                                    </Text>
+                                </Card>
+                                
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={{
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                }}
+                            >
+                                <Card>
+                                    <Text>
+                                        Hello
+                                    </Text>
+                                </Card>
+                                
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={{
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                }}
+                            >
+                                <Card>
+                                    <Text>
+                                        Hello
+                                    </Text>
+                                </Card>
+                                
+                            </TouchableOpacity>
+                        </View>
+                    </ScrollView>
+                </SafeAreaView>
             </GestureRecognizer>
         );
     }
