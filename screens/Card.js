@@ -22,85 +22,38 @@ export default function Card(props){
         return <AppLoading />;
     } else {
 
-    return(
+        return(
+            <View style={styles.card}>
+                <TouchableOpacity style={styles.header}>
+                <Image source={JohnDoe} style={styles.headerImage}/>
+                <Text style={styles.headerText}>
+                    Dio Brando
+                </Text>                
+                </TouchableOpacity>
 
-        
-        
-        
-        <View style={styles.card}>
-            <TouchableOpacity
-                style={{
-                    flexDirection: 'row',
-                    paddingBottom: 10,
-                    borderBottomColor: 'rgba(214,219,210,1)',
-                    borderBottomWidth: 1
-                }}
-            >
-            <Image 
-                source={JohnDoe}
-                style={{
-                    width: 100,
-                    height: 100,
-                    paddingBottom: 0,
-                    zIndex: 5,
-                    overflow: 'visible',
-                    marginTop: -35,
-                    borderRadius: 50,
-                    padding: 15,
-                    marginLeft: width*0.05
-
-                }}/>
-
-            <Text
-                style={{
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    padding: 20,
-                    fontSize: 20,
-                    fontFamily: 'Regular'
-                }}
-            >
-                Dio Brando
-            </Text>
-            
-            </TouchableOpacity>
-            <View style={styles.cardContent}>
-                {props.children}
-            </View>
-            <View
-                style={{
-                    flexDirection: 'row',
-                }}
-            >
-            <TouchableOpacity
-                style={styles.like}
-            >
-                <View>
-                    <Text>
-                        Like
-                    </Text>
+                <View style={styles.cardContent}>
+                    {props.children}
                 </View>
-            </TouchableOpacity>
+                <View style={styles.cardBottom}>
+                    <TouchableOpacity style={styles.like}>
+                        <View>
+                            <Text>
+                                Like
+                            </Text>
+                        </View>
+                    </TouchableOpacity>
 
-            <TouchableOpacity
-                style={styles.comment}
-            >
-                <View>
-                    <Text>
-                        Comment
-                    </Text>
+                    <TouchableOpacity style={styles.comment}>
+                        <View>
+                            <Text>
+                                Comment
+                            </Text>
+                        </View>
+                    </TouchableOpacity>
                 </View>
-            </TouchableOpacity>
-
             </View>
-            </View>
-            
-            
-            
-        
-
-    )
-            }
+        )
+    }
 }
 
 const styles = StyleSheet.create({
@@ -120,6 +73,9 @@ const styles = StyleSheet.create({
         marginHorizontal: 18,
         marginVertical: 10,
         padding: 120
+    },
+    cardBottom: {
+        flexDirection: 'row',
     },
     like: {
         flex: 1,
@@ -141,5 +97,29 @@ const styles = StyleSheet.create({
         borderTopWidth: 1,
         paddingVertical: 10
 
+    },
+    header: {
+        flexDirection: 'row',
+        paddingBottom: 10,
+        borderBottomColor: 'rgba(214,219,210,1)',
+        borderBottomWidth: 1
+    },
+    headerImage: {
+        width: 100,
+        height: 100,
+        paddingBottom: 0,
+        zIndex: 5,
+        overflow: 'visible',
+        marginTop: -35,
+        borderRadius: 50,
+        padding: 15,
+        marginLeft: width*0.05
+    },
+    headerText: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 20,
+        fontSize: 20,
+        fontFamily: 'Regular'
     }
 })
