@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, BackHandler, Alert, ToastAndroid, Platform, StyleSheet, SafeAreaView } from 'react-native';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 import Card from './Card';
@@ -11,6 +11,8 @@ import Constants from 'expo-constants';
 
 
 const HomeScreen = ({ navigation }) => {
+
+    const [filters_status, setFilterStatus] = useState([true, false, false, false, false]);
 
     const handleBackButton = () => {
         Alert.alert(
@@ -75,63 +77,38 @@ const HomeScreen = ({ navigation }) => {
         }
     }
 
-    const filterActiveColor = 'rgba(138,173,213,1)';
-    const filterInactiveColor = 'rgba(255,255,255,1)';
 
     var filtersInfo = {
         All: {
-            isActive: true,
-            borderWidth: 1.5,
-            textColor: filterActiveColor
+            isActive: filters_status[0]
         },
         Events: {
-            isActive: false,
-            borderWidth: 0,
-            textColor: filterInactiveColor
+            isActive: filters_status[1]
         },
         JamSessions: {
-            isActive: false,
-            borderWidth: 0,
-            textColor: filterInactiveColor
+            isActive: filters_status[2]
         },
         Collabs: {
-            isActive: false,
-            borderWidth: 0,
-            textColor: filterInactiveColor
+            isActive: filters_status[3]
         },
         People: {
-            isActive: false,
-            borderWidth: 0,
-            textColor: filterInactiveColor
+            isActive: filters_status[4]
         }
     }
 
+    const filterActiveColor = 'rgba(138,173,213,1)';
+    const filterInactiveColor = 'rgba(255,255,255,1)';
 
-    if (filtersInfo['All'].isActive == true) {
+    for (filter in filtersInfo) {
 
-        for (filter in filtersInfo) {
-            filtersInfo[filter].isActive = false;
+        if (filtersInfo[filter].isActive === true) {
+            filtersInfo[filter].borderWidth = 1.5;
+            filtersInfo[filter].textColor = filterActiveColor;
         }
-
-        filtersInfo['All'].isActive = true
-        filtersInfo['All'].borderWidth = 1.5;
-        filtersInfo['All'].textColor = filterActiveColor;
-
-    }
-    else {
-
-        for (filter in filtersInfo) {
-
-            if (filtersInfo[filter].isActive == true) {
-                filtersInfo[filter].borderWidth = 1.5;
-                filtersInfo[filter].textColor = filterActiveColor;
-            }
-            else {
-                filtersInfo[filter].borderWidth = 0;
-                filtersInfo[filter].textColor = filterInactiveColor;
-            }
+        else {
+            filtersInfo[filter].borderWidth = 0;
+            filtersInfo[filter].textColor = filterInactiveColor;
         }
-
     }
 
 
@@ -144,15 +121,14 @@ const HomeScreen = ({ navigation }) => {
             >
                 <TouchableOpacity
                     style={[styles.filters, { borderWidth: filtersInfo['All'].borderWidth }]}
-                    onPress={() => filtersInfo['All'].isActive = true}
+                    onPress={() => setFilterStatus([true, false, false, false, false])}
                 >
                     <Text style={{ color: filtersInfo['All'].textColor, fontSize: 15 }}>All</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={[styles.filters, { borderWidth: filtersInfo['Events'].borderWidth }]}
                     onPress={() => {
-                        filtersInfo['All'].isActive = false;
-                        filtersInfo['Events'].isActive = !filtersInfo['Events'].isActive;
+                        setFilterStatus([false, !filters_status[1], filters_status[2], filters_status[3], filters_status[4]]);
                     }}
                 >
                     <Text style={{ color: filtersInfo['Events'].textColor, fontSize: 15 }}>Events</Text>
@@ -160,8 +136,7 @@ const HomeScreen = ({ navigation }) => {
                 <TouchableOpacity
                     style={[styles.filters, { borderWidth: filtersInfo['JamSessions'].borderWidth }]}
                     onPress={() => {
-                        filtersInfo['All'].isActive = false;
-                        filtersInfo['JamSessions'].isActive = !filtersInfo['JamSessions'].isActive;
+                        setFilterStatus([false, filters_status[1], !filters_status[2], filters_status[3], filters_status[4]]);
                     }}
                 >
                     <Text style={{ color: filtersInfo['JamSessions'].textColor, fontSize: 15 }}>Jam Sessions</Text>
@@ -169,8 +144,7 @@ const HomeScreen = ({ navigation }) => {
                 <TouchableOpacity
                     style={[styles.filters, { borderWidth: filtersInfo['Collabs'].borderWidth }]}
                     onPress={() => {
-                        filtersInfo['All'].isActive = false;
-                        filtersInfo['Collabs'].isActive = !filtersInfo['Collabs'].isActive;
+                        setFilterStatus([false, filters_status[1], filters_status[2], !filters_status[3], filters_status[4]]);
                     }}
                 >
                     <Text style={{ color: filtersInfo['Collabs'].textColor, fontSize: 15 }}>Collabs</Text>
@@ -178,8 +152,7 @@ const HomeScreen = ({ navigation }) => {
                 <TouchableOpacity
                     style={[styles.filters, { borderWidth: filtersInfo['People'].borderWidth }]}
                     onPress={() => {
-                        filtersInfo['All'].isActive = false;
-                        filtersInfo['People'].isActive = !filtersInfo['People'].isActive;
+                        setFilterStatus([false, filters_status[1], filters_status[2], filters_status[3], !filters_status[4]]);
                     }}
                 >
                     <Text style={{ color: filtersInfo['People'].textColor, fontSize: 15 }}>People</Text>
@@ -223,6 +196,7 @@ const HomeScreen = ({ navigation }) => {
                             }}
                         >
                             {filters}
+
                             <TouchableOpacity
                                 style={{
                                     alignItems: "center",
@@ -234,7 +208,7 @@ const HomeScreen = ({ navigation }) => {
                                         Hello
                                     </Text>
                                 </Card>
-                                
+
                             </TouchableOpacity>
                             <TouchableOpacity
                                 style={{
@@ -247,7 +221,7 @@ const HomeScreen = ({ navigation }) => {
                                         Hello
                                     </Text>
                                 </Card>
-                                
+
                             </TouchableOpacity>
                             <TouchableOpacity
                                 style={{
@@ -260,7 +234,7 @@ const HomeScreen = ({ navigation }) => {
                                         Hello
                                     </Text>
                                 </Card>
-                                
+
                             </TouchableOpacity>
                             <TouchableOpacity
                                 style={{
@@ -273,7 +247,7 @@ const HomeScreen = ({ navigation }) => {
                                         Hello
                                     </Text>
                                 </Card>
-                                
+
                             </TouchableOpacity>
                         </View>
                     </ScrollView>
