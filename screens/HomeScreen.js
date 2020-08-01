@@ -206,20 +206,11 @@ const HomeScreen = ({ navigation }) => {
                             }}
                         >
                             {filters}
-
-                            <TouchableOpacity
-                                style={{
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                }}
-                            >
-                                <Card>
+                            <Card>
                                     <Text>
                                         Hello
                                     </Text>
                                 </Card>
-
-                            </TouchableOpacity>
                             <TouchableOpacity
                                 style={{
                                     alignItems: "center",

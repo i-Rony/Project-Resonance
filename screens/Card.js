@@ -1,9 +1,69 @@
 import React from 'react';
-import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity, Image, Dimensions} from 'react-native';
+
+import JohnDoe from '../assets/kawaii.jpg';
+import { useFonts } from '@use-expo/font';
+import { AppLoading } from 'expo';
+
+const {width, height} = Dimensions.get("screen");
+
 
 export default function Card(props){
+
+    let [fontsLoaded] = useFonts({
+        'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
+        'SemiBold': require('../assets/fonts/Montserrat-SemiBold.ttf'),
+        'Medium': require('../assets/fonts/Montserrat-Medium.ttf'),
+        'Light': require('../assets/fonts/Montserrat-Light.ttf'),
+        'Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
+    });
+
+    if (!fontsLoaded) {
+        return <AppLoading />;
+    } else {
+
     return(
+
+        
+        
+        
         <View style={styles.card}>
+            <TouchableOpacity
+                style={{
+                    flexDirection: 'row',
+                    paddingBottom: 10,
+                    borderBottomColor: 'rgba(214,219,210,1)',
+                    borderBottomWidth: 1
+                }}
+            >
+            <Image 
+                source={JohnDoe}
+                style={{
+                    width: 100,
+                    height: 100,
+                    paddingBottom: 0,
+                    zIndex: 5,
+                    overflow: 'visible',
+                    marginTop: -35,
+                    borderRadius: 50,
+                    padding: 15,
+                    marginLeft: width*0.05
+
+                }}/>
+
+            <Text
+                style={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    padding: 20,
+                    fontSize: 20,
+                    fontFamily: 'Regular'
+                }}
+            >
+                Dio Brando
+            </Text>
+            
+            </TouchableOpacity>
             <View style={styles.cardContent}>
                 {props.children}
             </View>
@@ -33,12 +93,14 @@ export default function Card(props){
             </TouchableOpacity>
 
             </View>
+            </View>
             
             
             
-        </View>
+        
 
     )
+            }
 }
 
 const styles = StyleSheet.create({
@@ -51,7 +113,8 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.3,
         shadowRadius: 2,
         marginHorizontal: 4,
-        marginVertical: 6
+        marginVertical: 6,
+        marginTop: height*0.07
     },
     cardContent: {
         marginHorizontal: 18,
