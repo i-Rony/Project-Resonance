@@ -169,6 +169,7 @@ const HomeScreen = ({ navigation }) => {
                 </TouchableOpacity>
             </ScrollView>
         </View>
+        
 
     if (!fontsLoaded) {
         return <AppLoading />;
