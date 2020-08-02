@@ -207,58 +207,29 @@ const HomeScreen = ({ navigation }) => {
                         >
                             {filters}
 
-                            <TouchableOpacity
-                                style={{
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                }}
-                            >
-                                <Card>
-                                    <Text>
-                                        Hello
-                                    </Text>
-                                </Card>
+                            <Card>
+                                <Text>
+                                    Hello
+                                </Text>
+                            </Card>
 
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                style={{
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                }}
-                            >
-                                <Card>
-                                    <Text>
-                                        Hello
-                                    </Text>
-                                </Card>
+                            <Card>
+                                <Text>
+                                    Hello
+                                </Text>
+                            </Card>
 
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                style={{
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                }}
-                            >
-                                <Card>
-                                    <Text>
-                                        Hello
-                                    </Text>
-                                </Card>
+                            <Card>
+                                <Text>
+                                    Hello
+                                </Text>
+                            </Card>
 
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                style={{
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                }}
-                            >
-                                <Card>
-                                    <Text>
-                                        Hello
-                                    </Text>
-                                </Card>
-
-                            </TouchableOpacity>
+                            <Card>
+                                <Text>
+                                    Hello
+                                </Text>
+                            </Card>
                         </View>
                     </ScrollView>
                 </SafeAreaView>
