@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, BackHandler, Alert, ToastAndroid, Platform, StyleSheet, SafeAreaView } from 'react-native';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 import Card from './Card';
+import Carousel_EventScreen from './Carousel_EventScreen'
 
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
@@ -122,6 +123,17 @@ const HomeScreen = ({ navigation }) => {
     }
 
 
+    const images = [
+        '../assets/1.png',
+        '../assets/2.png',
+        '../assets/3.png',
+        '../assets/4.png',
+        '../assets/5.png',
+        '../assets/6.png',
+        '../assets/kawaii.jpg'
+    ];
+
+
     const filters =
         <View style={{ height: 50 }}>
             <ScrollView
@@ -170,6 +182,7 @@ const HomeScreen = ({ navigation }) => {
             </ScrollView>
         </View>
 
+
     if (!fontsLoaded) {
         return <AppLoading />;
 
@@ -206,6 +219,8 @@ const HomeScreen = ({ navigation }) => {
                             }}
                         >
                             {filters}
+
+                            <Carousel_EventScreen images={images} />
 
                             <Card>
                                 <Text>

@@ -56,9 +56,12 @@ export default function Card(props){
     }
 }
 
+
 const styles = StyleSheet.create({
+
     card: {
-        borderRadius: 25,
+        width: 365,
+        borderRadius: 20,
         elevation: 3,
         backgroundColor: '#fff',
         shadowOffset: {width: 1, height: 1},
@@ -67,7 +70,7 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         marginHorizontal: 4,
         marginVertical: 6,
-        marginTop: height*0.07
+        marginTop: height * 0.05
     },
     cardContent: {
         marginHorizontal: 18,
@@ -100,26 +103,26 @@ const styles = StyleSheet.create({
     },
     header: {
         flexDirection: 'row',
-        paddingBottom: 10,
+        paddingBottom: 2,
         borderBottomColor: 'rgba(214,219,210,1)',
         borderBottomWidth: 1
     },
     headerImage: {
-        width: 100,
-        height: 100,
+        width: 65,
+        height: 65,
         paddingBottom: 0,
         zIndex: 5,
         overflow: 'visible',
-        marginTop: -35,
+        marginTop: -30,
         borderRadius: 50,
-        padding: 15,
-        marginLeft: width*0.05
+        padding: 5,
+        marginLeft: width * 0.05
     },
     headerText: {
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 20,
-        fontSize: 20,
+        padding: 10,
+        fontSize: 14,
         fontFamily: 'Regular'
     }
 })
