@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, BackHandler, Alert, ToastAndroid, Platform, StyleSheet, SafeAreaView } from 'react-native';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 import Card from './Card';
-// import Carousel_EventScreen from './Carousel_EventScreen'
-import { dummyData } from './Data';
-import Carousel from './Carousel';
+import Carousel_EventScreen from './Carousel_EventScreen'
 
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
@@ -220,13 +218,10 @@ const HomeScreen = ({ navigation }) => {
                                 flex: 1
                             }}
                         >
+                            
+                            <Carousel_EventScreen images={images} />
+
                             {filters}
-
-                            {/* <Carousel_EventScreen images={images} /> */}
-
-                            <View>
-                                <Carousel data={dummyData} />
-                            </View>
 
                             <Card>
                                 <Text>
