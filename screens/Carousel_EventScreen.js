@@ -49,7 +49,7 @@ class Carousel extends Component {
 
         return (
             <View style={{ height: "100%", width: "100%" }}>
-                <ScrollView horizontal pagingEnabled
+                <ScrollView horizontal
                     onMomentumScrollEnd={this.setSelectedIndex}
                     ref={ this.scrollRef }
                 >
