@@ -48,7 +48,7 @@ class Carousel extends Component {
         const { selectedIndex } = this.state;
 
         return (
-            <View style={{ height: "100%", width: "100%" }}>
+            <View style={{ height: 320, width: "100%" }}>
                 <ScrollView horizontal
                     onMomentumScrollEnd={this.setSelectedIndex}
                     ref={ this.scrollRef }
