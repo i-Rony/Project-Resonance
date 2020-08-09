@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, BackHandler, Alert, ToastAndroid, Platform, StyleSheet, SafeAreaView } from 'react-native';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
-import Card from './Card';
+import Card from '../Components/Card';
+import { HomeScreenHeader } from '../Components/Headers';
 
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
@@ -97,11 +98,11 @@ const HomeScreen = ({ navigation }) => {
     }
 
     if (
-        filtersInfo['Events'].isActive === false && 
-        filtersInfo['JamSessions'].isActive === false && 
-        filtersInfo['Collabs'].isActive === false && 
+        filtersInfo['Events'].isActive === false &&
+        filtersInfo['JamSessions'].isActive === false &&
+        filtersInfo['Collabs'].isActive === false &&
         filtersInfo['Live'].isActive === false
-        ) {
+    ) {
 
         filtersInfo['AllPosts'].isActive = true;
     }
@@ -170,6 +171,7 @@ const HomeScreen = ({ navigation }) => {
             </ScrollView>
         </View>
 
+
     if (!fontsLoaded) {
         return <AppLoading />;
 
@@ -205,12 +207,8 @@ const HomeScreen = ({ navigation }) => {
                                 flex: 1
                             }}
                         >
-                            {filters}
-                            <Card>
-                                <Text>
-                                    Hello
-                                </Text>
-                            </Card>
+
+                            <HomeScreenHeader filters={filters} />
 
                             <Card>
                                 <Text>
@@ -229,7 +227,13 @@ const HomeScreen = ({ navigation }) => {
                                     Hello
                                 </Text>
                             </Card>
-                            
+
+                            <Card>
+                                <Text>
+                                    Hello
+                                </Text>
+                            </Card>
+
                         </View>
                     </ScrollView>
                 </SafeAreaView>
