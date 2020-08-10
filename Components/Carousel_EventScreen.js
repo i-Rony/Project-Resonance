@@ -43,7 +43,6 @@ class Carousel extends Component {
     }
 
     render() {
-
         const { images } = this.props;
         const { selectedIndex } = this.state;
 
