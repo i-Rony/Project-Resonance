@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
+import { NotificationScreenHeader } from '../Components/Headers';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const NotificationScreen = ({ navigation }) => {
 
@@ -41,6 +43,7 @@ const NotificationScreen = ({ navigation }) => {
                 backgroundColor: 'rgba(255,255,255,0)'
             }}
         >
+            <NotificationScreenHeader />
             <View
                 style={{
                     alignItems: "center",
@@ -56,7 +59,7 @@ const NotificationScreen = ({ navigation }) => {
                 >
                     <Text>
                         Notifications
-                    </Text>
+                        </Text>
                 </TouchableOpacity>
             </View>
         </GestureRecognizer>

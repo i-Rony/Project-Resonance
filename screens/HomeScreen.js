@@ -208,7 +208,9 @@ const HomeScreen = ({ navigation }) => {
                             }}
                         >
 
-                            <HomeScreenHeader filters={filters} />
+                            <HomeScreenHeader />
+
+                            {filters}
 
                             <Card>
                                 <Text>
@@ -254,6 +256,7 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         borderColor: 'rgba(138,173,213,1)',
         padding: 18,
-        margin: 6
+        margin: 5.4,
+        marginTop: 9
     }
 });
