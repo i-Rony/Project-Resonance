@@ -32,7 +32,7 @@ function HomeScreenHeader() {
                             styles.headerButton, 
                             {
                                 backgroundColor: '#fff',
-                                marginLeft: 26
+                                marginLeft: 25
                             }
                             ]}
                         >
@@ -120,11 +120,11 @@ function NotificationScreenHeader() {
                     paddingTop: 2,
                     paddingBottom: 4,
                     marginLeft: 27,
-                    marginTop: 32
+                    marginTop: 34
                 }
             ]}>
                 <Text style={{
-                    fontSize: 40,
+                    fontSize: 38,
                     fontWeight: 'bold',
                     letterSpacing: 0.4,
                     color: 'rgba(255,255,255,0.95)'
