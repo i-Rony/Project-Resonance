@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, ActivityIndicatorBase } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Title, Caption, Drawer, Avatar } from 'react-native-paper';
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import { f, auth, database } from '../config/config';
@@ -8,7 +8,7 @@ import { f, auth, database } from '../config/config';
 import JohnDoe from '../assets/kawaii.jpg';
 
 import { faUserFriends, faUser, faHandshake, faHeartbeat, faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
