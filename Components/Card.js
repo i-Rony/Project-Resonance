@@ -26,9 +26,14 @@ export default function Card(props){
             <View style={styles.card}>
                 <TouchableOpacity style={styles.header}>
                 <Image source={JohnDoe} style={styles.headerImage}/>
+                <View>
                 <Text style={styles.headerText}>
                     Dio Brando
-                </Text>                
+                </Text>
+                <Text style={styles.headerLocation}>
+                    Location, Henlo    
+                </Text>
+                </View>                
                 </TouchableOpacity>
 
                 <View style={styles.cardContent}>
@@ -60,8 +65,8 @@ export default function Card(props){
 const styles = StyleSheet.create({
 
     card: {
-        width: 365,
-        borderRadius: 20,
+        width: width*0.95,
+        borderRadius: 22,
         elevation: 3,
         backgroundColor: '#fff',
         shadowOffset: {width: 1, height: 1},
@@ -99,30 +104,40 @@ const styles = StyleSheet.create({
         borderTopColor: 'rgba(214,219,210,1)',
         borderTopWidth: 1,
         paddingVertical: 10
-
     },
     header: {
         flexDirection: 'row',
-        paddingBottom: 2,
+        paddingBottom: 6,
         borderBottomColor: 'rgba(214,219,210,1)',
-        borderBottomWidth: 1
+        borderBottomWidth: 1,
+        padding: 12
     },
     headerImage: {
-        width: 65,
-        height: 65,
+        width: 74,
+        height: 74,
         paddingBottom: 0,
         zIndex: 5,
         overflow: 'visible',
         marginTop: -30,
         borderRadius: 50,
-        padding: 5,
+        padding: 2,
         marginLeft: width * 0.05
     },
     headerText: {
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 10,
+        paddingLeft: 10,
         fontSize: 14,
+        paddingTop: 0,
+        marginTop: -4,
+        fontFamily: 'Regular'
+    },
+    headerLocation: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingLeft: 10,
+        fontSize: 14,
+        paddingTop: 4,
         fontFamily: 'Regular'
     }
 })
