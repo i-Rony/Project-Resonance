@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -27,27 +27,27 @@ function HomeScreenHeader() {
 
             <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 7 }}>
                 <View>
-                    <TouchableOpacity 
+                    <TouchableOpacity
                         style={[
-                            styles.headerButton, 
+                            styles.headerButton,
                             {
                                 backgroundColor: '#fff',
                                 marginLeft: 25
                             }
-                            ]}
-                        >
+                        ]}
+                    >
                         <Text
                             style={{
                                 fontSize: 18,
                                 color: '#595959' // 'rgba(44,54,63,1)'
                             }}
                         >
-                             +  Post
+                            +  Post
                         </Text>
                     </TouchableOpacity>
                 </View>
                 <View>
-                    <TouchableOpacity 
+                    <TouchableOpacity
                         style={[
                             styles.headerButton,
                             {
@@ -76,6 +76,25 @@ function HomeScreenHeader() {
 
 function EventScreenHeader() {
 
+    const [searchQuery, setSearchQuery] = useState('');
+    const onChangeSearch = (query) => setSearchQuery(query);
+
+    const [searchbarRef, setSearchBarRef] = useState();
+
+    var width = 288;
+    var height = 46;
+
+    if (searchbarRef !== undefined) {
+        if (searchbarRef.isFocused()) {
+            width = 320;
+            height = 50;
+        }
+        else {
+            width = 288;
+            height = 46;
+        }
+    }
+
     return (
         <View style={{
             height: 72,
@@ -84,18 +103,20 @@ function EventScreenHeader() {
             marginBottom: 10
         }}>
             <View style={[
-                styles.header, 
+                styles.header,
                 {
-                    alignItems: 'center', 
-                    paddingTop: 2, 
+                    alignItems: 'center',
+                    paddingTop: 2,
                     paddingBottom: 4,
                     marginLeft: 50
                 }
             ]}>
                 <Searchbar
-                    style={styles.searchbar}
+                    ref={(ref) => setSearchBarRef(ref)}
+                    style={[styles.searchbar, {width: width, height: height}]}
                     placeholder="Search"
-                    value=""
+                    onChangeText={onChangeSearch}
+                    value={searchQuery}
                 />
             </View>
 
@@ -153,24 +174,22 @@ const styles = StyleSheet.create({
     },
 
     searchbar: {
-        width: 288,
-        height: 46,
         marginTop: 10,
         backgroundColor: '#5D6E7E',
         borderRadius: 500
     },
 
     headerButton: {
-            justifyContent: "center",
-            alignItems: "center",
-            padding: 8,
-            paddingLeft: 22,
-            paddingRight: 22,
-            zIndex: 4,
-            borderRadius: 50,
-            marginBottom: 10,
-            borderWidth: 2,
-            borderColor: '#fff'
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 8,
+        paddingLeft: 22,
+        paddingRight: 22,
+        zIndex: 4,
+        borderRadius: 50,
+        marginBottom: 10,
+        borderWidth: 2,
+        borderColor: '#fff'
     }
 
 });
