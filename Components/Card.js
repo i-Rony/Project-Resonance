@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
         borderTopColor: 'rgba(231,90,124,0.5)',
         borderTopWidth: 1,
         paddingVertical: 10,
-        backgroundColor: 'rgba(231,90,124,0.5)',
+        backgroundColor: 'rgba(231,90,124,0.38)',
         borderBottomLeftRadius: 22
     },
     comment: {
@@ -118,10 +118,10 @@ const styles = StyleSheet.create({
     header: {
         flexDirection: 'row',
         paddingBottom: 6,
-        borderBottomColor: 'rgba(231,90,124,0.9)',
-        borderBottomWidth: 1,
+        // borderBottomColor: 'rgba(231,90,124,0.9)',
+        // borderBottomWidth: 1,
         padding: 12,
-        backgroundColor: 'rgba(231,90,124,0.9)',  // '#2C363F',
+        backgroundColor: 'rgba(44,54,63,0.834)',// 'rgba(231,90,124,0.64)',
         borderTopLeftRadius: 22,
         borderTopRightRadius: 22
     },
