@@ -1,6 +1,9 @@
 import React from 'react';
 import {View, StyleSheet, Text, TouchableOpacity, Image, Dimensions} from 'react-native';
 
+import { faHeart, faCommentDots, faCommentAlt, faCommentDollar, faCommentSlash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+
 import JohnDoe from '../assets/kawaii.jpg';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
@@ -31,7 +34,7 @@ export default function Card(props){
                     Dio Brando
                 </Text>
                 <Text style={styles.headerLocation}>
-                    Location, Henlo    
+                    Tokyo, Japan   
                 </Text>
                 </View>                
                 </TouchableOpacity>
@@ -42,17 +45,21 @@ export default function Card(props){
                 <View style={styles.cardBottom}>
                     <TouchableOpacity style={styles.like}>
                         <View>
-                            <Text>
-                                Like
-                            </Text>
+                        <FontAwesomeIcon
+                            icon={faHeart}
+                            color='rgba(231,90,124,0.9)'
+                            size={22}
+                        />
                         </View>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.comment}>
                         <View>
-                            <Text>
-                                Comment
-                            </Text>
+                        <FontAwesomeIcon
+                            icon={faCommentAlt}
+                            color='rgba(44, 54, 63, 0.5)'
+                            size={22}
+                        />
                         </View>
                     </TouchableOpacity>
                 </View>
@@ -78,9 +85,8 @@ const styles = StyleSheet.create({
         marginTop: height * 0.05
     },
     cardContent: {
-        marginHorizontal: 18,
-        marginVertical: 10,
-        padding: 120
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     cardBottom: {
         flexDirection: 'row',
@@ -89,28 +95,35 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        borderRightColor: 'rgba(214,219,210,1)',
+        borderRightColor: 'rgba(231,90,124,0.5)',
         borderRightWidth: 0.6,
-        borderTopColor: 'rgba(214,219,210,1)',
+        borderTopColor: 'rgba(231,90,124,0.5)',
         borderTopWidth: 1,
-        paddingVertical: 10
+        paddingVertical: 10,
+        backgroundColor: 'rgba(231,90,124,0.5)',
+        borderBottomLeftRadius: 22
     },
     comment: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        borderLeftColor: 'rgba(214,219,210,1)',
+        borderLeftColor: 'rgba(214,219,210,0.6)',
         borderLeftWidth: 0.6,
-        borderTopColor: 'rgba(214,219,210,1)',
+        borderTopColor: 'rgba(214,219,210,0.6)',
         borderTopWidth: 1,
-        paddingVertical: 10
+        paddingVertical: 10,
+        backgroundColor: 'rgba(214,219,210,0.6)',
+        borderBottomRightRadius: 22
     },
     header: {
         flexDirection: 'row',
         paddingBottom: 6,
-        borderBottomColor: 'rgba(214,219,210,1)',
+        borderBottomColor: 'rgba(231,90,124,0.9)',
         borderBottomWidth: 1,
-        padding: 12
+        padding: 12,
+        backgroundColor: 'rgba(231,90,124,0.9)',  // '#2C363F',
+        borderTopLeftRadius: 22,
+        borderTopRightRadius: 22
     },
     headerImage: {
         width: 74,
@@ -127,6 +140,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         paddingLeft: 10,
+        color: '#ffffff', // '#2C363F',//'rgba(231,90,124,1)',
         fontSize: 14,
         paddingTop: 0,
         marginTop: -4,
@@ -138,6 +152,7 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         fontSize: 14,
         paddingTop: 4,
+        color: '#ffffff',
         fontFamily: 'Regular'
     }
 })

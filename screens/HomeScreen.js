@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, BackHandler, Alert, ToastAndroid, Platform, StyleSheet, SafeAreaView } from 'react-native';
+import { View, Text, TouchableOpacity, BackHandler, Alert, ToastAndroid, Platform, StyleSheet, Image, SafeAreaView } from 'react-native';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 import Card from '../Components/Card';
 import { HomeScreenHeader } from '../Components/Headers';
@@ -9,6 +9,7 @@ import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 import { ScrollView } from 'react-native-gesture-handler';
 import Constants from 'expo-constants';
+import JoJo from '../assets/jojo.jpg';
 
 
 const HomeScreen = ({ navigation }) => {
@@ -119,9 +120,11 @@ const HomeScreen = ({ navigation }) => {
                             {/* {filters} */}
 
                             <Card>
-                                <Text>
-                                    Hello
-                                </Text>
+                                <Image source={JoJo} style={{
+                                        width: 342,
+                                        height: 221,
+                                        resizeMode: 'contain'
+                                }}/>
                             </Card>
 
                             <Card>
