@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, Text, TouchableOpacity, Image, Dimensions} from 'react-native';
 
-import { faHeart, faCommentDots, faCommentAlt, faCommentDollar, faCommentSlash } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faCommentAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
 import JohnDoe from '../assets/kawaii.jpg';
@@ -47,7 +47,7 @@ export default function Card(props){
                         <View>
                         <FontAwesomeIcon
                             icon={faHeart}
-                            color='rgba(231,90,124,0.9)'
+                            color='rgba(231, 90, 124, 0.9)'
                             size={22}
                         />
                         </View>
@@ -57,7 +57,7 @@ export default function Card(props){
                         <View>
                         <FontAwesomeIcon
                             icon={faCommentAlt}
-                            color='rgba(44, 54, 63, 0.5)'
+                            color='rgba(44, 54, 63, 0.834)'
                             size={22}
                         />
                         </View>
@@ -72,12 +72,12 @@ export default function Card(props){
 const styles = StyleSheet.create({
 
     card: {
-        width: width*0.95,
+        width: width * 0.95,
         borderRadius: 22,
         elevation: 3,
-        backgroundColor: '#fff',
+        backgroundColor: '#FFFFFF',
         shadowOffset: {width: 1, height: 1},
-        shadowColor: '#333',
+        shadowColor: '#333333',
         shadowOpacity: 0.3,
         shadowRadius: 2,
         marginHorizontal: 4,
@@ -95,24 +95,24 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        borderRightColor: 'rgba(231,90,124,0.5)',
+        borderRightColor: 'rgba(231, 90, 124, 0.38)',
         borderRightWidth: 0.6,
-        borderTopColor: 'rgba(231,90,124,0.5)',
+        borderTopColor: 'rgba(231, 90, 124, 0.38)',
         borderTopWidth: 1,
         paddingVertical: 10,
-        backgroundColor: 'rgba(231,90,124,0.38)',
+        backgroundColor: 'rgba(231, 90, 124, 0.38)',
         borderBottomLeftRadius: 22
     },
     comment: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        borderLeftColor: 'rgba(214,219,210,0.6)',
+        borderLeftColor: 'rgba(214, 219, 210, 0.6)',
         borderLeftWidth: 0.6,
-        borderTopColor: 'rgba(214,219,210,0.6)',
+        borderTopColor: 'rgba(214, 219, 210, 0.6)',
         borderTopWidth: 1,
         paddingVertical: 10,
-        backgroundColor: 'rgba(214,219,210,0.6)',
+        backgroundColor: 'rgba(214, 219, 210, 0.6)',
         borderBottomRightRadius: 22
     },
     header: {
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
         // borderBottomColor: 'rgba(231,90,124,0.9)',
         // borderBottomWidth: 1,
         padding: 12,
-        backgroundColor: 'rgba(44,54,63,0.834)',// 'rgba(231,90,124,0.64)',
+        backgroundColor: 'rgba(44,54,63,0.834)', // 'rgba(231,90,124,0.64)',
         borderTopLeftRadius: 22,
         borderTopRightRadius: 22
     },
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         paddingLeft: 10,
-        color: '#ffffff', // '#2C363F',//'rgba(231,90,124,1)',
+        color: '#FFFFFF', // '#2C363F',//'rgba(231,90,124,1)',
         fontSize: 14,
         paddingTop: 0,
         marginTop: -4,
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         fontSize: 14,
         paddingTop: 4,
-        color: '#ffffff',
+        color: '#FFFFFF',
         fontFamily: 'Regular'
     }
 })
