@@ -30,12 +30,11 @@ function HomeScreenFilters() {
         filtersInfo['Collabs'].isActive === false &&
         filtersInfo['Live'].isActive === false
     ) {
-
         filtersInfo['AllPosts'].isActive = true;
     }
 
-    const filterActiveColor = 'rgba(138,173,213,1)';
-    const filterInactiveColor = 'rgba(255,255,255,1)';
+    const filterActiveColor = 'rgba(44, 54, 63, 1)';
+    const filterInactiveColor = 'rgba(255, 255, 255, 1)';
 
     for (filter in filtersInfo) {
 
@@ -133,7 +132,7 @@ function EventScreenFilters() {
         filtersInfo['All'].isActive = true;
     }
 
-    const filterActiveColor = 'rgba(138,173,213,1)';
+    const filterActiveColor = 'rgba(44, 54, 63, 1)';
     const filterInactiveColor = 'rgba(255,255,255,1)';
 
     for (filter in filtersInfo) {
@@ -208,9 +207,9 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: 'rgba(206,191,203,1)', // 'rgba(44,54,63,0.5)', 
+        backgroundColor: 'rgba(231, 90, 124, 0.38)', // 'rgba(44,54,63,0.5)', 
         borderRadius: 20,
-        borderColor: 'rgba(138,173,213,1)',
+        borderColor: 'rgba(44, 54, 63, 1)',
         padding: 18,
         margin: 5.4,
         marginTop: 9
