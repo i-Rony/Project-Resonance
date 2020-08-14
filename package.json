@@ -10,6 +10,7 @@
   "dependencies": {
     "@expo/vector-icons": "^10.0.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/free-regular-svg-icons": "^5.14.0",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@fortawesome/react-native-fontawesome": "^0.2.5",
     "@gorhom/animated-tabbar": "^2.0.0",

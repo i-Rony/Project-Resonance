@@ -2,6 +2,7 @@ import React from 'react';
 import {View, StyleSheet, Text, TouchableOpacity, Image, Dimensions} from 'react-native';
 
 import { faHeart, faCommentAlt, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
 import JohnDoe from '../assets/kawaii.jpg';
@@ -38,23 +39,23 @@ export default function Card(props){
                         </Text>
                     </View>
                     <TouchableOpacity
-                            style={{
-                                overflow: 'visible',
-                                right: -96,
-                                top: -4,
-                                borderRadius: 50,
-                                justifyContent: 'flex-end',
-                                alignItems: 'flex-end',
-                                padding: 10
-                            }}
+                        style={{
+                            overflow: 'visible',
+                            right: -96,
+                            top: -4,
+                            borderRadius: 50,
+                            justifyContent: 'flex-end',
+                            alignItems: 'flex-end',
+                            padding: 10
+                        }}
 
-                        >
-                            <FontAwesomeIcon
-                                icon={faEllipsisV}
-                                color= 'rgba(214, 219, 210, 0.85)' //'rgba(231, 90, 124, 0.82)'
-                                size={22}
-                            />
-                        </TouchableOpacity>                
+                    >
+                        <FontAwesomeIcon
+                            icon={faEllipsisV}
+                            color= 'rgba(214, 219, 210, 0.85)' //'rgba(231, 90, 124, 0.82)'
+                            size={22}
+                        />
+                    </TouchableOpacity>                
                 </TouchableOpacity>
 
                 <View style={styles.cardContent}>
@@ -64,8 +65,8 @@ export default function Card(props){
                     <TouchableOpacity style={styles.like}>
                         <View>
                         <FontAwesomeIcon
-                            icon={faHeart}
-                            color='rgba(231, 90, 124, 0.9)'
+                            icon={farHeart} // if liked then {faHeart}
+                            color= 'rgba(231, 90, 124, 0.9)'
                             size={22}
                         />
                         </View>

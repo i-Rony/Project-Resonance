@@ -1,6 +1,10 @@
 import React from 'react';
 import {View, StyleSheet, Text, TouchableOpacity, Image, Dimensions} from 'react-native';
 
+import { faHeart, faCommentAlt, faPlay, faPause, faShare, faShareAlt } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as farHeart, faCommentAlt as farCommentAlt } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 import JohnDoe from '../assets/kawaii.jpg';
@@ -24,6 +28,13 @@ export default function CardMusiq(props){
 
         return (
             <View style={styles.card}>
+                <View
+                    style={{
+                        backgroundColor: 'rgba(214, 219, 210, 0.6)',
+                        borderTopLeftRadius: 22,
+                        borderTopRightRadius: 22
+                    }}
+                >
                 <View style={styles.cardContent}>
                     <TouchableOpacity>
                     <Image source={JohnDoe} style={styles.headerImage}/>
@@ -42,8 +53,94 @@ export default function CardMusiq(props){
                             {props.children}
                         </Text>
                     </View>
-                
+                    {/* <TouchableOpacity
+                        style={{
+                            overflow: 'visible',
+                            right: 34,
+                            top: -28,
+                            borderRadius: 50,
+                            justifyContent: 'flex-end',
+                            alignItems: 'flex-end',
+                            padding: 10
+                        }}
+
+                    >
+                        <FontAwesomeIcon
+                            icon={faHeart}
+                            color= 'rgba(231, 90, 124, 0.82)'
+                            size={18}
+                        />
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={{
+                            overflow: 'visible',
+                            right: 44,
+                            top: -28,
+                            borderRadius: 50,
+                            justifyContent: 'flex-end',
+                            alignItems: 'flex-end',
+                            padding: 10
+                        }}
+
+                    >
+                        <FontAwesomeIcon
+                            icon={faCommentAlt}
+                            color= 'rgba(231, 90, 124, 0.82)'
+                            size={16}
+                        />
+                    </TouchableOpacity>               */}
                     
+                </View>
+                </View>
+                <View
+                    style={{
+                        flexDirection: 'row',
+                        padding: 10,
+                        justifyContent: 'space-evenly',
+                        backgroundColor: 'rgba(214, 219, 210, 0.6)',
+                        borderBottomLeftRadius: 22,
+                        borderBottomRightRadius: 22,
+                    }}
+                >
+                <TouchableOpacity>
+                    <FontAwesomeIcon
+                        style={{
+                            borderRadius: 50,
+                            justifyContent: 'flex-end',
+                            alignItems: 'flex-end',
+                            padding: 10
+                        }}
+                        icon={farHeart}
+                        color= 'rgba(231, 90, 124, 0.82)'
+                        size={22}
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <FontAwesomeIcon
+                        style={{
+                            borderRadius: 50,
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            padding: 10
+                        }}
+                        icon={faPlay}
+                        color= 'rgba(231, 90, 124, 0.82)'
+                        size={22}
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <FontAwesomeIcon
+                        style={{
+                            borderRadius: 50,
+                            justifyContent: 'flex-start',
+                            alignItems: 'flex-start',
+                            padding: 10
+                        }}
+                        icon= {faShare}
+                        color= 'rgba(231, 90, 124, 0.82)'
+                        size={22}
+                    />
+                </TouchableOpacity>
                 </View>
             </View>
         )
@@ -62,12 +159,15 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         marginHorizontal: 4,
         marginVertical: 6,
-        marginTop: height * 0.05
+        marginTop: height * 0.05,
     },
     cardContent: {
         flexDirection: 'row',
+        borderRadius: 22,
         padding: 12,
-        paddingLeft: 0
+        paddingBottom: 12,
+        paddingLeft: 0,
+        backgroundColor: 'rgba(231, 90, 124, 0.82)', //'rgba(214, 219, 210, 0.6)'
     },
     headerImage: {
         width: 64,
@@ -82,7 +182,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         paddingLeft: 10,
-        color: '#000000',
+        color: 'rgba(44, 54, 63, 0.834)',
         fontSize: 16,
         paddingTop: 9,
         marginTop: -4,
@@ -94,7 +194,7 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         fontSize: 24,
         paddingTop: 4,
-        color: '#000000',
+        color: 'rgba(44, 54, 63, 0.834)',
         fontFamily: 'Medium'
     },
 })
