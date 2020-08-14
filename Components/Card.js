@@ -51,7 +51,7 @@ export default function Card(props){
                         >
                             <FontAwesomeIcon
                                 icon={faEllipsisV}
-                                color='rgba(231, 90, 124, 1)'
+                                color= 'rgba(214, 219, 210, 0.85)' //'rgba(231, 90, 124, 0.82)'
                                 size={22}
                             />
                         </TouchableOpacity>                

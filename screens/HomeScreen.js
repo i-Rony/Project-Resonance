@@ -10,6 +10,7 @@ import { AppLoading } from 'expo';
 import { ScrollView } from 'react-native-gesture-handler';
 import Constants from 'expo-constants';
 import JoJo from '../assets/jojo.jpg';
+import CardMusiq from '../Components/CardMusiq';
 
 
 const HomeScreen = ({ navigation }) => {
@@ -126,6 +127,12 @@ const HomeScreen = ({ navigation }) => {
                                         resizeMode: 'contain'
                                 }}/>
                             </Card>
+
+                            <CardMusiq>
+                                <Text>
+                                    Coffee Cup - Chill Edit
+                                </Text>
+                            </CardMusiq>
 
                             <Card>
                                 <Text>
