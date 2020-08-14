@@ -43,25 +43,32 @@ const NotificationScreen = ({ navigation }) => {
                 backgroundColor: 'rgba(255,255,255,0)'
             }}
         >
-            <NotificationScreenHeader />
-            <View
-                style={{
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flex: 1
-                }}
+            <SafeAreaView
+                    style={{
+                        flex: 1,
+                        marginTop: Constants.statusBarHeight,
+                    }}
             >
-                <TouchableOpacity
+                <NotificationScreenHeader />
+                <View
                     style={{
                         alignItems: "center",
                         justifyContent: "center",
+                        flex: 1
                     }}
                 >
-                    <Text>
-                        Notifications
-                        </Text>
-                </TouchableOpacity>
-            </View>
+                    <TouchableOpacity
+                        style={{
+                            alignItems: "center",
+                            justifyContent: "center",
+                        }}
+                    >
+                        <Text>
+                            Notifications
+                            </Text>
+                    </TouchableOpacity>
+                </View>
+            </SafeAreaView>
         </GestureRecognizer>
     );
 }

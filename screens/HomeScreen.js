@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, BackHandler, Alert, ToastAndroid, Platform, StyleSheet, Image, SafeAreaView } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, Text, BackHandler, Alert, ToastAndroid, Platform, Image, SafeAreaView } from 'react-native';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 import Card from '../Components/Card';
 import { HomeScreenHeader } from '../Components/Headers';
