@@ -3,6 +3,8 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 import { NotificationScreenHeader } from '../Components/Headers';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Constants from 'expo-constants';
+
 
 const NotificationScreen = ({ navigation }) => {
 
