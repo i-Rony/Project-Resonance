@@ -12,7 +12,7 @@ function HomeScreenHeader() {
             paddingBottom: 3
         }}>
             <View style={styles.header}>
-                <View style={{ marginLeft: '14%' }}>
+                <View style={{ marginLeft: '8%' }}>
                     <Text style={{
                         fontSize: 40,
                         fontWeight: 'bold',
@@ -22,7 +22,6 @@ function HomeScreenHeader() {
                         Clef
                     </Text>
                 </View>
-
             </View>
 
             <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 7 }}>
@@ -68,7 +67,6 @@ function HomeScreenHeader() {
                     </TouchableOpacity>
                 </View>
             </View>
-
         </View>
     );
 
@@ -119,7 +117,6 @@ function EventScreenHeader() {
                     value={searchQuery}
                 />
             </View>
-
         </View>
     );
 
@@ -140,7 +137,7 @@ function NotificationScreenHeader() {
                     alignItems: 'center',
                     paddingTop: 2,
                     paddingBottom: 4,
-                    marginLeft: 27,
+                    marginLeft: 8,
                     marginTop: 34
                 }
             ]}>
