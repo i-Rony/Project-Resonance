@@ -120,7 +120,7 @@ export default function CardMusiq(props){
                             padding: 10
                         }}
                         icon={farHeart}
-                        color= 'rgba(231, 90, 124, 0.82)'
+                        color= 'rgba(44, 54, 63, 0.834)'
                         size={22}
                     />
                 </TouchableOpacity>
@@ -135,7 +135,7 @@ export default function CardMusiq(props){
                             padding: 10
                         }}
                         icon={faPlay}
-                        color= 'rgba(231, 90, 124, 0.82)'
+                        color= 'rgba(44, 54, 63, 0.834)'
                         size={22}
                     />
                 </TouchableOpacity>
@@ -148,7 +148,7 @@ export default function CardMusiq(props){
                             padding: 10
                         }}
                         icon= {faShare}
-                        color= 'rgba(231, 90, 124, 0.82)'
+                        color= 'rgba(44, 54, 63, 0.834)'
                         size={22}
                     />
                 </TouchableOpacity>
