@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import {View, StyleSheet, Text, TouchableOpacity, Image, Dimensions} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity, Image, Dimensions, TouchableHighlight} from 'react-native';
 import CardFlip from 'react-native-card-flip';
 
-import { faHeart, faCommentAlt, faPlay, faPause, faShare, faShareAlt } from '@fortawesome/free-solid-svg-icons';
-import { faHeart as farHeart, faCommentAlt as farCommentAlt } from '@fortawesome/free-regular-svg-icons';
+import { faHeart, faPlay, faShare, faPause, faStop } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
 import { useFonts } from '@use-expo/font';
@@ -111,11 +111,68 @@ export default function CardMusiq(props){
                 {/* Audio Wave Player Below*/}
                 
                 <View style={styles.card}>
-                    <TouchableOpacity onPress={() => this.card.flip()}>
-                        <Text>
-                            AB
-                        </Text>
-                    </TouchableOpacity>
+                    <View style={styles.cardContentHeader}>
+                        <View style={styles.cardContent}>
+                            <TouchableOpacity>
+                                <Image source={JohnDoe} style={styles.headerImage}/>
+                            </TouchableOpacity>
+                            <View style={{width: 225}}>
+                                <Text style={styles.headerText}>
+                                    Dio Brando
+                                </Text>
+                                <Text 
+                                    numberOfLines={1}
+                                    ellipsizeMode='tail'
+                                    style={styles.headerMusic}
+                                >
+                                    {props.children}
+                                </Text>
+                            </View>                    
+                        </View>
+                    </View>
+                    <View style={styles.headerBottom}>
+                        <TouchableOpacity>
+                            <FontAwesomeIcon
+                                style={{
+                                    borderRadius: 50,
+                                    justifyContent: 'flex-end',
+                                    alignItems: 'flex-end',
+                                    padding: 10
+                                }}
+                                icon={farHeart}
+                                color= 'rgba(44, 54, 63, 0.834)'
+                                size={22}
+                            />
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <FontAwesomeIcon
+                                style={{
+                                    borderRadius: 50,
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    padding: 10
+                                }}
+                                icon={faPause}
+                                color= 'rgba(44, 54, 63, 0.834)'
+                                size={22}
+                            />
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={() => { this.card.flip()}}
+                        >
+                            <FontAwesomeIcon
+                                style={{
+                                    borderRadius: 50,
+                                    justifyContent: 'flex-start',
+                                    alignItems: 'flex-start',
+                                    padding: 10
+                                }}
+                                icon= {faStop}
+                                color= 'rgba(44, 54, 63, 0.834)'
+                                size={22}
+                            />
+                        </TouchableOpacity>
+                    </View>
                 </View>
                 </CardFlip>
             </View>
