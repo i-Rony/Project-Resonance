@@ -66,7 +66,7 @@ const NotificationScreen = ({ navigation }) => {
                     >
                         <Text>
                             Notifications
-                            </Text>
+                        </Text>
                     </TouchableOpacity>
                 </View>
             </SafeAreaView>
