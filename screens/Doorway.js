@@ -52,7 +52,7 @@ function Doorway({ navigation }) {
     return (
 
         <ImageBackground
-            source={require('../assets/source.gif')}
+            source={require('../assets/guitarStrings.jpg')}
             style={{
                 resizeMode: "cover",
                 flex: 1,
@@ -65,11 +65,12 @@ function Doorway({ navigation }) {
                 style={{
                     zIndex: 1,
                     flex: 1,
-                    justifyContent: "center",
+                    justifyContent: "flex-start",
+                    marginTop: 140,
                     alignItems: "center",
                 }}
             >
-                <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#fff' }}>Let's get started</Text>
+                <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#fff' }}>Let's get started</Text>
                 <Text>{"\n"}</Text>
                 <Text style={{ fontSize: 13, color: '#ffffff' }}>Login to your account or signup for {"\n"}           an amazing experience</Text>
                 <Text>{"\n"}</Text>
@@ -103,7 +104,7 @@ function Doorway({ navigation }) {
                 }}>-----  Or, you may Log In with  -----</Text>
                 <TouchableOpacity
                     style={[styles.TouchableOpacity, {
-                        backgroundColor: "#fff",
+                        backgroundColor: "rgba(255,255,255,0.84)",
                         padding: 11,
                         paddingLeft: 25,
                         paddingRight: 35
@@ -119,7 +120,7 @@ function Doorway({ navigation }) {
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={[styles.TouchableOpacity, {
-                        backgroundColor: "#fff",
+                        backgroundColor: "rgba(255,255,255,0.846)",
                         padding: 11,
                         paddingLeft: 33,
                         paddingRight: 43
@@ -155,6 +156,6 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         borderWidth: 2,
         borderColor: '#fff',
-        backgroundColor: 'rgba(255, 255, 255, 0.095)'
+        backgroundColor: 'rgba(255, 255, 255, 0.12)'
     }
 });
