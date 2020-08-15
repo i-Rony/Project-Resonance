@@ -24,7 +24,6 @@ function Doorway({ navigation }) {
                 style: 'cancel'
             }, {
                 text: 'OK',
-                // onPress: () => BackHandler.exitApp()
                 onPress: () => {
                     if (Platform.OS === 'android') {
                         ToastAndroid.show("We don't believe in 'good'-byes,\n\tHope to see you soon...", ToastAndroid.SHORT);
@@ -44,11 +43,11 @@ function Doorway({ navigation }) {
         return true;
     }
 
-    useEffect(() => {
-        navigation.addListener('focus', () => {
-            BackHandler.addEventListener('hardwareBackPress', handleBackButton);
-        });
-    });
+    // useEffect(() => {
+    //     navigation.addListener('focus', () => {
+    //         BackHandler.addEventListener('hardwareBackPress', handleBackButton);
+    //     });
+    // });
 
     let [fontsLoaded] = useFonts({
         'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
@@ -91,7 +90,7 @@ function Doorway({ navigation }) {
                 <TouchableOpacity
                     onPress={() => {
                         BackHandler.removeEventListener('hardwareBackPress', handleBackButton),
-                        navigation.navigate('Login')
+                        navigation.navigate('Login')                        
                     }}
                     style={[styles.TouchableOpacity, {
                         paddingLeft: 22,
@@ -110,13 +109,6 @@ function Doorway({ navigation }) {
                 >
                     <Text style={{ fontFamily: 'Medium', fontSize: 18, color: '#fff' }}> Join us, it's Free </Text>
                 </TouchableOpacity>
-                {/* <Text style={{
-                    color: "#fff",
-                    fontSize: 15,
-                    paddingTop: 2,
-                    paddingBottom: 16,
-                    fontFamily: 'Regular'
-                }}>-----  Or, you may Log In with  -----</Text> */}
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginBottom: 15 }}>
                     <View style={{ flex: 1, height: 1, backgroundColor: 'rgba(255,255,255,0)' }} />
                     <View style={{ flex: 1, height: 1, backgroundColor: 'rgba(255,255,255,1)' }} />
