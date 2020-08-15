@@ -43,11 +43,16 @@ function Doorway({ navigation }) {
         return true;
     }
 
-    // useEffect(() => {
-    //     navigation.addListener('focus', () => {
-    //         BackHandler.addEventListener('hardwareBackPress', handleBackButton);
-    //     });
-    // });
+    useEffect(() => {
+
+        navigation.addListener('focus', () => {
+            BackHandler.addEventListener('hardwareBackPress', handleBackButton)
+        })
+
+        navigation.addListener('blur', () => {
+            BackHandler.removeEventListener('hardwareBackPress', handleBackButton);
+        })
+    });
 
     let [fontsLoaded] = useFonts({
         'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
