@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         paddingLeft: 10,
-        color: '#FFFFFF', // '#2C363F',//'rgba(231,90,124,1)',
+        color: '#FFFFFF', // '#2C363F', //'rgba(231,90,124,1)',
         fontSize: 14,
         paddingTop: 0,
         marginTop: -4,
