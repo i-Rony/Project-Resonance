@@ -5,13 +5,14 @@ import {f, auth, database} from '../config/config';
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
+import { useFonts } from '@use-expo/font';
+import { AppLoading } from 'expo';
+
 function Doorway({ navigation }) {
 
     f.auth().onAuthStateChanged(function(user) {
         if(user){
             navigation.navigate('MainStack')
-        } else {
-            console.log('Logged Out');
         }
     });
 
@@ -49,6 +50,19 @@ function Doorway({ navigation }) {
         });
     });
 
+    let [fontsLoaded] = useFonts({
+        'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
+        'SemiBold': require('../assets/fonts/Montserrat-SemiBold.ttf'),
+        'Medium': require('../assets/fonts/Montserrat-Medium.ttf'),
+        'Light': require('../assets/fonts/Montserrat-Light.ttf'),
+        'Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
+    });
+
+    if (!fontsLoaded) {
+        return <AppLoading />;
+
+    } else {
+
     return (
 
         <ImageBackground
@@ -70,9 +84,9 @@ function Doorway({ navigation }) {
                     alignItems: "center",
                 }}
             >
-                <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#fff' }}>Let's get started</Text>
+                <Text style={{ fontSize: 30, fontFamily: 'Bold', color: '#FFFFFF' }}>Let's get started</Text>
                 <Text>{"\n"}</Text>
-                <Text style={{ fontSize: 13, color: '#ffffff' }}>Login to your account or signup for {"\n"}           an amazing experience</Text>
+                <Text style={{ fontSize: 14, color: '#ffffff', fontFamily: 'Regular' }}>Login to your account or signup for {"\n"}           an amazing experience</Text>
                 <Text>{"\n"}</Text>
                 <TouchableOpacity
                     onPress={() => {
@@ -84,7 +98,7 @@ function Doorway({ navigation }) {
                         paddingRight: 22,
                     }]}
                 >
-                    <Text style={{ fontSize: 18, color: '#fff' }}>Have an account? Login</Text>
+                    <Text style={{ fontFamily: 'Medium', fontSize: 18, color: '#fff' }}>Have an account? Login</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
@@ -94,13 +108,14 @@ function Doorway({ navigation }) {
                     }}
                     style={styles.TouchableOpacity}
                 >
-                    <Text style={{ fontSize: 18, color: '#fff' }}> Join us, it's Free </Text>
+                    <Text style={{ fontFamily: 'Medium', fontSize: 18, color: '#fff' }}> Join us, it's Free </Text>
                 </TouchableOpacity>
                 <Text style={{
                     color: "#fff",
                     fontSize: 15,
                     paddingTop: 2,
-                    paddingBottom: 16
+                    paddingBottom: 16,
+                    fontFamily: 'Regular'
                 }}>-----  Or, you may Log In with  -----</Text>
                 <TouchableOpacity
                     style={[styles.TouchableOpacity, {
@@ -110,7 +125,7 @@ function Doorway({ navigation }) {
                         paddingRight: 35
                     }]}
                 >
-                    <Text style={{ fontSize: 18 }}>
+                    <Text style={{ fontFamily: 'Medium',fontSize: 18 }}>
                         <FontAwesome
                             name="facebook"
                             color="#3c3ab5"
@@ -126,7 +141,7 @@ function Doorway({ navigation }) {
                         paddingRight: 43
                     }]}
                 >
-                    <Text style={{ fontSize: 18 }}>
+                    <Text style={{ fontFamily: 'Medium', fontSize: 18 }}>
                         <FontAwesome
                             name="google"
                             color="#ba4141"
@@ -138,6 +153,7 @@ function Doorway({ navigation }) {
         </ImageBackground>
 
     )
+    }
 
 }
 
@@ -149,8 +165,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         padding: 13,
-        paddingLeft: 50,
-        paddingRight: 50,
+        paddingHorizontal: 55,
         zIndex: 4,
         borderRadius: 30,
         marginBottom: 15,

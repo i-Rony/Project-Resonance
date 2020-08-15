@@ -7,7 +7,7 @@ const StartScreen = ({navigation}) => {
 
     setTimeout(() => {
         navigation.navigate('Doorway');
-    }, 2000);
+    }, 3000);
 
     return (
         <LinearGradient
