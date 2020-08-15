@@ -146,12 +146,6 @@ const HomeScreen = ({ navigation }) => {
                                 </Text>
                             </Card>
 
-                            <Card>
-                                <Text>
-                                    Hello
-                                </Text>
-                            </Card>
-
                         </View>
                     </ScrollView>
                 </SafeAreaView>
