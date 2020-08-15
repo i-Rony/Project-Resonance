@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Text, ImageBackground, TouchableOpacity, StyleSheet, BackHandler, Alert, ToastAndroid, Platform } from 'react-native';
+import { View, Text, ImageBackground, TouchableOpacity, StyleSheet, BackHandler, Alert, ToastAndroid, Platform } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import {f, auth, database} from '../config/config';
 
@@ -110,13 +110,28 @@ function Doorway({ navigation }) {
                 >
                     <Text style={{ fontFamily: 'Medium', fontSize: 18, color: '#fff' }}> Join us, it's Free </Text>
                 </TouchableOpacity>
-                <Text style={{
+                {/* <Text style={{
                     color: "#fff",
                     fontSize: 15,
                     paddingTop: 2,
                     paddingBottom: 16,
                     fontFamily: 'Regular'
-                }}>-----  Or, you may Log In with  -----</Text>
+                }}>-----  Or, you may Log In with  -----</Text> */}
+                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginBottom: 15 }}>
+                    <View style={{ flex: 1, height: 1, backgroundColor: 'rgba(255,255,255,0)' }} />
+                    <View style={{ flex: 1, height: 1, backgroundColor: 'rgba(255,255,255,1)' }} />
+                    <View>
+                        <Text style={{ 
+                            width: 200, 
+                            textAlign: 'center' ,
+                            color: "#fff",
+                            fontSize: 15,
+                            fontFamily: 'Regular'
+                        }}>Or, you may Log In with</Text>
+                    </View>
+                    <View style={{ flex: 1, height: 1, backgroundColor: 'rgba(255,255,255,1)' }} />
+                    <View style={{ flex: 1, height: 1, backgroundColor: 'rgba(255,255,255,0)' }} />
+                </View>
                 <TouchableOpacity
                     style={[styles.TouchableOpacity, {
                         backgroundColor: "rgba(255,255,255,0.84)",
