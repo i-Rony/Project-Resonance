@@ -44,11 +44,14 @@ function Doorway({ navigation }) {
     }
 
     useEffect(() => {
-        BackHandler.addEventListener('hardwareBackPress', handleBackButton),
 
         navigation.addListener('focus', () => {
+            BackHandler.addEventListener('hardwareBackPress', handleBackButton)
+        })
+
+        navigation.addListener('blur', () => {
             BackHandler.removeEventListener('hardwareBackPress', handleBackButton);
-        });
+        })
     });
 
     let [fontsLoaded] = useFonts({
