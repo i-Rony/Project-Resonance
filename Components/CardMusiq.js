@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {View, StyleSheet, Text, TouchableOpacity, Image, Dimensions} from 'react-native';
 
-import { faHeart, faPlay, faPause, faShare, faShareAlt } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faCommentAlt, faPlay, faPause, faShare, faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as farHeart, faCommentAlt as farCommentAlt } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
@@ -13,6 +13,15 @@ const {width, height} = Dimensions.get("screen");
 
 
 export default function CardMusiq(props){
+
+    const [isFlipped, setIsFlipped] = useState(false);
+    const [isPaused, setIsPaused] = useState(false);
+    const [audioPosition, setAudioPosition] = useState(0.00);
+
+    const flip = () => setIsFlipped(!isFlipped);
+    const togglePlay = () => setIsPaused(!isPaused);
+    const play = () => setIsPaused(false);
+    const pause = (position) => { setIsPaused(true); setAudioPosition(position); }
 
     let [fontsLoaded] = useFonts({
         'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
@@ -52,7 +61,44 @@ export default function CardMusiq(props){
                         >
                             {props.children}
                         </Text>
-                    </View>                    
+                    </View>
+                    {/* <TouchableOpacity
+                        style={{
+                            overflow: 'visible',
+                            right: 34,
+                            top: -28,
+                            borderRadius: 50,
+                            justifyContent: 'flex-end',
+                            alignItems: 'flex-end',
+                            padding: 10
+                        }}
+
+                    >
+                        <FontAwesomeIcon
+                            icon={faHeart}
+                            color= 'rgba(231, 90, 124, 0.82)'
+                            size={18}
+                        />
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={{
+                            overflow: 'visible',
+                            right: 44,
+                            top: -28,
+                            borderRadius: 50,
+                            justifyContent: 'flex-end',
+                            alignItems: 'flex-end',
+                            padding: 10
+                        }}
+
+                    >
+                        <FontAwesomeIcon
+                            icon={faCommentAlt}
+                            color= 'rgba(231, 90, 124, 0.82)'
+                            size={16}
+                        />
+                    </TouchableOpacity>               */}
+                    
                 </View>
                 </View>
                 <View
@@ -78,7 +124,9 @@ export default function CardMusiq(props){
                         size={22}
                     />
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity
+                    onPress={() => { flip(); play(); }}
+                >
                     <FontAwesomeIcon
                         style={{
                             borderRadius: 50,
