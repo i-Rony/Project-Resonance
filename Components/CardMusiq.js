@@ -14,7 +14,8 @@ import JohnDoe from '../assets/kawaii.jpg';
 const {width, height} = Dimensions.get("screen");
 
 const soundObject = new Audio.Sound();
-async function playAudio () {
+
+async function startAudio () {
     try {
         await soundObject.loadAsync(require('../assets/Anthony_Lazaro_Coffee_Cup.mp3'));
         await soundObject.playAsync();
@@ -23,7 +24,7 @@ async function playAudio () {
     }
 };
 
-async function stopAudio(){
+async function stopAudio() {
     try {
         await soundObject.unloadAsync();
     } catch (error) {
@@ -31,19 +32,26 @@ async function stopAudio(){
     }
 }
 
+async function pauseAudio() {
+    soundObject.setStatusAsync({ shouldPlay: false });
+}
+
+async function playAudio() {
+    soundObject.setStatusAsync({ shouldPlay: true });
+}
+
 
 export default function CardMusiq(props){
 
     const [isFlipped, setIsFlipped] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
-    const [audioPosition, setAudioPosition] = useState(0.00);
 
-    const flip = () => setIsFlipped(!isFlipped);
+    const flipOver = () => setIsFlipped(!isFlipped);
     // const togglePlay = () => setIsPaused(!isPaused);
-    const play = () => setIsPaused(false);
-    // const pause = (position) => { setIsPaused(true); setAudioPosition(position); }
-    const pause = () => setIsPaused(true);
-    const stop = () => { setIsPaused(true); setAudioPosition(0); }
+    const start = () => { setIsPaused(false); startAudio(); }
+    const play = () => { setIsPaused(false); playAudio(); };
+    const pause = () => { setIsPaused(true); pauseAudio(); }
+    const stop = () => { setIsPaused(true); stopAudio(); }
 
     let [fontsLoaded] = useFonts({
         'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
@@ -135,7 +143,7 @@ export default function CardMusiq(props){
                             />
                         </TouchableOpacity>
                         <TouchableOpacity
-                            onPress={() => { this.card.flip(); flip(); play(); playAudio()}}
+                            onPress={() => { this.card.flip(); flipOver(); start(); }}
                         >
                             <FontAwesomeIcon
                                 style={{
@@ -203,7 +211,7 @@ export default function CardMusiq(props){
                         </TouchableOpacity>
                         {audioButton}
                         <TouchableOpacity
-                            onPress={() => { this.card.flip(); flip(); stop(); stopAudio()}}
+                            onPress={() => { this.card.flip(); flipOver(); stop(); }}
                         >
                             <FontAwesomeIcon
                                 style={{
