@@ -18,6 +18,7 @@ const soundObject = new Audio.Sound();
 async function startAudio () {
     try {
         await soundObject.loadAsync(require('../assets/Anthony_Lazaro_Coffee_Cup.mp3'));
+        await soundObject.setIsLoopingAsync(true)
         await soundObject.playAsync();
     } catch (error) {
         console.log(error);
@@ -40,8 +41,17 @@ async function playAudio() {
     soundObject.setStatusAsync({ shouldPlay: true });
 }
 
-
 export default function CardMusiq(props){
+
+    useEffect(() => {
+        
+             Audio.setAudioModeAsync({
+              staysActiveInBackground: true,
+              playThroughEarpieceAndroid: false,
+              interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DO_NOT_MIX,
+              shouldDuckAndroid: true,
+            })
+    })
 
     const [isFlipped, setIsFlipped] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
