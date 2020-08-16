@@ -66,7 +66,7 @@ export default function Card(props){
                         <View>
                         <FontAwesomeIcon
                             icon={farHeart} // if liked then {faHeart}
-                            color= 'rgba(231, 90, 124, 0.9)'
+                            color= 'rgba(44, 54, 63, 0.834)'
                             size={22}
                         />
                         </View>
@@ -114,19 +114,19 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        borderRightColor: 'rgba(231, 90, 124, 0.38)',
+        borderRightColor: 'rgba(214, 219, 210, 1)',
         borderRightWidth: 0.6,
-        borderTopColor: 'rgba(231, 90, 124, 0.38)',
+        borderTopColor: 'rgba(214, 219, 210, 0.6)',
         borderTopWidth: 1,
         paddingVertical: 10,
-        backgroundColor: 'rgba(231, 90, 124, 0.38)',
+        backgroundColor: 'rgba(214, 219, 210, 0.6)',//'rgba(231, 90, 124, 0.38)',
         borderBottomLeftRadius: 22
     },
     comment: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        borderLeftColor: 'rgba(214, 219, 210, 0.6)',
+        borderLeftColor: 'rgba(214, 219, 210, 1)',
         borderLeftWidth: 0.6,
         borderTopColor: 'rgba(214, 219, 210, 0.6)',
         borderTopWidth: 1,
