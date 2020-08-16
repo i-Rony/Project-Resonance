@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {View, StyleSheet, Text, TouchableOpacity, Image, Dimensions, TouchableHighlight} from 'react-native';
 import CardFlip from 'react-native-card-flip';
+import { Audio } from 'expo-av';
 
 import { faHeart, faPlay, faShare, faPause, faStop } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
@@ -11,6 +12,20 @@ import { AppLoading } from 'expo';
 import JohnDoe from '../assets/kawaii.jpg';
 
 const {width, height} = Dimensions.get("screen");
+const soundObject = new Audio.Sound();
+async function playAudio () {
+    try {
+        await soundObject.loadAsync(require('../assets/Anthony_Lazaro_Coffee_Cup.mp3'));
+        await soundObject.playAsync();
+        // Your sound is playing!
+      
+        // Don't forget to unload the sound from memory
+        // when you are done using the Sound object
+        await soundObject.unloadAsync();
+    } catch (error) {
+        console.log(error); // An error occurred!
+    }
+};
 
 
 export default function CardMusiq(props){
@@ -32,7 +47,7 @@ export default function CardMusiq(props){
         'Medium': require('../assets/fonts/Montserrat-Medium.ttf'),
         'Light': require('../assets/fonts/Montserrat-Light.ttf'),
         'Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
-    });
+    });      
 
     var audioButton =
         <TouchableOpacity
@@ -116,7 +131,7 @@ export default function CardMusiq(props){
                             />
                         </TouchableOpacity>
                         <TouchableOpacity
-                            onPress={() => { this.card.flip(); flip(); play(); }}
+                            onPress={() => { this.card.flip(); flip(); play(); playAudio()}}
                         >
                             <FontAwesomeIcon
                                 style={{
