@@ -20,9 +20,11 @@ export default function CardMusiq(props){
     const [audioPosition, setAudioPosition] = useState(0.00);
 
     const flip = () => setIsFlipped(!isFlipped);
-    const togglePlay = () => setIsPaused(!isPaused);
+    // const togglePlay = () => setIsPaused(!isPaused);
     const play = () => setIsPaused(false);
-    const pause = (position) => { setIsPaused(true); setAudioPosition(position); }
+    // const pause = (position) => { setIsPaused(true); setAudioPosition(position); }
+    const pause = () => setIsPaused(true);
+    const stop = () => { setIsPaused(true); setAudioPosition(0); }
 
     let [fontsLoaded] = useFonts({
         'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
@@ -31,6 +33,42 @@ export default function CardMusiq(props){
         'Light': require('../assets/fonts/Montserrat-Light.ttf'),
         'Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
     });
+
+    var audioButton =
+        <TouchableOpacity
+            onPress={() => pause()}
+        >
+            <FontAwesomeIcon
+                style={{
+                    borderRadius: 50,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    padding: 10
+                }}
+                icon={faPause}
+                color='rgba(44, 54, 63, 0.834)'
+                size={22}
+            />
+        </TouchableOpacity>
+
+    if (isPaused) {
+        audioButton = 
+            <TouchableOpacity
+                onPress={() => play()}
+            >
+                <FontAwesomeIcon
+                    style={{
+                        borderRadius: 50,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        padding: 10
+                    }}
+                    icon={faPlay}
+                    color='rgba(44, 54, 63, 0.834)'
+                    size={22}
+                />
+            </TouchableOpacity>
+    }
 
     if (!fontsLoaded) {
         return <AppLoading />;
@@ -41,7 +79,7 @@ export default function CardMusiq(props){
             <CardFlip 
                 style={{width: width * 0.97, height: height * 0.24}} 
                 ref={card => (this.card = card)}
-                flipDirection='x'
+                flipDirection='y'
             >
                 <View style={styles.card}>
                     <View style={styles.cardContentHeader}>
@@ -144,21 +182,9 @@ export default function CardMusiq(props){
                                 size={22}
                             />
                         </TouchableOpacity>
-                        <TouchableOpacity>
-                            <FontAwesomeIcon
-                                style={{
-                                    borderRadius: 50,
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    padding: 10
-                                }}
-                                icon={faPause}
-                                color= 'rgba(44, 54, 63, 0.834)'
-                                size={22}
-                            />
-                        </TouchableOpacity>
+                        {audioButton}
                         <TouchableOpacity
-                            onPress={() => { this.card.flip()}}
+                            onPress={() => { this.card.flip(); flip(); stop();}}
                         >
                             <FontAwesomeIcon
                                 style={{
