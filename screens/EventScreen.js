@@ -15,37 +15,19 @@ import Constants from 'expo-constants';
 const EventScreen = ({ navigation }) => {
     
     const handleBackButton = () => {
-        Alert.alert(
-            'Exit App ?',
-            '', [{
-                text: 'Cancel',
-                style: 'cancel'
-            }, {
-                text: 'OK',
-                // onPress: () => BackHandler.exitApp()
-                onPress: () => {
-                    if (Platform.OS === 'android') {
-                        ToastAndroid.show("We don't believe in 'good'-byes,\n\tHope to see you soon...", ToastAndroid.SHORT);
-                        setTimeout(() => {
-                            BackHandler.exitApp();
-                        }, 1000);
-                    }
-                    else {
-                        BackHandler.exitApp();
-                    }
-                }//end of onPress()
-            }],
-            {
-                cancelable: false
-            }
-        );
+        navigation.navigate('Home');
         return true;
     }
 
     useEffect(() => {
+
         navigation.addListener('focus', () => {
-            BackHandler.addEventListener('hardwareBackPress', handleBackButton);
-        });
+            BackHandler.addEventListener('hardwareBackPress', handleBackButton)
+        })
+
+        navigation.addListener('blur', () => {
+            BackHandler.removeEventListener('hardwareBackPress', handleBackButton);
+        })
     });
 
     let [fontsLoaded] = useFonts({

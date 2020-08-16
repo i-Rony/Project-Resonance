@@ -44,9 +44,14 @@ const HomeScreen = ({ navigation }) => {
     }
 
     useEffect(() => {
+
         navigation.addListener('focus', () => {
-            BackHandler.addEventListener('hardwareBackPress', handleBackButton);
-        });
+            BackHandler.addEventListener('hardwareBackPress', handleBackButton)
+        })
+
+        navigation.addListener('blur', () => {
+            BackHandler.removeEventListener('hardwareBackPress', handleBackButton);
+        })
     });
 
     let [fontsLoaded] = useFonts({

@@ -1,11 +1,27 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, SafeAreaView } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, BackHandler, Text, TouchableOpacity, SafeAreaView } from 'react-native';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 import { NotificationScreenHeader } from '../Components/Headers';
 import Constants from 'expo-constants';
 
 
 const NotificationScreen = ({ navigation }) => {
+
+    const handleBackButton = () => {
+        navigation.navigate('Home');
+        return true;
+    }
+
+    useEffect(() => {
+
+        navigation.addListener('focus', () => {
+            BackHandler.addEventListener('hardwareBackPress', handleBackButton)
+        })
+
+        navigation.addListener('blur', () => {
+            BackHandler.removeEventListener('hardwareBackPress', handleBackButton);
+        })
+    });
 
     function onSwipeLeft(gestureState) {
         navigation.navigate('User');

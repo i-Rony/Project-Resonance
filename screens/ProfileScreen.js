@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useIsDrawerOpen } from '@react-navigation/drawer';
-import { View, Text, ImageBackground, TouchableOpacity, Dimensions, TextInput } from 'react-native';
+import { View, BackHandler, Text, ImageBackground, TouchableOpacity, Dimensions, TextInput } from 'react-native';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 import { LinearGradient } from 'expo-linear-gradient';
 import AnimateNumber from 'react-native-animate-number';
@@ -13,6 +13,22 @@ import { AppLoading } from 'expo';
 const { width, height } = Dimensions.get("screen");
 
 const ProfileScreen = ({ navigation }) => {
+
+    const handleBackButton = () => {
+        navigation.navigate('Home');
+        return true;
+    }
+
+    useEffect(() => {
+
+        navigation.addListener('focus', () => {
+            BackHandler.addEventListener('hardwareBackPress', handleBackButton)
+        })
+
+        navigation.addListener('blur', () => {
+            BackHandler.removeEventListener('hardwareBackPress', handleBackButton);
+        })
+    });
 
     var isDrawerOpen = useIsDrawerOpen();
 
