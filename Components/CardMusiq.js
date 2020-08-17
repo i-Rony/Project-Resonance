@@ -33,13 +33,13 @@ async function stopAudio() {
     }
 }
 
-async function pauseAudio() {
-    soundObject.setStatusAsync({ shouldPlay: false });
-}
+// async function pauseAudio() {
+//     soundObject.setStatusAsync({ shouldPlay: false });
+// }
 
-async function playAudio() {
-    soundObject.setStatusAsync({ shouldPlay: true });
-}
+// async function playAudio() {
+//     soundObject.setStatusAsync({ shouldPlay: true });
+// }
 
 export default function CardMusiq(props){
 
@@ -55,13 +55,17 @@ export default function CardMusiq(props){
 
     const [isFlipped, setIsFlipped] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
+    const [audioPosition, setAudioPosition] = useState(000);
 
     const flipOver = () => setIsFlipped(!isFlipped);
     // const togglePlay = () => setIsPaused(!isPaused);
     const start = () => { setIsPaused(false); startAudio(); }
-    const play = () => { setIsPaused(false); playAudio(); };
-    const pause = () => { setIsPaused(true); pauseAudio(); }
+    const play = () => setIsPaused(false) // playAudio();
+    const pause = () => setIsPaused(true) // pauseAudio();
     const stop = () => { setIsPaused(true); stopAudio(); }
+    const setPosition = (position) => soundObject.setStatusAsync({ positionMillis: position });
+
+    soundObject.setStatusAsync({ shouldPlay: !isPaused });
 
     let [fontsLoaded] = useFonts({
         'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
