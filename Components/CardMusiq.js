@@ -216,13 +216,17 @@ export default function CardMusiq(props){
                                 </Text>
                             </View>                    
                         </View>
+                        
                         <Slider
-                            style={{ marginTop: 8, marginLeft: 12, marginRight: 12 }}
+                            style={styles.slider}
                             minimumValue={0}
                             maximumValue={2000} // {props.trackInfo.trackLength}
                             onValueChange={ (position) => changePosition(position) }
                             onSlidingComplete={() => setPosition()}
-                        />
+                            maximumTrackTintColor='rgba(231, 90, 124, 1)'
+                            minimumTrackTintColor='rgba(44, 54, 63, 0.834)'
+                            thumbTintColor='rgba(44, 54, 63, 0.834)'                           
+                        />                        
                     </View>
                     <View style={styles.headerBottom}>
                         <TouchableOpacity>
@@ -277,6 +281,7 @@ const styles = StyleSheet.create({
         marginTop: height * 0.05,
     },
     cardContentHeader: {
+        zIndex: 1,
         backgroundColor: 'rgba(214, 219, 210, 0.6)',
         borderTopLeftRadius: 22,
         borderTopRightRadius: 22
@@ -318,11 +323,21 @@ const styles = StyleSheet.create({
         fontFamily: 'Medium'
     },
     headerBottom: {
+        zIndex: 0,
         flexDirection: 'row',
         padding: 10,
         justifyContent: 'space-evenly',
         backgroundColor: 'rgba(214, 219, 210, 0.6)',
         borderBottomLeftRadius: 22,
         borderBottomRightRadius: 22,
+    },
+    slider: {
+        zIndex: 2,
+        elevation: 8, 
+        overflow: 'visible', 
+        marginTop: -10,
+        marginLeft: 6, 
+        marginRight: 6, 
+        marginBottom: -6
     }
 });
