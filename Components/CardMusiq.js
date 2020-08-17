@@ -3,6 +3,7 @@ import {View, StyleSheet, Text, TouchableOpacity, Image, Dimensions, TouchableHi
 import CardFlip from 'react-native-card-flip';
 import { Audio } from 'expo-av';
 import Slider from '@react-native-community/slider';
+import AutoScrolling from 'react-native-auto-scrolling';
 
 import { faHeart, faPlay, faShare, faPause, faStop } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
@@ -207,6 +208,7 @@ export default function CardMusiq(props){
                                 <Text style={styles.headerText}>
                                     Dio Brando
                                 </Text>
+                                <AutoScrolling endPadding={30}>
                                 <Text 
                                     numberOfLines={1}
                                     ellipsizeMode='tail'
@@ -214,6 +216,7 @@ export default function CardMusiq(props){
                                 >
                                     {props.children}
                                 </Text>
+                                </AutoScrolling>
                             </View>                    
                         </View>
                         
