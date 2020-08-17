@@ -55,7 +55,7 @@ export default function CardMusiq(props){
 
     const [isFlipped, setIsFlipped] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
-    const [audioPosition, setAudioPosition] = useState(000);
+    // const [audioPosition, setAudioPosition] = useState(000);
 
     const flipOver = () => setIsFlipped(!isFlipped);
     // const togglePlay = () => setIsPaused(!isPaused);
