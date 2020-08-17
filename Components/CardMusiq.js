@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import {View, StyleSheet, Text, TouchableOpacity, Image, Dimensions, TouchableHighlight} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity, Image, Dimensions, TouchableHighlight, Slider} from 'react-native';
 import CardFlip from 'react-native-card-flip';
 import { Audio } from 'expo-av';
+import Moment from "moment";
 
 import { faHeart, faPlay, faShare, faPause, faStop } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
@@ -55,7 +56,8 @@ export default function CardMusiq(props){
 
     const [isFlipped, setIsFlipped] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
-    // const [audioPosition, setAudioPosition] = useState(000);
+    const [audioPosition, setAudioPosition] = useState(0);
+    const [changingPosition, changePosition] = useState(0.0);
 
     const flipOver = () => setIsFlipped(!isFlipped);
     // const togglePlay = () => setIsPaused(!isPaused);
@@ -63,7 +65,10 @@ export default function CardMusiq(props){
     const play = () => setIsPaused(false) // playAudio();
     const pause = () => setIsPaused(true) // pauseAudio();
     const stop = () => { setIsPaused(true); stopAudio(); }
-    const setPosition = (position) => soundObject.setStatusAsync({ positionMillis: position });
+    const setPosition = () => {
+        setAudioPosition(Math.floor(changingPosition)); 
+        soundObject.playFromPositionAsync(audioPosition); 
+    } // Moment.utc(position * 1000).format("m:ss")
 
     soundObject.setStatusAsync({ shouldPlay: !isPaused });
 
@@ -208,6 +213,13 @@ export default function CardMusiq(props){
                                 </Text>
                             </View>                    
                         </View>
+                        <Slider
+                            style={{ marginTop: 8, marginLeft: 12, marginRight: 12 }}
+                            minimumValue={0}
+                            maximumValue={2000} // {props.trackInfo.trackLength}
+                            onValueChange={ (position) => changePosition(position) }
+                            onSlidingComplete={setPosition}
+                        />
                     </View>
                     <View style={styles.headerBottom}>
                         <TouchableOpacity>
@@ -310,4 +322,4 @@ const styles = StyleSheet.create({
         borderBottomLeftRadius: 22,
         borderBottomRightRadius: 22,
     }
-})
+});

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { defaultString } from '../String/defaultStringValue';
+// import { defaultString } from '../String/defaultStringValue';
 import {
   View,
   Text,
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
       width: 10,
       height: 10,
       borderRadius: 5,
-      backgroundColor: defaultString.darkColor,
+      // backgroundColor: defaultString.darkColor,
   },
   text: {
       color: 'rgba(255, 255, 255, 0.72)',
