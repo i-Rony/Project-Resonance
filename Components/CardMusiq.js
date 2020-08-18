@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import {View, StyleSheet, Text, TouchableOpacity, Image, Dimensions, TouchableHighlight, Slider} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity, Image, Dimensions, TouchableHighlight} from 'react-native';
 import CardFlip from 'react-native-card-flip';
 import { Audio } from 'expo-av';
-import Moment from "moment";
+import Slider from '@react-native-community/slider';
+import AutoScrolling from 'react-native-auto-scrolling';
 
 import { faHeart, faPlay, faShare, faPause, faStop } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
@@ -65,9 +66,12 @@ export default function CardMusiq(props){
     const play = () => setIsPaused(false) // playAudio();
     const pause = () => setIsPaused(true) // pauseAudio();
     const stop = () => { setIsPaused(true); stopAudio(); }
-    const setPosition = () => {
-        setAudioPosition(Math.floor(changingPosition)); 
-        soundObject.playFromPositionAsync(audioPosition); 
+
+    async function setPosition(){
+        setAudioPosition(Math.floor(changingPosition)*100); 
+        await soundObject.setPositionAsync(audioPosition);
+        await soundObject.playAsync();
+        console.log(audioPosition); 
     } // Moment.utc(position * 1000).format("m:ss")
 
     soundObject.setStatusAsync({ shouldPlay: !isPaused });
@@ -204,6 +208,7 @@ export default function CardMusiq(props){
                                 <Text style={styles.headerText}>
                                     Dio Brando
                                 </Text>
+                                <AutoScrolling endPadding={30}>
                                 <Text 
                                     numberOfLines={1}
                                     ellipsizeMode='tail'
@@ -211,15 +216,20 @@ export default function CardMusiq(props){
                                 >
                                     {props.children}
                                 </Text>
+                                </AutoScrolling>
                             </View>                    
                         </View>
+                        
                         <Slider
-                            style={{ marginTop: 8, marginLeft: 12, marginRight: 12 }}
+                            style={styles.slider}
                             minimumValue={0}
                             maximumValue={2000} // {props.trackInfo.trackLength}
                             onValueChange={ (position) => changePosition(position) }
-                            onSlidingComplete={setPosition}
-                        />
+                            onSlidingComplete={() => setPosition()}
+                            maximumTrackTintColor='rgba(231, 90, 124, 1)'
+                            minimumTrackTintColor='rgba(44, 54, 63, 0.834)'
+                            thumbTintColor='rgba(44, 54, 63, 0.834)'                           
+                        />                        
                     </View>
                     <View style={styles.headerBottom}>
                         <TouchableOpacity>
@@ -274,6 +284,7 @@ const styles = StyleSheet.create({
         marginTop: height * 0.05,
     },
     cardContentHeader: {
+        zIndex: 1,
         backgroundColor: 'rgba(214, 219, 210, 0.6)',
         borderTopLeftRadius: 22,
         borderTopRightRadius: 22
@@ -315,11 +326,21 @@ const styles = StyleSheet.create({
         fontFamily: 'Medium'
     },
     headerBottom: {
+        zIndex: 0,
         flexDirection: 'row',
         padding: 10,
         justifyContent: 'space-evenly',
         backgroundColor: 'rgba(214, 219, 210, 0.6)',
         borderBottomLeftRadius: 22,
         borderBottomRightRadius: 22,
+    },
+    slider: {
+        zIndex: 2,
+        elevation: 8, 
+        overflow: 'visible', 
+        marginTop: -10,
+        marginLeft: 6, 
+        marginRight: 6, 
+        marginBottom: -6
     }
 });
