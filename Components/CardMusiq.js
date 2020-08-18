@@ -72,7 +72,7 @@ export default function CardMusiq(props){
         await soundObject.setPositionAsync(audioPosition);
         await soundObject.playAsync();
         console.log(audioPosition); 
-    } // Moment.utc(position * 1000).format("m:ss")
+    } // Moment.utc(changingPosition * 1000).format("m:ss")
 
     soundObject.setStatusAsync({ shouldPlay: !isPaused });
 
