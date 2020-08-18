@@ -58,7 +58,7 @@ export default function CardMusiq(props){
     const [isFlipped, setIsFlipped] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
     const [audioPosition, setAudioPosition] = useState(0);
-    const [changingPosition, changePosition] = useState(0.0);
+    const [changingPosition, changePosition] = useState(0);
 
     const flipOver = () => setIsFlipped(!isFlipped);
     // const togglePlay = () => setIsPaused(!isPaused);
@@ -209,7 +209,7 @@ export default function CardMusiq(props){
                                     Dio Brando
                                 </Text>
                                 <AutoScrolling endPadding={30}
-                                    style={{ marginLeft: 15 }}
+                                    style={{ marginLeft: 12 }}
                                 >
                                 <Text 
                                     numberOfLines={1}
