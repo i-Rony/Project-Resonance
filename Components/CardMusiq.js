@@ -82,7 +82,7 @@ export default function CardMusiq(props){
         'Medium': require('../assets/fonts/Montserrat-Medium.ttf'),
         'Light': require('../assets/fonts/Montserrat-Light.ttf'),
         'Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
-    });      
+    });     
 
     var audioButton =
         <TouchableOpacity
@@ -208,7 +208,9 @@ export default function CardMusiq(props){
                                 <Text style={styles.headerText}>
                                     Dio Brando
                                 </Text>
-                                <AutoScrolling endPadding={30}>
+                                <AutoScrolling endPadding={30}
+                                    style={{ marginLeft: 15 }}
+                                >
                                 <Text 
                                     numberOfLines={1}
                                     ellipsizeMode='tail'
