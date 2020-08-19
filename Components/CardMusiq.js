@@ -3,6 +3,7 @@ import {View, StyleSheet, Text, TouchableOpacity, Image, Dimensions, TouchableHi
 import CardFlip from 'react-native-card-flip';
 import { Audio } from 'expo-av';
 import Slider from '@react-native-community/slider';
+// import Slider from 'react-native-slider';
 import AutoScrolling from 'react-native-auto-scrolling';
 
 import { faHeart, faPlay, faShare, faPause, faStop } from '@fortawesome/free-solid-svg-icons';
@@ -75,6 +76,12 @@ export default function CardMusiq(props){
     } // Moment.utc(changingPosition * 1000).format("m:ss")
 
     soundObject.setStatusAsync({ shouldPlay: !isPaused });
+
+    // setInterval(() => {
+    //     if (!isPaused) {
+    //         setAudioPosition(audioPosition + 50);
+    //     }
+    // }, 50);
 
     let [fontsLoaded] = useFonts({
         'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
@@ -225,6 +232,7 @@ export default function CardMusiq(props){
                         <Slider
                             style={styles.slider}
                             minimumValue={0}
+                            value={audioPosition}
                             maximumValue={2000} // {props.trackInfo.trackLength}
                             onValueChange={ (position) => changePosition(position) }
                             onSlidingComplete={() => setPosition()}
