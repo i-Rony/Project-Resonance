@@ -24,6 +24,7 @@ async function loadAudio() {
     totalDuration = track.durationMillis;
     await soundObject.setIsLoopingAsync(true);
     await soundObject.playAsync();
+    await soundObject.stopAsync();
 }
 // async function pauseAudio() {
 //     soundObject.setStatusAsync({ shouldPlay: false });
@@ -48,6 +49,7 @@ export default function CardMusiq(props){
     });
 
     async function startAudio(){
+        soundObject.playAsync();
         soundObject._onPlaybackStatusUpdate = (status) => {
             if(status.isLoaded){
                 setValue({
@@ -67,7 +69,7 @@ export default function CardMusiq(props){
 
     
 
-    const _getSeekSliderPosition = () => {
+    _getSeekSliderPosition = () => {
         if (value != 0)
             return Math.floor(value/totalDuration);
         else
