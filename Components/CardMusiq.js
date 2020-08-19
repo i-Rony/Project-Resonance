@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {View, StyleSheet, Text, TouchableOpacity, Image, Dimensions, TouchableHighlight} from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, Image, Dimensions, TouchableHighlight } from 'react-native';
 import CardFlip from 'react-native-card-flip';
 import { Audio } from 'expo-av';
 import Slider from '@react-native-community/slider';
@@ -16,26 +16,6 @@ import JohnDoe from '../assets/kawaii.jpg';
 
 const {width, height} = Dimensions.get("screen");
 
-const soundObject = new Audio.Sound();
-
-async function startAudio () {
-    try {
-        await soundObject.loadAsync(require('../assets/Anthony_Lazaro_Coffee_Cup.mp3'));
-        await soundObject.setIsLoopingAsync(true)
-        await soundObject.playAsync();
-    } catch (error) {
-        console.log(error);
-    }
-};
-
-async function stopAudio() {
-    try {
-        await soundObject.unloadAsync();
-    } catch (error) {
-        console.log(error); // An error occurred!
-    }
-}
-
 // async function pauseAudio() {
 //     soundObject.setStatusAsync({ shouldPlay: false });
 // }
@@ -46,15 +26,37 @@ async function stopAudio() {
 
 export default function CardMusiq(props){
 
+    const soundObject = new Audio.Sound();
+    var totalDuration;
+
+    async function startAudio () {
+        try {
+            const track = await soundObject.loadAsync(require('../assets/Anthony_Lazaro_Coffee_Cup.mp3'));
+            totalDuration = track.durationMillis;
+            await soundObject.setIsLoopingAsync(true);
+            await soundObject.playAsync();
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    
+    async function stopAudio() {
+        try {
+            await soundObject.unloadAsync();
+        } catch (error) {
+            console.log(error); // An error occurred!
+        }
+    }
+
     useEffect(() => {
         
-             Audio.setAudioModeAsync({
-              staysActiveInBackground: true,
-              playThroughEarpieceAndroid: false,
-              interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DO_NOT_MIX,
-              shouldDuckAndroid: true,
-            })
-    })
+        Audio.setAudioModeAsync({
+            staysActiveInBackground: true,
+            playThroughEarpieceAndroid: false,
+            interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DO_NOT_MIX,
+            shouldDuckAndroid: true,
+        });
+    });
 
     const [isFlipped, setIsFlipped] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
@@ -68,20 +70,14 @@ export default function CardMusiq(props){
     const pause = () => setIsPaused(true) // pauseAudio();
     const stop = () => { setIsPaused(true); stopAudio(); }
 
-    async function setPosition(){
-        setAudioPosition(Math.floor(changingPosition)*100); 
+    async function setPosition() {
+        setAudioPosition(Math.floor(changingPosition)*100);
         await soundObject.setPositionAsync(audioPosition);
         await soundObject.playAsync();
-        console.log(audioPosition); 
+        console.log(audioPosition);
     } // Moment.utc(changingPosition * 1000).format("m:ss")
 
     soundObject.setStatusAsync({ shouldPlay: !isPaused });
-
-    // setInterval(() => {
-    //     if (!isPaused) {
-    //         setAudioPosition(audioPosition + 50);
-    //     }
-    // }, 50);
 
     let [fontsLoaded] = useFonts({
         'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
@@ -134,7 +130,7 @@ export default function CardMusiq(props){
         return (
             <View>
             <CardFlip 
-                style={{width: width * 0.97, height: height * 0.24}} 
+                style={{ width: width * 0.97, height: height * 0.24 }} 
                 ref={card => (this.card = card)}
                 flipDirection='y'
             >
@@ -233,7 +229,7 @@ export default function CardMusiq(props){
                             style={styles.slider}
                             minimumValue={0}
                             value={audioPosition}
-                            maximumValue={2000} // {props.trackInfo.trackLength}
+                            maximumValue={totalDuration} // {props.trackInfo.trackLength}
                             onValueChange={ (position) => changePosition(position) }
                             onSlidingComplete={() => setPosition()}
                             maximumTrackTintColor='rgba(231, 90, 124, 1)'
