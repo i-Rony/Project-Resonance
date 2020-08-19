@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, Image, Dimensions, TouchableHighlight } from 'react-native';
 import CardFlip from 'react-native-card-flip';
 import { Audio } from 'expo-av';
-// import Slider from '@react-native-community/slider';
-import Slider from 'react-native-slider';
+import Slider from '@react-native-community/slider';
+// import Slider from 'react-native-slider';
 import AutoScrolling from 'react-native-auto-scrolling';
 
 import { faHeart, faPlay, faShare, faPause, faStop } from '@fortawesome/free-solid-svg-icons';
@@ -19,6 +19,12 @@ const {width, height} = Dimensions.get("screen");
 const soundObject = new Audio.Sound();
 var totalDuration;
 
+async function loadAudio() {
+    const track = await soundObject.loadAsync(require('../assets/Anthony_Lazaro_Coffee_Cup.mp3'));
+    totalDuration = track.durationMillis;
+    await soundObject.setIsLoopingAsync(true);
+    await soundObject.playAsync();
+}
 // async function pauseAudio() {
 //     soundObject.setStatusAsync({ shouldPlay: false });
 // }
@@ -38,27 +44,17 @@ export default function CardMusiq(props){
             interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DO_NOT_MIX,
             shouldDuckAndroid: true,
         });
-        
-    },
-    
-    async function loadAudio() {
-        const track = await soundObject.loadAsync(require('../assets/Anthony_Lazaro_Coffee_Cup.mp3'));
-        totalDuration = track.durationMillis;
-        await soundObject.setIsLoopingAsync(true);
-    }
-
-
-    );
+        () => loadAudio()        
+    });
 
     async function startAudio(){
-        await soundObject.playAsync();
         soundObject._onPlaybackStatusUpdate = (status) => {
             if(status.isLoaded){
                 setValue({
                     value: status.positionMillis
                 });
             }
-        }
+        };
     }
 
     async function stopAudio() {
@@ -72,9 +68,11 @@ export default function CardMusiq(props){
     
 
     const _getSeekSliderPosition = () => {
-        console.log(Math.floor(value/totalDuration));
-        return Math.floor(value/totalDuration);
-	}
+        if (value != 0)
+            return Math.floor(value/totalDuration);
+        else
+            return 0; 
+    }
     
     const [isFlipped, setIsFlipped] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
@@ -84,7 +82,7 @@ export default function CardMusiq(props){
 
     const flipOver = () => setIsFlipped(!isFlipped);
     // const togglePlay = () => setIsPaused(!isPaused);
-    const start = () => { setIsPaused(false); startAudio(); }
+    const start = () => { setIsPaused(false); loadAudio(); startAudio(); }
     const play = () => setIsPaused(false) // playAudio();
     const pause = () => setIsPaused(true) // pauseAudio();
     const stop = () => { setIsPaused(true); stopAudio(); }
@@ -246,9 +244,7 @@ export default function CardMusiq(props){
                         
                         <Slider
                             style={styles.slider}
-                            minimumValue={0}
-                            value={() => _getSeekSliderPosition()}
-                            maximumValue={totalDuration} // {props.trackInfo.trackLength}
+                            value={this._getSeekSliderPosition()}
                             onValueChange={ (position) => changePosition(position) }
                             onSlidingComplete={() => setPosition()}
                             maximumTrackTintColor='rgba(231, 90, 124, 1)'
