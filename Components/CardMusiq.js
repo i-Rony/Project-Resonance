@@ -16,6 +16,28 @@ import JohnDoe from '../assets/kawaii.jpg';
 
 const {width, height} = Dimensions.get("screen");
 
+const soundObject = new Audio.Sound();
+var totalDuration;
+
+async function startAudio () {
+    try {
+        const track = await soundObject.loadAsync(require('../assets/Anthony_Lazaro_Coffee_Cup.mp3'));
+        totalDuration = track.durationMillis;
+        await soundObject.setIsLoopingAsync(true);
+        await soundObject.playAsync();
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+async function stopAudio() {
+    try {
+        await soundObject.unloadAsync();
+    } catch (error) {
+        console.log(error); // An error occurred!
+    }
+}
+
 // async function pauseAudio() {
 //     soundObject.setStatusAsync({ shouldPlay: false });
 // }
@@ -26,28 +48,6 @@ const {width, height} = Dimensions.get("screen");
 
 export default function CardMusiq(props){
 
-    const soundObject = new Audio.Sound();
-    var totalDuration;
-
-    async function startAudio () {
-        try {
-            const track = await soundObject.loadAsync(require('../assets/Anthony_Lazaro_Coffee_Cup.mp3'));
-            totalDuration = track.durationMillis;
-            await soundObject.setIsLoopingAsync(true);
-            await soundObject.playAsync();
-        } catch (error) {
-            console.log(error);
-        }
-    };
-    
-    async function stopAudio() {
-        try {
-            await soundObject.unloadAsync();
-        } catch (error) {
-            console.log(error); // An error occurred!
-        }
-    }
-
     useEffect(() => {
         
         Audio.setAudioModeAsync({
@@ -56,6 +56,7 @@ export default function CardMusiq(props){
             interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DO_NOT_MIX,
             shouldDuckAndroid: true,
         });
+        
     });
 
     const [isFlipped, setIsFlipped] = useState(false);
@@ -71,7 +72,7 @@ export default function CardMusiq(props){
     const stop = () => { setIsPaused(true); stopAudio(); }
 
     async function setPosition() {
-        setAudioPosition(Math.floor(changingPosition)*100);
+        setAudioPosition(Math.floor(changingPosition));
         await soundObject.setPositionAsync(audioPosition);
         await soundObject.playAsync();
         console.log(audioPosition);
@@ -228,7 +229,6 @@ export default function CardMusiq(props){
                         <Slider
                             style={styles.slider}
                             minimumValue={0}
-                            value={audioPosition}
                             maximumValue={totalDuration} // {props.trackInfo.trackLength}
                             onValueChange={ (position) => changePosition(position) }
                             onSlidingComplete={() => setPosition()}
