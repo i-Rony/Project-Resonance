@@ -20,12 +20,15 @@ const soundObject = new Audio.Sound();
 var totalDuration;
 
 async function loadAudio() {
+    
     const track = await soundObject.loadAsync(require('../assets/Anthony_Lazaro_Coffee_Cup.mp3'));
     totalDuration = track.durationMillis;
+
     await soundObject.setIsLoopingAsync(true);
     await soundObject.playAsync();
     await soundObject.stopAsync();
 }
+
 // async function pauseAudio() {
 //     soundObject.setStatusAsync({ shouldPlay: false });
 // }
