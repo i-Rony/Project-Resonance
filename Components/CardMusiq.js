@@ -19,25 +19,13 @@ const {width, height} = Dimensions.get("screen");
 const soundObject = new Audio.Sound();
 var totalDuration;
 
-async function startAudio () {
-    try {
-        const track = await soundObject.loadAsync(require('../assets/Anthony_Lazaro_Coffee_Cup.mp3'));
-        totalDuration = track.durationMillis;
-        await soundObject.setIsLoopingAsync(true);
-        await soundObject.playAsync();
-    } catch (error) {
-        console.log(error);
-    }
-};
-
-async function stopAudio() {
-    try {
-        await soundObject.unloadAsync();
-    } catch (error) {
-        console.log(error); // An error occurred!
-    }
+async function loadAudio() {
+    const track = await soundObject.loadAsync(require('../assets/Anthony_Lazaro_Coffee_Cup.mp3'));
+    totalDuration = track.durationMillis;
+    await soundObject.setIsLoopingAsync(true);
+    await soundObject.playAsync();
+    await soundObject.stopAsync();
 }
-
 // async function pauseAudio() {
 //     soundObject.setStatusAsync({ shouldPlay: false });
 // }
@@ -45,6 +33,7 @@ async function stopAudio() {
 // async function playAudio() {
 //     soundObject.setStatusAsync({ shouldPlay: true });
 // }
+
 
 export default function CardMusiq(props){
 
@@ -56,17 +45,46 @@ export default function CardMusiq(props){
             interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DO_NOT_MIX,
             shouldDuckAndroid: true,
         });
-        
+        () => loadAudio()        
     });
 
+    async function startAudio(){
+        soundObject.playAsync();
+        soundObject._onPlaybackStatusUpdate = (status) => {
+            if(status.isLoaded){
+                setValue({
+                    value: status.positionMillis
+                });
+            }
+        };
+    }
+
+    async function stopAudio() {
+        try {
+            await soundObject.unloadAsync();
+        } catch (error) {
+            console.log(error); // An error occurred!
+        }
+    }
+
+    
+
+    _getSeekSliderPosition = () => {
+        if (value != 0)
+            return Math.floor(value/totalDuration);
+        else
+            return 0; 
+    }
+    
     const [isFlipped, setIsFlipped] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
     const [audioPosition, setAudioPosition] = useState(0);
     const [changingPosition, changePosition] = useState(0);
+    const [value, setValue] = useState(0);
 
     const flipOver = () => setIsFlipped(!isFlipped);
     // const togglePlay = () => setIsPaused(!isPaused);
-    const start = () => { setIsPaused(false); startAudio(); }
+    const start = () => { setIsPaused(false); loadAudio(); startAudio(); }
     const play = () => setIsPaused(false) // playAudio();
     const pause = () => setIsPaused(true) // pauseAudio();
     const stop = () => { setIsPaused(true); stopAudio(); }
@@ -228,8 +246,7 @@ export default function CardMusiq(props){
                         
                         <Slider
                             style={styles.slider}
-                            minimumValue={0}
-                            maximumValue={totalDuration} // {props.trackInfo.trackLength}
+                            value={this._getSeekSliderPosition()}
                             onValueChange={ (position) => changePosition(position) }
                             onSlidingComplete={() => setPosition()}
                             maximumTrackTintColor='rgba(231, 90, 124, 1)'
