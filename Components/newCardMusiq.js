@@ -32,7 +32,7 @@ export default class NewCardMusiq extends Component {
 
         this.loadAudio = this.loadAudio.bind(this);
         this.startAudio = this.startAudio.bind(this);
-        this.stopAudio = this.stopAudio(this);
+        this.stopAudio = this.stopAudio.bind(this);
         this._getSeekSliderPosition = this._getSeekSliderPosition.bind(this);
         this.flipOver = this.flipOver.bind(this);
         this.start = this.start.bind(this);
@@ -52,17 +52,18 @@ export default class NewCardMusiq extends Component {
         });
     }
 
-    async loadAudio(soundObject) {
+    loadAudio = (soundObject) => {
 
-        const track = await soundObject.loadAsync(require('../assets/Anthony_Lazaro_Coffee_Cup.mp3'));
-        this.state.totalDuration = track.durationMillis;
+        const track = soundObject.loadAsync(require('../assets/Anthony_Lazaro_Coffee_Cup.mp3'))
+            .then(
+                () => this.setState({ totalDuration: track.durationMillis })
+            )
+            .then(
+                () => soundObject.setIsLoopingAsync(false)
+            );
+    }//end of loadAudio
 
-        await soundObject.setIsLoopingAsync(false);
-        // await soundObject.playAsync();
-        // await soundObject.stopAsync();
-    }
-
-    async startAudio(soundObject) {
+    startAudio = (soundObject) => {
 
         soundObject.playAsync();
         soundObject._onPlaybackStatusUpdate = (status) => {
@@ -72,29 +73,36 @@ export default class NewCardMusiq extends Component {
                 });
             }
         };
-    }
+    }//end of startAudio
 
-    async stopAudio(soundObject) { 
+    stopAudio = (soundObject) => {
         try {
-            await soundObject.unloadAsync();
+            soundObject.unloadAsync();
         } catch (error) {
             console.log(error); // An error occurred!
         }
-    }
+    }//end of stopAudio
 
     _getSeekSliderPosition = (value) => {
         if (value != 0)
             return Math.floor(value / totalDuration);
         else
             return 0;
-    }
+    }//end of _getSeekSliderPosition
 
-    async setPosition(soundObject) {
-        setAudioPosition(Math.floor(changingPosition));
-        await soundObject.setPositionAsync(audioPosition);
-        await soundObject.playAsync();
-        console.log(audioPosition);
-    } // Moment.utc(changingPosition * 1000).format("m:ss")
+    setPosition = (soundObject) => {
+
+        this.setState({ audioPosition: Math.floor(changingPosition) });
+
+        soundObject.setPositionAsync(audioPosition)
+            .then(
+                () => soundObject.playAsync()
+            )
+            .then(
+                () => console.log(audioPosition)
+            );
+        // Moment.utc(changingPosition * 1000).format("m:ss")
+    }//end of setPosition
 
 
     flipOver = () => this.setState({ isFlipped: !this.state.isFlipped });
@@ -150,23 +158,95 @@ export default class NewCardMusiq extends Component {
         //     return <AppLoading />;
         // } else {
 
-            return (
-                <View>
-                    <CardFlip
-                        style={{ width: width * 0.97, height: height * 0.24 }}
-                        ref={card => (this.card = card)}
-                        flipDirection='y'
-                    >
-                        <View style={styles.card}>
-                            <View style={styles.cardContentHeader}>
-                                <View style={styles.cardContent}>
-                                    <TouchableOpacity>
-                                        <Image source={JohnDoe} style={styles.headerImage} />
-                                    </TouchableOpacity>
-                                    <View style={{ width: 225 }}>
-                                        <Text style={styles.headerText}>
-                                            Dio Brando
+        return (
+            <View>
+                <CardFlip
+                    style={{ width: width * 0.97, height: height * 0.24 }}
+                    ref={card => (this.card = card)}
+                    flipDirection='y'
+                >
+                    <View style={styles.card}>
+                        <View style={styles.cardContentHeader}>
+                            <View style={styles.cardContent}>
+                                <TouchableOpacity>
+                                    <Image source={JohnDoe} style={styles.headerImage} />
+                                </TouchableOpacity>
+                                <View style={{ width: 225 }}>
+                                    <Text style={styles.headerText}>
+                                        Dio Brando
                                 </Text>
+                                    <Text
+                                        numberOfLines={1}
+                                        ellipsizeMode='tail'
+                                        style={styles.headerMusic}
+                                    >
+                                        {this.props.children}
+                                    </Text>
+                                </View>
+                            </View>
+                        </View>
+                        <View style={styles.headerBottom}>
+                            <TouchableOpacity>
+                                <FontAwesomeIcon
+                                    style={{
+                                        borderRadius: 50,
+                                        justifyContent: 'flex-end',
+                                        alignItems: 'flex-end',
+                                        padding: 10
+                                    }}
+                                    icon={farHeart}
+                                    color='rgba(44, 54, 63, 0.834)'
+                                    size={22}
+                                />
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                onPress={() => {
+                                    this.card.flip(); this.flipOver(); this.start(soundObject);
+                                }}
+                            >
+                                <FontAwesomeIcon
+                                    style={{
+                                        borderRadius: 50,
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        padding: 10
+                                    }}
+                                    icon={faPlay}
+                                    color='rgba(44, 54, 63, 0.834)'
+                                    size={22}
+                                />
+                            </TouchableOpacity>
+                            <TouchableOpacity>
+                                <FontAwesomeIcon
+                                    style={{
+                                        borderRadius: 50,
+                                        justifyContent: 'flex-start',
+                                        alignItems: 'flex-start',
+                                        padding: 10
+                                    }}
+                                    icon={faShare}
+                                    color='rgba(44, 54, 63, 0.834)'
+                                    size={22}
+                                />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+
+                    {/* Audio Wave Player Below*/}
+
+                    <View style={styles.card}>
+                        <View style={styles.cardContentHeader}>
+                            <View style={styles.cardContent}>
+                                <TouchableOpacity>
+                                    <Image source={JohnDoe} style={styles.headerImage} />
+                                </TouchableOpacity>
+                                <View style={{ width: 225 }}>
+                                    <Text style={styles.headerText}>
+                                        Dio Brando
+                                </Text>
+                                    <AutoScrolling endPadding={30}
+                                        style={{ marginLeft: 12 }}
+                                    >
                                         <Text
                                             numberOfLines={1}
                                             ellipsizeMode='tail'
@@ -174,127 +254,56 @@ export default class NewCardMusiq extends Component {
                                         >
                                             {this.props.children}
                                         </Text>
-                                    </View>
+                                    </AutoScrolling>
                                 </View>
                             </View>
-                            <View style={styles.headerBottom}>
-                                <TouchableOpacity>
-                                    <FontAwesomeIcon
-                                        style={{
-                                            borderRadius: 50,
-                                            justifyContent: 'flex-end',
-                                            alignItems: 'flex-end',
-                                            padding: 10
-                                        }}
-                                        icon={farHeart}
-                                        color='rgba(44, 54, 63, 0.834)'
-                                        size={22}
-                                    />
-                                </TouchableOpacity>
-                                <TouchableOpacity
-                                    onPress={() => { 
-                                        this.card.flip(); this.flipOver(); this.start(soundObject); }}
-                                >
-                                    <FontAwesomeIcon
-                                        style={{
-                                            borderRadius: 50,
-                                            justifyContent: 'center',
-                                            alignItems: 'center',
-                                            padding: 10
-                                        }}
-                                        icon={faPlay}
-                                        color='rgba(44, 54, 63, 0.834)'
-                                        size={22}
-                                    />
-                                </TouchableOpacity>
-                                <TouchableOpacity>
-                                    <FontAwesomeIcon
-                                        style={{
-                                            borderRadius: 50,
-                                            justifyContent: 'flex-start',
-                                            alignItems: 'flex-start',
-                                            padding: 10
-                                        }}
-                                        icon={faShare}
-                                        color='rgba(44, 54, 63, 0.834)'
-                                        size={22}
-                                    />
-                                </TouchableOpacity>
-                            </View>
+
+                            <Slider
+                                style={styles.slider}
+                                value={this._getSeekSliderPosition(this.state.value)}
+                                maximumValue={this.state.totalDuration}
+                                onValueChange={(position) => this.changePosition(position)}
+                                onSlidingComplete={() => this.setPosition(soundObject)}
+                                maximumTrackTintColor='rgba(231, 90, 124, 1)'
+                                minimumTrackTintColor='rgba(44, 54, 63, 0.834)'
+                                thumbTintColor='rgba(44, 54, 63, 0.834)'
+                            />
                         </View>
-
-                        {/* Audio Wave Player Below*/}
-
-                        <View style={styles.card}>
-                            <View style={styles.cardContentHeader}>
-                                <View style={styles.cardContent}>
-                                    <TouchableOpacity>
-                                        <Image source={JohnDoe} style={styles.headerImage} />
-                                    </TouchableOpacity>
-                                    <View style={{ width: 225 }}>
-                                        <Text style={styles.headerText}>
-                                            Dio Brando
-                                </Text>
-                                        <AutoScrolling endPadding={30}
-                                            style={{ marginLeft: 12 }}
-                                        >
-                                            <Text
-                                                numberOfLines={1}
-                                                ellipsizeMode='tail'
-                                                style={styles.headerMusic}
-                                            >
-                                                {this.props.children}
-                                            </Text>
-                                        </AutoScrolling>
-                                    </View>
-                                </View>
-
-                                <Slider
-                                    style={styles.slider}
-                                    value={this._getSeekSliderPosition(this.state.value)}
-                                    maximumValue={this.state.totalDuration}
-                                    onValueChange={(position) => this.changePosition(position)}
-                                    onSlidingComplete={() => this.setPosition(soundObject)}
-                                    maximumTrackTintColor='rgba(231, 90, 124, 1)'
-                                    minimumTrackTintColor='rgba(44, 54, 63, 0.834)'
-                                    thumbTintColor='rgba(44, 54, 63, 0.834)'
+                        <View style={styles.headerBottom}>
+                            <TouchableOpacity>
+                                <FontAwesomeIcon
+                                    style={{
+                                        borderRadius: 50,
+                                        justifyContent: 'flex-end',
+                                        alignItems: 'flex-end',
+                                        padding: 10
+                                    }}
+                                    icon={farHeart}
+                                    color='rgba(44, 54, 63, 0.834)'
+                                    size={22}
                                 />
-                            </View>
-                            <View style={styles.headerBottom}>
-                                <TouchableOpacity>
-                                    <FontAwesomeIcon
-                                        style={{
-                                            borderRadius: 50,
-                                            justifyContent: 'flex-end',
-                                            alignItems: 'flex-end',
-                                            padding: 10
-                                        }}
-                                        icon={farHeart}
-                                        color='rgba(44, 54, 63, 0.834)'
-                                        size={22}
-                                    />
-                                </TouchableOpacity>
-                                {audioButton}
-                                <TouchableOpacity
-                                    onPress={() => { this.card.flip(); this.flipOver(); this.stop(soundObject); }}
-                                >
-                                    <FontAwesomeIcon
-                                        style={{
-                                            borderRadius: 50,
-                                            justifyContent: 'flex-start',
-                                            alignItems: 'flex-start',
-                                            padding: 10
-                                        }}
-                                        icon={faStop}
-                                        color='rgba(44, 54, 63, 0.834)'
-                                        size={22}
-                                    />
-                                </TouchableOpacity>
-                            </View>
+                            </TouchableOpacity>
+                            {audioButton}
+                            <TouchableOpacity
+                                onPress={() => { this.card.flip(); this.flipOver(); this.stop(soundObject); }}
+                            >
+                                <FontAwesomeIcon
+                                    style={{
+                                        borderRadius: 50,
+                                        justifyContent: 'flex-start',
+                                        alignItems: 'flex-start',
+                                        padding: 10
+                                    }}
+                                    icon={faStop}
+                                    color='rgba(44, 54, 63, 0.834)'
+                                    size={22}
+                                />
+                            </TouchableOpacity>
                         </View>
-                    </CardFlip>
-                </View>
-            );
+                    </View>
+                </CardFlip>
+            </View>
+        );
         // }
     }
 } // end of newCardMusiq component
