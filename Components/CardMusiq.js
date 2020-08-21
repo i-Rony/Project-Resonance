@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, Image, Dimensions, TouchableHighlight } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, Image, Dimensions } from 'react-native';
 import CardFlip from 'react-native-card-flip';
 import { Audio } from 'expo-av';
 // import Slider from '@react-native-community/slider';
-import Slider from 'react-native-slider';
+// import Slider from 'react-native-slider';
 import AutoScrolling from 'react-native-auto-scrolling';
 
 import { faHeart, faPlay, faShare, faPause, faStop } from '@fortawesome/free-solid-svg-icons';

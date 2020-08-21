@@ -10,6 +10,7 @@ import { AppLoading } from 'expo';
 import { ScrollView } from 'react-native-gesture-handler';
 import Constants from 'expo-constants';
 import JoJo from '../assets/jojo.jpg';
+import MovingEarth from '../assets/movingearth.mp4';
 import CardMusiq from '../Components/CardMusiq';
 // import NewCardMusiq from '../Components/newCardMusiq';
 
@@ -126,25 +127,15 @@ const HomeScreen = ({ navigation }) => {
                             <HomeScreenFilters />
                             {/* {filters} */}
 
-                            <Card>
-                                <Image source={JoJo} style={{
-                                        width: 342,
-                                        height: 221,
-                                        resizeMode: 'contain'
-                                }}/>
+                            <Card source={MovingEarth}>
+                                
                             </Card>
 
                             <CardMusiq>
                                 <Text>
                                     Coffee Cup - Chill Edit
                                 </Text>
-                            </CardMusiq>
-
-                            <Card>
-                                <Text>
-                                    Hello
-                                </Text>
-                            </Card>
+                            </CardMusiq>                            
 
                             <Card>
                                 <Text>
