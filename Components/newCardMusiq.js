@@ -84,7 +84,7 @@ export default class NewCardMusiq extends Component {
     }//end of stopAudio
 
     _getSeekSliderPosition = (value) => {
-        if (value != 0)
+        if (value != null)
             return Math.floor(value / totalDuration);
         else
             return 0;
@@ -106,7 +106,6 @@ export default class NewCardMusiq extends Component {
 
 
     flipOver = () => this.setState({ isFlipped: !this.state.isFlipped });
-    // togglePlay = () => setIsPaused(!isPaused);
     start = (soundObject) => { this.setState({ isPaused: false }); this.loadAudio(soundObject); this.startAudio(soundObject); }
     play = () => this.setState({ isPaused: false });
     pause = () => this.setState({ isPaused: true });

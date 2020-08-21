@@ -10,8 +10,8 @@ import { AppLoading } from 'expo';
 import { ScrollView } from 'react-native-gesture-handler';
 import Constants from 'expo-constants';
 import JoJo from '../assets/jojo.jpg';
-// import CardMusiq from '../Components/CardMusiq';
-import NewCardMusiq from '../Components/newCardMusiq';
+import CardMusiq from '../Components/CardMusiq';
+// import NewCardMusiq from '../Components/newCardMusiq';
 
 
 const HomeScreen = ({ navigation }) => {
@@ -134,11 +134,11 @@ const HomeScreen = ({ navigation }) => {
                                 }}/>
                             </Card>
 
-                            <NewCardMusiq>
+                            <CardMusiq>
                                 <Text>
                                     Coffee Cup - Chill Edit
                                 </Text>
-                            </NewCardMusiq>
+                            </CardMusiq>
 
                             <Card>
                                 <Text>
