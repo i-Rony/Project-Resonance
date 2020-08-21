@@ -156,7 +156,40 @@ function NotificationScreenHeader() {
 
 }
 
-export { HomeScreenHeader, EventScreenHeader, NotificationScreenHeader };
+function ConnectionScreenHeader() {
+
+    return(
+        <View style={{
+            height: 85,
+            backgroundColor: 'rgba(44,54,63,0.95)',
+            paddingBottom: 3,
+            marginBottom: 10,
+        }}>
+            <View style={[
+                styles.header,
+                {
+                    alignItems: 'center',
+                    paddingTop: 2,
+                    paddingBottom: 4,
+                    marginLeft: 8,
+                    marginTop: 34
+                }
+            ]}>
+                <Text style={{
+                    fontSize: 38,
+                    fontWeight: 'bold',
+                    letterSpacing: 0.4,
+                    color: 'rgba(255,255,255,0.95)'
+                }}>
+                    My Connections
+                </Text>
+            </View>
+
+        </View>
+    );
+}
+
+export { HomeScreenHeader, EventScreenHeader, NotificationScreenHeader, ConnectionScreenHeader };
 
 const styles = StyleSheet.create({
 
