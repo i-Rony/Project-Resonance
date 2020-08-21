@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, Image, Dimensions, TouchableHighlight } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, Image, Dimensions } from 'react-native';
 import CardFlip from 'react-native-card-flip';
 import { Audio } from 'expo-av';
-import Slider from '@react-native-community/slider';
+// import Slider from '@react-native-community/slider';
 // import Slider from 'react-native-slider';
 import AutoScrolling from 'react-native-auto-scrolling';
 
@@ -17,87 +17,63 @@ import JohnDoe from '../assets/kawaii.jpg';
 const {width, height} = Dimensions.get("screen");
 
 const soundObject = new Audio.Sound();
-var totalDuration;
 
-async function loadAudio() {
-    
-    const track = await soundObject.loadAsync(require('../assets/Anthony_Lazaro_Coffee_Cup.mp3'));
-    totalDuration = track.durationMillis;
-
-    await soundObject.setIsLoopingAsync(true);
+async function startAudio() {   
+    await soundObject.unloadAsync() 
+    await soundObject.loadAsync(require('../assets/Anthony_Lazaro_Coffee_Cup.mp3'));
     await soundObject.playAsync();
-    await soundObject.stopAsync();
 }
 
-// async function pauseAudio() {
-//     soundObject.setStatusAsync({ shouldPlay: false });
-// }
-
-// async function playAudio() {
-//     soundObject.setStatusAsync({ shouldPlay: true });
-// }
-
+async function stopAudio() {
+    try {
+        await soundObject.unloadAsync();
+    } catch (error) {
+        console.log(error); // An error occurred!
+    }
+}
 
 export default function CardMusiq(props){
 
-    useEffect(() => {
-        
+    useEffect(() => {        
         Audio.setAudioModeAsync({
             staysActiveInBackground: true,
             playThroughEarpieceAndroid: false,
             interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DO_NOT_MIX,
             shouldDuckAndroid: true,
-        });
-        () => loadAudio()        
+        }); 
     });
 
-    async function startAudio(){
-        soundObject.playAsync();
-        soundObject._onPlaybackStatusUpdate = (status) => {
-            if(status.isLoaded){
-                setValue({
-                    value: status.positionMillis
-                });
-            }
-        };
-    }
+    // function audioSlider(){
+    //     soundObject._onPlaybackStatusUpdate = (status) => {
+    //         if(status.isLoaded){
+    //             setValue({
+    //                 value: status.positionMillis
+    //             })
+    //         }
+    //     };
 
-    async function stopAudio() {
-        try {
-            await soundObject.unloadAsync();
-        } catch (error) {
-            console.log(error); // An error occurred!
-        }
-    }
-
-    
-
-    _getSeekSliderPosition = () => {
-        if (value != 0)
-            return Math.floor(value/totalDuration);
-        else
-            return 0; 
-    }
-    
+    //     console.log(value);
+    //     return value/totalDuration;
+    // }
+        
     const [isFlipped, setIsFlipped] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
-    const [audioPosition, setAudioPosition] = useState(0);
-    const [changingPosition, changePosition] = useState(0);
-    const [value, setValue] = useState(0);
+    // const [audioPosition, setAudioPosition] = useState(0);
+    // const [changingPosition, changePosition] = useState(0);
+    // const [value, setValue] = useState();
 
     const flipOver = () => setIsFlipped(!isFlipped);
-    // const togglePlay = () => setIsPaused(!isPaused);
-    const start = () => { setIsPaused(false); loadAudio(); startAudio(); }
+    const start = () => { setIsPaused(false); startAudio(); }
     const play = () => setIsPaused(false) // playAudio();
     const pause = () => setIsPaused(true) // pauseAudio();
     const stop = () => { setIsPaused(true); stopAudio(); }
 
-    async function setPosition() {
-        setAudioPosition(Math.floor(changingPosition));
-        await soundObject.setPositionAsync(audioPosition);
-        await soundObject.playAsync();
-        console.log(audioPosition);
-    } // Moment.utc(changingPosition * 1000).format("m:ss")
+    // async function setPosition() {
+    //     setAudioPosition(Math.floor(changingPosition/totalDuration));
+    //     await soundObject.setPositionAsync(audioPosition);
+    //     await soundObject.playAsync();
+    //     console.log(audioPosition);
+    // } // Moment.utc(changingPosition * 1000).format("m:ss")
 
     soundObject.setStatusAsync({ shouldPlay: !isPaused });
 
@@ -191,7 +167,7 @@ export default function CardMusiq(props){
                             />
                         </TouchableOpacity>
                         <TouchableOpacity
-                            onPress={() => { this.card.flip(); flipOver(); start(); }}
+                            onPress={() => { this.card.flip(); flipOver(); startAudio(); }}
                         >
                             <FontAwesomeIcon
                                 style={{
@@ -245,17 +221,7 @@ export default function CardMusiq(props){
                                 </Text>
                                 </AutoScrolling>
                             </View>                    
-                        </View>
-                        
-                        <Slider
-                            style={styles.slider}
-                            value={this._getSeekSliderPosition()}
-                            onValueChange={ (position) => changePosition(position) }
-                            onSlidingComplete={() => setPosition()}
-                            maximumTrackTintColor='rgba(231, 90, 124, 1)'
-                            minimumTrackTintColor='rgba(44, 54, 63, 0.834)'
-                            thumbTintColor='rgba(44, 54, 63, 0.834)'                           
-                        />                        
+                        </View>                       
                     </View>
                     <View style={styles.headerBottom}>
                         <TouchableOpacity>

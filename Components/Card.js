@@ -9,6 +9,8 @@ import JohnDoe from '../assets/kawaii.jpg';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 
+import { Video } from 'expo-av';
+
 const {width, height} = Dimensions.get("screen");
 
 
@@ -59,7 +61,17 @@ export default function Card(props){
                 </TouchableOpacity>
 
                 <View style={styles.cardContent}>
-                    {props.children}
+                    <Video
+                        source={props.source}
+                        rate={1.0}
+                        volume={1.0}
+                        isMuted={false}
+                        resizeMode="cover"
+                        shouldPlay={false}
+                        isLooping={false}
+                        useNativeControls
+                        style={{ width: 300, height: 220 }}
+                    />
                 </View>
                 <View style={styles.cardBottom}>
                     <TouchableOpacity style={styles.like}>
