@@ -74,14 +74,12 @@ const ConnectionScreen = ({ navigation }) => {
         {
             id: 1,
             name: "Leah Gotti",
-            nickName: null,
             statusInfo: { status: 1 },
             choice: ["acoustic guitar", "drums"]
         },
         {
             id: 2,
             name: "Mia Melone",
-            nickName: null,
             statusInfo: { status: 1 },
             choice: ["guitar"]
         },
@@ -89,13 +87,12 @@ const ConnectionScreen = ({ navigation }) => {
             id: 3,
             name: "Abella Danger",
             nickName: "dangerGirl69",
-            statusInfo: { status: 2, date: "15th Feb" },
+            statusInfo: { status: 2, date: "15th Feb, 2020" },
             choice: ["electric guitar"]
         },
         {
             id: 4,
             name: "Marsha May",
-            nickName: null,
             statusInfo: { status: 0 },
             choice: ["keyboard"]
         },
@@ -116,7 +113,6 @@ const ConnectionScreen = ({ navigation }) => {
         {
             id: 7,
             name: "Mia Malkova",
-            nickName: null,
             statusInfo: { status: 1 },
             choice: ["flute"]
         },
@@ -134,7 +130,7 @@ const ConnectionScreen = ({ navigation }) => {
         var connections = [];
 
         for (const conn of dummyConnections) {
-            connections.push(<ConnectionCard ConInfo={conn} />);
+            connections.push(<ConnectionCard conInfo={conn} />);
         }
 
         return connections;

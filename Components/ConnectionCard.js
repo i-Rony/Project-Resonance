@@ -6,65 +6,68 @@ export default function ConnectionCard({ conInfo }) {
 
     console.log(conInfo);
 
-    const connectionStatus = ["unavailable", "available", "available until"];
+    const connectionStatus = ["unavailable", "available", "unavailable until"];
+    const statusColor = ["red", "green", "yellow"];
 
     var name, status;
 
-    if (conInfo.nickName !== null) {
+    if (conInfo.nickName !== undefined) {
         name =
-            <View style={{ flex: 2, alignItems: "center", justifyContent: "center" }}>
+            <View style={{ flex: 2, justifyContent: "center", paddingBottom: 5 }}>
                 <Text style={styles.name}>{conInfo.nickName}</Text>
-                <Text style={{ fontSize: 14, color: '#000' }}> | {conInfo.name}</Text>
+                <Text style={{ fontSize: 15, color: 'rgba(100, 100, 100, 0.9)' }}>|  {conInfo.name}</Text>
             </View>;
     }
     else {
         name =
-            <View style={{ flex: 2, alignItems: "center", justifyContent: "center" }}>
+            <View style={{ flex: 2, justifyContent: "center", paddingBottom: 5 }}>
                 <Text style={styles.name}>{conInfo.name} </Text>
             </View>;
     }
 
-    if (conInfo.statusinfo === 2) {
+    if (conInfo.statusInfo.status === 2) {
         status = 
-            <View style={{ flex: 2, alignItems: "center", justifyContent: "center" }}>
-                <Text style={styles.status}>
-                    {connectionStatus[conInfo.statusInfo[status]]} {conInfo.statusInfo[date]}
+            <View style={{ flex: 2, justifyContent: "center" }}>
+            <Text style={[styles.status, { color: statusColor[conInfo.statusInfo.status]}]}>
+                    {connectionStatus[conInfo.statusInfo.status]}: {conInfo.statusInfo.date}
                 </Text>
             </View>;
     }
     else {
         status = 
-            <View style={{ flex: 2, alignItems: "center", justifyContent: "center" }}>
-                <Text style={styles.status}>{connectionStatus[conInfo.statusInfo[status]]} </Text>
+            <View style={{ flex: 2, justifyContent: "center" }}>
+            <Text style={[styles.status, { color: statusColor[conInfo.statusInfo.status] }]}>{connectionStatus[conInfo.statusInfo.status]} </Text>
             </View>;
     }
 
     var instruments = [];
 
-    for (instrument in conInfo.choice) {
+    for (const instrument of conInfo.choice) {
         instruments.push(<Text style={styles.instruments}>{instrument}  </Text>);
     }
 
     const choice =
-        <View style={{ flex: 2, alignItems: "center", justifyContent: "center" }}>
+        <View style={{ flex: 2, flexDirection: 'row', justifyContent: 'center', marginTop: 4 }}>
             <Text style={styles.instruments}>Skilled at: </Text>
-            <View style={{ flex: 2, alignItems: "center", justifyContent: "center" }}>{instruments}</View>
+            <View style={{ flex: 2, flexDirection: 'row', justifyContent: "center" }}>
+                <Text style={styles.instruments}>{instruments}</Text>
+            </View>
         </View>
 
 
     return (
         <View style={styles.conCard}>
             <View style={{ flex: 1, flexDirection: 'row' }}>
-                <View style={{ flex: 2, alignItems: "center", justifyContent: "center" }}>
+                <View style={{ flex: 2, justifyContent: "center" }}>
                     {name}
                     {status}
                     {choice}
                 </View>
-                <View style={{ flex: 2, alignItems: "center", justifyContent: "center" }}>
+                {/* <View style={{ flex: 2, alignItems: "center", justifyContent: "center" }}>
                     <TouchableOpacity>
 
                     </TouchableOpacity>
-                </View>
+                </View> */}
             </View>
         </View>
     );
@@ -75,26 +78,28 @@ const styles = StyleSheet.create({
     conCard: {
         flex: 1,
         margin: 5,
+        padding: 8,
+        paddingBottom: 20,
         alignItems: "center",
         justifyContent: "center",
-        borderBottomColor: 'rgba(0, 0, 0, 0.7)',
-        borderBottomWidth: 1
+        borderBottomColor: 'rgba(140, 140, 140, 0.6)',
+        borderBottomWidth: 1.5,
+        borderRadius: 10,
     },
 
     name: {
-        fontSize: 18,
+        fontSize: 25,
         fontWeight: "bold",
-        color: '#000'
+        color: '#000',
     },
 
     status: {
-        fontSize: 16,
+        fontSize: 16.2
         // fontWeight: "bold",
-        color: '#000'
     },
 
     instruments: {
-        fontSize: 16,
+        fontSize: 17,
         // fontWeight: "bold",
         color: '#000'
     }
