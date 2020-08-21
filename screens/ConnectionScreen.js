@@ -6,7 +6,7 @@ import Constants from 'expo-constants';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 
-// import ConnectionsScreenHeader from '../Components/Headers';
+import { ConnectionScreenHeader } from '../Components/Headers';
 import ConnectionCard from '../Components/ConnectionCard';
 
 
@@ -81,13 +81,13 @@ const ConnectionScreen = ({ navigation }) => {
             id: 2,
             name: "Mia Melone",
             statusInfo: { status: 1 },
-            choice: ["guitar"]
+            choice: ["violin"]
         },
         {
             id: 3,
             name: "Abella Danger",
             nickName: "dangerGirl69",
-            statusInfo: { status: 2, date: "15th Feb, 2020" },
+            statusInfo: { status: 2, date: "15 Feb, 2020" },
             choice: ["electric guitar"]
         },
         {
@@ -108,13 +108,13 @@ const ConnectionScreen = ({ navigation }) => {
             name: "Ava Dalush",
             nickName: "brit_chick",
             statusInfo: { status: 1 },
-            choice: ["voice"]
+            choice: ["piano"]
         },
         {
             id: 7,
             name: "Mia Malkova",
             statusInfo: { status: 1 },
-            choice: ["flute"]
+            choice: ["flute", "moaning"]
         },
         {
             id: 8,
@@ -127,10 +127,11 @@ const ConnectionScreen = ({ navigation }) => {
 
     const displayConnections = () => {
 
-        var connections = [];
+        var connections = [], i =  0;
 
         for (const conn of dummyConnections) {
-            connections.push(<ConnectionCard conInfo={conn} />);
+            connections.push(<ConnectionCard conInfo={conn} key={i} />);
+            i++;
         }
 
         return connections;
@@ -163,8 +164,11 @@ const ConnectionScreen = ({ navigation }) => {
                         marginTop: Constants.statusBarHeight,
                     }}
                 >
-                    <ScrollView>
-                        {/* <ConnectionsScreenHeader /> */}
+                    <ScrollView style={{
+                        flex: 1,
+                        // marginTop: Constants.statusBarHeight,
+                    }}>
+                        <ConnectionScreenHeader />
                         <View
                             style={{
                                 alignItems: "center",
