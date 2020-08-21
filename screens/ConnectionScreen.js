@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
 import { useIsDrawerOpen } from '@react-navigation/drawer';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
-import { View, Text, TouchableOpacity, BackHandler } from 'react-native';
-
+import { SafeAreaView, View, ScrollView, BackHandler } from 'react-native';
+import Constants from 'expo-constants';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
+
+// import ConnectionsScreenHeader from '../Components/Headers';
+import ConnectionCard from '../Components/ConnectionCard';
 
 
 const ConnectionScreen = ({ navigation }) => {
@@ -67,6 +70,76 @@ const ConnectionScreen = ({ navigation }) => {
         'Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
     });
 
+    const dummyConnections = [
+        {
+            id: 1,
+            name: "Leah Gotti",
+            nickName: null,
+            statusInfo: { status: 1 },
+            choice: ["acoustic guitar", "drums"]
+        },
+        {
+            id: 2,
+            name: "Mia Melone",
+            nickName: null,
+            statusInfo: { status: 1 },
+            choice: ["guitar"]
+        },
+        {
+            id: 3,
+            name: "Abella Danger",
+            nickName: "dangerGirl69",
+            statusInfo: { status: 2, date: "15th Feb" },
+            choice: ["electric guitar"]
+        },
+        {
+            id: 4,
+            name: "Marsha May",
+            nickName: null,
+            statusInfo: { status: 0 },
+            choice: ["keyboard"]
+        },
+        {
+            id: 5,
+            name: "Peta Jensen",
+            nickName: "sexyKITTEN",
+            statusInfo: { status: 1 },
+            choice: ["voice"]
+        },
+        {
+            id: 6,
+            name: "Ava Dalush",
+            nickName: "brit_chick",
+            statusInfo: { status: 1 },
+            choice: ["voice"]
+        },
+        {
+            id: 7,
+            name: "Mia Malkova",
+            nickName: null,
+            statusInfo: { status: 1 },
+            choice: ["flute"]
+        },
+        {
+            id: 8,
+            name: "Sofia Curly",
+            nickName: "CUMpasta",
+            statusInfo: { status: 1 },
+            choice: ["saxophone"]
+        }
+    ];
+
+    const displayConnections = () => {
+
+        var connections = [];
+
+        for (const conn of dummyConnections) {
+            connections.push(<ConnectionCard ConInfo={conn} />);
+        }
+
+        return connections;
+    }
+
     if (!fontsLoaded) {
         return <AppLoading />;
 
@@ -76,7 +149,7 @@ const ConnectionScreen = ({ navigation }) => {
             velocityThreshold: 0.5,
             directionalOffsetThreshold: 800
         };
-        
+
         return (
             <GestureRecognizer
                 onSwipe={(direction, state) => onSwipe(direction, state)}
@@ -88,26 +161,27 @@ const ConnectionScreen = ({ navigation }) => {
                     backgroundColor: 'rgba(255,255,255,0)'
                 }}
             >
-                <View
+                <SafeAreaView
                     style={{
-                        alignItems: "center",
-                        justifyContent: "center",
-                        flex: 1
+                        flex: 1,
+                        marginTop: Constants.statusBarHeight,
                     }}
                 >
-                    <TouchableOpacity
-                        style={{
-                            alignItems: "center",
-                            justifyContent: "center",
-                        }}
-                    >
-                        <Text>
-                            Connections
-                    </Text>
-                    </TouchableOpacity>
-                </View>
+                    <ScrollView>
+                        {/* <ConnectionsScreenHeader /> */}
+                        <View
+                            style={{
+                                alignItems: "center",
+                                justifyContent: "center",
+                                flex: 1
+                            }}
+                        >
+                            {displayConnections()}
+                        </View>
+                    </ScrollView>
+                </SafeAreaView>
             </GestureRecognizer>
-        )
+        );
     }
 }
 
