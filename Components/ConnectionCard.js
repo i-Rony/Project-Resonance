@@ -1,26 +1,37 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 
 export default function ConnectionCard({ conInfo, key }) {
 
     console.log(conInfo);
 
-    const connectionStatus = ["unavailable", "available", "unavailable until"];
-    const connectionStatusColor = ["rgba(208, 33, 10, 1)", "rgba(69, 188, 4, 1)", "rgba(232, 163, 42, 1"];
+    const instrumentColor = {
+        // 'guitar': 'rgba(200,54,54,0.85)',
+        'acoustic guitar': 'rgba(163, 118, 5, 0.85)',
+        'electric guitar': 'rgba(223, 36, 36, 0.85)',
+        'violin': 'rgba(106, 5, 178, 0.85)',
+        'piano': 'rgba(100, 45, 6, 0.85)',
+        'saxophone': 'rgba(216 , 194, 3, 0.85)',
+        'flute': 'rgba(4 , 186, 214, 0.85)',
+        'drums': 'rgba(27, 173, 5, 0.85)',
+        'keyboard': 'rgba(5, 60, 178, 0.85)',
+        'voice': 'rgba(13, 1, 1, 0.85)',
+        'moaning': 'rgba(250, 145, 26, 0.85)'
+    };
 
     var name;
 
     if (conInfo.nickName !== undefined) {
         name =
-            <View style={{ flex: 2, justifyContent: "center", paddingBottom: 5, marginBottom: 16 }}>
+            <View style={{ flex: 2, paddingBottom: 5 }}>
                 <Text style={styles.name}>{conInfo.nickName}</Text>
                 <Text style={{ fontSize: 15, color: 'rgba(100, 100, 100, 0.9)' }}>|  {conInfo.name}</Text>
             </View>;
     }
     else {
         name =
-            <View style={{ flex: 2, justifyContent: "center", paddingBottom: 5, marginBottom: 16 }}>
+            <View style={{ flex: 2, paddingBottom: 5 }}>
                 <Text style={styles.name}>{conInfo.name} </Text>
             </View>;
     }
@@ -37,43 +48,39 @@ export default function ConnectionCard({ conInfo, key }) {
     }
     else {
         var collabButton =
-            <TouchableOpacity accessible={false} style={styles.collabButtonOff}>
+            <View style={styles.collabButtonOff}>
                 <Text style={{ fontSize: 12, color: "rgba(232, 163, 42, 1)"}}>until</Text>
                 <Text style={{ fontSize: 12, color: "rgba(232, 163, 42, 1)" }}>{conInfo.statusInfo.date}</Text>
-            </TouchableOpacity>;
+            </View>;
     }
 
     var instruments = [];
 
     for (const instrument of conInfo.choice) {
-        instruments.push(<Text style={styles.instruments}>{instrument}</Text>);
+        instruments.push(<Text style={[styles.instruments, {backgroundColor: instrumentColor[instrument]}]}>{instrument}</Text>);
     }
 
     const choice =
-        <View style={{ flex: 2, flexDirection: 'row', justifyContent: 'center', marginTop: 4 }}>
-            <View style={{ flex: 2, flexDirection: 'row' }}>
-                {instruments}
-            </View>
-        </View>
+        <ScrollView horizontal={true} style={{ flex: 2, flexDirection: 'row' }}>
+            {instruments}
+        </ScrollView>;
 
     const disconnectButton = 
         <TouchableOpacity style={styles.disconnectButton}>
             <Text style={{ fontSize: 16, color: 'red' }}>disconnect</Text>
-        </TouchableOpacity>
+        </TouchableOpacity>;
 
 
     return (
         <View style={styles.conCard} key={key}>
-            <View style={{ flex: 1, flexDirection: 'row' }}>
-                <View style={{ flex: 2, justifyContent: "center" }}>
+                <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', marginBottom: 16 }}>
                     {name}
-                    {choice}
-                </View>
-                <View style={{ flex: 2, alignItems: "center", justifyContent: "center" }}>
                     {disconnectButton}
+                </View>
+            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                    {choice}
                     {collabButton}
                 </View>
-            </View>
         </View>
     );
 }
@@ -82,7 +89,8 @@ const styles = StyleSheet.create({
 
     conCard: {
         flex: 1,
-        margin: 5,
+        marginVertical: 6,
+        marginHorizontal: 8.7,
         padding: 8,
         paddingBottom: 20,
         alignItems: "center",
@@ -99,13 +107,11 @@ const styles = StyleSheet.create({
     },
 
     instruments: {
-        fontSize: 15.4,
-        // fontWeight: "bold",
+        fontSize: 15.2,
         color: 'rgba(245, 245, 245, 1)',
         borderRadius: 30,
-        paddingVertical: 3.6,
-        paddingHorizontal: 14,
-        backgroundColor: 'rgba(231,90,124,0.85)',
+        paddingVertical: 2.5,
+        paddingHorizontal: 12,
         marginRight: 10,
         marginBottom: 6
     },
@@ -116,7 +122,7 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         backgroundColor: 'rgba(231,90,124,0.85)',
         // borderWidth: 2,
-        paddingVertical: 8.4,
+        paddingVertical: 7.5,
         paddingHorizontal: 26
     },
 
@@ -124,7 +130,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 30,
-        backgroundColor: 'rgba(100, 100, 100, 0.8)',
+        backgroundColor: 'rgba(100, 100, 100, 0.72)',
         // borderWidth: 2,
         paddingVertical: 6,
         paddingHorizontal: 18
@@ -138,7 +144,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         paddingVertical: 8,
         paddingHorizontal: 12,
-        marginBottom: 16
+        // marginBottom: 16
     }
 
 });
