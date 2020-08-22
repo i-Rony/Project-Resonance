@@ -3,6 +3,7 @@ import { View, Text, BackHandler, Alert, ToastAndroid, Platform, SafeAreaView, D
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 import Card from '../Components/Card';
 import EventPoster from '../Components/EventPoster';
+import EventPopularPoster from '../Components/EventPopularPoster';
 import { EventScreenHeader } from '../Components/Headers';
 import { EventScreenFilters } from '../Components/Filters';
 import Carousel_EventScreen from '../Components/Carousel_EventScreen';
@@ -15,6 +16,7 @@ import Constants from 'expo-constants';
 import StairwayToHeaven from '../assets/Heaven.png';
 import SailorMoon from '../assets/sailormoon.png';
 import DaftPunk from '../assets/daftpunk.jpg';
+import City from '../assets/city.png';
 
 const {width, height} = Dimensions.get("screen");
 
@@ -113,6 +115,15 @@ const EventScreen = ({ navigation }) => {
                             /> */}
                             <EventScreenFilters />
                             {/* {filters} */}
+
+                            <EventPopularPoster 
+                                source={City} 
+                                name='Folklore - Taylor Swift'
+                                venue='Club Devil, 5th Avenue, 287' 
+                                date='Sun 23, August'   
+                            />
+                            
+
                         </View>
 
                         <View style={{ backgroundColor: 'rgba(231, 90, 124, 0.2)' }}>
@@ -169,7 +180,8 @@ const EventScreen = ({ navigation }) => {
                                 <ScrollView
                                     horizontal={true}
                                     contentContainerStyle={{
-                                        paddingHorizontal: 3
+                                        paddingHorizontal: 3,
+                                        paddingBottom: 20
                                     }}
                                 >
                                     <EventPoster source={StairwayToHeaven}>
