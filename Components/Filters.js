@@ -149,9 +149,9 @@ function EventScreenFilters() {
 
 
     return(
-        <View style={{ height: 50 }}>
+        <View style={{ marginTop: -10, height: 50,}}>
             <ScrollView
-                style={{ flexDirection: 'row' }}
+                style={{ flexDirection: 'row', backgroundColor: 'rgba(231, 90, 124, 0.2)' }}
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
             >

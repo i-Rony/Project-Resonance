@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+
+const {width, height} = Dimensions.get("screen");
 
 function HomeScreenHeader() {
 
@@ -79,23 +81,25 @@ function EventScreenHeader() {
 
     const [searchbarRef, setSearchBarRef] = useState();
 
-    var width = 288;
-    var height = 46;
+    var w = width*0.96;
+    var h = 46;
 
     if (searchbarRef !== undefined) {
         if (searchbarRef.isFocused()) {
-            width = 320;
-            height = 50;
+            w = width*0.96;
+            h = 50;
         }
         else {
-            width = 288;
-            height = 46;
+            w = width*0.96;
+            h = 46;
         }
     }
 
     return (
         <View style={{
             height: 72,
+            alignItems: 'center',
+            justifyContent: 'center',
             backgroundColor: 'rgba(44,54,63,0.95)',
             paddingBottom: 3,
             marginBottom: 10
@@ -104,14 +108,14 @@ function EventScreenHeader() {
                 styles.header,
                 {
                     alignItems: 'center',
+                    justifyContent: 'center',
                     paddingTop: 2,
                     paddingBottom: 4,
-                    marginLeft: 50
                 }
             ]}>
                 <Searchbar
                     ref={(ref) => setSearchBarRef(ref)}
-                    style={[styles.searchbar, {width: width, height: height}]}
+                    style={[styles.searchbar, {width: w, height: h}]}
                     placeholder="Search"
                     onChangeText={onChangeSearch}
                     value={searchQuery}

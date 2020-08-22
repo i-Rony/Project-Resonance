@@ -9,7 +9,7 @@ import Carousel_EventScreen from '../Components/Carousel_EventScreen';
 
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import Constants from 'expo-constants';
 
 import StairwayToHeaven from '../assets/Heaven.png';
@@ -82,9 +82,8 @@ const EventScreen = ({ navigation }) => {
                 onSwipeLeft={(state) => onSwipeLeft(state)}
                 onSwipeRight={(state) => onSwipeRight(state)}
                 config={config}
-                style={{
+                style={{ 
                     flex: 1,
-                    backgroundColor: 'rgba(255,255,255,0)'
                 }}
             >
                 <SafeAreaView
@@ -98,13 +97,10 @@ const EventScreen = ({ navigation }) => {
                             style={{
                                 alignItems: "center",
                                 justifyContent: "center",
-                                flex: 1
                             }}
                         >
-
                             <EventScreenHeader />
-
-                            <Carousel_EventScreen
+                            {/* <Carousel_EventScreen
                                 images={[
                                     '../assets/1.png',
                                     '../assets/2.png',
@@ -114,48 +110,83 @@ const EventScreen = ({ navigation }) => {
                                     '../assets/6.png',
                                     '../assets/kawaii.jpg'
                                 ]} 
-                            />
-
+                            /> */}
                             <EventScreenFilters />
                             {/* {filters} */}
-                            
-                            <ScrollView
-                                horizontal={true}
-                                contentContainerStyle={{
-                                    paddingHorizontal: 3
+                        </View>
+
+                        <View style={{ backgroundColor: 'rgba(231, 90, 124, 0.2)' }}>
+                            <View
+                                style={{
+                                    flexDirection: 'row',
+                                    justifyContent: 'space-between'
                                 }}
                             >
-                                <EventPoster source={StairwayToHeaven}>
-                                    <Text>Stairway To Heaven - Concert Hall 79</Text>
-                                </EventPoster>
-
-                                <EventPoster source={SailorMoon}>
-                                    <Text>Sailor Moon - Feature Film</Text>
-                                </EventPoster>
-
-                                <EventPoster source={DaftPunk}>
-                                    <Text>Daft Punk - Live @ Wireless Festival</Text>
-                                </EventPoster>
-                            </ScrollView>
-
-                            <Card>
-                                <Text>
-                                Hello
+                                <Text
+                                    style={{
+                                        top: height*0.03,
+                                        left: width*0.05,
+                                        fontFamily: 'Regular',
+                                        fontSize: 18,
+                                        color: 'rgba(44, 54, 63, 0.834)'
+                                    }}
+                                >
+                                    Nearby
                                 </Text>
-                            </Card>
-
-                            <Card>
-                                <Text>
-                                Hello
+                                <Text 
+                                    style={{
+                                        top: height*0.03,
+                                        left: -45,
+                                        fontFamily: 'SemiBold',
+                                        fontSize: 18,
+                                        color: 'rgba(44, 54, 63, 0.834)'
+                                    }}
+                                >
+                                    Concerts
                                 </Text>
-                            </Card>
+                                <TouchableOpacity
+                                    style={{
+                                        top: 18,
+                                        right: 10,                                        
+                                        borderRadius: 16,
+                                        backgroundColor: 'rgba(255,255,255,0.4)',
+                                    }}
+                                >
+                                    <Text
+                                        style={{
+                                            fontFamily: 'Light',
+                                            color: 'rgba(44, 54, 63, 0.834)',
+                                            padding: 7
+                                        }}
+                                    >
+                                        Show All
+                                    </Text>
+                                </TouchableOpacity>
 
-                            <Card>
-                                <Text>
-                                    Hello
-                                </Text>
-                            </Card>
+                            </View>
+
+                            <View>
+                                <ScrollView
+                                    horizontal={true}
+                                    contentContainerStyle={{
+                                        paddingHorizontal: 3
+                                    }}
+                                >
+                                    <EventPoster source={StairwayToHeaven}>
+                                        <Text>Stairway To Heaven - Concert Hall 79</Text>
+                                    </EventPoster>
+
+                                    <EventPoster source={SailorMoon}>
+                                        <Text>Sailor Moon - Feature Film</Text>
+                                    </EventPoster>
+
+                                    <EventPoster source={DaftPunk}>
+                                        <Text>Daft Punk - Live @ Wireless Festival</Text>
+                                    </EventPoster>
+                                </ScrollView>
+                            </View>                           
                         </View>
+
                     </ScrollView>
                 </SafeAreaView>
             </GestureRecognizer>
