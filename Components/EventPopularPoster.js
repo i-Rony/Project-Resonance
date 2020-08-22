@@ -31,6 +31,7 @@ const EventPopularPoster = (props) => {
     } else {
 
         return(
+            <View style={{paddingHorizontal: width*0.01}}>
             <View style={styles.poster}>
                 <ImageBackground
                     source={props.source}
@@ -42,39 +43,39 @@ const EventPopularPoster = (props) => {
                         press 
                     ?                   
                         
-                                <LinearGradient
-                                    colors={['rgba(44, 54, 63, 1)', 'rgba(255, 255, 255, 0)']}
-                                    style={styles.lineargradient}
-                                    start={{ x: 0, y: 1 }}
-                                    end={{ x: 1, y: 0 }}
-                                >
-                                    <Text
-                                        style={styles.propsdate}
-                                        numberOfLines={1}
-                                        ellipsizeMode='tail'
-                                        textBreakStrategy='balanced'
-                                    >
-                                        {props.date}
-                                    </Text>
+                        <LinearGradient
+                            colors={['rgba(44, 54, 63, 0.84)', 'rgba(255, 255, 255, 0)']}
+                            style={styles.lineargradient}
+                            start={{ x: 0, y: 1 }}
+                            end={{ x: 1, y: 0 }}
+                        >
+                            <Text
+                                style={styles.propsdate}
+                                numberOfLines={1}
+                                ellipsizeMode='tail'
+                                textBreakStrategy='balanced'
+                            >
+                                {props.date}
+                            </Text>
 
-                                    
-                                    <Text
-                                        style={styles.propsname}
-                                        numberOfLines={1}
-                                        ellipsizeMode='tail'
-                                        textBreakStrategy='balanced'
-                                    >
-                                        {props.name}
-                                    </Text>
-                                    <Text
-                                        style={styles.propsvenue}
-                                        numberOfLines={1}
-                                        ellipsizeMode='tail'
-                                        textBreakStrategy='balanced'
-                                    >
-                                        {props.venue}
-                                    </Text>
-                                </LinearGradient>
+                            
+                            <Text
+                                style={styles.propsname}
+                                numberOfLines={1}
+                                ellipsizeMode='tail'
+                                textBreakStrategy='balanced'
+                            >
+                                {props.name}
+                            </Text>
+                            <Text
+                                style={styles.propsvenue}
+                                numberOfLines={1}
+                                ellipsizeMode='tail'
+                                textBreakStrategy='balanced'
+                            >
+                                {props.venue}
+                            </Text>
+                        </LinearGradient>
                                               
                         
                     :
@@ -91,6 +92,7 @@ const EventPopularPoster = (props) => {
                     }
                     </TouchableOpacity>
                 </ImageBackground>
+            </View>
             </View>
         )
     }
@@ -129,7 +131,7 @@ const styles = StyleSheet.create({
     propsdate: {
         position: 'absolute',
         bottom: 64,
-        marginLeft: 4,
+        marginLeft: 5,
         alignSelf: 'baseline',
         fontFamily: 'Bold',
         color: 'white',
@@ -141,7 +143,7 @@ const styles = StyleSheet.create({
     propsname: {
         position: 'absolute',
         bottom: 34,
-        marginLeft: 4,
+        marginLeft: 5,
         alignSelf: 'baseline',
         fontFamily: 'Bold',
         color: 'white',
@@ -153,7 +155,7 @@ const styles = StyleSheet.create({
     propsvenue: {
         position: 'absolute',
         bottom: 10,
-        marginLeft: 4,
+        marginLeft: 5,
         alignSelf: 'baseline',
         fontFamily: 'Bold',
         color: 'white',

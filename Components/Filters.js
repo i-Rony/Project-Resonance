@@ -2,7 +2,18 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 
+import { useFonts } from '@use-expo/font';
+import { AppLoading } from 'expo';
+
 function HomeScreenFilters() {
+
+    let [fontsLoaded] = useFonts({
+        'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
+        'SemiBold': require('../assets/fonts/Montserrat-SemiBold.ttf'),
+        'Medium': require('../assets/fonts/Montserrat-Medium.ttf'),
+        'Light': require('../assets/fonts/Montserrat-Light.ttf'),
+        'Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
+    });
 
     const [filters_status, setFilterStatus] = useState([true, false, false, false, false]);
 
@@ -48,6 +59,10 @@ function HomeScreenFilters() {
         }
     }
 
+    if (!fontsLoaded) {
+        return <AppLoading />;
+
+    } else {
 
     return(
         <View style={{ height: 50 }}>
@@ -60,7 +75,7 @@ function HomeScreenFilters() {
                     style={[styles.filters, { borderWidth: filtersInfo['AllPosts'].borderWidth }]}
                     onPress={() => setFilterStatus([true, false, false, false, false])}
                 >
-                    <Text style={{ color: filtersInfo['AllPosts'].textColor, fontSize: 15 }}>All Posts</Text>
+                    <Text style={{ color: filtersInfo['AllPosts'].textColor, fontSize: 15, fontFamily: 'Regular' }}>All Posts</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={[styles.filters, { borderWidth: filtersInfo['Events'].borderWidth }]}
@@ -68,7 +83,7 @@ function HomeScreenFilters() {
                         setFilterStatus([false, !filters_status[1], filters_status[2], filters_status[3], filters_status[4]]);
                     }}
                 >
-                    <Text style={{ color: filtersInfo['Events'].textColor, fontSize: 15 }}>Events</Text>
+                    <Text style={{ color: filtersInfo['Events'].textColor, fontSize: 15, fontFamily: 'Regular' }}>Events</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={[styles.filters, { borderWidth: filtersInfo['JamSessions'].borderWidth }]}
@@ -76,7 +91,7 @@ function HomeScreenFilters() {
                         setFilterStatus([false, filters_status[1], !filters_status[2], filters_status[3], filters_status[4]]);
                     }}
                 >
-                    <Text style={{ color: filtersInfo['JamSessions'].textColor, fontSize: 15 }}>Jam Sessions</Text>
+                    <Text style={{ color: filtersInfo['JamSessions'].textColor, fontSize: 15, fontFamily: 'Regular' }}>Jam Sessions</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={[styles.filters, { borderWidth: filtersInfo['Collabs'].borderWidth }]}
@@ -84,7 +99,7 @@ function HomeScreenFilters() {
                         setFilterStatus([false, filters_status[1], filters_status[2], !filters_status[3], filters_status[4]]);
                     }}
                 >
-                    <Text style={{ color: filtersInfo['Collabs'].textColor, fontSize: 15 }}>Collabs</Text>
+                    <Text style={{ color: filtersInfo['Collabs'].textColor, fontSize: 15, fontFamily: 'Regular' }}>Collabs</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={[styles.filters, { borderWidth: filtersInfo['Live'].borderWidth }]}
@@ -92,15 +107,24 @@ function HomeScreenFilters() {
                         setFilterStatus([false, filters_status[1], filters_status[2], filters_status[3], !filters_status[4]]);
                     }}
                 >
-                    <Text style={{ color: filtersInfo['Live'].textColor, fontSize: 15 }}>Live</Text>
+                    <Text style={{ color: filtersInfo['Live'].textColor, fontSize: 15, fontFamily: 'Regular' }}>Live</Text>
                 </TouchableOpacity>
             </ScrollView>
         </View>
     );
+}
 
 }
 
 function EventScreenFilters() {
+
+    let [fontsLoaded] = useFonts({
+        'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
+        'SemiBold': require('../assets/fonts/Montserrat-SemiBold.ttf'),
+        'Medium': require('../assets/fonts/Montserrat-Medium.ttf'),
+        'Light': require('../assets/fonts/Montserrat-Light.ttf'),
+        'Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
+    });
 
     const [filters_status, setFilterStatus] = useState([true, false, false, false, false]);
 
@@ -147,11 +171,15 @@ function EventScreenFilters() {
         }
     }
 
+    if (!fontsLoaded) {
+        return <AppLoading />;
+
+    } else {
 
     return(
         <View style={{ marginTop: -10, height: 50,}}>
             <ScrollView
-                style={{ flexDirection: 'row', backgroundColor: 'rgba(231, 90, 124, 0.2)' }}
+                style={{ flexDirection: 'row', backgroundColor: 'rgba(231, 90, 124, 0.15)' }}
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
             >
@@ -159,7 +187,7 @@ function EventScreenFilters() {
                     style={[styles.filters, { borderWidth: filtersInfo['All'].borderWidth }]}
                     onPress={() => setFilterStatus([true, false, false, false, false])}
                 >
-                    <Text style={{ color: filtersInfo['All'].textColor, fontSize: 15 }}>All</Text>
+                    <Text style={{ color: filtersInfo['All'].textColor, fontSize: 15, fontFamily: 'Regular' }}>All</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={[styles.filters, { borderWidth: filtersInfo['Events'].borderWidth }]}
@@ -167,7 +195,7 @@ function EventScreenFilters() {
                         setFilterStatus([false, !filters_status[1], filters_status[2], filters_status[3], filters_status[4]]);
                     }}
                 >
-                    <Text style={{ color: filtersInfo['Events'].textColor, fontSize: 15 }}>Events</Text>
+                    <Text style={{ color: filtersInfo['Events'].textColor, fontSize: 15, fontFamily: 'Regular' }}>Events</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={[styles.filters, { borderWidth: filtersInfo['Trending'].borderWidth }]}
@@ -175,7 +203,7 @@ function EventScreenFilters() {
                         setFilterStatus([false, filters_status[1], !filters_status[2], filters_status[3], filters_status[4]]);
                     }}
                 >
-                    <Text style={{ color: filtersInfo['Trending'].textColor, fontSize: 15 }}>Trending</Text>
+                    <Text style={{ color: filtersInfo['Trending'].textColor, fontSize: 15, fontFamily: 'Regular' }}>Trending</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={[styles.filters, { borderWidth: filtersInfo['Collabs'].borderWidth }]}
@@ -183,7 +211,7 @@ function EventScreenFilters() {
                         setFilterStatus([false, filters_status[1], filters_status[2], !filters_status[3], filters_status[4]]);
                     }}
                 >
-                    <Text style={{ color: filtersInfo['Collabs'].textColor, fontSize: 15 }}>Collabs</Text>
+                    <Text style={{ color: filtersInfo['Collabs'].textColor, fontSize: 15, fontFamily: 'Regular' }}>Collabs</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={[styles.filters, { borderWidth: filtersInfo['People'].borderWidth }]}
@@ -191,11 +219,12 @@ function EventScreenFilters() {
                         setFilterStatus([false, filters_status[1], filters_status[2], filters_status[3], !filters_status[4]]);
                     }}
                 >
-                    <Text style={{ color: filtersInfo['People'].textColor, fontSize: 15 }}>People</Text>
+                    <Text style={{ color: filtersInfo['People'].textColor, fontSize: 15, fontFamily: 'Regular' }}>People</Text>
                 </TouchableOpacity>
             </ScrollView>
         </View>
     );
+                }
 
 }
 
