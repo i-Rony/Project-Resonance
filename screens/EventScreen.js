@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-import { View, Text, BackHandler, Alert, ToastAndroid, Platform, SafeAreaView } from 'react-native';
+import { View, Text, BackHandler, Alert, ToastAndroid, Platform, SafeAreaView, Dimensions } from 'react-native';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 import Card from '../Components/Card';
+import EventPoster from '../Components/EventPoster';
 import { EventScreenHeader } from '../Components/Headers';
 import { EventScreenFilters } from '../Components/Filters';
 import Carousel_EventScreen from '../Components/Carousel_EventScreen';
@@ -11,6 +12,11 @@ import { AppLoading } from 'expo';
 import { ScrollView } from 'react-native-gesture-handler';
 import Constants from 'expo-constants';
 
+import StairwayToHeaven from '../assets/Heaven.png';
+import SailorMoon from '../assets/sailormoon.png';
+import DaftPunk from '../assets/daftpunk.jpg';
+
+const {width, height} = Dimensions.get("screen");
 
 const EventScreen = ({ navigation }) => {
     
@@ -112,22 +118,35 @@ const EventScreen = ({ navigation }) => {
 
                             <EventScreenFilters />
                             {/* {filters} */}
+                            
+                            <ScrollView
+                                horizontal={true}
+                                contentContainerStyle={{
+                                    paddingHorizontal: 3
+                                }}
+                            >
+                                <EventPoster source={StairwayToHeaven}>
+                                    <Text>Stairway To Heaven - Concert Hall 79</Text>
+                                </EventPoster>
+
+                                <EventPoster source={SailorMoon}>
+                                    <Text>Sailor Moon - Feature Film</Text>
+                                </EventPoster>
+
+                                <EventPoster source={DaftPunk}>
+                                    <Text>Daft Punk - Live @ Wireless Festival</Text>
+                                </EventPoster>
+                            </ScrollView>
 
                             <Card>
                                 <Text>
-                                    Hello
+                                Hello
                                 </Text>
                             </Card>
 
                             <Card>
                                 <Text>
-                                    Hello
-                                </Text>
-                            </Card>
-
-                            <Card>
-                                <Text>
-                                    Hello
+                                Hello
                                 </Text>
                             </Card>
 
