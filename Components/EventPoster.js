@@ -48,7 +48,7 @@ const EventPoster = (props) => {
                         press 
                     ?                   
                         <LinearGradient
-                            colors={['rgba(44, 54, 63, 0.6)', 'rgba(255, 255, 255, 0)']}
+                            colors={['rgba(44, 54, 63, 0.84)', 'rgba(255, 255, 255, 0)']}
                             style={{
                                 flex: 1,
                                 borderRadius: 22
