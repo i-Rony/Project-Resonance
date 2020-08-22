@@ -84,7 +84,6 @@ const EventScreen = ({ navigation }) => {
                 config={config}
                 style={{
                     flex: 1,
-                    backgroundColor: 'rgba(255,255,255,0)'
                 }}
             >
                 <SafeAreaView
@@ -93,70 +92,79 @@ const EventScreen = ({ navigation }) => {
                         marginTop: Constants.statusBarHeight,
                     }}
                 >
-                    <ScrollView>
+                    <View
+                        style={{
+                            alignItems: "center",
+                            justifyContent: "center",
+                        }}
+                    >
+
+                        <EventScreenHeader />
+
+                        {/* <Carousel_EventScreen
+                            images={[
+                                '../assets/1.png',
+                                '../assets/2.png',
+                                '../assets/3.png',
+                                '../assets/4.png',
+                                '../assets/5.png',
+                                '../assets/6.png',
+                                '../assets/kawaii.jpg'
+                            ]} 
+                        /> */}
+
+                        <EventScreenFilters />
+                        {/* {filters} */}
+                        </View>
+
                         <View
                             style={{
-                                alignItems: "center",
-                                justifyContent: "center",
-                                flex: 1
+                                backgroundColor: 'rgba(231, 90, 124, 0.2)',
                             }}
                         >
-
-                            <EventScreenHeader />
-
-                            <Carousel_EventScreen
-                                images={[
-                                    '../assets/1.png',
-                                    '../assets/2.png',
-                                    '../assets/3.png',
-                                    '../assets/4.png',
-                                    '../assets/5.png',
-                                    '../assets/6.png',
-                                    '../assets/kawaii.jpg'
-                                ]} 
-                            />
-
-                            <EventScreenFilters />
-                            {/* {filters} */}
-                            
-                            <ScrollView
-                                horizontal={true}
-                                contentContainerStyle={{
-                                    paddingHorizontal: 3
+                            <View
+                                style={{
+                                    flexDirection: 'row'
                                 }}
                             >
-                                <EventPoster source={StairwayToHeaven}>
-                                    <Text>Stairway To Heaven - Concert Hall 79</Text>
-                                </EventPoster>
-
-                                <EventPoster source={SailorMoon}>
-                                    <Text>Sailor Moon - Feature Film</Text>
-                                </EventPoster>
-
-                                <EventPoster source={DaftPunk}>
-                                    <Text>Daft Punk - Live @ Wireless Festival</Text>
-                                </EventPoster>
-                            </ScrollView>
-
-                            <Card>
-                                <Text>
-                                Hello
+                                <Text
+                                    style={{
+                                        top: height*0.03,
+                                        left: width*0.05,
+                                        fontFamily: 'Medium',
+                                        fontSize: 16,
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                    }}
+                                >
+                                    Nearby Concerts
                                 </Text>
-                            </Card>
 
-                            <Card>
-                                <Text>
-                                Hello
-                                </Text>
-                            </Card>
+                            </View>
 
-                            <Card>
-                                <Text>
-                                    Hello
-                                </Text>
-                            </Card>
+                            <View>
+                                <ScrollView
+                                    horizontal={true}
+                                    contentContainerStyle={{
+                                        paddingHorizontal: 3
+                                    }}
+                                >
+                                    <EventPoster source={StairwayToHeaven}>
+                                        <Text>Stairway To Heaven - Concert Hall 79</Text>
+                                    </EventPoster>
+
+                                    <EventPoster source={SailorMoon}>
+                                        <Text>Sailor Moon - Feature Film</Text>
+                                    </EventPoster>
+
+                                    <EventPoster source={DaftPunk}>
+                                        <Text>Daft Punk - Live @ Wireless Festival</Text>
+                                    </EventPoster>
+                                </ScrollView>
+                            </View>                           
                         </View>
-                    </ScrollView>
+
+
                 </SafeAreaView>
             </GestureRecognizer>
         );
