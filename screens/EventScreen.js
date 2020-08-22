@@ -9,7 +9,7 @@ import Carousel_EventScreen from '../Components/Carousel_EventScreen';
 
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import Constants from 'expo-constants';
 
 import StairwayToHeaven from '../assets/Heaven.png';
@@ -82,7 +82,7 @@ const EventScreen = ({ navigation }) => {
                 onSwipeLeft={(state) => onSwipeLeft(state)}
                 onSwipeRight={(state) => onSwipeRight(state)}
                 config={config}
-                style={{
+                style={{ 
                     flex: 1,
                 }}
             >
@@ -92,53 +92,76 @@ const EventScreen = ({ navigation }) => {
                         marginTop: Constants.statusBarHeight,
                     }}
                 >
-                    <View
-                        style={{
-                            alignItems: "center",
-                            justifyContent: "center",
-                        }}
-                    >
-
-                        <EventScreenHeader />
-
-                        {/* <Carousel_EventScreen
-                            images={[
-                                '../assets/1.png',
-                                '../assets/2.png',
-                                '../assets/3.png',
-                                '../assets/4.png',
-                                '../assets/5.png',
-                                '../assets/6.png',
-                                '../assets/kawaii.jpg'
-                            ]} 
-                        /> */}
-
-                        <EventScreenFilters />
-                        {/* {filters} */}
-                        </View>
-
+                    <ScrollView>
                         <View
                             style={{
-                                backgroundColor: 'rgba(231, 90, 124, 0.2)',
+                                alignItems: "center",
+                                justifyContent: "center",
                             }}
                         >
+                            <EventScreenHeader />
+                            {/* <Carousel_EventScreen
+                                images={[
+                                    '../assets/1.png',
+                                    '../assets/2.png',
+                                    '../assets/3.png',
+                                    '../assets/4.png',
+                                    '../assets/5.png',
+                                    '../assets/6.png',
+                                    '../assets/kawaii.jpg'
+                                ]} 
+                            /> */}
+                            <EventScreenFilters />
+                            {/* {filters} */}
+                        </View>
+
+                        <View style={{ backgroundColor: 'rgba(231, 90, 124, 0.2)' }}>
                             <View
                                 style={{
-                                    flexDirection: 'row'
+                                    flexDirection: 'row',
+                                    justifyContent: 'space-between'
                                 }}
                             >
                                 <Text
                                     style={{
                                         top: height*0.03,
                                         left: width*0.05,
-                                        fontFamily: 'Medium',
-                                        fontSize: 16,
-                                        justifyContent: 'center',
-                                        alignItems: 'center',
+                                        fontFamily: 'Regular',
+                                        fontSize: 18,
+                                        color: 'rgba(44, 54, 63, 0.834)'
                                     }}
                                 >
-                                    Nearby Concerts
+                                    Nearby
                                 </Text>
+                                <Text 
+                                    style={{
+                                        top: height*0.03,
+                                        left: -45,
+                                        fontFamily: 'SemiBold',
+                                        fontSize: 18,
+                                        color: 'rgba(44, 54, 63, 0.834)'
+                                    }}
+                                >
+                                    Concerts
+                                </Text>
+                                <TouchableOpacity
+                                    style={{
+                                        top: 18,
+                                        right: 10,                                        
+                                        borderRadius: 16,
+                                        backgroundColor: 'rgba(255,255,255,0.4)',
+                                    }}
+                                >
+                                    <Text
+                                        style={{
+                                            fontFamily: 'Light',
+                                            color: 'rgba(44, 54, 63, 0.834)',
+                                            padding: 7
+                                        }}
+                                    >
+                                        Show All
+                                    </Text>
+                                </TouchableOpacity>
 
                             </View>
 
@@ -164,7 +187,7 @@ const EventScreen = ({ navigation }) => {
                             </View>                           
                         </View>
 
-
+                    </ScrollView>
                 </SafeAreaView>
             </GestureRecognizer>
         );
