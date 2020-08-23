@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, ScrollView, Dimensions, Image } from 'react-native';
 
-const DEVICE_WIDTH = Dimensions.get('window').width;
+const DEVICE_WIDTH = Dimensions.get('screen').width;
 
 class Carousel extends Component {
 
@@ -52,11 +52,11 @@ class Carousel extends Component {
                     onMomentumScrollEnd={this.setSelectedIndex}
                     ref={ this.scrollRef }
                 >
-                    {images.map(image => (
+                    {images.map((image, i) => (
                         <Image
-                            key={image}
+                            key={i}
                             source={{ uri: image }}
-                            style={StyleSheet.backgroundImage}
+                            style={styles.backgroundImage}
                         />
                     ))}
                 </ScrollView>
@@ -77,7 +77,7 @@ export default Carousel;
 
 const styles = StyleSheet.create({
     backgroundImage: {
-        height: "100",
+        resizeMode: 'cover',
         width: DEVICE_WIDTH
     },
     circleDiv: {
