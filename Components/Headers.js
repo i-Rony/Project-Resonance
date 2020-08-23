@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const {width, height} = Dimensions.get("screen");
+const { width, height } = Dimensions.get("screen");
 
 function HomeScreenHeader() {
 
@@ -81,16 +81,16 @@ function EventScreenHeader() {
 
     const [searchbarRef, setSearchBarRef] = useState();
 
-    var w = width*0.96;
+    var w = width * 0.96;
     var h = 46;
 
     if (searchbarRef !== undefined) {
         if (searchbarRef.isFocused()) {
-            w = width*0.96;
+            w = width * 0.96;
             h = 50;
         }
         else {
-            w = width*0.96;
+            w = width * 0.96;
             h = 46;
         }
     }
@@ -115,7 +115,7 @@ function EventScreenHeader() {
             ]}>
                 <Searchbar
                     ref={(ref) => setSearchBarRef(ref)}
-                    style={[styles.searchbar, {width: w, height: h}]}
+                    style={[styles.searchbar, { width: w, height: h }]}
                     placeholder="Search"
                     onChangeText={onChangeSearch}
                     value={searchQuery}
@@ -160,35 +160,105 @@ function NotificationScreenHeader() {
 
 }
 
-function ConnectionScreenHeader() {
+function ConnectionScreenHeader({ navigation }) {
 
-    return(
+    const [searchQuery, setSearchQuery] = useState('');
+    const onChangeSearch = (query) => setSearchQuery(query);
+
+    // const [searchbarRef, setSearchBarRef] = useState();
+    const [isSearchbarActive, setIsSearchbarActive] = useState(false);
+
+    var lowerColumn;
+
+    const searchbarInactive = () => {
+        lowerColumn =
+            <View style={connectionStyles.lowerButtonsPanel}>
+                <View>
+                    <TouchableOpacity style={connectionStyles.lowerHeaderButtons}>
+                        <Text style={connectionStyles.sortAndFilter}>Sort</Text>
+                    </TouchableOpacity>
+                </View>
+                <View>
+                    <TouchableOpacity style={connectionStyles.lowerHeaderButtons}>
+                        <Text style={connectionStyles.sortAndFilter}>Filter</Text>
+                    </TouchableOpacity>
+                </View>
+                <View>
+                    <TouchableOpacity 
+                        style={connectionStyles.lowerHeaderButtons} 
+                        onPress={setIsSearchbarActive(true)}
+                    >
+                        <Text style={connectionStyles.sortAndFilter}>Search</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>;
+    }
+
+    var w = width * 0.7;
+    var h = 35;
+
+    const searchbarActive = () => {
+        lowerColumn =
+            <View style={[connectionStyles.lowerButtonsPanel, { justifyContent: 'flex-start' }]}>
+                <Searchbar
+                    // ref={setSearchBarRef}
+                    style={[connectionStyles.searchbar, { width: w, height: h }]}
+                    // placeholder="search"
+                    onChangeText={onChangeSearch}
+                    value={searchQuery}
+                    onBlur={setIsSearchbarActive(false)}
+                />   
+            </View>;
+    }
+
+    if (isSearchbarActive) {
+        searchbarActive();
+    }
+    else {
+        searchbarInactive();
+    }
+
+    // if (searchbarRef === undefined || !searchbarRef.isFocused()) {
+    //     searchbarInactive();
+    // }
+
+
+    return (
         <View style={{
-            height: 85,
-            backgroundColor: 'rgba(44,54,63,0.95)',
-            paddingBottom: 3,
-            marginBottom: 10,
+            height: 100,
+            marginBottom: 45
         }}>
-            <View style={[
-                styles.header,
-                {
-                    alignItems: 'center',
-                    paddingTop: 2,
-                    paddingBottom: 4,
-                    marginLeft: 8,
-                    marginTop: 34
-                }
-            ]}>
-                <Text style={{
-                    fontSize: 38,
-                    fontWeight: 'bold',
-                    letterSpacing: 0.4,
-                    color: 'rgba(255,255,255,0.95)'
-                }}>
-                    My Connections
-                </Text>
+            <View style={{
+                height: 84,
+                backgroundColor: 'rgba(44,54,63,0.95)',
+                paddingBottom: 6
+            }}>
+                <View style={[
+                    styles.header,
+                    {
+                        alignItems: 'center',
+                        paddingTop: 2,
+                        paddingBottom: 4,
+                        marginLeft: 12,
+                        marginTop: 26
+                    }
+                ]}>
+                    <View>
+                        <Text style={{
+                            fontSize: 35,
+                            fontWeight: 'bold',
+                            letterSpacing: 0.4,
+                            color: 'rgba(220, 225, 216, 1)'
+                        }}>
+                            My Connections
+                        </Text>
+                    </View>
+                    <TouchableOpacity style={connectionStyles.addConnButton} onPress={() => navigation.navigate('Event')}>
+                        <Text style={{ color: '', fontSize: 19, fontWeight: 'bold', color: 'rgba(231,90,124,0.76)' }}> + add </Text>
+                    </TouchableOpacity>
+                </View>
             </View>
-
+            {lowerColumn}
         </View>
     );
 }
@@ -224,6 +294,55 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         borderWidth: 2,
         borderColor: '#fff'
+    }
+
+});
+
+const connectionStyles = StyleSheet.create({
+
+    addConnButton: {
+        paddingVertical: 2,
+        paddingHorizontal: 6,
+        borderRadius: 20,
+        backgroundColor: 'rgba(214, 219, 210, 1)',
+        borderWidth: 3,
+        borderColor: 'rgba(231,90,124,0.76)',
+        marginLeft: 26
+    },
+
+    lowerButtonsPanel: {
+        flexDirection: 'row',
+        backgroundColor: 'rgba(231,90,124,0.76)',
+        padding: 8,
+        alignItems: 'center',
+        justifyContent: 'center',
+        // borderTopColor: 'rgba(214, 219, 210, 1)',
+        // borderTopWidth: 3.5
+    },
+
+    searchbar: {
+        marginLeft: 8,
+        backgroundColor: 'rgba(214,219,210,1)',
+        borderRadius: 500,
+        // tintColor: 'rgba(231,90,124,0.76)'
+    },
+
+    lowerHeaderButtons: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginHorizontal: 4,
+        borderRadius: 7,
+        backgroundColor: 'rgba(214,219,210,1)',
+        // paddingHorizontal: 18,
+        paddingVertical: 6,
+        // marginVertical: 1,
+        width: 120
+    },
+
+    sortAndFilter: {
+        fontWeight: 'bold',
+        color: 'rgba(231,90,124,0.76)', // 'rgba(237,237,237,1)', 
+        fontSize: 20
     }
 
 });

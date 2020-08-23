@@ -4,7 +4,7 @@ import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 
 export default function ConnectionCard({ conInfo, key }) {
 
-    console.log(conInfo);
+    // console.log(conInfo);
 
     const instrumentColor = {
         // 'guitar': 'rgba(200,54,54,0.85)',
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         borderBottomColor: 'rgba(140, 140, 140, 0.6)',
         borderBottomWidth: 1.5,
-        borderRadius: 10,
+        borderRadius: 4,
     },
 
     name: {
@@ -122,8 +122,8 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         backgroundColor: 'rgba(231,90,124,0.85)',
         // borderWidth: 2,
-        paddingVertical: 7.5,
-        paddingHorizontal: 26
+        paddingVertical: 8,
+        paddingHorizontal: 27
     },
 
     collabButtonOff: {
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
         borderColor: 'red',
         borderWidth: 2,
         paddingVertical: 8,
-        paddingHorizontal: 12,
+        paddingHorizontal: 11.2,
         // marginBottom: 16
     }
 
