@@ -160,92 +160,66 @@ function NotificationScreenHeader() {
 
 }
 
-function ConnectionScreenHeader() {
+function ConnectionScreenHeader({ navigation }) {
 
     const [searchQuery, setSearchQuery] = useState('');
     const onChangeSearch = (query) => setSearchQuery(query);
 
-    const [searchbarRef, setSearchBarRef] = useState();
+    // const [searchbarRef, setSearchBarRef] = useState();
+    const [isSearchbarActive, setIsSearchbarActive] = useState(false);
 
-    var w = width * 0.5;
+    var lowerColumn;
+
+    const searchbarInactive = () => {
+        lowerColumn =
+            <View style={connectionStyles.lowerButtonsPanel}>
+                <View>
+                    <TouchableOpacity style={connectionStyles.lowerHeaderButtons}>
+                        <Text style={connectionStyles.sortAndFilter}>Sort</Text>
+                    </TouchableOpacity>
+                </View>
+                <View>
+                    <TouchableOpacity style={connectionStyles.lowerHeaderButtons}>
+                        <Text style={connectionStyles.sortAndFilter}>Filter</Text>
+                    </TouchableOpacity>
+                </View>
+                <View>
+                    <TouchableOpacity 
+                        style={connectionStyles.lowerHeaderButtons} 
+                        onPress={setIsSearchbarActive(true)}
+                    >
+                        <Text style={connectionStyles.sortAndFilter}>Search</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>;
+    }
+
+    var w = width * 0.7;
     var h = 35;
 
-    var lowerColumn =
-        <View style={connectionStyles.lowerButtonsPanel}>
-            <View style={connectionStyles.lowerHeaderButtons}>
-                <TouchableOpacity>
-                    <Text style={connectionStyles.sortAndFilter}>Sort</Text>
-                </TouchableOpacity>
-            </View>
-            <View style={connectionStyles.lowerHeaderButtons}>
-                <TouchableOpacity>
-                    <Text style={connectionStyles.sortAndFilter}>Filter</Text>
-                </TouchableOpacity>
-            </View>
-            <View style={connectionStyles.lowerHeaderButtons}>
-                <TouchableOpacity>
-                    <Text style={connectionStyles.sortAndFilter}>Search</Text>
-                    {/* <Searchbar
-                                ref={(ref) => setSearchBarRef(ref)}
-                                style={[connectionStyles.searchbar, { width: w, height: h }]}
-                                // placeholder="search"
-                                onChangeText={onChangeSearch}
-                                value={searchQuery}
-                            /> */}
-                </TouchableOpacity>
-            </View>
-        </View>;
+    const searchbarActive = () => {
+        lowerColumn =
+            <View style={[connectionStyles.lowerButtonsPanel, { justifyContent: 'flex-start' }]}>
+                <Searchbar
+                    // ref={setSearchBarRef}
+                    style={[connectionStyles.searchbar, { width: w, height: h }]}
+                    // placeholder="search"
+                    onChangeText={onChangeSearch}
+                    value={searchQuery}
+                    onBlur={setIsSearchbarActive(false)}
+                />   
+            </View>;
+    }
 
-    // if (searchbarRef !== undefined) {
-    //     if (searchbarRef.isFocused()) {
-    //         w = width * 0.5;
-    //         h = 35;
-    //         lowerColumn =
-    //             <View style={{ flexDirection: 'row' }}>
-    //                 <TouchableOpacity>
+    if (isSearchbarActive) {
+        searchbarActive();
+    }
+    else {
+        searchbarInactive();
+    }
 
-    //                 </TouchableOpacity>
-    //                 <TouchableOpacity>
-
-    //                 </TouchableOpacity>
-    //                 <Searchbar
-    //                     ref={(ref) => setSearchBarRef(ref)}
-    //                     style={[styles.connectionSearchbar, { width: w, height: h }]}
-    //                     placeholder="search"
-    //                     onChangeText={onChangeSearch}
-    //                     value={searchQuery}
-    //                 />
-    //             </View>;
-    //     }
-    //     else {
-    //         w = width * 0.12;
-    //         h = 35;
-    //         lowerColumn =
-    //             <View style={connectionStyles.lowerButtonsPanel}>
-    //                 <View style={connectionStyles.lowerHeaderButtons}>
-    //                     <TouchableOpacity>
-    //                         <Text style={connectionStyles.sortAndFilter}>Sort</Text>
-    //                     </TouchableOpacity>
-    //                 </View>
-    //                 <View style={connectionStyles.lowerHeaderButtons}>
-    //                     <TouchableOpacity>
-    //                         <Text style={connectionStyles.sortAndFilter}>Filter</Text>
-    //                     </TouchableOpacity>
-    //                 </View>
-    //                 <View style={connectionStyles.lowerHeaderButtons}>
-    //                     <TouchableOpacity>
-    //                         <Text style={connectionStyles.sortAndFilter}>Filter</Text>
-    //                         {/* <Searchbar
-    //                             ref={(ref) => setSearchBarRef(ref)}
-    //                             style={[connectionStyles.searchbar, { width: w, height: h }]}
-    //                             // placeholder="search"
-    //                             onChangeText={onChangeSearch}
-    //                             value={searchQuery}
-    //                         /> */}
-    //                     </TouchableOpacity>
-    //                 </View>
-    //             </View>;
-    //     }
+    // if (searchbarRef === undefined || !searchbarRef.isFocused()) {
+    //     searchbarInactive();
     // }
 
 
@@ -279,7 +253,7 @@ function ConnectionScreenHeader() {
                             My Connections
                         </Text>
                     </View>
-                    <TouchableOpacity style={connectionStyles.addConnButton}>
+                    <TouchableOpacity style={connectionStyles.addConnButton} onPress={() => navigation.navigate('Event')}>
                         <Text style={{ color: '', fontSize: 19, fontWeight: 'bold', color: 'rgba(231,90,124,0.76)' }}> + add </Text>
                     </TouchableOpacity>
                 </View>
@@ -337,9 +311,9 @@ const connectionStyles = StyleSheet.create({
     },
 
     lowerButtonsPanel: {
-        flexDirection: 'row', 
-        backgroundColor: 'rgba(231,90,124,0.76)', 
-        padding: 8, 
+        flexDirection: 'row',
+        backgroundColor: 'rgba(231,90,124,0.76)',
+        padding: 8,
         alignItems: 'center',
         justifyContent: 'center',
         // borderTopColor: 'rgba(214, 219, 210, 1)',
@@ -347,6 +321,7 @@ const connectionStyles = StyleSheet.create({
     },
 
     searchbar: {
+        marginLeft: 8,
         backgroundColor: 'rgba(214,219,210,1)',
         borderRadius: 500,
         // tintColor: 'rgba(231,90,124,0.76)'
@@ -364,8 +339,8 @@ const connectionStyles = StyleSheet.create({
         width: 120
     },
 
-    sortAndFilter: { 
-        fontWeight: 'bold', 
+    sortAndFilter: {
+        fontWeight: 'bold',
         color: 'rgba(231,90,124,0.76)', // 'rgba(237,237,237,1)', 
         fontSize: 20
     }

@@ -168,7 +168,7 @@ const ConnectionScreen = ({ navigation }) => {
                         flex: 1,
                         // marginTop: Constants.statusBarHeight,
                     }}>
-                        <ConnectionScreenHeader />
+                        <ConnectionScreenHeader navigation={navigation}/>
                         <View
                             style={{
                                 alignItems: "center",
