@@ -170,7 +170,25 @@ function ConnectionScreenHeader({ navigation }) {
 
     var lowerColumn;
 
-    const searchbarInactive = () => {
+    if (isSearchbarActive) {
+
+        var w = width * 0.7;
+        var h = 35;
+
+        lowerColumn =
+            <View style={[connectionStyles.lowerButtonsPanel, { justifyContent: 'flex-start' }]}>
+                <Searchbar
+                    // ref={setSearchBarRef}
+                    style={[connectionStyles.searchbar, { width: w, height: h }]}
+                    // placeholder="search connections"
+                    onChangeText={onChangeSearch}
+                    value={searchQuery}
+                    onBlur={() => setIsSearchbarActive(false)}
+                />
+            </View>;
+    }
+    else {
+        
         lowerColumn =
             <View style={connectionStyles.lowerButtonsPanel}>
                 <View>
@@ -184,43 +202,15 @@ function ConnectionScreenHeader({ navigation }) {
                     </TouchableOpacity>
                 </View>
                 <View>
-                    <TouchableOpacity 
-                        style={connectionStyles.lowerHeaderButtons} 
-                        onPress={setIsSearchbarActive(true)}
+                    <TouchableOpacity
+                        style={connectionStyles.lowerHeaderButtons}
+                        onPress={() => setIsSearchbarActive(true)}
                     >
                         <Text style={connectionStyles.sortAndFilter}>Search</Text>
                     </TouchableOpacity>
                 </View>
             </View>;
     }
-
-    var w = width * 0.7;
-    var h = 35;
-
-    const searchbarActive = () => {
-        lowerColumn =
-            <View style={[connectionStyles.lowerButtonsPanel, { justifyContent: 'flex-start' }]}>
-                <Searchbar
-                    // ref={setSearchBarRef}
-                    style={[connectionStyles.searchbar, { width: w, height: h }]}
-                    // placeholder="search"
-                    onChangeText={onChangeSearch}
-                    value={searchQuery}
-                    onBlur={setIsSearchbarActive(false)}
-                />   
-            </View>;
-    }
-
-    if (isSearchbarActive) {
-        searchbarActive();
-    }
-    else {
-        searchbarInactive();
-    }
-
-    // if (searchbarRef === undefined || !searchbarRef.isFocused()) {
-    //     searchbarInactive();
-    // }
 
 
     return (
