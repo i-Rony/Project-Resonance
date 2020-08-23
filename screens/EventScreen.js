@@ -6,7 +6,7 @@ import EventPoster from '../Components/EventPoster';
 import EventPopularPoster from '../Components/EventPopularPoster';
 import { EventScreenHeader } from '../Components/Headers';
 import { EventScreenFilters } from '../Components/Filters';
-import Carousel_EventScreen from '../Components/Carousel_EventScreen';
+import Carousel from '../Components/Carousel_EventScreen';
 
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
@@ -104,15 +104,12 @@ const EventScreen = ({ navigation }) => {
                             }}
                         >
                             <EventScreenHeader />
-                            <Carousel_EventScreen
+                            <Carousel
                                 images={[
-                                    '../assets/1.png',
-                                    '../assets/2.png',
-                                    '../assets/3.png',
-                                    '../assets/4.png',
-                                    '../assets/5.png',
-                                    '../assets/6.png',
-                                    '../assets/kawaii.jpg'
+                                    'https://picsum.photos/id/334/2304/1536',
+                                    'https://picsum.photos/id/249/3000/2000',
+                                    'https://picsum.photos/id/39/3456/2304',
+                                    'https://picsum.photos/id/460/4476/2984'
                                 ]} 
                             />
                             <EventScreenFilters />

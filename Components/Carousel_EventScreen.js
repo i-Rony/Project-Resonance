@@ -47,15 +47,16 @@ class Carousel extends Component {
         const { selectedIndex } = this.state;
 
         return (
-            <View style={{ height: 240, width: "100%", paddingBottom: 10 }}>
-                <ScrollView horizontal
+            <View style={{ marginTop: -10, height: 240, width: "100%", paddingBottom: 10 }}>
+                <ScrollView 
+                    horizontal={true}
                     onMomentumScrollEnd={this.setSelectedIndex}
                     ref={ this.scrollRef }
                 >
-                    {images.map((image, i) => (
+                    {images.map((image) => (
                         <Image
-                            key={i}
-                            source={{ uri: image }}
+                            key={image}
+                            source={{uri: image}}
                             style={styles.backgroundImage}
                         />
                     ))}
@@ -77,10 +78,12 @@ export default Carousel;
 
 const styles = StyleSheet.create({
     backgroundImage: {
-        resizeMode: 'cover',
-        width: DEVICE_WIDTH
+        height: '100%',
+        width: DEVICE_WIDTH,
+        resizeMode: 'cover'
     },
     circleDiv: {
+        marginTop: -16,
         borderRadius: 15,
         width: '100%',
         display: 'flex',
