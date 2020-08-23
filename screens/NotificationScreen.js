@@ -28,7 +28,7 @@ const NotificationScreen = ({ navigation }) => {
     }
 
     function onSwipeRight(gestureState) {
-        navigation.navigate('Event');
+        navigation.navigate('Explore');
     }
 
     function onSwipe(gestureName, gestureState) {
@@ -39,7 +39,7 @@ const NotificationScreen = ({ navigation }) => {
                 navigation.navigate('User');
                 break;
             case SWIPE_RIGHT:
-                navigation.navigate('Event');
+                navigation.navigate('Explore');
                 break;
         }
     }

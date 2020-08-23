@@ -6,7 +6,6 @@ import EventPopularPoster from '../Components/EventPopularPoster';
 import { EventScreenHeader } from '../Components/Headers';
 import { EventScreenFilters } from '../Components/Filters';
 import CarouselEventScreen from '../Components/Carousel_EventScreen';
-
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
@@ -80,41 +79,43 @@ const EventScreen = ({ navigation }) => {
         };
 
         return (
-            <GestureRecognizer
-                onSwipe={(direction, state) => onSwipe(direction, state)}
-                onSwipeLeft={(state) => onSwipeLeft(state)}
-                onSwipeRight={(state) => onSwipeRight(state)}
-                config={config}
-                style={{ 
+            
+            <SafeAreaView
+                style={{
                     flex: 1,
+                    marginTop: Constants.statusBarHeight,
                 }}
             >
-                <SafeAreaView
-                    style={{
-                        flex: 1,
-                        marginTop: Constants.statusBarHeight,
-                    }}
-                >
-                    <ScrollView>
-                        <View
-                            style={{
-                                alignItems: "center",
-                                justifyContent: "center",
-                            }}
-                        >
-                            <EventScreenHeader />
-                            <CarouselEventScreen
-                                images={[
-                                    'https://picsum.photos/id/334/2304/1536',
-                                    'https://picsum.photos/id/249/3000/2000',
-                                    'https://picsum.photos/id/39/3456/2304',
-                                    'https://picsum.photos/id/460/4476/2984'
-                                ]} 
-                            />
-                            <EventScreenFilters />
-                            {/* {filters} */}                          
+                <ScrollView>
+                    <View
+                        style={{
+                            alignItems: "center",
+                            justifyContent: "center",
+                        }}
+                    >
+                        <EventScreenHeader />
+                        <CarouselEventScreen
+                            images={[
+                                'https://picsum.photos/id/334/2304/1536',
+                                'https://picsum.photos/id/249/3000/2000',
+                                'https://picsum.photos/id/39/3456/2304',
+                                'https://picsum.photos/id/460/4476/2984'
+                            ]} 
+                        />
+                        <EventScreenFilters />
+                        {/* {filters} */}                          
 
-                        </View>
+                    </View>
+
+                    <GestureRecognizer
+                        onSwipe={(direction, state) => onSwipe(direction, state)}
+                        onSwipeLeft={(state) => onSwipeLeft(state)}
+                        onSwipeRight={(state) => onSwipeRight(state)}
+                        config={config}
+                        style={{ 
+                            flex: 1,
+                        }}
+                    >
 
                         <View style={{ backgroundColor: 'rgba(231, 90, 124, 0.15)' }}>
                             <View
@@ -270,10 +271,9 @@ const EventScreen = ({ navigation }) => {
                                 </ScrollView>
                             </View>                           
                         </View>
-
-                    </ScrollView>
-                </SafeAreaView>
-            </GestureRecognizer>
+                    </GestureRecognizer>
+                </ScrollView>
+            </SafeAreaView>
         );
     }
 }

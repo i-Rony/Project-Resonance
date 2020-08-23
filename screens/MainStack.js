@@ -49,7 +49,7 @@ const tabs = {
       inactiveColor: 'rgba(255,255,255,0)'
     }
   }, // end of Notifications
-  Event: {
+  Explore: {
     labelStyle: {
       color: '#E75A7C'
     },
@@ -96,7 +96,7 @@ const MainStack = () => (
   >
     <Tab.Screen name="User" component={UserDrawer} />
     <Tab.Screen name="Home" component={HomeScreen} />
-    <Tab.Screen name="Event" component={EventScreen} />
+    <Tab.Screen name="Explore" component={EventScreen} />
     <Tab.Screen name="Notifications" component={NotificationScreen} />
 
   </Tab.Navigator>
