@@ -3,6 +3,7 @@ import { View, Text, BackHandler, Alert, ToastAndroid, Platform, SafeAreaView, D
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 import Card from '../Components/Card';
 import EventPoster from '../Components/EventPoster';
+import EventPopularPoster from '../Components/EventPopularPoster';
 import { EventScreenHeader } from '../Components/Headers';
 import { EventScreenFilters } from '../Components/Filters';
 import Carousel_EventScreen from '../Components/Carousel_EventScreen';
@@ -15,6 +16,9 @@ import Constants from 'expo-constants';
 import StairwayToHeaven from '../assets/Heaven.png';
 import SailorMoon from '../assets/sailormoon.png';
 import DaftPunk from '../assets/daftpunk.jpg';
+import City from '../assets/city.png';
+import Lofi from '../assets/lofi.jpg';
+import Arcade from '../assets/Arcade.jpg';
 
 const {width, height} = Dimensions.get("screen");
 
@@ -100,7 +104,7 @@ const EventScreen = ({ navigation }) => {
                             }}
                         >
                             <EventScreenHeader />
-                            {/* <Carousel_EventScreen
+                            <Carousel_EventScreen
                                 images={[
                                     '../assets/1.png',
                                     '../assets/2.png',
@@ -110,12 +114,95 @@ const EventScreen = ({ navigation }) => {
                                     '../assets/6.png',
                                     '../assets/kawaii.jpg'
                                 ]} 
-                            /> */}
+                            />
                             <EventScreenFilters />
-                            {/* {filters} */}
+                            {/* {filters} */}                          
+
                         </View>
 
-                        <View style={{ backgroundColor: 'rgba(231, 90, 124, 0.2)' }}>
+                        <View style={{ backgroundColor: 'rgba(231, 90, 124, 0.15)' }}>
+                            <View
+                                style={{
+                                    flexDirection: 'row',
+                                    justifyContent: 'space-between'
+                                }}
+                            >
+                                <Text
+                                    style={{
+                                        top: height*0.03,
+                                        left: width*0.04,
+                                        fontFamily: 'Regular',
+                                        fontSize: 18,
+                                        color: 'rgba(44, 54, 63, 0.834)'
+                                    }}
+                                >
+                                    Popular
+                                </Text>
+                                <Text 
+                                    style={{
+                                        top: height*0.03,
+                                        left: -56,
+                                        fontFamily: 'SemiBold',
+                                        fontSize: 18,
+                                        color: 'rgba(44, 54, 63, 0.834)'
+                                    }}
+                                >
+                                    Events
+                                </Text>
+                                <TouchableOpacity
+                                    style={{
+                                        top: 18,
+                                        right: 10,                                        
+                                        borderRadius: 16,
+                                        backgroundColor: 'rgba(255,255,255,0.4)',
+                                    }}
+                                >
+                                    <Text
+                                        style={{
+                                            fontFamily: 'Light',
+                                            color: 'rgba(44, 54, 63, 0.834)',
+                                            padding: 7
+                                        }}
+                                    >
+                                        Show All
+                                    </Text>
+                                </TouchableOpacity>
+
+                            </View>
+
+                            <View>
+                                <ScrollView
+                                    horizontal={true}
+                                    contentContainerStyle={{
+                                        paddingHorizontal: 3,
+                                        paddingBottom: 20
+                                    }}
+                                >
+                                    <EventPopularPoster 
+                                        source={City} 
+                                        name='Folklore - Taylor Swift'
+                                        venue='Club Devil, 5th Avenue, 287' 
+                                        date='Sun 23, August'   
+                                    />
+
+                                    <EventPopularPoster 
+                                        source={Lofi} 
+                                        name='Lofi Chillout Sessions'
+                                        venue='Atlanta City, Fiasco Street' 
+                                        date='Thu 27, August'   
+                                    />
+
+                                    <EventPopularPoster 
+                                        source={Arcade} 
+                                        name='Game-Boy Wonder Club'
+                                        venue='Saint De Boulevard Road' 
+                                        date='Mon 31, August'   
+                                    />
+                                </ScrollView>
+                            </View>                           
+                        </View>
+
+                        <View style={{ backgroundColor: 'rgba(231, 90, 124, 0.15)' }}>
                             <View
                                 style={{
                                     flexDirection: 'row',
@@ -169,7 +256,8 @@ const EventScreen = ({ navigation }) => {
                                 <ScrollView
                                     horizontal={true}
                                     contentContainerStyle={{
-                                        paddingHorizontal: 3
+                                        paddingHorizontal: 3,
+                                        paddingBottom: 20
                                     }}
                                 >
                                     <EventPoster source={StairwayToHeaven}>

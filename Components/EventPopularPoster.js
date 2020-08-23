@@ -10,7 +10,7 @@ import { AppLoading } from 'expo';
 
 const { width, height } = Dimensions.get('screen');
 
-const EventPoster = (props) => {
+const EventPopularPoster = (props) => {
 
     const [press, setPress] = useState(false);
 
@@ -36,12 +36,13 @@ const EventPoster = (props) => {
                 <ImageBackground
                     source={props.source}
                     style={styles.imgbackground}
-                    imageStyle={{ borderRadius: 22 }}
+                    imageStyle={{ borderRadius: 22, resizeMode: 'cover' }}
                 >
                     <TouchableOpacity style={{flex: 1}} onPress={() => pressOn()}>
                     {
                         press 
                     ?                   
+                        
                         <LinearGradient
                             colors={['rgba(44, 54, 63, 0.84)', 'rgba(255, 255, 255, 0)']}
                             style={styles.lineargradient}
@@ -49,14 +50,34 @@ const EventPoster = (props) => {
                             end={{ x: 1, y: 0 }}
                         >
                             <Text
-                                style={styles.propschildren}
-                                numberOfLines={4}
+                                style={styles.propsdate}
+                                numberOfLines={1}
                                 ellipsizeMode='tail'
                                 textBreakStrategy='balanced'
                             >
-                                {props.children}
-                            </Text>                        
+                                {props.date}
+                            </Text>
+
+                            
+                            <Text
+                                style={styles.propsname}
+                                numberOfLines={1}
+                                ellipsizeMode='tail'
+                                textBreakStrategy='balanced'
+                            >
+                                {props.name}
+                            </Text>
+                            <Text
+                                style={styles.propsvenue}
+                                numberOfLines={1}
+                                ellipsizeMode='tail'
+                                textBreakStrategy='balanced'
+                            >
+                                {props.venue}
+                            </Text>
                         </LinearGradient>
+                                              
+                        
                     :
                         <TouchableOpacity style={styles.more}>
                             <Text style={styles.moreText}>
@@ -79,8 +100,8 @@ const EventPoster = (props) => {
 
 const styles = StyleSheet.create({
     poster: {
-        width: 190,
-        height: 240,
+        width: 290,
+        height: 200,
         borderRadius: 22,
         elevation: 3,
         backgroundColor: '#FFFFFF',
@@ -91,6 +112,9 @@ const styles = StyleSheet.create({
         marginHorizontal: 4,
         marginVertical: 6,
         marginTop: height * 0.05,
+    },
+    imgbackground: {
+        flex: 1,
     },
     more: {
         alignContent: 'flex-end',
@@ -104,24 +128,43 @@ const styles = StyleSheet.create({
         fontFamily: 'Regular',
         color: 'rgba(44, 54, 63, 0.85)'    
     },
-    propschildren: {
+    propsdate: {
         position: 'absolute',
-        bottom: 10,
-        marginLeft: 4,
+        bottom: 64,
+        marginLeft: 5,
         alignSelf: 'baseline',
         fontFamily: 'Bold',
         color: 'white',
-        fontSize: 20
+        fontSize: 14,
+        paddingBottom: 6,
+        borderBottomWidth: 1,
+        borderColor: 'white'
+    },
+    propsname: {
+        position: 'absolute',
+        bottom: 34,
+        marginLeft: 5,
+        alignSelf: 'baseline',
+        fontFamily: 'Bold',
+        color: 'white',
+        fontSize: 14,
+        paddingBottom: 6,
+        borderBottomWidth: 1,
+        borderColor: 'white'
+    },
+    propsvenue: {
+        position: 'absolute',
+        bottom: 10,
+        marginLeft: 5,
+        alignSelf: 'baseline',
+        fontFamily: 'Bold',
+        color: 'white',
+        fontSize: 14
     },
     lineargradient: {
         flex: 1,
         borderRadius: 22
     },
-    imgbackground: {
-        resizeMode: 'cover',
-        flex: 1,
-    }
-
 });
 
-export default EventPoster;
+export default EventPopularPoster;
