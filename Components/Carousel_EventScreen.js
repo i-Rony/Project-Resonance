@@ -3,7 +3,7 @@ import { StyleSheet, View, ScrollView, Dimensions, Image } from 'react-native';
 
 const DEVICE_WIDTH = Dimensions.get('screen').width;
 
-class Carousel extends Component {
+class CarouselEventScreen extends Component {
 
     scrollRef = React.createRef();
 
@@ -74,7 +74,7 @@ class Carousel extends Component {
     }
 }
 
-export default Carousel;
+export default CarouselEventScreen;
 
 const styles = StyleSheet.create({
     backgroundImage: {

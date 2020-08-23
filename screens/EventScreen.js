@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
-import { View, Text, BackHandler, Alert, ToastAndroid, Platform, SafeAreaView, Dimensions } from 'react-native';
+import { View, Text, BackHandler, SafeAreaView, Dimensions } from 'react-native';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
-import Card from '../Components/Card';
 import EventPoster from '../Components/EventPoster';
 import EventPopularPoster from '../Components/EventPopularPoster';
 import { EventScreenHeader } from '../Components/Headers';
 import { EventScreenFilters } from '../Components/Filters';
-import Carousel from '../Components/Carousel_EventScreen';
+import CarouselEventScreen from '../Components/Carousel_EventScreen';
 
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
@@ -104,7 +103,7 @@ const EventScreen = ({ navigation }) => {
                             }}
                         >
                             <EventScreenHeader />
-                            <Carousel
+                            <CarouselEventScreen
                                 images={[
                                     'https://picsum.photos/id/334/2304/1536',
                                     'https://picsum.photos/id/249/3000/2000',
