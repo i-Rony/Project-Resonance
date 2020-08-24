@@ -43,7 +43,6 @@ const EventScreen = ({label}) => (
             <EventScreenFilters />
         </View>
         <GestureRecognizer
-            
             style={{ 
                 flex: 1,
             }}
@@ -270,8 +269,12 @@ const ExploreScreen = ({ navigation }) => {
             directionalOffsetThreshold: 800
         };
 
+        // onSwipe={(direction, state) => onSwipe(direction, state)}
+        // onSwipeLeft={(state) => onSwipeLeft(state)}
+        // onSwipeRight={(state) => onSwipeRight(state)}
+        // config={config}
+
         return (
-            
             <SafeAreaView
                 style={{
                     flex: 1,
@@ -279,18 +282,31 @@ const ExploreScreen = ({ navigation }) => {
                 }}
             >   
                              
-                    <View
+                    {/* <View
                         style={{
+                            marginBottom: -10,
                             alignItems: "center",
                             justifyContent: "center",
                         }}
                     >
                         <EventScreenHeader />
                         
-                    </View>
+                    </View> */}
                     <ScrollableTabView
-                        tabBarActiveTextColor="#53ac49"
-                        renderTabBar={() => <TabBar underlineColor="#53ac49" />}>
+                        tabBarInactiveTextColor='white'
+                        tabBarActiveTextColor='rgba(44,54,63,0.85)'
+                        renderTabBar={() => <TabBar 
+                            underlineColor='rgba(44,54,63,0.85)' 
+                            tabBarTextStyle={{
+                                fontFamily: 'SemiBold',
+                                fontSize: 22
+                            }}
+                            tabBarStyle={{ 
+                                backgroundColor: 'rgba(231,90,124,0.5)',
+                                paddingTop: 20,
+                                borderBottomWidth: 0,
+                                marginTop: 0
+                    }}/>}>
                         <EventScreen tabLabel={{label: 'Events'}} label=''/>
                         <PeopleScreen tabLabel={{label: 'People'}} label='People'/>
                     </ScrollableTabView>

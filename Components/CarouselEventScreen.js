@@ -49,6 +49,7 @@ class CarouselEventScreen extends Component {
         return (
             <View style={{ marginTop: -10, height: 240, width: "100%", paddingBottom: 10 }}>
                 <ScrollView 
+                    pagingEnabled
                     horizontal={true}
                     onMomentumScrollEnd={this.setSelectedIndex}
                     ref={ this.scrollRef }
