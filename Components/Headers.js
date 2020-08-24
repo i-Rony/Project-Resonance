@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, Dimensions, ScrollView } from 'react-native';
+import Modal from 'react-native-modal';
 import { Searchbar } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
@@ -157,10 +158,87 @@ function NotificationScreenHeader() {
 
         </View>
     );
-
 }
 
 function ConnectionScreenHeader({ navigation }) {
+
+    const [isSortModalActive, setSortModalActive] = useState(false);
+
+    const sortModal =
+        <Modal 
+            isVisible={isSortModalActive}
+            hideModalContentWhileAnimating={true}
+            style={{ alignItems: 'center', justifyContent: 'center' }}
+        >
+            <View style={connectionStyles.sortModal}>
+                <View style={connectionStyles.modalHeader}>
+                    <Text 
+                        style={{ 
+                            fontWeight: 'bold', 
+                            fontSize: 40, 
+                            color: 'rgba(231,90,124,0.9)',
+                            marginLeft: 30,
+                            marginTop: 6.6
+                        }}
+                    >
+                        Sort
+                    </Text>
+                </View>
+                <ScrollView style={connectionStyles.modalBody}>
+
+                </ScrollView>
+                <View style={connectionStyles.modalFooter}>
+                    <TouchableOpacity 
+                        onPress={() => setSortModalActive(false)}
+                        style={[connectionStyles.modalFooterButtons, { backgroundColor: 'rgba(214,219,210,1)', borderBottomLeftRadius: 30}]}
+                    >
+                        <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'rgba(44, 54, 63, 0.95)' }}>Cancel</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity 
+                        onPress={() => setSortModalActive(false)}
+                        style={[connectionStyles.modalFooterButtons, { backgroundColor: 'rgba(44, 54, 63, 0.95)', borderBottomRightRadius: 30 }]}
+                    >
+                        <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'rgba(214,219,210,1)' }}>Apply</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        </Modal>
+
+    const [isFilterModalActive, setFilterModalActive] = useState(false);
+
+    // const filterModal =
+    //     <Modal 
+    //         isVisible={isFilterModalActive}
+    //         hideModalContentWhileAnimating={true}
+    //         style={{ alignItems: 'center', justifyContent: 'center' }}
+    //     >
+    //         <View style={connectionStyles.filterModal}>
+    //             <View style={connectionStyles.modalHeader}></View>
+    //             <ScrollView style={connectionStyles.modalBody}>
+    //             </ScrollView>
+    //             <View style={connectionStyles.modalFooter}>
+    //                 <TouchableOpacity
+    //                     onPress={() => setFilterModalActive(false)}
+    //                     style={[connectionStyles.modalFooterButtons, { backgroundColor: 'rgba(214,219,210,1)' }]}
+    //                 >
+    //                     <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'rgba(44, 54, 63, 1)' }}>Cancel</Text>
+    //                 </TouchableOpacity>
+    //                 <TouchableOpacity
+    //                     onPress={() => setFilterModalActive(false)}
+    //                     style={[connectionStyles.modalFooterButtons, { backgroundColor: 'rgba(44, 54, 63, 1)' }]}
+    //                 >
+    //                     <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'rgba(214,219,210,1)' }}>Apply</Text>
+    //                 </TouchableOpacity>
+    //             </View>
+    //         </View>
+    //     </Modal>
+
+    useEffect(() => {
+        navigation.addListener('blur', () => {
+            setSortModalActive(false);
+            setFilterModalActive(false);
+        })
+    });
 
     const [searchQuery, setSearchQuery] = useState('');
     const onChangeSearch = (query) => setSearchQuery(query);
@@ -173,7 +251,7 @@ function ConnectionScreenHeader({ navigation }) {
     if (isSearchbarActive) {
 
         var w = width * 0.7;
-        var h = 35;
+        var h = 38;
 
         lowerColumn =
             <View style={[connectionStyles.lowerButtonsPanel, { justifyContent: 'flex-start' }]}>
@@ -192,12 +270,18 @@ function ConnectionScreenHeader({ navigation }) {
         lowerColumn =
             <View style={connectionStyles.lowerButtonsPanel}>
                 <View>
-                    <TouchableOpacity style={connectionStyles.lowerHeaderButtons}>
+                    <TouchableOpacity 
+                        style={connectionStyles.lowerHeaderButtons}
+                        onPress={() => setSortModalActive(true)}
+                    >
                         <Text style={connectionStyles.sortAndFilter}>Sort</Text>
                     </TouchableOpacity>
                 </View>
                 <View>
-                    <TouchableOpacity style={connectionStyles.lowerHeaderButtons}>
+                    <TouchableOpacity 
+                        style={connectionStyles.lowerHeaderButtons}
+                        onPress={() => setFilterModalActive(true)}
+                    >
                         <Text style={connectionStyles.sortAndFilter}>Filter</Text>
                     </TouchableOpacity>
                 </View>
@@ -218,6 +302,8 @@ function ConnectionScreenHeader({ navigation }) {
             height: 100,
             marginBottom: 45
         }}>
+            {sortModal}
+            {/* {filterModal} */}
             <View style={{
                 height: 84,
                 backgroundColor: 'rgba(44,54,63,0.95)',
@@ -333,6 +419,49 @@ const connectionStyles = StyleSheet.create({
         fontWeight: 'bold',
         color: 'rgba(231,90,124,0.76)', // 'rgba(237,237,237,1)', 
         fontSize: 20
+    },
+
+    sortModal: {
+        marginVertical: 150,
+        borderRadius: 30,
+        padding: 10,
+        flex: 1,
+        justifyContent: 'center'
+    },
+
+    filterModal: {
+        // width: 200,
+        // height: 600,
+        // alignItems: 'center',
+        // justifyContent: 'center'
+        flex: 1
+    },
+
+    modalHeader: {
+        height: 58,
+        backgroundColor: 'rgba(214, 219, 210, 1)',
+        borderTopLeftRadius: 30,
+        borderTopRightRadius: 30
+    },
+
+    modalBody: {
+        width: 280,
+        backgroundColor: 'rgba(231,90,124,0.85)'
+    },
+
+    modalFooter: {
+        // borderBottomLeftRadius: 30,
+        // borderBottomRightRadius: 30,
+        // backgroundColor: '#fff',
+        flexDirection: 'row',
+        justifyContent: 'center'
+    },
+
+    modalFooterButtons: {
+        height: 47,
+        width: 140,
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 
 });
