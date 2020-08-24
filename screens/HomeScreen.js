@@ -1,19 +1,15 @@
 import React, { useEffect } from 'react';
-import { View, Text, BackHandler, Alert, ToastAndroid, Platform, Image, SafeAreaView } from 'react-native';
+import { View, Text, BackHandler, Alert, ToastAndroid, Platform, SafeAreaView } from 'react-native';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 import Card from '../Components/Card';
 import { HomeScreenHeader } from '../Components/Headers';
 import { HomeScreenFilters } from '../Components/Filters';
-
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 import { ScrollView } from 'react-native-gesture-handler';
 import Constants from 'expo-constants';
-import JoJo from '../assets/jojo.jpg';
 import MovingEarth from '../assets/movingearth.mp4';
 import CardMusiq from '../Components/CardMusiq';
-// import NewCardMusiq from '../Components/newCardMusiq';
-
 
 const HomeScreen = ({ navigation }) => {
     
@@ -25,7 +21,6 @@ const HomeScreen = ({ navigation }) => {
                 style: 'cancel'
             }, {
                 text: 'OK',
-                // onPress: () => BackHandler.exitApp()
                 onPress: () => {
                     if (Platform.OS === 'android') {
                         ToastAndroid.show("We don't believe in 'good'-byes,\n\tHope to see you soon...", ToastAndroid.SHORT);
@@ -36,7 +31,7 @@ const HomeScreen = ({ navigation }) => {
                     else {
                         BackHandler.exitApp();
                     }
-                }//end of onPress()
+                }
             }],
             {
                 cancelable: false
@@ -65,7 +60,7 @@ const HomeScreen = ({ navigation }) => {
     });
 
     function onSwipeLeft(gestureState) {
-        navigation.navigate('Event');
+        navigation.navigate('Explore');
     }
 
     function onSwipeRight(gestureState) {
@@ -77,7 +72,7 @@ const HomeScreen = ({ navigation }) => {
 
         switch (gestureName) {
             case SWIPE_LEFT:
-                navigation.navigate('Event');
+                navigation.navigate('Explore');
                 break;
             case SWIPE_RIGHT:
                 navigation.navigate('User');
@@ -125,7 +120,6 @@ const HomeScreen = ({ navigation }) => {
                             <HomeScreenHeader />
 
                             <HomeScreenFilters />
-                            {/* {filters} */}
 
                             <Card source={MovingEarth}>
                                 
