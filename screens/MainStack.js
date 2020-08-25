@@ -1,7 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-
 import AnimatedTabBar from '@gorhom/animated-tabbar';
 
 import HomeSVG from '../svg/HomeSVG';
