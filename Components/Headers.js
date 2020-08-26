@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
-import Modal from 'react-native-modal';
 import { Searchbar } from 'react-native-paper';
+// import ConnectionSortModal from './ConnectionSortModal';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 import Constants from 'expo-constants';
@@ -190,74 +190,49 @@ function NotificationScreenHeader() {
 
         </View>
     );
-}
+} // end of NotificationScreenHeader
+
 
 function ConnectionScreenHeader({ navigation }) {
 
     const [isSortModalActive, setSortModalActive] = useState(false);
-
-    const sortModal =
-        <Modal 
-            isVisible={isSortModalActive}
-            hideModalContentWhileAnimating={true}
-            style={{ alignItems: 'center', justifyContent: 'center' }}
-        >
-            <View style={connectionStyles.sortModal}>
-                <View style={connectionStyles.modalHeader}>
-                    <Text 
-                        style={{ 
-                            fontWeight: 'bold', 
-                            fontSize: 40, 
-                            color: 'rgba(231,90,124,0.9)',
-                            marginLeft: 30,
-                            marginTop: 6.6
-                        }}
-                    >
-                        Sort
-                    </Text>
-                </View>
-                <ScrollView style={connectionStyles.modalBody}>
-
-                </ScrollView>
-                <View style={connectionStyles.modalFooter}>
-                    <TouchableOpacity 
-                        onPress={() => setSortModalActive(false)}
-                        style={[connectionStyles.modalFooterButtons, { backgroundColor: 'rgba(214,219,210,1)', borderBottomLeftRadius: 30}]}
-                    >
-                        <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'rgba(44, 54, 63, 0.95)' }}>Cancel</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                        onPress={() => setSortModalActive(false)}
-                        style={[connectionStyles.modalFooterButtons, { backgroundColor: 'rgba(44, 54, 63, 0.95)', borderBottomRightRadius: 30 }]}
-                    >
-                        <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'rgba(214,219,210,1)' }}>Apply</Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
-        </Modal>
-
     const [isFilterModalActive, setFilterModalActive] = useState(false);
 
     // const filterModal =
-    //     <Modal 
+    //     <Modal
+    //         animationOutTiming={500}
+    //         animationOut={'slideOutUp'}
     //         isVisible={isFilterModalActive}
     //         hideModalContentWhileAnimating={true}
     //         style={{ alignItems: 'center', justifyContent: 'center' }}
     //     >
-    //         <View style={connectionStyles.filterModal}>
-    //             <View style={connectionStyles.modalHeader}></View>
+    //         <View style={connectionStyles.modalContainer}>
+    //             <View style={connectionStyles.modalHeader}>
+    //                 <Text
+    //                     style={{
+    //                         fontWeight: 'bold',
+    //                         fontSize: 40,
+    //                         color: 'rgba(231,90,124,0.9)',
+    //                         marginLeft: 30,
+    //                         marginTop: 6.6
+    //                     }}
+    //                 >
+    //                     Filter
+    //                 </Text>
+    //             </View >
     //             <ScrollView style={connectionStyles.modalBody}>
+
     //             </ScrollView>
     //             <View style={connectionStyles.modalFooter}>
     //                 <TouchableOpacity
     //                     onPress={() => setFilterModalActive(false)}
-    //                     style={[connectionStyles.modalFooterButtons, { backgroundColor: 'rgba(214,219,210,1)' }]}
+    //                     style={[connectionStyles.modalFooterButtons, { backgroundColor: 'rgba(214,219,210,1)', borderBottomLeftRadius: 30 }]}
     //                 >
-    //                     <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'rgba(44, 54, 63, 1)' }}>Cancel</Text>
+    //                     <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'rgba(44, 54, 63, 0.95)' }}>Cancel</Text>
     //                 </TouchableOpacity>
     //                 <TouchableOpacity
     //                     onPress={() => setFilterModalActive(false)}
-    //                     style={[connectionStyles.modalFooterButtons, { backgroundColor: 'rgba(44, 54, 63, 1)' }]}
+    //                     style={[connectionStyles.modalFooterButtons, { backgroundColor: 'rgba(44, 54, 63, 0.95)', borderBottomRightRadius: 30 }]}
     //                 >
     //                     <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'rgba(214,219,210,1)' }}>Apply</Text>
     //                 </TouchableOpacity>
@@ -290,7 +265,7 @@ function ConnectionScreenHeader({ navigation }) {
                 <Searchbar
                     // ref={setSearchBarRef}
                     style={[connectionStyles.searchbar, { width: w, height: h }]}
-                    // placeholder="search connections"
+                    placeholder="Search Connections"
                     onChangeText={onChangeSearch}
                     value={searchQuery}
                     onBlur={() => setIsSearchbarActive(false)}
@@ -298,11 +273,11 @@ function ConnectionScreenHeader({ navigation }) {
             </View>;
     }
     else {
-        
+
         lowerColumn =
             <View style={connectionStyles.lowerButtonsPanel}>
                 <View>
-                    <TouchableOpacity 
+                    <TouchableOpacity
                         style={connectionStyles.lowerHeaderButtons}
                         onPress={() => setSortModalActive(true)}
                     >
@@ -310,7 +285,7 @@ function ConnectionScreenHeader({ navigation }) {
                     </TouchableOpacity>
                 </View>
                 <View>
-                    <TouchableOpacity 
+                    <TouchableOpacity
                         style={connectionStyles.lowerHeaderButtons}
                         onPress={() => setFilterModalActive(true)}
                     >
@@ -334,7 +309,7 @@ function ConnectionScreenHeader({ navigation }) {
             height: 100,
             marginBottom: 45
         }}>
-            {sortModal}
+            <ConnectionSortModal visiblity={isSortModalActive}/>
             {/* {filterModal} */}
             <View style={{
                 height: 84,
@@ -451,20 +426,12 @@ const connectionStyles = StyleSheet.create({
         fontSize: 20
     },
 
-    sortModal: {
-        marginVertical: 150,
+    modalContainer: {
+        marginVertical: 130,
         borderRadius: 30,
         padding: 10,
         flex: 1,
         justifyContent: 'center'
-    },
-
-    filterModal: {
-        // width: 200,
-        // height: 600,
-        // alignItems: 'center',
-        // justifyContent: 'center'
-        flex: 1
     },
 
     modalHeader: {
@@ -475,8 +442,9 @@ const connectionStyles = StyleSheet.create({
     },
 
     modalBody: {
-        width: 280,
-        backgroundColor: 'rgba(231,90,124,0.85)'
+        width: 290,
+        backgroundColor: 'rgba(231, 90, 124, 1)',
+        paddingTop: 10
     },
 
     modalFooter: {
@@ -489,7 +457,7 @@ const connectionStyles = StyleSheet.create({
 
     modalFooterButtons: {
         height: 47,
-        width: 140,
+        width: 145,
         justifyContent: 'center',
         alignItems: 'center'
     }
