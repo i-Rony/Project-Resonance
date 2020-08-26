@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useIsDrawerOpen } from '@react-navigation/drawer';
-import { View, BackHandler, Text, ImageBackground, TouchableOpacity, Dimensions, TextInput } from 'react-native';
+import { View, BackHandler, Text, ImageBackground, TouchableOpacity, Dimensions, TextInput, StatusBar } from 'react-native';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 import { LinearGradient } from 'expo-linear-gradient';
 import AnimateNumber from 'react-native-animate-number';
@@ -96,6 +96,7 @@ const ProfileScreen = ({ navigation }) => {
         };
 
         return (
+            
             <GestureRecognizer
                 onSwipe={(direction, state) => onSwipe(direction, state)}
                 onSwipeLeft={(state) => onSwipeLeft(state)}
@@ -269,6 +270,7 @@ const ProfileScreen = ({ navigation }) => {
                     </LinearGradient>
                 </ImageBackground>
             </GestureRecognizer>
+           
         );
     }
 }

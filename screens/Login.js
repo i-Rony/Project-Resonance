@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
 
 	container: {
 		flex: 1,
-		backgroundColor: '#E75A7C'
+		backgroundColor: 'rgba(231,90,124,1)'
 	},
 	header: {
 		alignItems: 'flex-end',
@@ -216,7 +216,7 @@ const styles = StyleSheet.create({
 	},
 	footer: {
 		flex: 1.5,
-		backgroundColor: '#2C363F',
+		backgroundColor: 'rgba(44,54,63,1)',
 		borderTopLeftRadius: 30,
 		borderTopRightRadius: 30,
 		paddingHorizontal: 30,
@@ -253,12 +253,11 @@ const styles = StyleSheet.create({
 		width: '60%',
 		height: 50,
 		justifyContent: 'center',
-		borderRadius: 40,
-        
+		borderRadius: 40,        
 		lineHeight: 10,
 		letterSpacing: 2.5,
 		marginTop: 18,
-		backgroundColor: "#E75A7C",
+		backgroundColor: "rgba(231,90,124,1)",
 		elevation: 12,
 		shadowColor: "#E75A7C",
 		shadowOffset: {

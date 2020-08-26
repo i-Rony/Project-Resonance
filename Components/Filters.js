@@ -238,7 +238,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         backgroundColor: 'rgba(231, 90, 124, 0.38)', // 'rgba(44,54,63,0.5)', 
         borderRadius: 20,
-        borderColor: 'rgba(44, 54, 63, 1)',
+        borderColor: 'rgba(44, 54, 63, 0.9)',
         padding: 18,
         margin: 5.4,
         marginTop: 9
