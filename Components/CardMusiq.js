@@ -287,7 +287,7 @@ const styles = StyleSheet.create({
         padding: 12,
         paddingBottom: 12,
         paddingLeft: 0,
-        backgroundColor: 'rgba(231, 90, 124, 0.82)',
+        backgroundColor: 'rgba(231, 90, 124, 0.78)',
     },
     headerImage: {
         width: 64,

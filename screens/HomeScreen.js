@@ -99,13 +99,12 @@ const HomeScreen = ({ navigation }) => {
                 config={config}
                 style={{
                     flex: 1,
-                    backgroundColor: 'rgba(255,255,255,0)'
+                    backgroundColor: 'rgba(231, 90, 124, 0.15)'
                 }}
             >
-                <SafeAreaView
+                <View
                     style={{
                         flex: 1,
-                        marginTop: Constants.statusBarHeight,
                     }}
                 >
                     <ScrollView>
@@ -139,7 +138,7 @@ const HomeScreen = ({ navigation }) => {
 
                         </View>
                     </ScrollView>
-                </SafeAreaView>
+                </View>
             </GestureRecognizer>
         );
     }

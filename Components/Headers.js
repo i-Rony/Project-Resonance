@@ -2,52 +2,85 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
 import Modal from 'react-native-modal';
 import { Searchbar } from 'react-native-paper';
+import { useFonts } from '@use-expo/font';
+import { AppLoading } from 'expo';
+import Constants from 'expo-constants';
+
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faComments } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
 const { width, height } = Dimensions.get("screen");
 
 function HomeScreenHeader() {
 
+    let [fontsLoaded] = useFonts({
+        'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
+        'SemiBold': require('../assets/fonts/Montserrat-SemiBold.ttf'),
+        'Medium': require('../assets/fonts/Montserrat-Medium.ttf'),
+        'Light': require('../assets/fonts/Montserrat-Light.ttf'),
+        'Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
+    });
+
+    if (!fontsLoaded) {
+        return <AppLoading />;
+
+    } else {
+
     return (
         <View style={{
-            height: 135,
-            backgroundColor: 'rgba(44,54,63,0.95)',
-            paddingBottom: 3
+            height: 60 + Constants.statusBarHeight,
+            backgroundColor: 'rgba(231,90,124,0.3)',
+            paddingBottom: 3,
+            paddingTop: Constants.statusBarHeight,
         }}>
             <View style={styles.header}>
-                <View style={{ marginLeft: '8%' }}>
                     <Text style={{
+                        fontFamily: 'SemiBold',
                         fontSize: 40,
-                        fontWeight: 'bold',
-                        letterSpacing: 0.4,
-                        color: 'rgba(231,90,124,1)'
+                        marginLeft: width*0.028,
+                        letterSpacing: 0.5,
+                        color: 'rgba(44,54,63,0.85)'
                     }}>
                         Clef
                     </Text>
-                </View>
-            </View>
-
-            <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 7 }}>
-                <View>
                     <TouchableOpacity
                         style={[
                             styles.headerButton,
                             {
-                                backgroundColor: '#fff',
-                                marginLeft: 25
+                                marginRight: width*0.028,
+                                left: width * 0.25,
                             }
                         ]}
                     >
-                        <Text
-                            style={{
-                                fontSize: 18,
-                                color: '#595959' // 'rgba(44,54,63,1)'
-                            }}
-                        >
-                            +  Post
-                        </Text>
+                        <FontAwesomeIcon
+                            icon={faPlus}
+                            size={22}
+                            color='rgba(44,54,63,0.85)'
+                        />
                     </TouchableOpacity>
-                </View>
+                    <TouchableOpacity
+                        style={[
+                            styles.headerButton,
+                            {
+                                marginRight: width*0.028,
+                                left: 0 
+                            }
+                        ]}
+                    >
+                        <FontAwesomeIcon
+                            icon={faComments}
+                            size={28}
+                            color='rgba(44,54,63,0.85)'
+                        />
+                    </TouchableOpacity>
+            </View>
+
+            {/* <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 7 }}>
                 <View>
+                    
+                </View>
+                 <View>
                     <TouchableOpacity
                         style={[
                             styles.headerButton,
@@ -67,11 +100,11 @@ function HomeScreenHeader() {
                             Start a Jam Session
                         </Text>
                     </TouchableOpacity>
-                </View>
-            </View>
+                </View> 
+            </View> */}
         </View>
     );
-
+        }
 }
 
 function EventScreenHeader() {
@@ -344,10 +377,10 @@ const styles = StyleSheet.create({
 
     header: {
         height: 64,
-        width: 400,
+        width: width,
         flexDirection: 'row',
         flex: 1,
-        alignItems: 'center',
+        justifyContent: 'space-between',
         paddingTop: 4,
         marginBottom: 1.7
     },
@@ -359,16 +392,14 @@ const styles = StyleSheet.create({
     },
 
     headerButton: {
-        justifyContent: "center",
-        alignItems: "center",
-        padding: 8,
-        paddingLeft: 22,
-        paddingRight: 22,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 0,
+        top: 2,
+        bottom: 2,
+        paddingHorizontal: 10,
         zIndex: 4,
-        borderRadius: 50,
-        marginBottom: 10,
-        borderWidth: 2,
-        borderColor: '#fff'
+        marginVertical: 8,
     }
 
 });
