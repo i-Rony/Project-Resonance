@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
 import { Searchbar } from 'react-native-paper';
-// import ConnectionSortModal from './ConnectionSortModal';
+import ConnectionSortModal from './ConnectionSortModal';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 import Constants from 'expo-constants';
