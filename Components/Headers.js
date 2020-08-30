@@ -303,13 +303,12 @@ function ConnectionScreenHeader({ navigation }) {
             </View>;
     }
 
-
     return (
         <View style={{
             height: 100,
             marginBottom: 45
         }}>
-            <ConnectionSortModal visiblity={isSortModalActive}/>
+            <ConnectionSortModal visibility={isSortModalActive} />
             {/* {filterModal} */}
             <View style={{
                 height: 84,
