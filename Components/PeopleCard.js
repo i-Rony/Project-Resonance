@@ -1,12 +1,11 @@
-import * as React from 'react';
+import React from 'react';
 import { Text, View, StyleSheet, Dimensions, Image, TouchableOpacity, ImageBackground, ScrollView } from 'react-native';
-import Constants from 'expo-constants';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faHeart, faHandHolding, faHandshakeSlash, faHandshake, faRibbon, faLink, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const { width, height } = Dimensions.get('screen');
 
