@@ -195,6 +195,14 @@ function NotificationScreenHeader() {
 
 function ConnectionScreenHeader({ navigation }) {
 
+    let [fontsLoaded] = useFonts({
+        'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
+        'SemiBold': require('../assets/fonts/Montserrat-SemiBold.ttf'),
+        'Medium': require('../assets/fonts/Montserrat-Medium.ttf'),
+        'Light': require('../assets/fonts/Montserrat-Light.ttf'),
+        'Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
+    });
+
     const [isSortModalActive, setSortModalActive] = useState(false);
     const [isFilterModalActive, setFilterModalActive] = useState(false);
 
@@ -257,17 +265,16 @@ function ConnectionScreenHeader({ navigation }) {
 
     if (isSearchbarActive) {
 
-        var w = width * 0.7;
-        var h = 38;
-
         lowerColumn =
             <View style={[connectionStyles.lowerButtonsPanel, { justifyContent: 'flex-start' }]}>
                 <Searchbar
                     // ref={setSearchBarRef}
-                    style={[connectionStyles.searchbar, { width: w, height: h }]}
+                    style={connectionStyles.searchbar}
                     placeholder="Search Connections"
                     onChangeText={onChangeSearch}
                     value={searchQuery}
+                    inputStyle={{fontFamily: 'Regular'}}
+                    selectionColor='rgba(231,90,124, 0.8)'
                     onBlur={() => setIsSearchbarActive(false)}
                 />
             </View>;
@@ -303,47 +310,54 @@ function ConnectionScreenHeader({ navigation }) {
             </View>;
     }
 
+    if (!fontsLoaded) {
+        return <AppLoading />;
+
+    } else {
+
     return (
         <View style={{
-            height: 100,
-            marginBottom: 45
+            height: 100
         }}>
             <ConnectionSortModal visibility={isSortModalActive} />
             {/* {filterModal} */}
             <View style={{
-                height: 84,
-                backgroundColor: 'rgba(44,54,63,0.95)',
+                height: 60,
                 paddingBottom: 6
             }}>
                 <View style={[
                     styles.header,
                     {
                         alignItems: 'center',
-                        paddingTop: 2,
-                        paddingBottom: 4,
-                        marginLeft: 12,
-                        marginTop: 26,
-                        justifyContent: 'flex-start'
+                        // marginLeft: 12,
+                        padding: 2,
+                        marginHorizontal: 12,
+                        paddingTop: 10,
+                        justifyContent: 'space-between'
                     }
                 ]}>
                     <View>
                         <Text style={{
-                            fontSize: 35,
-                            fontWeight: 'bold',
-                            letterSpacing: 0.4,
-                            color: 'rgba(220, 225, 216, 1)'
+                            fontSize: 30,
+                            fontFamily: 'SemiBold',
+                            color: 'rgba(231,90,124, 0.8)'
                         }}>
                             My Connections
                         </Text>
                     </View>
                     <TouchableOpacity style={connectionStyles.addConnButton} onPress={() => navigation.navigate('Explore')}>
-                        <Text style={{ color: '', fontSize: 19, fontWeight: 'bold', color: 'rgba(231,90,124,0.76)' }}> + add </Text>
+                        <FontAwesomeIcon 
+                            icon={faPlus}
+                            size={20}
+                            color='rgba(231,90,124, 0.8)'
+                        />
                     </TouchableOpacity>
                 </View>
             </View>
-            {lowerColumn}
+            {lowerColumn} 
         </View>
     );
+    }
 }
 
 export { HomeScreenHeader, EventScreenHeader, NotificationScreenHeader, ConnectionScreenHeader };
@@ -382,30 +396,30 @@ const styles = StyleSheet.create({
 const connectionStyles = StyleSheet.create({
 
     addConnButton: {
-        paddingVertical: 2,
-        paddingHorizontal: 6,
-        borderRadius: 20,
-        backgroundColor: 'rgba(214, 219, 210, 1)',
-        borderWidth: 3,
-        borderColor: 'rgba(231,90,124,0.76)',
-        marginLeft: 26
+        // paddingVertical: 2,
+        // paddingHorizontal: 6,
+        // borderRadius: 20,
+        // backgroundColor: 'rgba(214, 219, 210, 1)',
+        // borderWidth: 3,
+        // borderColor: 'rgba(231,90,124,0.76)',
+        marginRight: 28,
     },
 
     lowerButtonsPanel: {
         flexDirection: 'row',
-        backgroundColor: 'rgba(231,90,124,0.76)',
-        padding: 8,
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-evenly'
         // borderTopColor: 'rgba(214, 219, 210, 1)',
         // borderTopWidth: 3.5
     },
 
     searchbar: {
         marginLeft: 8,
-        backgroundColor: 'rgba(214,219,210,1)',
-        borderRadius: 500,
-        // tintColor: 'rgba(231,90,124,0.76)'
+        justifyContent: 'center',
+        backgroundColor: 'white',
+        borderRadius: 50,
+        width: width * 0.94,
+        height: 38
     },
 
     lowerHeaderButtons: {
@@ -413,16 +427,17 @@ const connectionStyles = StyleSheet.create({
         justifyContent: 'center',
         marginHorizontal: 4,
         borderRadius: 7,
-        backgroundColor: 'rgba(214,219,210,1)',
+        borderWidth: 1,
+        borderColor: 'rgba(44,54,63,0.5)',
         // paddingHorizontal: 18,
-        paddingVertical: 6,
+        paddingVertical: 2,
         // marginVertical: 1,
-        width: 120
+        width: 100
     },
 
     sortAndFilter: {
-        fontWeight: 'bold',
-        color: 'rgba(231,90,124,0.76)', // 'rgba(237,237,237,1)', 
+        fontFamily: 'Light',
+        color: 'rgba(44,54,63,0.6)', // 'rgba(237,237,237,1)', 
         fontSize: 20
     },
 
