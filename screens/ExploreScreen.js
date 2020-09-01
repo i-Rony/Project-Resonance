@@ -3,6 +3,7 @@ import { View, Text, BackHandler, SafeAreaView, Dimensions } from 'react-native'
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 import EventPoster from '../Components/EventPoster';
 import EventPopularPoster from '../Components/EventPopularPoster';
+import PeopleCard from '../Components/PeopleCard';
 import { EventScreenHeader } from '../Components/Headers';
 import { EventScreenFilters } from '../Components/Filters';
 import CarouselEventScreen from '../Components/CarouselEventScreen';
@@ -19,6 +20,8 @@ import DaftPunk from '../assets/daftpunk.jpg';
 import City from '../assets/city.png';
 import Lofi from '../assets/lofi.jpg';
 import Arcade from '../assets/Arcade.jpg';
+import Cool from '../assets/cool.jpg';
+import Pepsi from '../assets/pepsi.jpg';
 
 const {width, height} = Dimensions.get("screen");
 
@@ -207,8 +210,24 @@ const EventScreen = ({label}) => (
     </View>
 );
 
-const PeopleScreen = ({label}) => (<View style={{flex: 1, justifyContent: 'center',
-alignItems: 'center'}}><Text>{label}</Text></View>);
+const PeopleScreen = ({label}) => (
+
+    <View 
+        style={{
+            marginTop: -20,
+            flex: 1,
+            backgroundColor: 'rgba(231, 90, 124, 0.15)',
+        }}
+    >
+        <ScrollView>
+            <PeopleCard cover={Cool} profile={Pepsi} name='Spike Spiegel' bio='You though it was Spike but it was me DIO.'/>
+            <PeopleCard />
+            <PeopleCard />
+        </ScrollView>
+
+    </View>
+    
+);
 
 const ExploreScreen = ({ navigation }) => {
 
