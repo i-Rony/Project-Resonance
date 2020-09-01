@@ -322,7 +322,8 @@ function ConnectionScreenHeader({ navigation }) {
                         paddingTop: 2,
                         paddingBottom: 4,
                         marginLeft: 12,
-                        marginTop: 26
+                        marginTop: 26,
+                        justifyContent: 'flex-start'
                     }
                 ]}>
                     <View>
@@ -335,7 +336,7 @@ function ConnectionScreenHeader({ navigation }) {
                             My Connections
                         </Text>
                     </View>
-                    <TouchableOpacity style={connectionStyles.addConnButton} onPress={() => navigation.navigate('Event')}>
+                    <TouchableOpacity style={connectionStyles.addConnButton} onPress={() => navigation.navigate('Explore')}>
                         <Text style={{ color: '', fontSize: 19, fontWeight: 'bold', color: 'rgba(231,90,124,0.76)' }}> + add </Text>
                     </TouchableOpacity>
                 </View>
