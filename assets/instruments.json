@@ -1,0 +1,48 @@
+{
+
+    "1": {
+        "name": "voice",
+        "color": "rgba(13, 1, 1, 0.85)"
+    },
+
+    "2": {
+        "name": "acoustic guitar",
+        "color": "rgba(163, 118, 5, 0.85)"
+    },
+
+    "3": {
+        "name": "electric guitar",
+        "color": "rgba(223, 36, 36, 0.85)"
+    },
+
+    "4": {
+        "name": "drums",
+        "color": "rgba(27, 173, 5, 0.85)"
+    },
+
+    "5": {
+        "name": "violin",
+        "color": "rgba(106, 5, 178, 0.85)"
+    },
+
+    "6": {
+        "name": "piano",
+        "color": "rgba(100, 45, 6, 0.85)"
+    },
+
+    "7": {
+        "name": "saxophone",
+        "color": "rgba(216 , 194, 3, 0.85)"
+    },
+
+    "8": {
+        "name": "flute",
+        "color": "rgba(4 , 186, 214, 0.85)"
+    },
+
+    "9": {
+        "name": "keyboard",
+        "color": "rgba(5, 60, 178, 0.85)"
+    }
+
+}
