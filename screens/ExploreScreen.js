@@ -22,6 +22,7 @@ import Lofi from '../assets/lofi.jpg';
 import Arcade from '../assets/Arcade.jpg';
 import Cool from '../assets/cool.jpg';
 import Pepsi from '../assets/pepsi.jpg';
+import PeopleCardTwo from '../Components/PeopleCardTwo';
 
 const {width, height} = Dimensions.get("screen");
 
@@ -210,19 +211,23 @@ const EventScreen = ({label}) => (
     </View>
 );
 
-const PeopleScreen = ({label}) => (
+const PeopleScreen = () => (
 
     <View 
         style={{
-            marginTop: -20,
+            marginTop: -18,
             flex: 1,
+            marginBottom: 0,
             backgroundColor: 'rgba(231, 90, 124, 0.15)',
         }}
     >
-        <ScrollView>
-            <PeopleCard cover={Cool} profile={Pepsi} name='Spike Spiegel' bio='You though it was Spike but it was me DIO.'/>
-            <PeopleCard />
-            <PeopleCard />
+        <ScrollView contentContainerStyle={{paddingBottom: 22}}>
+            {/* <PeopleCard cover={Cool} profile={Pepsi} name='Spike Spiegel' bio='You though it was Spike but it was me DIO.'/> */}
+            <PeopleCardTwo cover={Cool} profile={Pepsi} name='Spike Spiegel' instrument='Percussions' color='rgba(122, 229, 130, 0.5)' />
+            <PeopleCardTwo cover={Cool} profile={Pepsi} name='Spike Spiegel' instrument='Drums' color='rgba(255, 0, 0, 0.5)' />
+            <PeopleCardTwo cover={Cool} profile={Pepsi} name='Spike Spiegel' instrument='Synth' color='rgba(0, 165, 207, 0.5)' />
+            <PeopleCardTwo cover={Cool} profile={Pepsi} name='Spike Spiegel' instrument='Bass' color='rgba(242, 149, 89, 0.5)' />
+            <PeopleCardTwo cover={Cool} profile={Pepsi} name='Spike Spiegel' instrument='Guitar' color='rgba(241, 211, 2, 0.5)' />
         </ScrollView>
 
     </View>
