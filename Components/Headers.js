@@ -27,18 +27,18 @@ function HomeScreenHeader() {
 
     } else {
 
-    return (
-        <View style={{
-            height: 60 + Constants.statusBarHeight,
-            backgroundColor: 'rgba(231,90,124,0.3)',
-            paddingBottom: 3,
-            paddingTop: Constants.statusBarHeight,
-        }}>
-            <View style={styles.header}>
+        return (
+            <View style={{
+                height: 60 + Constants.statusBarHeight,
+                backgroundColor: 'rgba(231,90,124,0.3)',
+                paddingBottom: 3,
+                paddingTop: Constants.statusBarHeight,
+            }}>
+                <View style={styles.header}>
                     <Text style={{
                         fontFamily: 'SemiBold',
                         fontSize: 40,
-                        marginLeft: width*0.028,
+                        marginLeft: width * 0.028,
                         letterSpacing: 0.5,
                         color: 'rgba(44,54,63,0.85)'
                     }}>
@@ -48,7 +48,7 @@ function HomeScreenHeader() {
                         style={[
                             styles.headerButton,
                             {
-                                marginRight: width*0.028,
+                                marginRight: width * 0.028,
                                 left: width * 0.25,
                             }
                         ]}
@@ -63,8 +63,8 @@ function HomeScreenHeader() {
                         style={[
                             styles.headerButton,
                             {
-                                marginRight: width*0.028,
-                                left: 0 
+                                marginRight: width * 0.028,
+                                left: 0
                             }
                         ]}
                     >
@@ -74,9 +74,9 @@ function HomeScreenHeader() {
                             color='rgba(44,54,63,0.85)'
                         />
                     </TouchableOpacity>
-            </View>
+                </View>
 
-            {/* <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 7 }}>
+                {/* <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 7 }}>
                 <View>
                     
                 </View>
@@ -102,9 +102,9 @@ function HomeScreenHeader() {
                     </TouchableOpacity>
                 </View> 
             </View> */}
-        </View>
-    );
-        }
+            </View>
+        );
+    }
 }
 
 function EventScreenHeader() {
@@ -273,7 +273,7 @@ function ConnectionScreenHeader({ navigation }) {
                     placeholder="Search Connections"
                     onChangeText={onChangeSearch}
                     value={searchQuery}
-                    inputStyle={{fontFamily: 'Regular'}}
+                    inputStyle={{ fontFamily: 'Regular' }}
                     selectionColor='rgba(231,90,124, 0.8)'
                     onBlur={() => setIsSearchbarActive(false)}
                 />
@@ -315,15 +315,63 @@ function ConnectionScreenHeader({ navigation }) {
 
     } else {
 
+        return (
+            <View style={{
+                height: 100
+            }}>
+                <ConnectionSortModal visibility={isSortModalActive} />
+                {/* {filterModal} */}
+                <View style={{
+                    height: 60,
+                    paddingBottom: 6
+                }}>
+                    <View style={[
+                        styles.header,
+                        {
+                            alignItems: 'center',
+                            // marginLeft: 12,
+                            padding: 2,
+                            marginHorizontal: 12,
+                            paddingTop: 10,
+                            justifyContent: 'space-between'
+                        }
+                    ]}>
+                        <View>
+                            <Text style={{
+                                fontSize: 30,
+                                fontFamily: 'SemiBold',
+                                color: 'rgba(231,90,124, 0.8)'
+                            }}>
+                                My Connections
+                        </Text>
+                        </View>
+                        <TouchableOpacity style={connectionStyles.addConnButton} onPress={() => navigation.navigate('Explore')}>
+                            <FontAwesomeIcon
+                                icon={faPlus}
+                                size={20}
+                                color='rgba(231,90,124, 0.8)'
+                            />
+                        </TouchableOpacity>
+                    </View>
+                </View>
+                {lowerColumn}
+            </View>
+        );
+    }
+}
+
+function ActivityScreenHeader() {
+
     return (
         <View style={{
-            height: 100
+            height: 85,
+            backgroundColor: 'rgba(137, 218, 245, 0.8)',
+            marginBottom: 26
         }}>
-            <ConnectionSortModal visibility={isSortModalActive} />
-            {/* {filterModal} */}
             <View style={{
-                height: 60,
-                paddingBottom: 6
+                // height: 60,
+                marginTop: 40,
+                paddingBottom: 2
             }}>
                 <View style={[
                     styles.header,
@@ -333,34 +381,26 @@ function ConnectionScreenHeader({ navigation }) {
                         padding: 2,
                         marginHorizontal: 12,
                         paddingTop: 10,
-                        justifyContent: 'space-between'
+                        justifyContent: 'flex-start'
                     }
                 ]}>
                     <View>
                         <Text style={{
-                            fontSize: 30,
+                            fontSize: 34,
                             fontFamily: 'SemiBold',
                             color: 'rgba(231,90,124, 0.8)'
                         }}>
-                            My Connections
+                            My Activities
                         </Text>
                     </View>
-                    <TouchableOpacity style={connectionStyles.addConnButton} onPress={() => navigation.navigate('Explore')}>
-                        <FontAwesomeIcon 
-                            icon={faPlus}
-                            size={20}
-                            color='rgba(231,90,124, 0.8)'
-                        />
-                    </TouchableOpacity>
                 </View>
             </View>
-            {lowerColumn} 
         </View>
     );
-    }
+
 }
 
-export { HomeScreenHeader, EventScreenHeader, NotificationScreenHeader, ConnectionScreenHeader };
+export { HomeScreenHeader, EventScreenHeader, NotificationScreenHeader, ConnectionScreenHeader, ActivityScreenHeader };
 
 const styles = StyleSheet.create({
 
