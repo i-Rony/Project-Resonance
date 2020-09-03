@@ -2,12 +2,23 @@ import React, { useEffect } from 'react';
 import { useIsDrawerOpen } from '@react-navigation/drawer';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 import { View, Text, TouchableOpacity, BackHandler } from 'react-native';
+import Timeline from 'react-native-timeline-flatlist';
+import { ActivityScreenHeader } from '../Components/Headers';
 
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 const ActivityScreen = ({ navigation }) => {
+
+    const data = [
+        { time: '09:00', title: 'Event 1', description: 'Event 1 Description' },
+        { time: '10:45', title: 'Event 2', description: 'Event 2 Description' },
+        { time: '12:00', title: 'Event 3', description: 'Event 3 Description' },
+        { time: '14:00', title: 'Event 4', description: 'Event 4 Description' },
+        { time: '16:30', title: 'Event 5', description: 'Event 5 Description' }
+    ];
 
     const handleBackButton = () => {
         navigation.navigate('Home');
@@ -88,26 +99,15 @@ const ActivityScreen = ({ navigation }) => {
                     backgroundColor: 'rgba(255,255,255,0)'
                 }}
             >
-                <View
-                    style={{
-                        alignItems: "center",
-                        justifyContent: "center",
-                        flex: 1
-                    }}
-                >
-                    <TouchableOpacity
-                        style={{
-                            alignItems: "center",
-                            justifyContent: "center",
-                        }}
-                    >
-                        <Text>
-                            Activities
-                    </Text>
-                    </TouchableOpacity>
-                </View>
+                <SafeAreaView style={{ flex: 1 }}>
+                    <ActivityScreenHeader />
+                    <Timeline
+                        data={data}
+                        style={{ flex: 2 }}
+                    />
+                </SafeAreaView>
             </GestureRecognizer>
-        )
+        );
     }
 }
 
