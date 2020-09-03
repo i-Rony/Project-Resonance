@@ -1,48 +1,63 @@
 {
 
     "1": {
-        "name": "voice",
-        "color": "rgba(13, 1, 1, 0.85)"
+        "name": "Vocals",
+        "color": "rgba(255, 255, 243, 1)"
     },
 
     "2": {
-        "name": "acoustic guitar",
-        "color": "rgba(163, 118, 5, 0.85)"
+        "name": "Flute",
+        "color": "rgba(2, 159, 170, 1)"
     },
 
     "3": {
-        "name": "electric guitar",
-        "color": "rgba(223, 36, 36, 0.85)"
+        "name": "Cello",
+        "color": "rgba(255, 216, 156, 1)"
     },
 
     "4": {
-        "name": "drums",
-        "color": "rgba(27, 173, 5, 0.85)"
+        "name": "Bongo Drums",
+        "color": "rgba(243, 121, 99, 1)"
     },
 
     "5": {
-        "name": "violin",
-        "color": "rgba(106, 5, 178, 0.85)"
+        "name": "Violin",
+        "color": "rgba(247, 198, 255, 1)"
     },
 
     "6": {
-        "name": "piano",
-        "color": "rgba(100, 45, 6, 0.85)"
+        "name": "Piano",
+        "color": "rgba(212, 255, 229, 1)"
     },
 
     "7": {
-        "name": "saxophone",
-        "color": "rgba(216 , 194, 3, 0.85)"
+        "name": "Ukelele",
+        "color": "rgba(247, 255, 96, 1)"
     },
 
     "8": {
-        "name": "flute",
-        "color": "rgba(4 , 186, 214, 0.85)"
+        "name": "Guitar",
+        "color": "rgba(102, 248, 251, 1)"
     },
 
     "9": {
-        "name": "keyboard",
-        "color": "rgba(5, 60, 178, 0.85)"
+        "name": "Synth",
+        "color": "rgba(122, 229, 130, 1)"
+    },
+
+    "10": {
+        "name":"Drums",
+        "color": "rgba(251, 99, 118, 1)"
+    },
+
+    "11": {
+        "name":"Saxophone",
+        "color": "rgba(23, 190, 152, 1)"
+    },
+
+    "12": {
+        "name": "Mouth Organ",
+        "color": "rgba(255, 137, 175, 1)"
     }
 
 }
