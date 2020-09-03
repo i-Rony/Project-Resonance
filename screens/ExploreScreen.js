@@ -24,6 +24,7 @@ import Cool from '../assets/cool.jpg';
 import Pepsi from '../assets/pepsi.jpg';
 import PeopleCardTwo from '../Components/PeopleCardTwo';
 import PeopleCardThree from '../Components/PeopleCardThree';
+import PlaylistCard from '../Components/PlaylistCard';
 
 const {width, height} = Dimensions.get("screen");
 
@@ -223,20 +224,31 @@ const PeopleScreen = () => (
         }}
     >
         <ScrollView contentContainerStyle={{paddingBottom: 22}}>
-            <PeopleCard cover={Cool} profile={Pepsi} name='Spike Spiegel' bio='You though it was Spike but it was me DIO.'/>
-            <PeopleCardTwo cover={Cool} profile={Pepsi} name='Spike Spiegel' instrument='Percussions' color='rgba(122, 229, 130, 0.5)' />
-            <PeopleCardTwo cover={Cool} profile={Pepsi} name='Spike Spiegel' instrument='Drums' color='rgba(255, 0, 0, 0.5)' />
-            <PeopleCardTwo cover={Cool} profile={Pepsi} name='Spike Spiegel' instrument='Synth' color='rgba(0, 165, 207, 0.5)' />
-            <PeopleCardTwo cover={Cool} profile={Pepsi} name='Spike Spiegel' instrument='Bass' color='rgba(242, 149, 89, 0.5)' />
-            <PeopleCardTwo cover={Cool} profile={Pepsi} name='Spike Spiegel' instrument='Guitar' color='rgba(241, 211, 2, 0.5)' />
             <PeopleCardThree cover={Cool} profile={Pepsi} name='Spike Spiegel' instrument='Synth' color='rgba(122, 229, 130, 1)'/>
-            <PeopleCardThree cover={Cool} profile={Pepsi} name='Spike Spiegel' instrument='Flute' color='rgba(102, 248, 251, 1)'/>
-            <PeopleCardThree cover={Cool} profile={Pepsi} name='Spike Spiegel' instrument='Banana Fish' color='rgba(247, 255, 96, 1)'/>
+            <PeopleCardThree cover={Cool} profile={Pepsi} name='Spike Spiegel' instrument='Guitar' color='rgba(102, 248, 251, 1)'/>
+            <PeopleCardThree cover={Cool} profile={Pepsi} name='Spike Spiegel' instrument='Ukelele' color='rgba(247, 255, 96, 1)'/>
+            <PeopleCardThree cover={Cool} profile={Pepsi} name='Spike Spiegel' instrument='Bongo Drums' color='rgba(243, 121, 99, 1)'/>
+            <PeopleCardThree cover={Cool} profile={Pepsi} name='Spike Spiegel' instrument='Violin' color='rgba(247, 198, 255, 1)'/>
+            <PeopleCardThree cover={Cool} profile={Pepsi} name='Spike Spiegel' instrument='Piano' color='rgba(212, 255, 229, 1)'/>
+            <PeopleCardThree cover={Cool} profile={Pepsi} name='Spike Spiegel' instrument='Cello' color='rgba(255, 216, 156, 1)'/>
+            <PeopleCardThree cover={Cool} profile={Pepsi} name='Spike Spiegel' instrument='Drums' color='rgba(251, 99, 118, 1)'/>
+            <PeopleCardThree cover={Cool} profile={Pepsi} name='Spike Spiegel' instrument='Vocals' color='rgba(255, 255, 243, 1)'/>
+            <PeopleCardThree cover={Cool} profile={Pepsi} name='Spike Spiegel' instrument='Saxophone' color='rgba(23, 180, 152, 1)'/>
+            <PeopleCardThree cover={Cool} profile={Pepsi} name='Spike Spiegel' instrument='Flute' color='rgba(2, 159, 170, 1)'/>
+            <PeopleCardThree cover={Cool} profile={Pepsi} name='Spike Spiegel' instrument='Mouth Organ' color='rgba(255, 137, 175, 1)'/>
         </ScrollView>
 
     </View>
     
 );
+
+const TrendingScreen = () => {
+    return (
+        <View>
+            <PlaylistCard />
+        </View>
+    )
+};
 
 const ExploreScreen = ({ navigation }) => {
 
@@ -336,7 +348,8 @@ const ExploreScreen = ({ navigation }) => {
                                 marginTop: 0
                     }}/>}>
                         <EventScreen tabLabel={{label: 'Events'}} label=''/>
-                        <PeopleScreen tabLabel={{label: 'People'}} label='People'/>
+                        <PeopleScreen tabLabel={{label: 'People'}} label=''/>
+                        <TrendingScreen tabLabel={{label: 'Trending'}} label=''/>
                     </ScrollableTabView>
                     
                 

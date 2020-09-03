@@ -21,7 +21,7 @@ const CreateAccount = ({ navigation }) => {
 		username: '',
 		password: '',
 		confirm_password: '',
-		check_textInputChange: false,
+		//check_textInputChange: false,
 		secureTextEntry: true,
 		confirm_secureTextEntry: true,
 	});
@@ -31,13 +31,13 @@ const CreateAccount = ({ navigation }) => {
 			setData({
 				...data,
 				username: val,
-				check_textInputChange: true
+				//check_textInputChange: true
 			});
 		} else {
 			setData({
 				...data,
 				username: val,
-				check_textInputChange: false
+				//check_textInputChange: false
 			});
 		}
 	}
@@ -85,7 +85,7 @@ const CreateAccount = ({ navigation }) => {
 				>
 					<Text style={[styles.text_footer, {
 						marginTop: 35, marginBottom: 10
-					}]} >Username</Text>
+					}]} >Email Address</Text>
 					<View style={styles.action}>
 						<FontAwesome
 							name="user-o"
@@ -93,25 +93,13 @@ const CreateAccount = ({ navigation }) => {
 							size={20}
 						/>
 						<TextInput
-							placeholder="Email Address"
+							placeholder="Your Email Address"
 							style={styles.textInput}
 							keyboardType='default'
 							selectionColor="#E75A7C"
 							autoCapitalize="none"
 							onChangeText={(val) => textInputChange(val)}
 						/>
-						{data.check_textInputChange ?
-							<Animatable.View
-								animation="bounceIn"
-							>
-								<Feather
-									name="check-circle"
-									color="#E75A7C"
-									size={20}
-								/>
-							</Animatable.View>
-							: null
-						}
 					</View>
 
 					<Text style={[styles.text_footer, {
@@ -124,7 +112,7 @@ const CreateAccount = ({ navigation }) => {
 							size={20}
 						/>
 						<TextInput
-							placeholder=""
+							placeholder="Enter Your Password"
 							secureTextEntry={data.secureTextEntry ? true : false}
 							style={styles.textInput}
 							selectionColor="#E75A7C"
@@ -160,7 +148,7 @@ const CreateAccount = ({ navigation }) => {
 							size={20}
 						/>
 						<TextInput
-							placeholder=""
+							placeholder="Re-enter Your Password"
 							secureTextEntry={data.confirm_secureTextEntry ? true : false}
 							style={styles.textInput}
 							selectionColor="#E75A7C"
