@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 
-export default function ConnectionCard({ conInfo, key }) {
+export default function ConnectionCard({ conInfo }) {
 
     // console.log(conInfo);
 
@@ -72,7 +72,7 @@ export default function ConnectionCard({ conInfo, key }) {
 
 
     return (
-        <View style={styles.conCard} key={key}>
+        <View style={styles.conCard}>
                 <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', marginBottom: 16 }}>
                     {name}
                     {disconnectButton}

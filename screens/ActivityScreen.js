@@ -112,13 +112,14 @@ const ActivityScreen = ({ navigation }) => {
                     <ActivityScreenHeader />
                     <Timeline
                         data={data}                        
-                        style={{flex: 1}}                        
+                        style={{flex: 1, marginLeft: 8, marginRight: 18}}                        
                         eventContainerStyle={{paddingBottom: 12}}
                         descriptionStyle={{fontFamily: 'Regular', fontSize: 18, color: 'rgba(44, 54, 63, 0.834)'}}
-                        titleStyle={{ fontFamily: 'Light', fontWeight: 'normal', fontSize: 12, marginTop: -13, color: 'rgba(44, 54, 63, 0.5)', marginBottom: -10}}
+                        titleStyle={{ fontFamily: 'Light', fontWeight: 'normal', fontSize: 12, marginTop: -13, color: 'rgba(44, 54, 63, 0.68)', marginBottom: -10}}
                         showTime={false}
                         lineColor='rgba(231, 90, 124, 0.4)'
                         circleColor='rgba(231, 90, 124, 0.9)'
+                        onEventPress={() => console.log("Event pressed !")}
                     />
                 </SafeAreaView>
             </GestureRecognizer>

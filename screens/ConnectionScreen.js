@@ -8,6 +8,7 @@ import { AppLoading } from 'expo';
 
 import { ConnectionScreenHeader } from '../Components/Headers';
 import ConnectionCard from '../Components/ConnectionCard';
+import { FlatList } from 'react-native-gesture-handler';
 
 
 const ConnectionScreen = ({ navigation }) => {
@@ -125,16 +126,9 @@ const ConnectionScreen = ({ navigation }) => {
         }
     ];
 
-    const displayConnections = () => {
-
-        var connections = [], i =  0;
-
-        for (const conn of dummyConnections) {
-            connections.push(<ConnectionCard conInfo={conn} key={i} />);
-            i++;
-        }
-
-        return connections;
+    const renderConnections = ({ item }) => {
+        console.log(item);
+        return (<ConnectionCard conInfo={item} />);
     }
 
     if (!fontsLoaded) {
@@ -164,21 +158,22 @@ const ConnectionScreen = ({ navigation }) => {
                         marginTop: Constants.statusBarHeight,
                     }}
                 >
-                    <ScrollView style={{
+                    {/* <ScrollView style={{
                         flex: 1,
                         // marginTop: Constants.statusBarHeight,
-                    }}>
-                        <ConnectionScreenHeader navigation={navigation}/>
-                        <View
-                            style={{
-                                alignItems: "center",
-                                justifyContent: "center",
-                                flex: 1
-                            }}
-                        >
-                            {displayConnections()}
-                        </View>
-                    </ScrollView>
+                    }}> */}
+                        <ConnectionScreenHeader navigation={navigation} />
+                        <FlatList
+                            data={dummyConnections}
+                            renderItem={renderConnections}
+                            keyExtractor={(item) => item.id}
+                            // style={{
+                            //     alignItems: "center",
+                            //     justifyContent: "center",
+                            //     flex: 1
+                            // }}
+                        />
+                    {/* </ScrollView> */}
                 </SafeAreaView>
             </GestureRecognizer>
         );
