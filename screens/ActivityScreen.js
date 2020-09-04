@@ -1,23 +1,32 @@
 import React, { useEffect } from 'react';
 import { useIsDrawerOpen } from '@react-navigation/drawer';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
-import { View, Text, TouchableOpacity, BackHandler } from 'react-native';
+import { View, Text, TouchableOpacity, BackHandler, SafeAreaView } from 'react-native';
 import Timeline from 'react-native-timeline-flatlist';
 import { ActivityScreenHeader } from '../Components/Headers';
-
+import Constants from 'expo-constants';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
-import { SafeAreaView } from 'react-native-safe-area-context';
-
 
 const ActivityScreen = ({ navigation }) => {
 
     const data = [
-        { time: '09:00', title: 'Event 1', description: 'Event 1 Description' },
-        { time: '10:45', title: 'Event 2', description: 'Event 2 Description' },
-        { time: '12:00', title: 'Event 3', description: 'Event 3 Description' },
-        { time: '14:00', title: 'Event 4', description: 'Event 4 Description' },
-        { time: '16:30', title: 'Event 5', description: 'Event 5 Description' }
+        { title: '09:00 Today', description: 'The Beginner Archery and Beginner Crossbow course does not require you to bring any equipment, since everything you need will be provided for the course. '},
+        { title: '10:45 Yesterday', description: 'Badminton is a racquet sport played using racquets to hit a shuttlecock across a net.' },
+        { title: '14:00 September 2nd 2020', description: 'Team sport played between two teams of eleven players with a spherical ball.'},
+        { title: '12:00 September 2nd 2020', description: 'Look out for the Best Gym & Fitness Centers around me :)' },
+        { title: '16:30 August 29th 2020', description: 'Commented \'henlo man\' on @WilburSmith\'s post' },
+        
+        { title: '09:00 Today', description: 'Event 1 description'},
+        { title: '10:45 Yesterday', description: 'Event 2 description' },
+        { title: '14:00 September 2nd 2020', description: 'Event 3 description'},
+        { title: '12:00 September 2nd 2020', description: 'Event 4 description' },
+        { title: '16:30 August 29th 2020', description: 'Event 5 description' },
+        { title: '09:00 Today', description: 'Event 1 description'},
+        { title: '10:45 Yesterday', description: 'Event 2 description' },
+        { title: '14:00 September 2nd 2020', description: 'Event 3 description'},
+        { title: '12:00 September 2nd 2020', description: 'Event 4 description' },
+        { title: '16:30 August 29th 2020', description: 'Event 5 description' }
     ];
 
     const handleBackButton = () => {
@@ -99,11 +108,17 @@ const ActivityScreen = ({ navigation }) => {
                     backgroundColor: 'rgba(255,255,255,0)'
                 }}
             >
-                <SafeAreaView style={{ flex: 1 }}>
+                <SafeAreaView style={{ marginTop: Constants.statusBarHeight, flex: 1 }}>
                     <ActivityScreenHeader />
                     <Timeline
-                        data={data}
-                        style={{ flex: 2 }}
+                        data={data}                        
+                        style={{flex: 1}}                        
+                        eventContainerStyle={{paddingBottom: 12}}
+                        descriptionStyle={{fontFamily: 'Regular', fontSize: 18, color: 'rgba(44, 54, 63, 0.834)'}}
+                        titleStyle={{ fontFamily: 'Light', fontWeight: 'normal', fontSize: 12, marginTop: -13, color: 'rgba(44, 54, 63, 0.5)', marginBottom: -10}}
+                        showTime={false}
+                        lineColor='rgba(231, 90, 124, 0.4)'
+                        circleColor='rgba(231, 90, 124, 0.9)'
                     />
                 </SafeAreaView>
             </GestureRecognizer>

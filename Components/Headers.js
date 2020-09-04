@@ -364,9 +364,8 @@ function ActivityScreenHeader() {
 
     return (
         <View style={{
-            height: 85,
-            backgroundColor: 'rgba(137, 218, 245, 0.8)',
-            marginBottom: 26
+            height: 80,
+            marginBottom: 20
         }}>
             <View style={{
                 // height: 60,
