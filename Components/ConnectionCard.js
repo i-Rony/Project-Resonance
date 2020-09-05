@@ -71,24 +71,29 @@ export default function ConnectionCard({ conInfo }) {
             <Text style={{ fontSize: 16, color: 'red' }}>disconnect</Text>
         </TouchableOpacity>;
 
-    const right = [disconnectButton, collabButton];
+    const renderRightActions = () =>
+        <View style={styles.sectionRight}>
+            <View style={{ marginBottom: 16 }}>{disconnectButton}</View>
+            <View>{collabButton}</View>
+        </View>
 
-    const mid = 
-        <View style={styles.conCard}>
-            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', marginBottom: 16 }}>
-                {name}
-                {disconnectButton}
-            </View>
-            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-                {choice}
-                {collabButton}
-            </View>
-        </View>;
-
+    const renderLeftActions = () =>
+        <View style={styles.sectionRight}>
+            <Text>Badges</Text>
+        </View>
 
     return (
-        <Swipeable rightButtons={right}>
-            {mid}
+        <Swipeable renderLeftActions={renderLeftActions} renderRightActions={renderRightActions}>
+            <View style={styles.conCard}>
+                {/* <View style={{flex: 1, marginHorizontal: 10}}> */}
+                    <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', marginBottom: 16 }}>
+                        {name}
+                    </View>
+                    <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                        {choice}
+                    </View>
+                {/* </View> */}
+            </View>
         </Swipeable>
     );
 }
@@ -98,14 +103,25 @@ const styles = StyleSheet.create({
     conCard: {
         flex: 1,
         marginVertical: 6,
-        marginHorizontal: 8.7,
+        // marginHorizontal: 8.7,
         padding: 8,
         paddingBottom: 20,
         alignItems: "center",
         justifyContent: "center",
         borderBottomColor: 'rgba(140, 140, 140, 0.6)',
         borderBottomWidth: 1.5,
-        borderRadius: 4,
+        // borderRadius: 4,
+    },
+
+    sectionRight: {
+        justifyContent: "center",
+        marginVertical: 6,
+        // marginHorizontal: 8.7,
+        padding: 8,
+        paddingBottom: 20,
+        // backgroundColor: 'rgba(140, 140, 140, 0.24)',
+        borderBottomColor: 'rgba(140, 140, 140, 0.6)',
+        borderBottomWidth: 1.5
     },
 
     name: {
