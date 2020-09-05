@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
+import Swipeable from 'react-native-gesture-handler/Swipeable';
 
 export default function ConnectionCard({ conInfo }) {
 
@@ -49,7 +50,7 @@ export default function ConnectionCard({ conInfo }) {
     else {
         var collabButton =
             <View style={styles.collabButtonOff}>
-                <Text style={{ fontSize: 12, color: "rgba(232, 163, 42, 1)"}}>until</Text>
+                <Text style={{ fontSize: 12, color: "rgba(232, 163, 42, 1)" }}>until</Text>
                 <Text style={{ fontSize: 12, color: "rgba(232, 163, 42, 1)" }}>{conInfo.statusInfo.date}</Text>
             </View>;
     }
@@ -57,7 +58,7 @@ export default function ConnectionCard({ conInfo }) {
     var instruments = [];
 
     for (const instrument of conInfo.choice) {
-        instruments.push(<Text style={[styles.instruments, {backgroundColor: instrumentColor[instrument]}]}>{instrument}</Text>);
+        instruments.push(<Text style={[styles.instruments, { backgroundColor: instrumentColor[instrument] }]}>{instrument}</Text>);
     }
 
     const choice =
@@ -65,23 +66,35 @@ export default function ConnectionCard({ conInfo }) {
             {instruments}
         </ScrollView>;
 
-    const disconnectButton = 
+    const disconnectButton =
         <TouchableOpacity style={styles.disconnectButton}>
             <Text style={{ fontSize: 16, color: 'red' }}>disconnect</Text>
         </TouchableOpacity>;
 
+    const renderRightActions = () =>
+        <View style={styles.sectionRight}>
+            <View style={{ marginBottom: 16 }}>{disconnectButton}</View>
+            <View>{collabButton}</View>
+        </View>
+
+    const renderLeftActions = () =>
+        <View style={styles.sectionRight}>
+            <Text>Badges</Text>
+        </View>
 
     return (
-        <View style={styles.conCard}>
-                <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', marginBottom: 16 }}>
-                    {name}
-                    {disconnectButton}
-                </View>
-            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-                    {choice}
-                    {collabButton}
-                </View>
-        </View>
+        <Swipeable renderLeftActions={renderLeftActions} renderRightActions={renderRightActions}>
+            <View style={styles.conCard}>
+                {/* <View style={{flex: 1, marginHorizontal: 10}}> */}
+                    <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', marginBottom: 16 }}>
+                        {name}
+                    </View>
+                    <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                        {choice}
+                    </View>
+                {/* </View> */}
+            </View>
+        </Swipeable>
     );
 }
 
@@ -90,14 +103,25 @@ const styles = StyleSheet.create({
     conCard: {
         flex: 1,
         marginVertical: 6,
-        marginHorizontal: 8.7,
+        // marginHorizontal: 8.7,
         padding: 8,
         paddingBottom: 20,
         alignItems: "center",
         justifyContent: "center",
         borderBottomColor: 'rgba(140, 140, 140, 0.6)',
         borderBottomWidth: 1.5,
-        borderRadius: 4,
+        // borderRadius: 4,
+    },
+
+    sectionRight: {
+        justifyContent: "center",
+        marginVertical: 6,
+        // marginHorizontal: 8.7,
+        padding: 8,
+        paddingBottom: 20,
+        // backgroundColor: 'rgba(140, 140, 140, 0.24)',
+        borderBottomColor: 'rgba(140, 140, 140, 0.6)',
+        borderBottomWidth: 1.5
     },
 
     name: {
