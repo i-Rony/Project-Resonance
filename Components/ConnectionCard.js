@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
+import Swipeable from 'react-native-gesture-handler/Swipeable';
 
 export default function ConnectionCard({ conInfo }) {
 
@@ -49,7 +50,7 @@ export default function ConnectionCard({ conInfo }) {
     else {
         var collabButton =
             <View style={styles.collabButtonOff}>
-                <Text style={{ fontSize: 12, color: "rgba(232, 163, 42, 1)"}}>until</Text>
+                <Text style={{ fontSize: 12, color: "rgba(232, 163, 42, 1)" }}>until</Text>
                 <Text style={{ fontSize: 12, color: "rgba(232, 163, 42, 1)" }}>{conInfo.statusInfo.date}</Text>
             </View>;
     }
@@ -57,7 +58,7 @@ export default function ConnectionCard({ conInfo }) {
     var instruments = [];
 
     for (const instrument of conInfo.choice) {
-        instruments.push(<Text style={[styles.instruments, {backgroundColor: instrumentColor[instrument]}]}>{instrument}</Text>);
+        instruments.push(<Text style={[styles.instruments, { backgroundColor: instrumentColor[instrument] }]}>{instrument}</Text>);
     }
 
     const choice =
@@ -65,23 +66,30 @@ export default function ConnectionCard({ conInfo }) {
             {instruments}
         </ScrollView>;
 
-    const disconnectButton = 
+    const disconnectButton =
         <TouchableOpacity style={styles.disconnectButton}>
             <Text style={{ fontSize: 16, color: 'red' }}>disconnect</Text>
         </TouchableOpacity>;
 
+    const right = [disconnectButton, collabButton];
+
+    const mid = 
+        <View style={styles.conCard}>
+            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', marginBottom: 16 }}>
+                {name}
+                {disconnectButton}
+            </View>
+            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                {choice}
+                {collabButton}
+            </View>
+        </View>;
+
 
     return (
-        <View style={styles.conCard}>
-                <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', marginBottom: 16 }}>
-                    {name}
-                    {disconnectButton}
-                </View>
-            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-                    {choice}
-                    {collabButton}
-                </View>
-        </View>
+        <Swipeable rightButtons={right}>
+            {mid}
+        </Swipeable>
     );
 }
 
