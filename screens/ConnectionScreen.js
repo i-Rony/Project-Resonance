@@ -91,7 +91,7 @@ const ConnectionScreen = ({ navigation }) => {
             photo: `https://randomuser.me/portraits/men/3.jpg`,
             name: "Abella Danger",
             nickName: "dangerGirl69",
-            statusInfo: { status: 2, date: "15 Feb, 2020" },
+            statusInfo: { status: 0 },
             choice: ["Drums"]
         },
         {
