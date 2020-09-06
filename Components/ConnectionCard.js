@@ -84,7 +84,7 @@ export default function ConnectionCard({ conInfo }) {
         <Swipeable renderLeftActions={renderLeftActions} renderRightActions={renderRightActions} overshootRight={false} overshootLeft={false} friction={2}>
             
             <LinearGradient
-                colors={['rgba(231,90,124,1)', 'rgb(255, 255, 255)']}
+                colors={['rgba(231,90,124,1)', 'rgba(44,54,63,1)']}
                 style={{
                     flex: 1, 
                     justifyContent: 'space-evenly',
@@ -96,14 +96,14 @@ export default function ConnectionCard({ conInfo }) {
             >
                 <View style={styles.conCard}>
                 {/* <View style={{flex: 1, marginHorizontal: 10}}> */}
-                    <View style={{ flex: 0.3, flexDirection: 'column', alignItems: 'center' }}>
-                        <Image source={{uri: conInfo.photo}} style={{borderRadius: 50, resizeMode: 'cover', width: 70, height: 70}} />
+                    <View style={{ flex: 0.24, flexDirection: 'column', alignItems: 'center' }}>
+                        <Image source={{uri: conInfo.photo}} style={{borderRadius: 50, resizeMode: 'cover', width: 60, height: 60}} />
                     </View>
-                    <View style={{ flex: 1, flexDirection: 'column',paddingLeft: 18 , justifyContent: 'space-evenly'}}>
-                        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', marginBottom: 16 }}>
+                    <View style={{ flex: 1, flexDirection: 'row',paddingLeft: 18 , justifyContent: 'space-evenly'}}>
+                        <View style={{ flex: 1, flexDirection: 'column', alignItems: 'flex-start' }}>
                             {name}
                         </View>
-                        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                        <View style={{ flex: 1, flexDirection: 'column', alignItems: 'flex-end' }}>
                             {choice}
                         </View>
                     </View>
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
     name: {
         fontSize: 22,
         fontFamily: 'SemiBold',
-        color: 'rgba(44,54,63,0.8)', //'white'
+        color: 'white', //'rgba(44,54,63,0.8)', //'white'
     },
 
     instruments: {
