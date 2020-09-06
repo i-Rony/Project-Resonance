@@ -78,16 +78,21 @@ export default function ConnectionCard({ conInfo }) {
         </View>
 
     const renderLeftActions = () =>
-        <View style={styles.sectionRight}>
+        <View style={styles.sectionLeft}>
             <Text>Badges</Text>
         </View>
 
     return (
-        <Swipeable renderLeftActions={renderLeftActions} renderRightActions={renderRightActions}>
+        <Swipeable renderLeftActions={renderLeftActions} renderRightActions={renderRightActions} overshootLeft={false}>
             
             <LinearGradient
                 colors={['rgba(231,90,124,0.55)', 'rgba(255, 255, 255, 0)']}
-                style={{flex: 1, justifyContent: 'space-evenly'}}
+                style={{
+                    flex: 1, 
+                    justifyContent: 'space-evenly',
+                    borderBottomColor: '#fff',
+                    borderBottomWidth: 0.5
+                }}
                 start={[0, 1]}
                 end={[1, 0]}
             >
@@ -117,6 +122,13 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         // borderRadius: 4,
+    },
+
+    sectionLeft: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 8,
+        backgroundColor: 'rgba(231,90,124,0.53)'
     },
 
     sectionRight: {
