@@ -6,10 +6,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 export default function ConnectionCard({ conInfo }) {
 
-    // console.log(conInfo);
-
     const instrumentColor = {
-        // 'guitar': 'rgba(200,54,54,0.85)',
         'Guitar': 'rgba(102, 248, 251, 1)',
         'Violin': 'rgba(247, 198, 255, 1)',
         'Piano': 'rgba(212, 255, 229, 1)',
@@ -38,22 +35,24 @@ export default function ConnectionCard({ conInfo }) {
     }
 
     if (conInfo.statusInfo.status === 0) {
-        var collabButton =
-            <></>;
+        var collabButton = 
+            <TouchableOpacity style={styles.collabButtonOn}>
+                <Text style={{ fontSize: 18, fontFamily: 'Medium', color: 'rgba(231,90,124,0.85)', paddingHorizontal: 7}}>Chat</Text>
+            </TouchableOpacity>;
     }
     else if (conInfo.statusInfo.status === 1) {
         var collabButton =
             <TouchableOpacity style={styles.collabButtonOn}>
-                <Text style={{ fontSize: 18, fontFamily: 'SemiBold', color: '#fff' }}>Collab</Text>
+                <Text style={{ fontSize: 18, fontFamily: 'Medium', color: 'rgba(231,90,124,0.85)' }}>Collab</Text>
             </TouchableOpacity>;
     }
-    else {
-        var collabButton =
-            <View style={styles.collabButtonOff}>
-                <Text style={{ fontSize: 12, color: "rgba(232, 163, 42, 1)", fontFamily: 'Medium' }}>until</Text>
-                <Text style={{ fontSize: 12, color: "rgba(232, 163, 42, 1)", fontFamily: 'Medium' }}>{conInfo.statusInfo.date}</Text>
-            </View>;
-    }
+    // else {
+    //     var collabButton =
+    //         <View style={styles.collabButtonOff}>
+    //             <Text style={{ fontSize: 12, color: "rgba(232, 163, 42, 1)", fontFamily: 'Medium' }}>until</Text>
+    //             <Text style={{ fontSize: 12, color: "rgba(232, 163, 42, 1)", fontFamily: 'Medium' }}>{conInfo.statusInfo.date}</Text>
+    //         </View>;
+    // }
 
     var instruments = [];
 
@@ -66,27 +65,26 @@ export default function ConnectionCard({ conInfo }) {
             {instruments}
         </ScrollView>;
 
-    const disconnectButton =
-        <TouchableOpacity style={styles.disconnectButton}>
-            <Text style={{ fontSize: 16, color: 'rgba(44,54,63,0.5)', fontFamily: 'Regular' }}>Disconnect</Text>
-        </TouchableOpacity>;
+    // const disconnectButton =
+    //     <TouchableOpacity style={styles.disconnectButton}>
+    //         <Text style={{ fontSize: 16, color: 'rgba(44,54,63,0.5)', fontFamily: 'Regular' }}>Disconnect</Text>
+    //     </TouchableOpacity>;
 
     const renderRightActions = () =>
-        <View style={styles.sectionRight}>
-            <View style={{ marginBottom: 16 }}>{disconnectButton}</View>
+        <TouchableOpacity style={styles.sectionRight}>
             <View>{collabButton}</View>
-        </View>
+        </TouchableOpacity>
 
     const renderLeftActions = () =>
-        <View style={styles.sectionLeft}>
-            <Text>Badges</Text>
-        </View>
+        <TouchableOpacity style={styles.sectionLeft}>                            
+            <Text style={{fontFamily: 'Medium', color: 'rgba(44,54,63,0.8)'}}>Disconnect</Text>            
+        </TouchableOpacity>
 
     return (
-        <Swipeable renderLeftActions={renderLeftActions} renderRightActions={renderRightActions} overshootLeft={false}>
+        <Swipeable renderLeftActions={renderLeftActions} renderRightActions={renderRightActions} overshootRight={false} overshootLeft={false} friction={2}>
             
             <LinearGradient
-                colors={['rgba(231,90,124,1)', 'rgba(255, 255, 255, 0)']}
+                colors={['rgba(231,90,124,1)', 'rgba(44,54,63,1)']}
                 style={{
                     flex: 1, 
                     justifyContent: 'space-evenly',
@@ -98,14 +96,14 @@ export default function ConnectionCard({ conInfo }) {
             >
                 <View style={styles.conCard}>
                 {/* <View style={{flex: 1, marginHorizontal: 10}}> */}
-                    <View style={{ flex: 0.3, flexDirection: 'column', alignItems: 'center' }}>
-                        <Image source={{uri: conInfo.photo}} style={{borderRadius: 50, resizeMode: 'cover', width: 70, height: 70}} />
+                    <View style={{ flex: 0.24, flexDirection: 'column', alignItems: 'center' }}>
+                        <Image source={{uri: conInfo.photo}} style={{borderRadius: 50, resizeMode: 'cover', width: 60, height: 60}} />
                     </View>
-                    <View style={{ flex: 1, flexDirection: 'column',paddingLeft: 18 , justifyContent: 'space-evenly'}}>
-                        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', marginBottom: 16 }}>
+                    <View style={{ flex: 1, flexDirection: 'row',paddingLeft: 18 , justifyContent: 'space-evenly'}}>
+                        <View style={{ flex: 1, flexDirection: 'column', alignItems: 'flex-start' }}>
                             {name}
                         </View>
-                        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                        <View style={{ flex: 1, flexDirection: 'column', alignItems: 'flex-end' }}>
                             {choice}
                         </View>
                     </View>
@@ -135,13 +133,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         padding: 8,
-        backgroundColor: 'rgba(231,90,124,0.53)'
+        flex: 1,
+        backgroundColor: 'white'
     },
 
     sectionRight: {
         flexDirection: 'column',
-        justifyContent: 'space-evenly',
-        marginVertical: 6,
+        justifyContent: 'center',
+        alignItems: 'center',
+        flex: 1,      
+        backgroundColor: 'white',
         // marginHorizontal: 8.7,
         padding: 8,
         // backgroundColor: 'rgba(140, 140, 140, 0.24)',
@@ -150,7 +151,7 @@ const styles = StyleSheet.create({
     name: {
         fontSize: 22,
         fontFamily: 'SemiBold',
-        color: 'rgba(44,54,63,0.8)', //'white'
+        color: 'white', //'rgba(44,54,63,0.8)', //'white'
     },
 
     instruments: {
@@ -167,11 +168,11 @@ const styles = StyleSheet.create({
     collabButtonOn: {
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 20,
-        backgroundColor: 'rgba(231,90,124,0.85)',
+        // borderRadius: 20,
+        // backgroundColor: 'rgba(231,90,124,0.85)',
         // borderWidth: 2,
-        paddingVertical: 8,
-        paddingHorizontal: 27
+        // paddingVertical: 8,
+        // paddingHorizontal: 27
     },
 
     collabButtonOff: {

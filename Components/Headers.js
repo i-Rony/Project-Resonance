@@ -317,7 +317,7 @@ function ConnectionScreenHeader({ navigation }) {
 
         return (
             <View style={{
-                height: 100
+                height: 106
             }}>
                 <ConnectionSortModal visibility={isSortModalActive} />
                 {/* {filterModal} */}
@@ -447,7 +447,7 @@ const connectionStyles = StyleSheet.create({
     lowerButtonsPanel: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-evenly'
+        justifyContent: 'space-evenly',
         // borderTopColor: 'rgba(214, 219, 210, 1)',
         // borderTopWidth: 3.5
     },
