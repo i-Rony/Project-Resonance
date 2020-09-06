@@ -76,53 +76,53 @@ const ConnectionScreen = ({ navigation }) => {
             id: 1,
             name: "Leah Gotti",
             statusInfo: { status: 1 },
-            choice: ["acoustic guitar", "drums"]
+            choice: ["Guitar"]
         },
         {
             id: 2,
             name: "Mia Melone",
             statusInfo: { status: 1 },
-            choice: ["violin"]
+            choice: ["Violin"]
         },
         {
             id: 3,
             name: "Abella Danger",
             nickName: "dangerGirl69",
             statusInfo: { status: 2, date: "15 Feb, 2020" },
-            choice: ["electric guitar"]
+            choice: ["Drums"]
         },
         {
             id: 4,
             name: "Marsha May",
             statusInfo: { status: 0 },
-            choice: ["keyboard"]
+            choice: ["Synth"]
         },
         {
             id: 5,
             name: "Peta Jensen",
             nickName: "sexyKITTEN",
             statusInfo: { status: 1 },
-            choice: ["voice"]
+            choice: ["Vocals"]
         },
         {
             id: 6,
             name: "Ava Dalush",
             nickName: "brit_chick",
             statusInfo: { status: 1 },
-            choice: ["piano"]
+            choice: ["Piano"]
         },
         {
             id: 7,
             name: "Mia Malkova",
             statusInfo: { status: 1 },
-            choice: ["flute", "moaning"]
+            choice: ["Flute"]
         },
         {
             id: 8,
             name: "Sofia Curly",
             nickName: "CUMpasta",
             statusInfo: { status: 1 },
-            choice: ["saxophone"]
+            choice: ["Saxophone"]
         }
     ];
 
