@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import { LinearGradient } from 'expo-linear-gradient';
+import { wrap } from 'popmotion/lib/transformers';
 
 export default function ConnectionCard({ conInfo }) {
 
@@ -31,14 +32,12 @@ export default function ConnectionCard({ conInfo }) {
         name =
             <View style={{ flex: 2, paddingBottom: 5 }}>
                 <Text style={styles.name}>{conInfo.name} </Text>
+                <TouchableOpacity><Text style={{ fontFamily: 'Light', fontSize: 15, color: 'white' }}> add nickname </Text></TouchableOpacity>
             </View>;
     }
 
     if (conInfo.statusInfo.status === 0) {
-        var collabButton = 
-            <TouchableOpacity style={styles.collabButtonOn}>
-                <Text style={{ fontSize: 18, fontFamily: 'Medium', color: 'rgba(231,90,124,0.85)', paddingHorizontal: 7}}>Chat</Text>
-            </TouchableOpacity>;
+        var collabButton = <></>;
     }
     else if (conInfo.statusInfo.status === 1) {
         var collabButton =
@@ -46,13 +45,11 @@ export default function ConnectionCard({ conInfo }) {
                 <Text style={{ fontSize: 18, fontFamily: 'Medium', color: 'rgba(231,90,124,0.85)' }}>Collab</Text>
             </TouchableOpacity>;
     }
-    // else {
-    //     var collabButton =
-    //         <View style={styles.collabButtonOff}>
-    //             <Text style={{ fontSize: 12, color: "rgba(232, 163, 42, 1)", fontFamily: 'Medium' }}>until</Text>
-    //             <Text style={{ fontSize: 12, color: "rgba(232, 163, 42, 1)", fontFamily: 'Medium' }}>{conInfo.statusInfo.date}</Text>
-    //         </View>;
-    // }
+
+    const chatButton = 
+        <TouchableOpacity style={styles.collabButtonOn}>
+            <Text style={{ fontSize: 18, fontFamily: 'Medium', color: 'rgba(231,90,124,0.85)', paddingHorizontal: 7 }}>Chat</Text>
+        </TouchableOpacity>;
 
     var instruments = [];
 
@@ -71,22 +68,22 @@ export default function ConnectionCard({ conInfo }) {
     //     </TouchableOpacity>;
 
     const renderRightActions = () =>
-        <TouchableOpacity style={styles.sectionRight}>
-            <View>{collabButton}</View>
-        </TouchableOpacity>
+        <View style={styles.sectionRight}>
+           {collabButton}{chatButton}
+        </View>
 
     const renderLeftActions = () =>
-        <TouchableOpacity style={styles.sectionLeft}>                            
-            <Text style={{fontFamily: 'Medium', color: 'rgba(44,54,63,0.8)'}}>Disconnect</Text>            
+        <TouchableOpacity style={styles.sectionLeft}>
+            <Text style={{ fontFamily: 'Medium', color: 'rgba(44,54,63,0.8)' }}>Disconnect</Text>
         </TouchableOpacity>
 
     return (
         <Swipeable renderLeftActions={renderLeftActions} renderRightActions={renderRightActions} overshootRight={false} overshootLeft={false} friction={2}>
-            
+
             <LinearGradient
                 colors={['rgba(231,90,124,1)', 'rgba(44,54,63,1)']}
                 style={{
-                    flex: 1, 
+                    flex: 1,
                     justifyContent: 'space-evenly',
                     borderBottomColor: '#fff',
                     borderBottomWidth: 0.5
@@ -95,11 +92,11 @@ export default function ConnectionCard({ conInfo }) {
                 end={[1, 0]}
             >
                 <View style={styles.conCard}>
-                {/* <View style={{flex: 1, marginHorizontal: 10}}> */}
+                    {/* <View style={{flex: 1, marginHorizontal: 10}}> */}
                     <View style={{ flex: 0.24, flexDirection: 'column', alignItems: 'center' }}>
-                        <Image source={{uri: conInfo.photo}} style={{borderRadius: 50, resizeMode: 'cover', width: 60, height: 60}} />
+                        <Image source={{ uri: conInfo.photo }} style={{ borderRadius: 50, resizeMode: 'cover', width: 70, height: 70 }} />
                     </View>
-                    <View style={{ flex: 1, flexDirection: 'row',paddingLeft: 18 , justifyContent: 'space-evenly'}}>
+                    <View style={{ flex: 1, flexDirection: 'row', paddingLeft: 18, justifyContent: 'space-evenly' }}>
                         <View style={{ flex: 1, flexDirection: 'column', alignItems: 'flex-start' }}>
                             {name}
                         </View>
@@ -107,11 +104,11 @@ export default function ConnectionCard({ conInfo }) {
                             {choice}
                         </View>
                     </View>
-                    
-                {/* </View> */}
+
+                    {/* </View> */}
                 </View>
             </LinearGradient>
-            
+
         </Swipeable>
     );
 }
@@ -138,18 +135,16 @@ const styles = StyleSheet.create({
     },
 
     sectionRight: {
-        flexDirection: 'column',
+        flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        flex: 1,      
         backgroundColor: 'white',
-        // marginHorizontal: 8.7,
         padding: 8,
         // backgroundColor: 'rgba(140, 140, 140, 0.24)',
     },
 
     name: {
-        fontSize: 22,
+        fontSize: 22.5,
         fontFamily: 'SemiBold',
         color: 'white', //'rgba(44,54,63,0.8)', //'white'
     },
@@ -168,11 +163,10 @@ const styles = StyleSheet.create({
     collabButtonOn: {
         alignItems: 'center',
         justifyContent: 'center',
-        // borderRadius: 20,
-        // backgroundColor: 'rgba(231,90,124,0.85)',
-        // borderWidth: 2,
-        // paddingVertical: 8,
-        // paddingHorizontal: 27
+        height: 60,
+
+        // borderRightColor: '#000',
+        // borderRightWidth: 1
     },
 
     collabButtonOff: {
