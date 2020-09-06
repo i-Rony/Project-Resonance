@@ -74,18 +74,21 @@ const ConnectionScreen = ({ navigation }) => {
     const dummyConnections = [
         {
             id: 1,
+            photo: `https://randomuser.me/portraits/men/1.jpg`,
             name: "Leah Gotti",
             statusInfo: { status: 1 },
             choice: ["Guitar"]
         },
         {
             id: 2,
+            photo: `https://randomuser.me/portraits/men/2.jpg`,
             name: "Mia Melone",
             statusInfo: { status: 1 },
             choice: ["Violin"]
         },
         {
             id: 3,
+            photo: `https://randomuser.me/portraits/men/3.jpg`,
             name: "Abella Danger",
             nickName: "dangerGirl69",
             statusInfo: { status: 2, date: "15 Feb, 2020" },
@@ -93,12 +96,14 @@ const ConnectionScreen = ({ navigation }) => {
         },
         {
             id: 4,
+            photo: `https://randomuser.me/portraits/men/4.jpg`,
             name: "Marsha May",
             statusInfo: { status: 0 },
             choice: ["Synth"]
         },
         {
             id: 5,
+            photo: `https://randomuser.me/portraits/men/5.jpg`,
             name: "Peta Jensen",
             nickName: "sexyKITTEN",
             statusInfo: { status: 1 },
@@ -106,6 +111,7 @@ const ConnectionScreen = ({ navigation }) => {
         },
         {
             id: 6,
+            photo: `https://randomuser.me/portraits/men/6.jpg`,
             name: "Ava Dalush",
             nickName: "brit_chick",
             statusInfo: { status: 1 },
@@ -113,12 +119,14 @@ const ConnectionScreen = ({ navigation }) => {
         },
         {
             id: 7,
+            photo: `https://randomuser.me/portraits/men/7.jpg`,
             name: "Mia Malkova",
             statusInfo: { status: 1 },
             choice: ["Flute"]
         },
         {
             id: 8,
+            photo: `https://randomuser.me/portraits/men/8.jpg`,
             name: "Sofia Curly",
             nickName: "CUMpasta",
             statusInfo: { status: 1 },

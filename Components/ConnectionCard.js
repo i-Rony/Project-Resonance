@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -86,7 +86,7 @@ export default function ConnectionCard({ conInfo }) {
         <Swipeable renderLeftActions={renderLeftActions} renderRightActions={renderRightActions} overshootLeft={false}>
             
             <LinearGradient
-                colors={['rgba(231,90,124,0.55)', 'rgba(255, 255, 255, 0)']}
+                colors={['rgba(231,90,124,1)', 'rgba(255, 255, 255, 0)']}
                 style={{
                     flex: 1, 
                     justifyContent: 'space-evenly',
@@ -98,12 +98,18 @@ export default function ConnectionCard({ conInfo }) {
             >
                 <View style={styles.conCard}>
                 {/* <View style={{flex: 1, marginHorizontal: 10}}> */}
-                    <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', marginBottom: 16 }}>
-                        {name}
+                    <View style={{ flex: 0.3, flexDirection: 'column', alignItems: 'center' }}>
+                        <Image source={{uri: conInfo.photo}} style={{borderRadius: 50, resizeMode: 'cover', width: 70, height: 70}} />
                     </View>
-                    <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-                        {choice}
+                    <View style={{ flex: 1, flexDirection: 'column',paddingLeft: 18 , justifyContent: 'space-evenly'}}>
+                        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', marginBottom: 16 }}>
+                            {name}
+                        </View>
+                        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                            {choice}
+                        </View>
                     </View>
+                    
                 {/* </View> */}
                 </View>
             </LinearGradient>
@@ -116,11 +122,12 @@ const styles = StyleSheet.create({
 
     conCard: {
         flex: 1,
-        marginVertical: 6,
+        flexDirection: 'row',
+        marginVertical: 2,
         // marginHorizontal: 8.7,
         padding: 8,
-        alignItems: "center",
-        justifyContent: "center",
+        alignItems: 'center',
+        justifyContent: 'center',
         // borderRadius: 4,
     },
 
@@ -141,7 +148,7 @@ const styles = StyleSheet.create({
     },
 
     name: {
-        fontSize: 25,
+        fontSize: 22,
         fontFamily: 'SemiBold',
         color: 'rgba(44,54,63,0.8)', //'white'
     },
