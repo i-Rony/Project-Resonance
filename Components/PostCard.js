@@ -27,7 +27,7 @@ const PostCard = (props) => {
         return (
             <View style={styles.poster}>
                 {/*Change the background color */}
-                <View style={{flex: 0.74, backgroundColor: 'rgba(231, 90, 124, 0.2)', borderTopLeftRadius: 22, borderTopRightRadius: 22, justifyContent: 'center', alignItems: 'center'}}>
+                <View style={{flex: 0.74, backgroundColor: 'rgba(214, 219, 210, 1)', borderTopLeftRadius: 22, borderTopRightRadius: 22, justifyContent: 'center', alignItems: 'center'}}>
                     <Video
                         source={{uri: props.source}}
                         rate={1.0}
@@ -41,15 +41,15 @@ const PostCard = (props) => {
                     />
                 </View>
                 {/*Change the background color */}
-                <View style={{flex: 0.26, flexDirection: 'row', alignItems: 'center', backgroundColor: 'rgba(231, 90, 124, 0.2)', borderBottomLeftRadius: 22, borderBottomRightRadius: 22}}>
+                <View style={{flex: 0.26, flexDirection: 'row', backgroundColor: 'rgba(214, 219, 210, 1)', alignItems: 'center', borderBottomLeftRadius: 22, borderBottomRightRadius: 22}}>
                     <TouchableOpacity>
                         <Image source={props.userPhoto} style={{borderRadius: 50, width: 50, height: 50, marginHorizontal: 12}}  />
                     </TouchableOpacity>
                     <View style={{flexDirection: 'column', justifyContent: 'space-evenly'}}>
-                        <Text style={{fontFamily: 'Medium', fontSize: 16, color: 'rgba(44,54,63,0.9)'}}>{props.userName}</Text>
-                        <Text style={{fontFamily: 'Regular', fontSize: 15, color: 'rgba(44,54,63,0.9)'}}>{props.userLocation}</Text>
+                        <Text style={{fontFamily: 'Medium', fontSize: 16, color: 'rgba(44,54,63,0.834)'}}>{props.userName}</Text>
+                        <Text style={{fontFamily: 'Regular', fontSize: 15, color: 'rgba(44,54,63,0.834)'}}>{props.userLocation}</Text>
                     </View>
-                    <View style={{flexDirection: 'row', alignItems: 'center', right: -width*0.18}}>
+                    <View style={{flexDirection: 'row', alignItems: 'center', right: -width*0.14}}>
                         <TouchableOpacity>
                         <FontAwesomeIcon 
                             icon={farHeart}
@@ -66,6 +66,15 @@ const PostCard = (props) => {
                             size={22}
                         />
                         </TouchableOpacity>
+                        <TouchableOpacity>
+                            <FontAwesomeIcon 
+                                icon={faEllipsisV}
+                                style={{marginHorizontal: 5, marginTop: 1}}
+                                color='rgba(44, 54, 63, 0.834)'
+                                size={22}
+                            />
+                        </TouchableOpacity>
+                        
                     </View>
                 </View>
             </View>
