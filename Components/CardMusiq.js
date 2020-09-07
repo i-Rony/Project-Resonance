@@ -128,7 +128,7 @@ export default function CardMusiq(props){
         return (
             <View>
             <CardFlip 
-                style={{ width: width * 0.97, height: height * 0.24 }} 
+                style={{ width: width * 0.97, height: height * 0.19 }} 
                 ref={card => (this.card = card)}
                 flipDirection='y'
             >
@@ -272,8 +272,9 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.3,
         shadowRadius: 2,
         marginHorizontal: 4,
-        marginVertical: 6,
-        marginTop: height * 0.05,
+        marginVertical: 0,
+        marginTop: 8,
+        marginBottom: 8,
     },
     cardContentHeader: {
         zIndex: 1,
