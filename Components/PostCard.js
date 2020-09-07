@@ -27,7 +27,7 @@ const PostCard = (props) => {
         return (
             <View style={styles.poster}>
                 {/*Change the background color */}
-                <View style={{flex: 0.74, backgroundColor: 'rgba(214, 219, 210, 1)', borderTopLeftRadius: 22, borderTopRightRadius: 22, justifyContent: 'center', alignItems: 'center'}}>
+                <View style={{flex: 0.74, backgroundColor: 'rgba(214, 219, 210, 0.6)', borderTopLeftRadius: 22, borderTopRightRadius: 22, justifyContent: 'center', alignItems: 'center'}}>
                     <Video
                         source={{uri: props.source}}
                         rate={1.0}
@@ -41,7 +41,7 @@ const PostCard = (props) => {
                     />
                 </View>
                 {/*Change the background color */}
-                <View style={{flex: 0.26, flexDirection: 'row', backgroundColor: 'rgba(214, 219, 210, 1)', alignItems: 'center', borderBottomLeftRadius: 22, borderBottomRightRadius: 22}}>
+                <View style={{flex: 0.26, flexDirection: 'row', backgroundColor: 'rgba(214, 219, 210, 0.6)', alignItems: 'center', borderBottomLeftRadius: 22, borderBottomRightRadius: 22}}>
                     <TouchableOpacity>
                         <Image source={props.userPhoto} style={{borderRadius: 50, width: 50, height: 50, marginHorizontal: 12}}  />
                     </TouchableOpacity>
