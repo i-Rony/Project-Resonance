@@ -3,7 +3,6 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import { LinearGradient } from 'expo-linear-gradient';
-import { wrap } from 'popmotion/lib/transformers';
 
 export default function ConnectionCard({ conInfo }) {
 
