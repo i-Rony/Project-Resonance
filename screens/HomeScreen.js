@@ -7,9 +7,10 @@ import { HomeScreenFilters } from '../Components/Filters';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 import { ScrollView } from 'react-native-gesture-handler';
-import Constants from 'expo-constants';
+import JohnDoe from '../assets/kawaii.jpg';
 import MovingEarth from '../assets/movingearth.mp4';
 import CardMusiq from '../Components/CardMusiq';
+import PostCard from '../Components/PostCard';
 
 const HomeScreen = ({ navigation }) => {
     
@@ -120,9 +121,9 @@ const HomeScreen = ({ navigation }) => {
 
                             <HomeScreenFilters />
 
-                            <Card source={MovingEarth}>
+                            {/* <Card source={MovingEarth} /> */}
                                 
-                            </Card>
+                            <PostCard source={'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'} userPhoto={JohnDoe} userName='Chika Fujiwara' userLocation='Tokyo, Japan'/>
 
                             <CardMusiq>
                                 <Text>
@@ -130,12 +131,8 @@ const HomeScreen = ({ navigation }) => {
                                 </Text>
                             </CardMusiq>                            
 
-                            <Card>
-                                <Text>
-                                    Hello
-                                </Text>
-                            </Card>
-
+                            <PostCard source={'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'} userPhoto={JohnDoe} userName='Chika Fujiwara' userLocation='Tokyo, Japan'/>
+                            
                         </View>
                     </ScrollView>
                 </View>
