@@ -49,7 +49,7 @@ const PostCard = (props) => {
                         <Text style={{fontFamily: 'Medium', fontSize: 16, color: 'rgba(44,54,63,0.834)'}}>{props.userName}</Text>
                         <Text style={{fontFamily: 'Regular', fontSize: 15, color: 'rgba(44,54,63,0.834)'}}>{props.userLocation}</Text>
                     </View>
-                    <View style={{flexDirection: 'row', alignItems: 'center', right: -width*0.14}}>
+                    <View style={{flexDirection: 'row', alignItems: 'center', right: -48}}>
                         <TouchableOpacity>
                         <FontAwesomeIcon 
                             icon={farHeart}
