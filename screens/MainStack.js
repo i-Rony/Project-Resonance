@@ -15,7 +15,7 @@ import ProfileScreen from './ProfileScreen';
 import CollabScreen from './CollabScreen';
 import ConnectionScreen from './ConnectionScreen';
 import ActivityScreen from './ActivityScreen';
-import SettingScreen from './SettingScreen';
+import SettingScreen from './SettingsScreen/Screen.js';
 import { DrawerContent } from './DrawerContent';
 
 
