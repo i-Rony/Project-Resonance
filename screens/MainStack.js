@@ -1,6 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createStackNavigator } from '@react-navigation/stack';
 import AnimatedTabBar from '@gorhom/animated-tabbar';
 
 import HomeSVG from '../svg/HomeSVG';
@@ -18,7 +19,6 @@ import ConnectionScreen from './ConnectionScreen';
 import ActivityScreen from './ActivityScreen';
 import SettingScreen from './SettingsScreen/Screen.js';
 import { DrawerContent } from './DrawerContent';
-import { createStackNavigator } from '@react-navigation/stack';
 
 
 const tabs = {
@@ -126,8 +126,8 @@ const UserDrawer = () => (
 const Stack = createStackNavigator();
 
 const ExploreStack = () => (
-  <Stack.Navigator initialRouteName="ExploreMain">
-    <Stack.screen name="ExploreMain" component={ExploreScreen} />
-    <Stack.screen name="ViewEvent" component={ViewEventScreen} />
+  <Stack.Navigator initialRouteName="ExploreMain" screenOptions={{headerShown: false}}>
+    <Stack.Screen name="ExploreMain" component={ExploreScreen} />
+    <Stack.Screen name="ViewEvent" component={ViewEventScreen} />
   </Stack.Navigator>
 );

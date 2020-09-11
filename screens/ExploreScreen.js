@@ -28,7 +28,7 @@ import PlaylistCard from '../Components/PlaylistCard';
 
 const {width, height} = Dimensions.get("screen");
 
-const EventScreen = ({ navigation, label}) => (
+const EventScreen = ({ navigation, label }) => (
     <View>
     <ScrollView>
         <CarouselEventScreen
@@ -113,6 +113,7 @@ const EventScreen = ({ navigation, label}) => (
                         }}
                     >
                         <EventPopularPoster 
+                            navigation={navigation}
                             source={City} 
                             name='Folklore - Taylor Swift'
                             venue='Club Devil, 5th Avenue, 287' 
@@ -120,6 +121,7 @@ const EventScreen = ({ navigation, label}) => (
                         />
 
                         <EventPopularPoster 
+                            navigation={navigation}
                             source={Lofi} 
                             name='Lofi Chillout Sessions'
                             venue='Atlanta City, Fiasco Street' 
@@ -127,6 +129,7 @@ const EventScreen = ({ navigation, label}) => (
                         />
 
                         <EventPopularPoster 
+                            navigation={navigation}
                             source={Arcade} 
                             name='Game-Boy Wonder Club'
                             venue='Saint De Boulevard Road' 
@@ -194,15 +197,15 @@ const EventScreen = ({ navigation, label}) => (
                             paddingBottom: 20
                         }}
                     >
-                        <EventPoster source={StairwayToHeaven}>
+                        <EventPoster source={StairwayToHeaven} navigation={navigation}>
                             <Text>Stairway To Heaven - Concert Hall 79</Text>
                         </EventPoster>
 
-                        <EventPoster source={SailorMoon}>
+                        <EventPoster source={SailorMoon} navigation={navigation}>
                             <Text>Sailor Moon - Feature Film</Text>
                         </EventPoster>
 
-                        <EventPoster source={DaftPunk}>
+                        <EventPoster source={DaftPunk} navigation={navigation}>
                             <Text>Daft Punk - Live @ Wireless Festival</Text>
                         </EventPoster>
                     </ScrollView>
