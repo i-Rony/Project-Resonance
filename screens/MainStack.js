@@ -10,6 +10,7 @@ import BellSVG from '../svg/BellSVG';
 
 import HomeScreen from './HomeScreen';
 import ExploreScreen from './ExploreScreen';
+import ViewEventScreen from './ViewEventScreen';
 import NotificationScreen from './NotificationScreen';
 import ProfileScreen from './ProfileScreen';
 import CollabScreen from './CollabScreen';
@@ -17,6 +18,7 @@ import ConnectionScreen from './ConnectionScreen';
 import ActivityScreen from './ActivityScreen';
 import SettingScreen from './SettingsScreen/Screen.js';
 import { DrawerContent } from './DrawerContent';
+import { createStackNavigator } from '@react-navigation/stack';
 
 
 const tabs = {
@@ -95,7 +97,7 @@ const MainStack = () => (
   >
     <Tab.Screen name="User" component={UserDrawer} />
     <Tab.Screen name="Home" component={HomeScreen} />
-    <Tab.Screen name="Explore" component={ExploreScreen} />
+    <Tab.Screen name="Explore" component={ExploreStack} />
     <Tab.Screen name="Notifications" component={NotificationScreen} />
 
   </Tab.Navigator>
@@ -119,4 +121,13 @@ const UserDrawer = () => (
     <Drawer.Screen name='Settings' component={SettingScreen} />
   </Drawer.Navigator>
 
+);
+
+const Stack = createStackNavigator();
+
+const ExploreStack = () => (
+  <Stack.Navigator initialRouteName="ExploreMain">
+    <Stack.screen name="ExploreMain" component={ExploreScreen} />
+    <Stack.screen name="ViewEvent" component={ViewEventScreen} />
+  </Stack.Navigator>
 );
