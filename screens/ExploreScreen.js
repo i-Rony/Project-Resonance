@@ -28,7 +28,7 @@ import PlaylistCard from '../Components/PlaylistCard';
 
 const {width, height} = Dimensions.get("screen");
 
-const EventScreen = ({label}) => (
+const EventScreen = ({ navigation, label}) => (
     <View>
     <ScrollView>
         <CarouselEventScreen
