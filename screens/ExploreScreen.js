@@ -28,6 +28,8 @@ import PlaylistCard from '../Components/PlaylistCard';
 
 const {width, height} = Dimensions.get("screen");
 
+const description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean enim quam, commodo id orci in, dignissim dapibus orci. Donec pretium sodales suscipit. Nullam non nunc consequat, faucibus turpis quis, ultrices tortor. Integer congue libero ut rutrum sodales. Quisque pretium placerat vulputate. Vivamus a ultricies ex, ut cursus nibh. Nulla in lectus quis lorem ultricies elementum at sed velit. Duis ultricies porta viverra. Morbi ligula arcu, vestibulum sed lectus in, venenatis luctus lacus. Proin ac eros id libero egestas venenatis. Etiam bibendum pellentesque lectus, non dictum felis efficitur laoreet. Pellentesque rutrum vitae nisl quis facilisis. Aenean sed neque ante. Mauris sagittis quis libero quis maximus. Sed et accumsan sem.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean enim quam, commodo id orci in, dignissim dapibus orci. Donec pretium sodales suscipit. Nullam non nunc consequat, faucibus turpis quis, ultrices tortor. Integer congue libero ut rutrum sodales. Quisque pretium placerat vulputate. Vivamus a ultricies ex, ut cursus nibh. Nulla in lectus quis lorem ultricies elementum at sed velit. Duis ultricies porta viverra. Morbi ligula arcu, vestibulum sed lectus in, venenatis luctus lacus. Proin ac eros id libero egestas venenatis. Etiam bibendum pellentesque lectus, non dictum felis efficitur laoreet. Pellentesque rutrum vitae nisl quis facilisis. Aenean sed neque ante. Mauris sagittis quis libero quis maximus. Sed et accumsan sem.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean enim quam, commodo id orci in, dignissim dapibus orci. Donec pretium sodales suscipit. Nullam non nunc consequat, faucibus turpis quis, ultrices tortor. Integer congue libero ut rutrum sodales. Quisque pretium placerat vulputate. Vivamus a ultricies ex, ut cursus nibh. Nulla in lectus quis lorem ultricies elementum at sed velit. Duis ultricies porta viverra. Morbi ligula arcu, vestibulum sed lectus in, venenatis luctus lacus. Proin ac eros id libero egestas venenatis.'
+
 const EventScreen = ({ navigation }) => (
     <View>
     <ScrollView>
@@ -117,7 +119,8 @@ const EventScreen = ({ navigation }) => (
                             source={City} 
                             name='Folklore - Taylor Swift'
                             venue='Club Devil, 5th Avenue, 287' 
-                            date='Sun 23, August'   
+                            date='Sun 23, August' 
+                            desc={description}  
                         />
 
                         <EventPopularPoster 
@@ -125,7 +128,8 @@ const EventScreen = ({ navigation }) => (
                             source={Lofi} 
                             name='Lofi Chillout Sessions'
                             venue='Atlanta City, Fiasco Street' 
-                            date='Thu 27, August'   
+                            date='Thu 27, August' 
+                            desc={description}  
                         />
 
                         <EventPopularPoster 
@@ -133,7 +137,8 @@ const EventScreen = ({ navigation }) => (
                             source={Arcade} 
                             name='Game-Boy Wonder Club'
                             venue='Saint De Boulevard Road' 
-                            date='Mon 31, August'   
+                            date='Mon 31, August' 
+                            desc={description}  
                         />
                     </ScrollView>
                 </View>                           

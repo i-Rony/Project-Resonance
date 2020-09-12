@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text, ImageBackground, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text, ImageBackground, TouchableOpacity, ScrollView } from 'react-native';
 import Constants from 'expo-constants';
 import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
@@ -8,12 +8,13 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 function ViewEventScreen({ route, navigation }) {
 
     const { eventId } = route.params;
-    const { source } = route.params;
+    const { source, name, venue, date, desc } = route.params;
 
     return (
+        <ScrollView style={{flex: 1}}>
         <View style={{flex: 1, marginTop: Constants.statusBarHeight}}>
             <ImageBackground
-                style={{flex: 0.35}}
+                style={{flex: 1, height: 240}}
                 source={source}
                 imageStyle={{resizeMode: 'cover'}}
             >
@@ -23,7 +24,10 @@ function ViewEventScreen({ route, navigation }) {
                     start={{ x: 0, y: 0 }}
                     end={{ x: 0.1, y: 0.2 }}
                 >
-                    <TouchableOpacity style={{paddingBottom: 6, paddingHorizontal: 6, paddingTop: 6}} onPress={() => navigation.goBack()}>
+                    <TouchableOpacity 
+                        style={{paddingBottom: 6, paddingHorizontal: 6, paddingTop: 6}} 
+                        onPress={() => navigation.goBack()}
+                    >
                         <FontAwesomeIcon
                             icon={faChevronLeft}
                             style={{top: 8}}
@@ -35,15 +39,39 @@ function ViewEventScreen({ route, navigation }) {
                 </LinearGradient>
                 
             </ImageBackground>
-            <View style={styles.viewEventContainer}>
-                <Text>henlo</Text>
+        </View>
+        <View style={styles.viewEventContainer}>
+            <Text 
+                allowFontScaling 
+                numberOfLines={2} 
+                adjustsFontSizeToFit 
+                style={{fontFamily: 'SemiBold', fontSize: 30, marginBottom: 10}}
+            >
+                {name}
+            </Text>
+            <Text 
+                allowFontScaling 
+                numberOfLines={3} 
+                adjustsFontSizeToFit
+                style={{fontFamily: 'Medium', fontSize: 22, marginBottom: 8}}
+            >
+                {venue}
+            </Text>
+            {/* <Text>
+                {date}
+            </Text> */}
+            <Text style={{fontFamily: 'Regular', fontSize: 18}}>
+                {desc}
+            </Text>
+
+                {/* <Text>henlo</Text>
                 <Text>henlo</Text>
                 <Text>{eventId}</Text>
                 <Text>henlo</Text>
                 <Text>henlo</Text>
-                <Text>{JSON.stringify(route)}</Text>
-            </View>
+                <Text>{JSON.stringify(route)}</Text> */}
         </View>
+        </ScrollView>
     );
 }
 
@@ -51,8 +79,7 @@ export default ViewEventScreen;
 
 const styles = StyleSheet.create({
     viewEventContainer: {
-        flex: 0.5,
-        alignItems: "center",
-        justifyContent: "center",
+        padding: 10,
+        justifyContent: 'flex-start'
     },
 });
