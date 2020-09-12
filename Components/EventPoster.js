@@ -58,9 +58,9 @@ const EventPoster = (props) => {
                             </Text>                        
                         </LinearGradient>
                     :
-                        <TouchableOpacity style={styles.more} onPress={() => props.navigation.navigate('ViewEvent', { eventId: 'EventPoster', })}>
+                        <TouchableOpacity style={styles.more} onPress={() => props.navigation.navigate('ViewEvent', { eventId: 'EventPoster', source: props.source })}>
                             <Text style={styles.moreText}>
-                                View 
+                                VIEW 
                             </Text>
                             <FontAwesomeIcon 
                                 icon={faArrowRight}

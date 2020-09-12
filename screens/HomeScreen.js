@@ -100,7 +100,7 @@ const HomeScreen = ({ navigation }) => {
                 config={config}
                 style={{
                     flex: 1,
-                    backgroundColor: 'rgba(231, 90, 124, 0.15)'
+                    // backgroundColor: 'rgba(231, 90, 124, 0.15)'
                 }}
             >
                 <View

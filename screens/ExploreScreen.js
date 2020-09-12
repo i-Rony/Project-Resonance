@@ -54,7 +54,7 @@ const EventScreen = ({ navigation }) => (
             }}
         >
 
-            <View style={{ backgroundColor: 'rgba(231, 90, 124, 0.15)' }}>
+            <View style={{  }}>
                 <View
                     style={{
                         flexDirection: 'row',
@@ -139,7 +139,7 @@ const EventScreen = ({ navigation }) => (
                 </View>                           
             </View>
 
-            <View style={{ backgroundColor: 'rgba(231, 90, 124, 0.15)' }}>
+            <View style={{  }}>
                 <View
                     style={{
                         flexDirection: 'row',

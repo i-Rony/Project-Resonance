@@ -81,10 +81,10 @@ const EventPopularPoster = (props) => {
                     :
                         <TouchableOpacity 
                             style={styles.more} 
-                            onPress={() => props.navigation.navigate('ViewEvent', { eventId: 'EventPopularPoster', })}
+                            onPress={() => props.navigation.navigate('ViewEvent', { eventId: 'EventPopularPoster', source: props.source })}
                         >
                             <Text style={styles.moreText}>
-                                View 
+                                VIEW 
                             </Text>
                             <FontAwesomeIcon 
                                 icon={faArrowRight}

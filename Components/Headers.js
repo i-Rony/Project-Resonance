@@ -30,7 +30,7 @@ function HomeScreenHeader() {
         return (
             <View style={{
                 height: 60 + Constants.statusBarHeight,
-                backgroundColor: 'rgba(231,90,124,0.3)',
+                backgroundColor: 'rgba(231,90,124,0.45)',
                 paddingBottom: 3,
                 paddingTop: Constants.statusBarHeight,
             }}>
