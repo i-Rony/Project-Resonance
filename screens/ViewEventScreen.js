@@ -1,10 +1,17 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 
-function ViewEventScreen({ navigation, eventId }) {
+function ViewEventScreen({ navigation }) {
     return (
         <View style={styles.viewEventContainer}>
-            <Text>{eventId}</Text>
+            <Text>henlo</Text>
+            <Text>henlo</Text>
+            <Text>henlo</Text>
+            <Text>henlo</Text>
+            <Text>henlo</Text>
+            <Text>henlo</Text>
+            <Text>henlo</Text>
+            <Text>henlo</Text>
         </View>
     );
 }

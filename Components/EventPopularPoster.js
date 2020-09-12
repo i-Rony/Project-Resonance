@@ -79,7 +79,9 @@ const EventPopularPoster = (props) => {
                                               
                         
                     :
-                        <TouchableOpacity style={styles.more} onClick={() => props.navigation.navigate('ViewEvent')}
+                        <TouchableOpacity 
+                            style={styles.more} 
+                            onPress={() => props.navigation.navigate('ViewEvent')}
                         >
                             <Text style={styles.moreText}>
                                 View 

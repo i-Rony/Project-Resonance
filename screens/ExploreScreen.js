@@ -28,7 +28,7 @@ import PlaylistCard from '../Components/PlaylistCard';
 
 const {width, height} = Dimensions.get("screen");
 
-const EventScreen = ({ navigation, label }) => (
+const EventScreen = ({ navigation }) => (
     <View>
     <ScrollView>
         <CarouselEventScreen
@@ -350,9 +350,9 @@ const ExploreScreen = ({ navigation }) => {
                                 borderBottomWidth: 0,
                                 marginTop: 0
                     }}/>}>
-                        <EventScreen tabLabel={{label: 'Events'}} label=''/>
-                        <PeopleScreen tabLabel={{label: 'People'}} label=''/>
-                        <TrendingScreen tabLabel={{label: 'Trending'}} label=''/>
+                        <EventScreen tabLabel={{label: 'Events'}} label='' navigation={navigation}/>
+                        <PeopleScreen tabLabel={{label: 'People'}} label='' navigation={navigation}/>
+                        <TrendingScreen tabLabel={{label: 'Trending'}} label='' navigation={navigation}/>
                     </ScrollableTabView>
                     
                 
