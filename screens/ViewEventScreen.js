@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text, ImageBackground, TouchableOpacity, ScrollView } from 'react-native';
 import Constants from 'expo-constants';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -40,7 +40,7 @@ function ViewEventScreen({ route, navigation }) {
                 
             </ImageBackground>
         </View>
-        <View style={styles.viewEventContainer}>
+        <View style={[styles.viewEventContainer, {}]}>
             <Text 
                 allowFontScaling 
                 numberOfLines={2} 
@@ -80,6 +80,6 @@ export default ViewEventScreen;
 const styles = StyleSheet.create({
     viewEventContainer: {
         padding: 10,
-        justifyContent: 'flex-start'
+        justifyContent: 'flex-start',
     },
 });
