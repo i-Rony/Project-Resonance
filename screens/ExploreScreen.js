@@ -28,7 +28,7 @@ import PlaylistCard from '../Components/PlaylistCard';
 
 const {width, height} = Dimensions.get("screen");
 
-const description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean enim quam, commodo id orci in, dignissim dapibus orci. Donec pretium sodales suscipit. Nullam non nunc consequat, faucibus turpis quis, ultrices tortor. Integer congue libero ut rutrum sodales. Quisque pretium placerat vulputate. Vivamus a ultricies ex, ut cursus nibh. Nulla in lectus quis lorem ultricies elementum at sed velit.'
+const description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean enim quam, commodo id orci in, dignissim dapibus orci. Donec pretium sodales suscipit. Nullam non nunc consequat, faucibus turpis quis, ultrices tortor.'
 
 const EventScreen = ({ navigation }) => (
     <View>
