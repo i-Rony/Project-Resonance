@@ -81,7 +81,15 @@ const EventPopularPoster = (props) => {
                     :
                         <TouchableOpacity 
                             style={styles.more} 
-                            onPress={() => props.navigation.navigate('ViewEvent', { eventId: 'EventPopularPoster', source: props.source })}
+                            onPress={() => props.navigation.navigate('ViewEvent', 
+                                { 
+                                    eventId: 'EventPopularPoster',
+                                    source: props.source,
+                                    name: props.name, 
+                                    venue: props.venue, 
+                                    date: props.date,
+                                    desc: props.desc
+                                })}
                         >
                             <Text style={styles.moreText}>
                                 VIEW 

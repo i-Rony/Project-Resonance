@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, StyleSheet, Text, ImageBackground, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, StyleSheet, Text, ImageBackground, TouchableOpacity, ScrollView } from 'react-native';
 import Constants from 'expo-constants';
 import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
@@ -8,12 +8,13 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 function ViewEventScreen({ route, navigation }) {
 
     const { eventId } = route.params;
-    const { source } = route.params;
+    const { source, name, venue, date, desc } = route.params;
 
     return (
+        <ScrollView style={{flex: 1}}>
         <View style={{flex: 1, marginTop: Constants.statusBarHeight}}>
             <ImageBackground
-                style={{flex: 0.35}}
+                style={{flex: 1, height: 240}}
                 source={source}
                 imageStyle={{resizeMode: 'cover'}}
             >
@@ -23,7 +24,10 @@ function ViewEventScreen({ route, navigation }) {
                     start={{ x: 0, y: 0 }}
                     end={{ x: 0.1, y: 0.2 }}
                 >
-                    <TouchableOpacity style={{paddingBottom: 6, paddingHorizontal: 6, paddingTop: 6}} onPress={() => navigation.goBack()}>
+                    <TouchableOpacity 
+                        style={{paddingBottom: 6, paddingHorizontal: 6, paddingTop: 6}} 
+                        onPress={() => navigation.goBack()}
+                    >
                         <FontAwesomeIcon
                             icon={faChevronLeft}
                             style={{top: 8}}
@@ -35,15 +39,54 @@ function ViewEventScreen({ route, navigation }) {
                 </LinearGradient>
                 
             </ImageBackground>
-            <View style={styles.viewEventContainer}>
-                <Text>henlo</Text>
+        </View>
+        <View 
+            style={{ 
+                backgroundColor: 'rgba(255, 255, 255, 1)', 
+                right: 10, 
+                position: 'absolute', 
+                width: 150, 
+                top: 240,
+                borderWidth: 2.5,
+                borderColor: 'rgba(231,90,124,1)'
+            }}
+        >
+            <View style={{padding: 12, alignItems: 'center'}}>
+                <Text style={{color:'rgba(44, 54, 63, 1)', fontFamily: 'Regular', fontSize: 16 }}>{date}</Text>
+            </View>
+        </View>
+        <View style={[styles.viewEventContainer, {}]}>
+            <Text 
+                allowFontScaling 
+                numberOfLines={2} 
+                adjustsFontSizeToFit 
+                style={{fontFamily: 'SemiBold', fontSize: 30, marginBottom: 10, color: 'rgba(44, 54, 63, 1)'}}
+            >
+                {name}
+            </Text>
+            <Text 
+                allowFontScaling 
+                numberOfLines={3} 
+                adjustsFontSizeToFit
+                style={{fontFamily: 'Medium', fontSize: 22, marginBottom: 8, color:'rgba(44, 54, 63, 0.9)'}}
+            >
+                {venue}
+            </Text>
+            {/* <Text>
+                {date}
+            </Text> */}
+            <Text style={{fontFamily: 'Light', fontSize: 18, color:'rgba(44, 54, 63, 1)'}}>
+                {desc}
+            </Text>
+
+                {/* <Text>henlo</Text>
                 <Text>henlo</Text>
                 <Text>{eventId}</Text>
                 <Text>henlo</Text>
                 <Text>henlo</Text>
-                <Text>{JSON.stringify(route)}</Text>
-            </View>
+                <Text>{JSON.stringify(route)}</Text> */}
         </View>
+        </ScrollView>
     );
 }
 
@@ -51,8 +94,8 @@ export default ViewEventScreen;
 
 const styles = StyleSheet.create({
     viewEventContainer: {
-        flex: 0.5,
-        alignItems: "center",
-        justifyContent: "center",
+        padding: 10,
+        marginTop: 20,
+        justifyContent: 'flex-start',
     },
 });
