@@ -92,7 +92,7 @@ const EventPopularPoster = (props) => {
                                 })}
                         >
                             <Text style={styles.moreText}>
-                                VIEW 
+                                VIEW
                             </Text>
                             <FontAwesomeIcon 
                                 icon={faArrowRight}

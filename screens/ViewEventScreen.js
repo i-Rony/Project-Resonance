@@ -4,11 +4,16 @@ import Constants from 'expo-constants';
 import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import ImageColors from 'react-native-image-colors';
 
 function ViewEventScreen({ route, navigation }) {
 
     const { eventId } = route.params;
     const { source, name, venue, date, desc } = route.params;
+
+    // const image = require(`${source}`);
+    // const imageColor = ImageColors.getColors(require(`${source}`));
+    const imageColor = ImageColors.getColors(source, { fallback: '#000000', });
 
     return (
         <ScrollView style={{flex: 1}}>
@@ -39,52 +44,14 @@ function ViewEventScreen({ route, navigation }) {
                 </LinearGradient>
                 
             </ImageBackground>
-        </View>
-        <View 
-            style={{ 
-                backgroundColor: 'rgba(255, 255, 255, 1)', 
-                right: 10, 
-                position: 'absolute', 
-                width: 150, 
-                top: 240,
-                borderWidth: 2.5,
-                borderColor: 'rgba(231,90,124,1)'
-            }}
-        >
-            <View style={{padding: 12, alignItems: 'center'}}>
-                <Text style={{color:'rgba(44, 54, 63, 1)', fontFamily: 'Regular', fontSize: 16 }}>{date}</Text>
-            </View>
-        </View>
-        <View style={[styles.viewEventContainer, {}]}>
-            <Text 
-                allowFontScaling 
-                numberOfLines={2} 
-                adjustsFontSizeToFit 
-                style={{fontFamily: 'SemiBold', fontSize: 30, marginBottom: 10, color: 'rgba(44, 54, 63, 1)'}}
-            >
-                {name}
-            </Text>
-            <Text 
-                allowFontScaling 
-                numberOfLines={3} 
-                adjustsFontSizeToFit
-                style={{fontFamily: 'Medium', fontSize: 22, marginBottom: 8, color:'rgba(44, 54, 63, 0.9)'}}
-            >
-                {venue}
-            </Text>
-            {/* <Text>
-                {date}
-            </Text> */}
-            <Text style={{fontFamily: 'Light', fontSize: 18, color:'rgba(44, 54, 63, 1)'}}>
-                {desc}
-            </Text>
-
-                {/* <Text>henlo</Text>
-                <Text>henlo</Text>
+            <View style={styles.viewEventContainer}>
+                <Text>{`${source}`}</Text>
+                <Text style={{color: imageColor}}>henlo</Text>
                 <Text>{eventId}</Text>
                 <Text>henlo</Text>
                 <Text>henlo</Text>
-                <Text>{JSON.stringify(route)}</Text> */}
+                <Text>{JSON.stringify(route)}</Text>
+            </View>
         </View>
         </ScrollView>
     );
