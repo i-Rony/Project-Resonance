@@ -84,7 +84,7 @@ const EventPopularPoster = (props) => {
                             onPress={() => props.navigation.navigate('ViewEvent', { eventId: 'EventPopularPoster', source: props.source })}
                         >
                             <Text style={styles.moreText}>
-                                VIEW 
+                                VIEW
                             </Text>
                             <FontAwesomeIcon 
                                 icon={faArrowRight}

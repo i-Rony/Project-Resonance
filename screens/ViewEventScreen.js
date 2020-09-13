@@ -4,11 +4,16 @@ import Constants from 'expo-constants';
 import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import ImageColors from 'react-native-image-colors';
 
 function ViewEventScreen({ route, navigation }) {
 
     const { eventId } = route.params;
     const { source } = route.params;
+
+    // const image = require(`${source}`);
+    // const imageColor = ImageColors.getColors(require(`${source}`));
+    const imageColor = ImageColors.getColors(source, { fallback: '#000000', });
 
     return (
         <View style={{flex: 1, marginTop: Constants.statusBarHeight}}>
@@ -36,8 +41,8 @@ function ViewEventScreen({ route, navigation }) {
                 
             </ImageBackground>
             <View style={styles.viewEventContainer}>
-                <Text>henlo</Text>
-                <Text>henlo</Text>
+                <Text>{`${source}`}</Text>
+                <Text style={{color: imageColor}}>henlo</Text>
                 <Text>{eventId}</Text>
                 <Text>henlo</Text>
                 <Text>henlo</Text>
