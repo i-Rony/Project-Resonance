@@ -40,12 +40,27 @@ function ViewEventScreen({ route, navigation }) {
                 
             </ImageBackground>
         </View>
+        <View 
+            style={{ 
+                backgroundColor: 'rgba(255, 255, 255, 1)', 
+                right: 10, 
+                position: 'absolute', 
+                width: 150, 
+                top: 240,
+                borderWidth: 2.5,
+                borderColor: 'rgba(231,90,124,1)'
+            }}
+        >
+            <View style={{padding: 12, alignItems: 'center'}}>
+                <Text style={{color:'rgba(44, 54, 63, 1)', fontFamily: 'Regular', fontSize: 16 }}>{date}</Text>
+            </View>
+        </View>
         <View style={[styles.viewEventContainer, {}]}>
             <Text 
                 allowFontScaling 
                 numberOfLines={2} 
                 adjustsFontSizeToFit 
-                style={{fontFamily: 'SemiBold', fontSize: 30, marginBottom: 10}}
+                style={{fontFamily: 'SemiBold', fontSize: 30, marginBottom: 10, color: 'rgba(44, 54, 63, 1)'}}
             >
                 {name}
             </Text>
@@ -53,14 +68,14 @@ function ViewEventScreen({ route, navigation }) {
                 allowFontScaling 
                 numberOfLines={3} 
                 adjustsFontSizeToFit
-                style={{fontFamily: 'Medium', fontSize: 22, marginBottom: 8}}
+                style={{fontFamily: 'Medium', fontSize: 22, marginBottom: 8, color:'rgba(44, 54, 63, 0.9)'}}
             >
                 {venue}
             </Text>
             {/* <Text>
                 {date}
             </Text> */}
-            <Text style={{fontFamily: 'Regular', fontSize: 18}}>
+            <Text style={{fontFamily: 'Light', fontSize: 18, color:'rgba(44, 54, 63, 1)'}}>
                 {desc}
             </Text>
 
@@ -80,6 +95,7 @@ export default ViewEventScreen;
 const styles = StyleSheet.create({
     viewEventContainer: {
         padding: 10,
+        marginTop: 20,
         justifyContent: 'flex-start',
     },
 });
