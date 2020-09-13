@@ -54,13 +54,21 @@ const EventPoster = (props) => {
                                 ellipsizeMode='tail'
                                 textBreakStrategy='balanced'
                             >
-                                {props.children}
+                                {props.name}
                             </Text>                        
                         </LinearGradient>
                     :
                         <TouchableOpacity 
-                            style={styles.more} 
-                            // onPress={() => props.navigation.navigate('ViewEvent', { eventId: 'EventPoster', source: props.source })}
+                            style={styles.more}
+                            onPress={() => props.navigation.navigate('ViewRNEvent', 
+                                { 
+                                    eventId: 'EventRNPoster',
+                                    source: props.source,
+                                    name: props.name, 
+                                    venue: props.venue, 
+                                    date: props.date,
+                                    desc: props.desc
+                                })} 
                         >
                             <Text style={styles.moreText}>
                                 VIEW 

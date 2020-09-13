@@ -12,6 +12,7 @@ import BellSVG from '../svg/BellSVG';
 import HomeScreen from './HomeScreen';
 import ExploreScreen from './ExploreScreen';
 import ViewEventScreen from './ViewEventScreen';
+import ViewEventRNScreen from './ViewEventRNScreen';
 import NotificationScreen from './NotificationScreen';
 import ProfileScreen from './ProfileScreen';
 import CollabScreen from './CollabScreen';
@@ -129,5 +130,6 @@ const ExploreStack = () => (
   <Stack.Navigator initialRouteName="ExploreMain" screenOptions={{headerShown: false}}>
     <Stack.Screen name="ExploreMain" component={ExploreScreen} />
     <Stack.Screen name="ViewEvent" component={ViewEventScreen} />
+    <Stack.Screen name="ViewRNEvent" component={ViewEventRNScreen} />
   </Stack.Navigator>
 );

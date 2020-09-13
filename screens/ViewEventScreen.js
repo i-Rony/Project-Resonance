@@ -4,7 +4,7 @@ import Constants from 'expo-constants';
 import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
-import ImageColors from 'react-native-image-colors';
+// import ImageColors from 'react-native-image-colors';
 
 function ViewEventScreen({ route, navigation }) {
 
@@ -13,7 +13,7 @@ function ViewEventScreen({ route, navigation }) {
 
     // const image = require(`${source}`);
     // const imageColor = ImageColors.getColors(require(`${source}`));
-    const imageColor = ImageColors.getColors(source, { fallback: '#000000', });
+    // const imageColor = ImageColors.getColors(source, { fallback: '#000000', });
 
     return (
         <ScrollView style={{flex: 1}}>
@@ -46,7 +46,7 @@ function ViewEventScreen({ route, navigation }) {
             </ImageBackground>
             <View style={styles.viewEventContainer}>
                 <Text>{`${source}`}</Text>
-                <Text style={{color: imageColor}}>henlo</Text>
+                <Text style={{color: 'black'}}>henlo</Text>
                 <Text>{eventId}</Text>
                 <Text>henlo</Text>
                 <Text>henlo</Text>

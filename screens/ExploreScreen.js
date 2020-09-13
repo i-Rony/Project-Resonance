@@ -202,15 +202,36 @@ const EventScreen = ({ navigation }) => (
                             paddingBottom: 20
                         }}
                     >
-                        <EventPoster source={StairwayToHeaven} navigation={navigation}>
+                        <EventPoster 
+                            source={StairwayToHeaven} 
+                            name='Stairway To Heaven - Concert Hall 79'
+                            venue='Saint De Boulevard Road' 
+                            date='Mon 31, August' 
+                            desc={description}
+                            navigation={navigation}
+                        >
                             <Text>Stairway To Heaven - Concert Hall 79</Text>
                         </EventPoster>
 
-                        <EventPoster source={SailorMoon} navigation={navigation}>
+                        <EventPoster 
+                            source={SailorMoon} 
+                            name='Sailor Moon - Feature Film'
+                            venue='Saint De Boulevard Road' 
+                            date='Mon 31, August' 
+                            desc={description}
+                            navigation={navigation}
+                        >
                             <Text>Sailor Moon - Feature Film</Text>
                         </EventPoster>
 
-                        <EventPoster source={DaftPunk} navigation={navigation}>
+                        <EventPoster 
+                            source={DaftPunk} 
+                            name='Daft Punk - Live @ Wireless Festival'
+                            venue='Saint De Boulevard Road' 
+                            date='Mon 31, August' 
+                            desc={description}
+                            navigation={navigation}
+                        >
                             <Text>Daft Punk - Live @ Wireless Festival</Text>
                         </EventPoster>
                     </ScrollView>
