@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Text, ImageBackground, TouchableOpacity, ScrollView, Image } from 'react-native';
+import { View, StyleSheet, Text, ImageBackground, TouchableOpacity, ScrollView, Image, Dimensions } from 'react-native';
+import MapView from 'react-native-maps';
 import Constants from 'expo-constants';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronLeft, faRupeeSign } from '@fortawesome/free-solid-svg-icons';
@@ -11,8 +12,8 @@ function ViewEventRNScreen({ route, navigation }) {
     const { source, name, venue, date, desc } = route.params;
 
     return (
-        <View style={{flex: 1, marginTop: Constants.statusBarHeight}}>
-            <View style={{flex: 0.12, elevation: 5, backgroundColor: 'white', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 12, paddingVertical: 2}}>
+        <View style={{flex: 1, marginTop: Constants.statusBarHeight, backgroundColor: 'black'}}>
+            <View style={{flex: 0.12, elevation: 2, backgroundColor: 'white', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 12, paddingVertical: 2}}>
                 {/*Style 1*/}
                 <TouchableOpacity style={{marginHorizontal: -8, padding: 4}} onPress={() => navigation.goBack()}>
                     <FontAwesomeIcon
@@ -46,7 +47,7 @@ function ViewEventRNScreen({ route, navigation }) {
                 </TouchableOpacity> */}
             </View>
 
-            <View style={{flex: 0.44, elevation: 5, backgroundColor: 'white', paddingHorizontal: 12, borderBottomLeftRadius: 50, borderBottomRightRadius: 50}}>
+            <View style={{flex: 0.44, elevation: 2, backgroundColor: 'white', paddingHorizontal: 12, borderBottomLeftRadius: 50, borderBottomRightRadius: 50}}>
                 <Text adjustsFontSizeToFit allowFontScaling numberOfLines={2} style={{flex:0.26, fontFamily: 'Bold', fontSize: 26}}>
                     {name}
                 </Text>
@@ -106,7 +107,7 @@ function ViewEventRNScreen({ route, navigation }) {
                 </View>
             </View>
 
-            <View style={{flex: 0.24, elevation: 4, top: -40, backgroundColor: 'white', paddingHorizontal: 12, borderBottomLeftRadius: 50, borderBottomRightRadius: 50, justifyContent: 'space-evenly'}}>                
+            <View style={{flex: 0.24, elevation: 1, top: -40, backgroundColor: 'white', paddingHorizontal: 12, borderBottomLeftRadius: 50, borderBottomRightRadius: 50, justifyContent: 'space-evenly'}}>                
                 <View style={{flex: 0.6, flexDirection: 'row', paddingTop: 36, alignItems: 'center' }}>
                     <Image source={source} style={{resizeMode: 'cover', width: 44, height: 44, borderRadius: 10, marginHorizontal: 3}} />
                     <Image source={source} style={{resizeMode: 'cover', width: 44, height: 44, borderRadius: 10, marginHorizontal: 3}} />
@@ -138,10 +139,32 @@ function ViewEventRNScreen({ route, navigation }) {
                     </Text>
                 </TouchableOpacity>                
             </View>
-
-            <View>
-
+            
+            <View style={{ flexDirection: 'row', paddingHorizontal: 12, flex: 0.2, top: -24, justifyContent: 'space-around', alignItems: 'center' }}>
+                <View 
+                    style={{
+                        overflow: 'hidden',
+                        borderRadius: 10,
+                    }}
+                >
+                <MapView
+                    style={{
+                        bottom: 0,
+                        height: 140,
+                        width: Dimensions.get('window').width * 0.55                   
+                    }}
+                    
+                    initialRegion={{
+                        latitude: 37.78825,
+                        longitude: -122.4324,
+                        latitudeDelta: 0.0922,
+                        longitudeDelta: 0.0421,
+                    }}
+                />
+                </View>
+                <Image source={source} style={{resizeMode: 'cover', width: Dimensions.get('window').width * 0.32, height: 140, borderRadius: 10}}/>
             </View>
+            
         </View>
         // <View style={styles.viewEventContainer}>
         //     <Text>{`${source}`}</Text>
