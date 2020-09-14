@@ -12,20 +12,20 @@ function ViewEventRNScreen({ route, navigation }) {
     const { source, name, venue, date, desc } = route.params;
 
     return (
-        <View style={{flex: 1, marginTop: Constants.statusBarHeight, backgroundColor: 'black'}}>
+        <View style={{flex: 1, marginTop: Constants.statusBarHeight, backgroundColor: 'rgba(231,90,124,0.5)'}}>
             <View style={{flex: 0.12, elevation: 2, backgroundColor: 'white', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 12, paddingVertical: 2}}>
                 {/*Style 1*/}
                 <TouchableOpacity style={{marginHorizontal: -8, padding: 4}} onPress={() => navigation.goBack()}>
                     <FontAwesomeIcon
                         icon={faChevronLeft}
-                        color='black'
+                        color='rgba(44,54,63,0.85)'
                         size={24}
                     />
                 </TouchableOpacity>
 
                 <View style={{flexDirection: 'column', justifyContent: 'space-between', alignItems: 'flex-end', position: 'absolute', right: 58, paddingHorizontal: 10}}>
-                    <Text style={{fontSize: 14, fontFamily: 'Medium', paddingVertical: 1}}>Smoke and Mirrors</Text>
-                    <Text style={{fontSize: 14, fontFamily: 'Light', paddingVertical: 1}}>Organizer</Text>
+                    <Text style={{fontSize: 14, fontFamily: 'Medium', paddingVertical: 1, color: 'rgba(44,54,63,0.85)'}}>Smoke and Mirrors</Text>
+                    <Text style={{fontSize: 14, fontFamily: 'Light', paddingVertical: 1, color: 'rgba(44,54,63,0.85)'}}>Organizer</Text>
                 </View>
 
                 <Image source={source} style={{resizeMode: 'cover', width: 48, height: 48, borderRadius: 10}} />
@@ -41,18 +41,18 @@ function ViewEventRNScreen({ route, navigation }) {
                 <TouchableOpacity style={{marginHorizontal: 2}}>
                     <FontAwesomeIcon 
                         icon={faShare}
-                        color='black'
+                        color='rgba(44,54,63,0.85)'
                         size={24}
                     />
                 </TouchableOpacity> */}
             </View>
 
             <View style={{flex: 0.44, elevation: 2, backgroundColor: 'white', paddingHorizontal: 12, borderBottomLeftRadius: 50, borderBottomRightRadius: 50}}>
-                <Text adjustsFontSizeToFit allowFontScaling numberOfLines={2} style={{flex:0.26, fontFamily: 'Bold', fontSize: 26}}>
+                <Text adjustsFontSizeToFit allowFontScaling numberOfLines={2} style={{flex:0.26, color: 'rgba(44,54,63,0.85)', fontFamily: 'Bold', fontSize: 26}}>
                     {name}
                 </Text>
 
-                <Text adjustsFontSizeToFit allowFontScaling numberOfLines={6} style={{flex:0.44,fontFamily: 'Regular', fontSize: 15, paddingVertical: 6, paddingBottom: 10}}>
+                <Text adjustsFontSizeToFit allowFontScaling numberOfLines={6} style={{flex:0.44, color: 'rgba(44,54,63,0.85)', fontFamily: 'Regular', fontSize: 15, paddingVertical: 6, paddingBottom: 10}}>
                     {desc}
                 </Text>
 
@@ -61,13 +61,13 @@ function ViewEventRNScreen({ route, navigation }) {
                         <FontAwesomeIcon 
                             icon={faClock}
                             size={34}
-                            color='black'
+                            color='rgba(44,54,63,0.85)'
                         />
                         <View style={{flexDirection: 'column', paddingLeft: 4}}>
-                            <Text style={{fontFamily: 'Medium', fontSize: 16, letterSpacing: 0.5 }}>
+                            <Text style={{color: 'rgba(44,54,63,0.85)', fontFamily: 'Medium', fontSize: 16, letterSpacing: 0.5 }}>
                                 1800
                             </Text>
-                            <Text style={{fontFamily: 'Medium', fontSize: 11}}>
+                            <Text style={{color: 'rgba(44,54,63,0.85)', fontFamily: 'Medium', fontSize: 11}}>
                                 HOURS
                             </Text>
                         </View>
@@ -77,13 +77,13 @@ function ViewEventRNScreen({ route, navigation }) {
                         <FontAwesomeIcon 
                             icon={faCalendarAlt}
                             size={34}
-                            color='black'
+                            color='rgba(44,54,63,0.85)'
                         />
                         <View style={{flexDirection: 'column', paddingLeft: 4}}>
-                            <Text style={{fontFamily: 'Medium', fontSize: 13}}>
+                            <Text style={{color: 'rgba(44,54,63,0.85)', fontFamily: 'Medium', fontSize: 13}}>
                                 Mon, 31
                             </Text>
-                            <Text style={{fontFamily: 'Medium', fontSize: 13}}>
+                            <Text style={{color: 'rgba(44,54,63,0.85)', fontFamily: 'Medium', fontSize: 13}}>
                                 August
                             </Text>
                         </View>
@@ -93,13 +93,13 @@ function ViewEventRNScreen({ route, navigation }) {
                         <FontAwesomeIcon 
                             icon={faRupeeSign}
                             size={34}
-                            color='black'
+                            color='rgba(44,54,63,0.85)'
                         />
                         <View style={{flexDirection: 'column'}}>
-                            <Text style={{fontFamily: 'Medium', fontSize: 13}}>
+                            <Text style={{color: 'rgba(44,54,63,0.85)', fontFamily: 'Medium', fontSize: 13}}>
                                 Cost
                             </Text>
-                            <Text style={{fontFamily: 'Medium', fontSize: 14}}>
+                            <Text style={{color: 'rgba(44,54,63,0.85)', fontFamily: 'Medium', fontSize: 14}}>
                                 FREE
                             </Text>
                         </View>
@@ -107,24 +107,24 @@ function ViewEventRNScreen({ route, navigation }) {
                 </View>
             </View>
 
-            <View style={{flex: 0.24, elevation: 1, top: -40, backgroundColor: 'white', paddingHorizontal: 12, borderBottomLeftRadius: 50, borderBottomRightRadius: 50, justifyContent: 'space-evenly'}}>                
-                <View style={{flex: 0.6, flexDirection: 'row', paddingTop: 36, alignItems: 'center' }}>
+            <View style={{flex: 0.24, elevation: 1, top: -45, backgroundColor: 'white',  overflow: 'hidden', borderBottomLeftRadius: 50, borderBottomRightRadius: 50, justifyContent: 'space-evenly'}}>                
+                <View style={{flex: 0.72, flexDirection: 'row', paddingTop: 40, alignItems: 'center', paddingHorizontal: 12 }}>
                     <Image source={source} style={{resizeMode: 'cover', width: 44, height: 44, borderRadius: 10, marginHorizontal: 3}} />
                     <Image source={source} style={{resizeMode: 'cover', width: 44, height: 44, borderRadius: 10, marginHorizontal: 3}} />
                     <Image source={source} style={{resizeMode: 'cover', width: 44, height: 44, borderRadius: 10, marginHorizontal: 3}} />
                     <Image source={source} style={{resizeMode: 'cover', width: 44, height: 44, borderRadius: 10, marginHorizontal: 3}} />
-                    <View style={{backgroundColor: 'pink', width: 44, height: 44, borderRadius: 10, alignItems: 'center', justifyContent: 'center', marginHorizontal: 3}}>
-                        <Text style={{fontFamily: 'Regular'}}>+4</Text>
+                    <View style={{backgroundColor: 'rgba(44,54,63,0.2)', width: 44, height: 44, borderRadius: 10, alignItems: 'center', justifyContent: 'center', marginHorizontal: 3}}>
+                        <Text style={{color: 'rgba(44,54,63,0.85)', fontFamily: 'Regular'}}>+4</Text>
                     </View>
-                    <Text style={{fontFamily: 'Regular', marginHorizontal: 3}}>Members</Text>
+                    <Text style={{fontFamily: 'Regular', marginHorizontal: 3, color: 'rgba(44,54,63,0.85)'}}>Members</Text>
                 </View>
 
                 {/* <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                    <TouchableOpacity style={{backgroundColor: 'pink', width: 44, height: 44, borderRadius: 10, alignItems: 'center', justifyContent: 'center', marginHorizontal: 3}}>
+                    <TouchableOpacity style={{backgroundColor: 'rgba(231,90,124,1)', width: 44, height: 44, borderRadius: 10, alignItems: 'center', justifyContent: 'center', marginHorizontal: 3}}>
                         <FontAwesomeIcon
                             icon={faPlus}
                             size={16}
-                            color='black'
+                            color='rgba(44,54,63,0.85)'
                         />
                     </TouchableOpacity>
                     
@@ -133,8 +133,8 @@ function ViewEventRNScreen({ route, navigation }) {
                     </Text>
                 </View> */}
 
-                <TouchableOpacity style={{flex: 0.4, backgroundColor: 'pink', marginHorizontal: -12, borderBottomLeftRadius: 50, borderBottomRightRadius: 50, alignItems: 'center', justifyContent: 'center'}}>
-                    <Text style={{fontFamily: 'SemiBold', fontSize: 16}}>
+                <TouchableOpacity style={{flex: 0.28, backgroundColor: 'rgba(44,54,63,0.2)', borderBottomLeftRadius: 50, borderBottomRightRadius: 50, alignItems: 'center', justifyContent: 'center'}}>
+                    <Text style={{color: 'rgba(231,90,124,1)', fontFamily: 'SemiBold', fontSize: 16}}>
                         Join Event
                     </Text>
                 </TouchableOpacity>                
@@ -168,7 +168,7 @@ function ViewEventRNScreen({ route, navigation }) {
         </View>
         // <View style={styles.viewEventContainer}>
         //     <Text>{`${source}`}</Text>
-        //     <Text style={{color: 'black'}}>{name}</Text>
+        //     <Text style={{color: 'rgba(44,54,63,0.85)'}}>{name}</Text>
         //     <Text>{eventId}</Text>
         //     <Text>{venue}</Text>
         //     <Text>{date}</Text>
