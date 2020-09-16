@@ -7,6 +7,10 @@ import PeopleCard from '../Components/PeopleCard';
 import { EventScreenHeader } from '../Components/Headers';
 import { EventScreenFilters } from '../Components/Filters';
 import CarouselEventScreen from '../Components/CarouselEventScreen';
+import PeopleCardTwo from '../Components/PeopleCardTwo';
+import PeopleCardThree from '../Components/PeopleCardThree';
+import PlaylistCard from '../Components/PlaylistCard';
+import RecommendedEventPoster from '../Components/RecommendedEventPoster';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
@@ -22,13 +26,10 @@ import Lofi from '../assets/lofi.jpg';
 import Arcade from '../assets/Arcade.jpg';
 import Cool from '../assets/cool.jpg';
 import Pepsi from '../assets/pepsi.jpg';
-import PeopleCardTwo from '../Components/PeopleCardTwo';
-import PeopleCardThree from '../Components/PeopleCardThree';
-import PlaylistCard from '../Components/PlaylistCard';
 
 const {width, height} = Dimensions.get("screen");
 
-const description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean enim quam, commodo id orci in, dignissim dapibus orci. Donec pretium sodales suscipit. Nullam non nunc consequat, faucibus turpis quis, ultrices tortor. Integer congue libero ut rutrum sodales. Quisque pretium placerat vulputate. Vivamus a ultricies ex, ut cursus nibh. Nulla in lectus quis lorem ultricies elementum at sed velit.'
+const description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean enim quam, commodo id orci in, dignissim dapibus orci. Donec pretium sodales suscipit. Nullam non nunc consequat, faucibus turpis quis, ultrices tortor.'
 
 const EventScreen = ({ navigation }) => (
     <View>
@@ -202,17 +203,102 @@ const EventScreen = ({ navigation }) => (
                             paddingBottom: 20
                         }}
                     >
-                        <EventPoster source={StairwayToHeaven} navigation={navigation}>
+                        <EventPoster 
+                            source={StairwayToHeaven} 
+                            name='Stairway To Heaven - Concert Hall 79'
+                            venue='Saint De Boulevard Road' 
+                            date='Mon 31, August' 
+                            desc={description}
+                            navigation={navigation}
+                        >
                             <Text>Stairway To Heaven - Concert Hall 79</Text>
                         </EventPoster>
 
-                        <EventPoster source={SailorMoon} navigation={navigation}>
+                        <EventPoster 
+                            source={SailorMoon} 
+                            name='Sailor Moon - Feature Film'
+                            venue='Saint De Boulevard Road' 
+                            date='Mon 31, August' 
+                            desc={description}
+                            navigation={navigation}
+                        >
                             <Text>Sailor Moon - Feature Film</Text>
                         </EventPoster>
 
-                        <EventPoster source={DaftPunk} navigation={navigation}>
+                        <EventPoster 
+                            source={DaftPunk} 
+                            name='Daft Punk - Live @ Wireless Festival'
+                            venue='Saint De Boulevard Road' 
+                            date='Mon 31, August' 
+                            desc={description}
+                            navigation={navigation}
+                        >
                             <Text>Daft Punk - Live @ Wireless Festival</Text>
                         </EventPoster>
+                    </ScrollView>
+                </View>                           
+            </View>
+            <View style={{  }}>
+                <View
+                    style={{
+                        flexDirection: 'row',
+                        justifyContent: 'space-between'
+                    }}
+                >
+                    <Text
+                        style={{
+                            top: height*0.03,
+                            left: width*0.04,
+                            fontFamily: 'Regular',
+                            fontSize: 18,
+                            color: 'rgba(44, 54, 63, 0.834)'
+                        }}
+                    >
+                        Recommended
+                    </Text>
+                    <Text 
+                        style={{
+                            top: height*0.03,
+                            left: -20,
+                            fontFamily: 'SemiBold',
+                            fontSize: 18,
+                            color: 'rgba(44, 54, 63, 0.834)'
+                        }}
+                    >
+                        Events
+                    </Text>
+                    <TouchableOpacity
+                        style={{
+                            top: 18,
+                            right: 10,                                        
+                            borderRadius: 16,
+                            backgroundColor: 'rgba(255,255,255,0.4)',
+                        }}
+                    >
+                        <Text
+                            style={{
+                                fontFamily: 'Light',
+                                color: 'rgba(44, 54, 63, 0.834)',
+                                padding: 7
+                            }}
+                        >
+                            Show All
+                        </Text>
+                    </TouchableOpacity>
+
+                </View>
+
+                <View>
+                    <ScrollView
+                        horizontal={true}
+                        contentContainerStyle={{
+                            paddingHorizontal: 3,
+                            paddingBottom: 20
+                        }}
+                    >
+                        <RecommendedEventPoster/>
+                        <RecommendedEventPoster/>
+                        <RecommendedEventPoster/>
                     </ScrollView>
                 </View>                           
             </View>
