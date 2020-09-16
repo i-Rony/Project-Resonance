@@ -10,6 +10,7 @@ import CarouselEventScreen from '../Components/CarouselEventScreen';
 import PeopleCardTwo from '../Components/PeopleCardTwo';
 import PeopleCardThree from '../Components/PeopleCardThree';
 import PlaylistCard from '../Components/PlaylistCard';
+import EventPoster2 from '../Components/EventPoster2';
 import RecommendedEventPoster from '../Components/RecommendedEventPoster';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
@@ -26,6 +27,10 @@ import Lofi from '../assets/lofi.jpg';
 import Arcade from '../assets/Arcade.jpg';
 import Cool from '../assets/cool.jpg';
 import Pepsi from '../assets/pepsi.jpg';
+import event1 from '../assets/event1.jpg';
+import event2 from '../assets/event2.jpg';
+import event3 from '../assets/event3.jpg';
+
 
 const {width, height} = Dimensions.get("screen");
 
@@ -296,9 +301,13 @@ const EventScreen = ({ navigation }) => (
                             paddingBottom: 20
                         }}
                     >
-                        <RecommendedEventPoster/>
-                        <RecommendedEventPoster/>
-                        <RecommendedEventPoster/>
+                        {/* <RecommendedEventPoster source={event1}/>
+                        <RecommendedEventPoster source={event2}/>
+                        <RecommendedEventPoster source={event3}/> */}
+                        <EventPoster2 source={event1} />
+                        <EventPoster2 source={event2} />
+                        <EventPoster2 source={event3} />
+
                     </ScrollView>
                 </View>                           
             </View>
