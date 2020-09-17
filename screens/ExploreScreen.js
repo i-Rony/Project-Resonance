@@ -3,15 +3,11 @@ import { View, Text, BackHandler, SafeAreaView, Dimensions } from 'react-native'
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 import EventPoster from '../Components/EventPoster';
 import EventPopularPoster from '../Components/EventPopularPoster';
-import PeopleCard from '../Components/PeopleCard';
-import { EventScreenHeader } from '../Components/Headers';
 import { EventScreenFilters } from '../Components/Filters';
 import CarouselEventScreen from '../Components/CarouselEventScreen';
-import PeopleCardTwo from '../Components/PeopleCardTwo';
 import PeopleCardThree from '../Components/PeopleCardThree';
 import PlaylistCard from '../Components/PlaylistCard';
 import EventPoster2 from '../Components/EventPoster2';
-import RecommendedEventPoster from '../Components/RecommendedEventPoster';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
@@ -301,13 +297,9 @@ const EventScreen = ({ navigation }) => (
                             paddingBottom: 20
                         }}
                     >
-                        {/* <RecommendedEventPoster source={event1}/>
-                        <RecommendedEventPoster source={event2}/>
-                        <RecommendedEventPoster source={event3}/> */}
                         <EventPoster2 source={event1} />
                         <EventPoster2 source={event2} />
                         <EventPoster2 source={event3} />
-
                     </ScrollView>
                 </View>                           
             </View>
@@ -349,6 +341,9 @@ const TrendingScreen = () => {
     return (
         <View>
             <PlaylistCard />
+            <Text>
+                Most liked and viewed posts rendered like homescreen
+            </Text>
         </View>
     )
 };
