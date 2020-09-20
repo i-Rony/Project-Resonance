@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
 const { width, height } = Dimensions.get("screen");
 
-function HomeScreenHeader() {
+function HomeScreenHeader({ navigation }) {
 
     let [fontsLoaded] = useFonts({
         'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
@@ -52,6 +52,7 @@ function HomeScreenHeader() {
                                 left: width * 0.25,
                             }
                         ]}
+                        onPress={() => navigation.navigate('CreatePost')}
                     >
                         <FontAwesomeIcon
                             icon={faPlus}
@@ -67,6 +68,7 @@ function HomeScreenHeader() {
                                 left: 0
                             }
                         ]}
+                        onPress={() => navigation.navigate('Chat')}
                     >
                         <FontAwesomeIcon
                             icon={faComments}

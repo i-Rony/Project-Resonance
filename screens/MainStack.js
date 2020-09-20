@@ -19,6 +19,8 @@ import CollabScreen from './CollabScreen';
 import ConnectionScreen from './ConnectionScreen';
 import ActivityScreen from './ActivityScreen';
 import SettingScreen from './SettingsScreen/Screen.js';
+import CreatePostScreen from './CreatePostScreen';
+import ChatScreen from './ChatScreen';
 import { DrawerContent } from './DrawerContent';
 
 
@@ -83,6 +85,8 @@ const tabs = {
 
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
+const EventStack = createStackNavigator();
+const HomeStack = createStackNavigator();
 
 const MainStack = () => (
   <Tab.Navigator
@@ -97,7 +101,7 @@ const MainStack = () => (
     }}
   >
     <Tab.Screen name="User" component={UserDrawer} />
-    <Tab.Screen name="Home" component={HomeScreen} />
+    <Tab.Screen name="Home" component={HomeScreenStack} />
     <Tab.Screen name="Explore" component={ExploreStack} />
     <Tab.Screen name="Notifications" component={NotificationScreen} />
 
@@ -124,12 +128,18 @@ const UserDrawer = () => (
 
 );
 
-const Stack = createStackNavigator();
-
 const ExploreStack = () => (
-  <Stack.Navigator initialRouteName="ExploreMain" screenOptions={{headerShown: false}}>
-    <Stack.Screen name="ExploreMain" component={ExploreScreen} />
-    <Stack.Screen name="ViewEvent" component={ViewEventScreen} />
-    <Stack.Screen name="ViewRNEvent" component={ViewEventRNScreen} />
-  </Stack.Navigator>
+  <EventStack.Navigator initialRouteName="ExploreMain" screenOptions={{headerShown: false}}>
+    <EventStack.Screen name="ExploreMain" component={ExploreScreen} />
+    <EventStack.Screen name="ViewEvent" component={ViewEventScreen} />
+    <EventStack.Screen name="ViewRNEvent" component={ViewEventRNScreen} />
+  </EventStack.Navigator>
+);
+
+const HomeScreenStack = () => (
+  <HomeStack.Navigator initialRouteName="HomeMain" screenOptions={{headerShown: false}}>
+    <HomeStack.Screen name="HomeMain" component={HomeScreen} />
+    <HomeStack.Screen name="CreatePost" component={CreatePostScreen} />
+    <HomeStack.Screen name="Chat" component={ChatScreen} />
+  </HomeStack.Navigator>
 );
