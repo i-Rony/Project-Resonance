@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useIsDrawerOpen } from '@react-navigation/drawer';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 import { View, Text, TouchableOpacity, BackHandler } from 'react-native';
+import CollabCard from '../Components/CollabCard';
 
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
@@ -95,16 +96,7 @@ const CollabScreen = ({ navigation }) => {
                         flex: 1
                     }}
                 >
-                    <TouchableOpacity
-                        style={{
-                            alignItems: "center",
-                            justifyContent: "center",
-                        }}
-                    >
-                        <Text>
-                            Collabs
-                    </Text>
-                    </TouchableOpacity>
+                    <CollabCard />
                 </View>
             </GestureRecognizer>
         )
