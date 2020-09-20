@@ -8,7 +8,6 @@ import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 import { ScrollView } from 'react-native-gesture-handler';
 import JohnDoe from '../assets/kawaii.jpg';
-import MovingEarth from '../assets/movingearth.mp4';
 import CardMusiq from '../Components/CardMusiq';
 import PostCard from '../Components/PostCard';
 
@@ -117,7 +116,7 @@ const HomeScreen = ({ navigation }) => {
                             }}
                         >
 
-                            <HomeScreenHeader />
+                            <HomeScreenHeader navigation={navigation}/>
 
                             <HomeScreenFilters />
 
