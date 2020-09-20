@@ -96,7 +96,13 @@ const CollabScreen = ({ navigation }) => {
                         flex: 1
                     }}
                 >
-                    <CollabCard />
+                    <CollabCard 
+                        // id={}
+                        // navigation={navigation}
+                        // name=''
+                        // poster={}
+                        // users={[]}
+                    />
                 </View>
             </GestureRecognizer>
         )
