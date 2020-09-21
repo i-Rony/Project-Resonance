@@ -6,30 +6,18 @@ const { width, height } = Dimensions.get('screen');
 
 export default function CollabCard(props) {
 
-    // let [fontsLoaded] = useFonts({
-    //     'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
-    //     'SemiBold': require('../assets/fonts/Montserrat-SemiBold.ttf'),
-    //     'Medium': require('../assets/fonts/Montserrat-Medium.ttf'),
-    //     'Light': require('../assets/fonts/Montserrat-Light.ttf'),
-    //     'Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
-    // });
-
-    // if (!fontsLoaded) {
-    //     return <AppLoading />;
-    // } else {
-
     return (
         <View style={{alignItems: 'center', flex: 1, marginVertical: -4}}>
             <View style={styles.poster}>
                 <TouchableOpacity style={{flexDirection: 'row', flex: 1}}>
                     <LinearGradient
-                        colors={['#94D0FF', '#FF6AC4']}
+                        colors={[props.color1, props.color2]}
                         style={{flex: 0.65, flexDirection: 'column', borderTopLeftRadius: 22, borderBottomLeftRadius: 22, justifyContent: 'space-evenly'}}
                         start={[1, 1]}
                         end={[0, 1]}
                     >
                         <Text allowFontScaling adjustsFontSizeToFit numberOfLines={2} style={{paddingHorizontal: 8, width: 0.65*width*0.95, fontFamily: 'Bold', color: 'white', fontSize: 28}}>
-                            レルエ－火花
+                            {props.name}
                         </Text>
                         <View style={{flexDirection: 'row', paddingHorizontal: 8}}>
                             {/* Mapped accordingly math using (elevation=no.of members) and (right+=10*no.of members) and jodi 4+ members, last view ta render hobe with (right+=10*no.of membersrendered-2) */}
@@ -50,7 +38,7 @@ export default function CollabCard(props) {
                             </View>
                         </View>
                     </LinearGradient>
-                    <Image source={{uri: 'https://source.unsplash.com/daily'}} style={{flex: 0.35, borderBottomRightRadius: 22, resizeMode: 'cover', borderTopRightRadius: 22}} />
+                    <Image source={{uri: props.poster}} style={{flex: 0.35, borderBottomRightRadius: 22, resizeMode: 'cover', borderTopRightRadius: 22}} />
                 </TouchableOpacity>
             </View>
         </View>

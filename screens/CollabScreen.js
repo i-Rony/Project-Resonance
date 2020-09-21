@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useIsDrawerOpen } from '@react-navigation/drawer';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
-import { View, Text, TouchableOpacity, BackHandler } from 'react-native';
+import { View, Text, TouchableOpacity, BackHandler, ScrollView } from 'react-native';
 import CollabCard from '../Components/CollabCard';
 
 import { useFonts } from '@use-expo/font';
@@ -89,21 +89,39 @@ const CollabScreen = ({ navigation }) => {
                     backgroundColor: 'rgba(255,255,255,0)'
                 }}
             >
-                <View
-                    style={{
-                        alignItems: "center",
-                        justifyContent: "center",
-                        flex: 1
-                    }}
+                <ScrollView 
+                    contentContainerStyle={{paddingVertical: 12}}
                 >
                     <CollabCard 
-                        // id={}
-                        // navigation={navigation}
-                        // name=''
-                        // poster={}
+                        id={1}
+                        navigation={navigation}
+                        name='レルエ－火花'
+                        color1='#94D0FF'
+                        color2='#FF6AC4'
+                        poster='https://source.unsplash.com/daily'
                         // users={[]}
                     />
-                </View>
+                    <CollabCard 
+                        id={2}
+                        navigation={navigation}
+                        name='Summertime Sadness'
+                        color1='#EB2527'
+                        color2='#FFE652'
+                        poster='https://picsum.photos/id/951/4472/2803'
+                        // users={[]}
+                    />
+                    <CollabCard 
+                        id={3}
+                        navigation={navigation}
+                        name='Cigarettes After Sex'
+                        color1='#0A0F10'
+                        color2='#F1F2EE'
+                        poster='https://picsum.photos/id/497/4896/2760'
+                        // users={[]}
+                    />
+                </ScrollView>
+                    
+                
             </GestureRecognizer>
         )
     }
