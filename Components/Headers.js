@@ -434,6 +434,9 @@ function CollabScreenHeader({navigation}){
                     width: width * 0.94,
                     height: 38
                 }}
+                placeholder="Search Collabs"
+                onChangeText={onChangeSearch}
+                value={searchQuery}
             />
         </View>
     )
