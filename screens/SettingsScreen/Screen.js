@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView, FlatList } from 'react-native';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
@@ -7,6 +7,8 @@ import GestureRecognizer from 'react-native-swipe-gestures';
 
 
 const SettingScreen = ({navigation}) => {
+
+    const [isActive, setActive] = useState('App');
 
     let [fontsLoaded] = useFonts({
 		'Bold': require('../../assets/fonts/Montserrat-Bold.ttf'),
@@ -19,11 +21,36 @@ const SettingScreen = ({navigation}) => {
     const header =
         <View style={styles.headerContainer}>
             <Text style={styles.headerText}>
-                My Settings
+                Settings
             </Text>
         </View>
 
-    const settingsTitles = [
+    const activeColor = '#F098ED';
+    const inactiveColor = '#000';
+    const appColor = isActive == 'App'? activeColor : inactiveColor;
+    const accColor = isActive == 'Acc' ? activeColor : inactiveColor;
+
+    const navPanel = 
+        <View style={styles.navPanelContainer}>
+            <TouchableOpacity 
+                style={styles.navPanelButton}
+                onPress={() => setActive('App')}
+            >
+                <Text style={{ fontSize: 21, color: appColor }}>
+                    App
+                </Text>
+            </TouchableOpacity>
+            <TouchableOpacity 
+                style={styles.navPanelButton}
+                onPress={() => setActive('Acc')}
+            >
+                <Text style={{ fontSize: 21, color: accColor }}>
+                    Account
+                </Text>
+            </TouchableOpacity>
+        </View>;
+
+    const appSettingsTitles = [
         {
             id: 1,
             name: 'General',
@@ -31,30 +58,30 @@ const SettingScreen = ({navigation}) => {
         }, 
         {
             id: 2,
-            name: 'Privacy',
-            link: '',
-        }, 
-        {
-            id: 3,
-            name: 'Account',
-            link: '',
-        }, 
-        {
-            id: 4,
             name: 'Display',
             link: '',
         }, 
         {
-            id: 5,
+            id: 3,
             name: 'Audio',
-            link: '',
-        }, 
-        {
-            id: 6,
-            name: 'Advanced',
             link: '',
         },
     ];
+
+    const accountSettingsTitles = [
+        {
+            id: 1,
+            name: 'General',
+            link:'',
+        },
+        {
+            id: 2,
+            name: 'Security & Privacy',
+            link: '',
+        },
+    ];
+
+    const settingsTitles = isActive == 'App' ? appSettingsTitles : accountSettingsTitles;
 
     const eachSetting = (item) => {
         return(
@@ -75,6 +102,7 @@ const SettingScreen = ({navigation}) => {
                 <SafeAreaView style={styles.outerContainer}>
                     <View style={{ flex: 1 }}>
                         {header}
+                        {navPanel}
                         {settingsTitles.map(eachSetting)}
                         {/* <FlatList
                             data={settingsTitles}
@@ -93,35 +121,57 @@ export default SettingScreen;
 const styles = StyleSheet.create({
 
     outerContainer: {
-        marginTop: Constants.statusBarHeight 
+        marginTop: Constants.statusBarHeight,
     },
     
     headerContainer: {
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        height: 72,
+        backgroundColor: '#A782D7',
+        height: 270,
         alignItems: 'center',
         paddingBottom: 2,
-        paddingTop: 17,
+        paddingTop: 40,
+        // marginHorizontal: 1,
+        borderBottomLeftRadius: 150,
+        borderBottomRightRadius: 150,
+        marginBottom: 76,
     },
 
     headerText: {
         flex: 1,
         color: '#fff',
         fontWeight: 'bold',
-        fontSize: 36,
+        fontSize: 34,
+    },
+
+    navPanelContainer: {
+        backgroundColor: '#fff',
+        borderRadius: 20,
+        elevation: 5,
+        alignSelf: 'center',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingHorizontal: 32,
+        width: 230,
+        height: 52,
+        flexDirection: 'row',
+        position: 'absolute',
+        top: 237,
+    },
+
+    navPanelButton: {
+        alignItems: "center",
+        justifyContent: "center",
     },
 
     eachSettingContainer: {
         justifyContent: 'center',
-        paddingVertical: 35,
-        paddingLeft: 26,
-        borderBottomColor: 'rgba(0, 0, 0, 0.2)',
-        borderBottomWidth: 0.8,
+        marginVertical: 31,
+        marginLeft: 80,
     },
 
     eachSettingText: {
-        color: 'rgba(0, 0, 0, 0.5)', 
-        fontSize: 27,
+        color: 'rgba(0, 0, 0, 0.6)', 
+        fontSize: 24,
     },
 
 });
