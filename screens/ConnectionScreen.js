@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { useIsDrawerOpen } from '@react-navigation/drawer';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
-import { SafeAreaView, View, ScrollView, BackHandler } from 'react-native';
+import { SafeAreaView, BackHandler, FlatList } from 'react-native';
 import Constants from 'expo-constants';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 
 import { ConnectionScreenHeader } from '../Components/Headers';
 import ConnectionCard from '../Components/ConnectionCard';
-import { FlatList } from 'react-native-gesture-handler';
+// import { FlatList } from 'react-native-gesture-handler';
 
 
 const ConnectionScreen = ({ navigation }) => {
