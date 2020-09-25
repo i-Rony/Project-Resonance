@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
-import { View, BackHandler, Text, TouchableOpacity, SafeAreaView } from 'react-native';
+import { BackHandler, SafeAreaView, FlatList } from 'react-native';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
+// import { FlatList } from 'react-native-gesture-handler';
 import { NotificationScreenHeader } from '../Components/Headers';
+import NotificationCard from '../Components/NotificationCard';
 import Constants from 'expo-constants';
 
 
@@ -49,6 +51,46 @@ const NotificationScreen = ({ navigation }) => {
         directionalOffsetThreshold: 800
     };
 
+    const dummyNotifications = [
+        {
+            id: 1,
+            data: "Opportunity revealed: Crystal Meth"
+        },
+        {
+            id: 2,
+            data: "Walter Jr. wants breakfast, as usual"
+        },
+        {
+            id: 3,
+            data: 'Pinkman: "Where\'s my money, BITCH ?!"',
+        },
+        {
+            id: 4,
+            data: "Skylar fucked Ted",
+        },
+        {
+            id: 5,
+            data: "I am the one who knocks",
+        },
+        {
+            id: 6,
+            data: "Gustavo burned.",
+        },
+        {
+            id: 7,
+            data: "Pinkman talking to cops",
+        },
+        {
+            id: 8,
+            data: "I watched Jane die",
+        }
+    ];
+
+    const renderNotifications = ({ item }) => {
+        console.log(item);
+        return (<NotificationCard notif={item} />);
+    }
+
     return (
         <GestureRecognizer
             onSwipe={(direction, state) => onSwipe(direction, state)}
@@ -67,24 +109,11 @@ const NotificationScreen = ({ navigation }) => {
                     }}
             >
                 <NotificationScreenHeader />
-                <View
-                    style={{
-                        alignItems: "center",
-                        justifyContent: "center",
-                        flex: 1
-                    }}
-                >
-                    <TouchableOpacity
-                        style={{
-                            alignItems: "center",
-                            justifyContent: "center",
-                        }}
-                    >
-                        <Text>
-                            Notifications
-                        </Text>
-                    </TouchableOpacity>
-                </View>
+                <FlatList
+                    data={dummyNotifications}
+                    renderItem={renderNotifications}
+                    keyExtractor={(item) => item.id}
+                />
             </SafeAreaView>
         </GestureRecognizer>
     );
