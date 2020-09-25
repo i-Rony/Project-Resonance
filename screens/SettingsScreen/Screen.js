@@ -164,9 +164,10 @@ const styles = StyleSheet.create({
     },
 
     eachSettingContainer: {
+        padding: 15,
+        alignItems: 'center',
         justifyContent: 'center',
-        marginVertical: 31,
-        marginLeft: 80,
+        paddingVertical: 31,
     },
 
     eachSettingText: {
