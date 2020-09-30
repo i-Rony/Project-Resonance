@@ -7,7 +7,7 @@ export default function NotificationCard({ notif }) {
 
     return(
         <View style={styles.cardOuterContainer}>
-            <View style={styles.cardOuterContainer}>
+            <View style={styles.cardInnerContainer}>
                 <Text style={styles.dataContainer}>{notif.data}</Text>
             </View>
         </View>
@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
         marginVertical: 2,
         padding: 8,
         alignItems: 'center',
+        // backgroundColor: 'pink',        
         justifyContent: 'center',
     },
 
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderWidth: 2,
-        borderColor: '#000',
+        borderColor: 'black',
         borderRadius: 15,
     },
 
