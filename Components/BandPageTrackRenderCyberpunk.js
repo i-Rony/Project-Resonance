@@ -2,14 +2,16 @@ import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { MusicBarLoader } from 'react-native-indicator';
 
-export default function BandPageTrackRender(props) {
+// #D271FF #22E2FF #0A72F7 #351EE9 #3D096B 
+
+export default function BandPageTrackRenderCyberpunk(props) {
     return (
         <TouchableOpacity
             disabled={props.onplay ? true : false}
             style={{
                 flexDirection: 'row', 
                 elevation: 2, 
-                backgroundColor: props.onplay ? 'pink' : 'white', 
+                backgroundColor: props.onplay ? 'yellow' : '#D271FF', 
                 borderRadius: 22, 
                 marginHorizontal: 3, 
                 justifyContent: 'space-between', 
@@ -28,7 +30,7 @@ export default function BandPageTrackRender(props) {
                     paddingVertical: 10, 
                     fontFamily: 'Medium', 
                     fontSize: 18,
-                    color: 'black'
+                    color: props.onplay ? '#D271FF' : '#22E2FF'
                 }}
             >
                 {props.name}
@@ -37,7 +39,7 @@ export default function BandPageTrackRender(props) {
                 {
                     props.onplay ? 
                     <MusicBarLoader 
-                        color = '#000000'
+                        color = '#D271FF'
                         betweenSpace = {0}
                         barHeight={25}
                         barWidth={4}
