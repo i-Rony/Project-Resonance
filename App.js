@@ -8,7 +8,7 @@ import BandScreen from './screens/BandScreen';
 const App = () => {
   return (
     // <ProfileScreen />
-     // <BandScreen />
+      // <BandScreen />
       <NavigationContainer>
         <RootStackScreen />
       </NavigationContainer>

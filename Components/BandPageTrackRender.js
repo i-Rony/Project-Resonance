@@ -1,13 +1,11 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
-import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { MusicBarLoader } from 'react-native-indicator';
 
 export default function BandPageTrackRender(props) {
     return (
         <TouchableOpacity
+            disabled={props.onplay ? true : false}
             style={{
                 flexDirection: 'row', 
                 elevation: 2, 
@@ -17,7 +15,8 @@ export default function BandPageTrackRender(props) {
                 justifyContent: 'space-between', 
                 paddingHorizontal: 8, 
                 alignItems: 'center', 
-                marginVertical: 4
+                marginVertical: 4,
+                paddingVertical: 6.4
             }}
         >
             <Text 
@@ -33,7 +32,7 @@ export default function BandPageTrackRender(props) {
             >
                 {props.name}
             </Text>
-            <View style={{flex: 0.2, justifyContent: 'flex-end', alignItems: 'center'}}>
+            <View style={{flex: props.onplay ? 0.2 : 0.1, justifyContent: 'flex-end', alignItems: 'center'}}>
                 {
                     props.onplay ? 
                     <MusicBarLoader 

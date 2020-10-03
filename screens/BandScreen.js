@@ -9,6 +9,11 @@ import { faChevronLeft, faPlay } from '@fortawesome/free-solid-svg-icons';
 import { useFonts } from '@use-expo/font';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import BandPageTrackRender from '../Components/BandPageTrackRender';
+import event1 from '../assets/event1.jpg';
+import event2 from '../assets/event2.jpg';
+import event3 from '../assets/event3.jpg';
+import EventPoster2 from '../Components/EventPoster2';
+import BandPageVideoRender from '../Components/BandPageVideoRender';
 
 const {width, height} = Dimensions.get("screen");
 
@@ -66,7 +71,7 @@ export default function BandScreen() {
 
       {/* Tracks */}
       <View>
-        <View style={{flexDirection: 'row', justifyContent: 'space-between', padding: 10, paddingTop: 14, alignItems: 'center'}}>
+        <View style={{flexDirection: 'row', justifyContent: 'space-between', padding: 10, paddingHorizontal: 12 ,marginTop: 4, paddingTop: 14, alignItems: 'center'}}>
           <Text
             style={{
               fontFamily: 'SemiBold',
@@ -94,7 +99,7 @@ export default function BandScreen() {
           </TouchableOpacity>
         </View>
 
-        <View style={{flexDirection: 'column'}}>
+        <View style={{flexDirection: 'column', marginBottom: 18, marginTop: 4}}>
           <BandPageTrackRender name='Pumped Up Kicks' />
           <BandPageTrackRender name='Imagination' onplay={true} />
           <BandPageTrackRender name='Sit Next To Me' />
@@ -105,7 +110,7 @@ export default function BandScreen() {
 
       {/* Videos */}
       <View>
-      <View style={{flexDirection: 'row', justifyContent: 'space-between', padding: 10, paddingTop: 14, alignItems: 'center'}}>
+        <View style={{flexDirection: 'row', justifyContent: 'space-between', padding: 10, paddingHorizontal: 12, paddingTop: 14, alignItems: 'center'}}>
           <Text
             style={{
               fontFamily: 'SemiBold',
@@ -133,6 +138,20 @@ export default function BandScreen() {
           </TouchableOpacity>
         </View>
       </View>
+
+      <ScrollView
+        horizontal={true}
+        contentContainerStyle={{
+            paddingHorizontal: 3,
+            alignContent: 'center',
+            paddingBottom: 20
+        }}
+      >
+          <BandPageVideoRender source={'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'}/>
+          <BandPageVideoRender source={'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'}/>
+          <BandPageVideoRender source={'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'}/>
+
+      </ScrollView>
 
      </ScrollView>
   );
