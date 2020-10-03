@@ -9,15 +9,14 @@ import { faChevronLeft, faPlay } from '@fortawesome/free-solid-svg-icons';
 import { useFonts } from '@use-expo/font';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import BandPageTrackRender from '../Components/BandPageTrackRender';
-import event1 from '../assets/event1.jpg';
-import event2 from '../assets/event2.jpg';
-import event3 from '../assets/event3.jpg';
-import EventPoster2 from '../Components/EventPoster2';
+import BandPageTrackRenderCyberpunk from '../Components/BandPageTrackRenderCyberpunk';
 import BandPageVideoRender from '../Components/BandPageVideoRender';
+
+// #D271FF #22E2FF #0A72F7 #351EE9 #3D096B 
 
 const {width, height} = Dimensions.get("screen");
 
-export default function BandScreen() {
+export default function BandScreen2() {
 
   let [fontsLoaded] = useFonts({
     'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
@@ -33,9 +32,9 @@ export default function BandScreen() {
 } else {
 
   return (
-    <>
+      <>
     <StatusBar backgroundColor='#000000' barStyle='default' />
-    <ScrollView>
+    <ScrollView style={{backgroundColor: '#3D096B'}}>
 
       <View style={{ height: 280 }}>
         <ImageBackground
@@ -44,7 +43,7 @@ export default function BandScreen() {
           imageStyle={{resizeMode: 'cover'}}
         >
           <LinearGradient
-            colors={['rgba(255, 255, 255, 1)', 'rgba(255, 255, 255, 0)']}
+            colors={['#3D096B', 'rgba(255, 255, 255, 0)']}
             style={{flex: 1}}
             start={{ x: 1, y: 1 }}
             end={{ x: 1, y: 0 }}
@@ -53,18 +52,18 @@ export default function BandScreen() {
               <TouchableOpacity style={{paddingVertical: 4, paddingRight: 4, top: 4}}>
                 <FontAwesomeIcon
                     icon={faChevronLeft}
-                    color='white'
+                    color='#22E2FF'
                     size={24}
                 />
               </TouchableOpacity>
-              <TouchableOpacity style={{padding: 4, top: 4, borderColor: 'white', borderWidth: 1, paddingHorizontal: 18, borderRadius: 8}}>
-                <Text style={{color: 'white', fontFamily: 'Regular', paddingVertical: 2}}>
+              <TouchableOpacity style={{padding: 4, top: 4, borderColor: '#22E2FF', borderWidth: 1, paddingHorizontal: 18, borderRadius: 8}}>
+                <Text style={{color: '#22E2FF', fontFamily: 'Regular', paddingVertical: 2}}>
                   Follow
                 </Text>
               </TouchableOpacity>              
             </View>
             
-            <Text numberOfLines={2} textBreakStrategy='balanced' allowFontScaling adjustsFontSizeToFit style={{position: 'absolute', bottom: 4, fontSize: 36, padding:8, fontFamily: 'SemiBold', color: 'rgba(44, 54, 63, 0.834)'}}>
+            <Text numberOfLines={2} textBreakStrategy='balanced' allowFontScaling adjustsFontSizeToFit style={{position: 'absolute', bottom: 4, fontSize: 36, padding:8, fontFamily: 'SemiBold', color: '#22E2FF'}}>
               Foster The People
             </Text>            
           </LinearGradient>
@@ -78,7 +77,7 @@ export default function BandScreen() {
             style={{
               fontFamily: 'SemiBold',
               fontSize: 22,
-              color: 'rgba(44, 54, 63, 0.834)'
+              color: '#22E2FF'
             }}
           >
             Tracks
@@ -86,13 +85,13 @@ export default function BandScreen() {
           <TouchableOpacity
             style={{                                       
               borderRadius: 16,
-              backgroundColor: 'rgba(0,0,0,0.07)',
+              backgroundColor: 'rgba(210, 113, 255, 0.2)',
             }}
           >
             <Text
               style={{
                 fontFamily: 'Light',
-                color: 'rgba(44, 54, 63, 0.834)',
+                color: '#22E2FF',
                 padding: 7
               }}
             >
@@ -102,11 +101,11 @@ export default function BandScreen() {
         </View>
 
         <View style={{flexDirection: 'column', marginBottom: 18, marginTop: 4}}>
-          <BandPageTrackRender name='Pumped Up Kicks' />
-          <BandPageTrackRender name='Imagination' onplay={true} />
-          <BandPageTrackRender name='Sit Next To Me' />
-          <BandPageTrackRender name='Houdini' />
-          <BandPageTrackRender name='Dont Stop (Color on the Walls)' />
+          <BandPageTrackRenderCyberpunk name='Pumped Up Kicks' />
+          <BandPageTrackRenderCyberpunk name='Imagination' onplay={true} />
+          <BandPageTrackRenderCyberpunk name='Sit Next To Me' />
+          <BandPageTrackRenderCyberpunk name='Houdini' />
+          <BandPageTrackRenderCyberpunk name='Dont Stop (Color on the Walls)' />
         </View>
       </View>
 
@@ -117,7 +116,7 @@ export default function BandScreen() {
             style={{
               fontFamily: 'SemiBold',
               fontSize: 22,
-              color: 'rgba(44, 54, 63, 0.834)'
+              color: '#22E2FF'
             }}
           >
             Videos
@@ -125,13 +124,13 @@ export default function BandScreen() {
           <TouchableOpacity
             style={{                                       
               borderRadius: 16,
-              backgroundColor: 'rgba(0,0,0,0.07)',
+              backgroundColor: 'rgba(210, 113, 255, 0.2)',
             }}
           >
             <Text
               style={{
                 fontFamily: 'Light',
-                color: 'rgba(44, 54, 63, 0.834)',
+                color: '#22E2FF',
                 padding: 7
               }}
             >

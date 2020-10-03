@@ -3,12 +3,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import RootStackScreen from './screens/RootStackScreen';
 // import ProfileScreen from './screens/ProfileScreen';
 import BandScreen from './screens/BandScreen';
+import BandScreen2 from './screens/BandScreen2';
 
 
 const App = () => {
   return (
     // <ProfileScreen />
-     // <BandScreen />
+      // <BandScreen />
+      // <BandScreen2 />
       <NavigationContainer>
         <RootStackScreen />
       </NavigationContainer>
