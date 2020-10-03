@@ -165,10 +165,10 @@ function NotificationScreenHeader() {
 
     return (
         <View style={{
-            height: 85,
-            backgroundColor: 'rgba(44,54,63,0.95)',
-            paddingBottom: 3,
-            marginBottom: 10,
+            height: 78,
+            // backgroundColor: 'rgba(44,54,63,0.95)',
+            paddingBottom: 2,
+            marginBottom: 4,
         }}>
             <View style={[
                 styles.header,
@@ -181,10 +181,11 @@ function NotificationScreenHeader() {
                 }
             ]}>
                 <Text style={{
+                    marginLeft: 5,
                     fontSize: 38,
                     fontWeight: 'bold',
-                    letterSpacing: 0.4,
-                    color: 'rgba(255,255,255,0.95)'
+                    letterSpacing: 0.5,
+                    color: 'rgba(231,90,124,0.6)',
                 }}>
                     Notifications
                 </Text>
