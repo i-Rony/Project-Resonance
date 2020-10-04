@@ -11,9 +11,16 @@ export default function NotificationCard({ notif }) {
 
     return(
         <View style={styles.cardOuterContainer}>
-            <View style={styles.cardInnerContainer}>
-                <Text style={styles.dataContainer}>{notif.data}</Text>
-            </View>
+            <LinearGradient
+                style={styles.cardInnerContainer}
+                colors={['rgba(220, 220, 220, 1)', 'rgba(225, 225, 225, 1)', 'rgba(230, 230, 230, 1)', 'rgba(225, 225, 225, 1)', 'rgba(220, 220, 220, 1)']}
+                start={[0, 1]}
+                end={[1, 0]}
+            >
+                <View>
+                    <Text style={styles.dataContainer}>{notif.data}</Text>
+                </View>
+            </LinearGradient>
         </View>
     );
 }
@@ -24,7 +31,6 @@ const styles = StyleSheet.create({
         flex: 1,
         width: width,
         marginVertical: 0.5,
-        // padding: 8,
         alignItems: 'center',        
         justifyContent: 'center',
     },
@@ -35,7 +41,6 @@ const styles = StyleSheet.create({
         paddingVertical: 32,
         paddingHorizontal: 17,
         justifyContent: 'center',
-        backgroundColor: 'rgba(214, 214, 214, 1)',
         borderRadius: 15,
     },
 
