@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { MusicBarLoader } from 'react-native-indicator';
+import { BarIndicator } from 'react-native-indicators';
 
 export default function BandPageTrackRender(props) {
     return (
@@ -28,7 +29,7 @@ export default function BandPageTrackRender(props) {
                     paddingVertical: 10, 
                     fontFamily: 'Medium', 
                     fontSize: 18,
-                    color: 'black'
+                    color: 'rgba(44, 54, 63, 0.834)'
                 }}
             >
                 {props.name}
@@ -36,11 +37,16 @@ export default function BandPageTrackRender(props) {
             <View style={{flex: props.onplay ? 0.2 : 0.1, justifyContent: 'flex-end', alignItems: 'center'}}>
                 {
                     props.onplay ? 
-                    <MusicBarLoader 
-                        color = '#000000'
-                        betweenSpace = {0}
-                        barHeight={25}
-                        barWidth={4}
+                    // <MusicBarLoader 
+                    //     color = 'rgba(44, 54, 63, 0.834)'
+                    //     betweenSpace = {0}
+                    //     barHeight={25}
+                    //     barWidth={4}
+                    // />
+                    <BarIndicator 
+                        color='rgb(44, 54, 63)'
+                        count={3}
+                        size={20}
                     />
                     :
                     <></>
