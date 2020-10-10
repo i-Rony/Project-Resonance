@@ -175,14 +175,14 @@ export default function BandScreen() {
         </Text>
       </View>
 
-      <ScrollView horizontal contentContainerStyle={{paddingHorizontal: 12}} style={{paddingBottom: 18, backgroundColor: 'rgba(44, 54, 63, 1)', paddingTop: 14}}>
+      {/* <ScrollView horizontal contentContainerStyle={{paddingHorizontal: 12}} style={{paddingBottom: 18, backgroundColor: 'rgba(44, 54, 63, 1)', paddingTop: 14}}>
         <Image source={{uri: 'https://source.unsplash.com/weekly?water'}} style={{ borderWidth: 2, borderColor: 'rgba(102, 248, 251, 1)', borderRadius: 50, resizeMode: 'cover', width: 80, height: 80, marginRight: 10}} />
         <Image source={{uri: 'https://source.unsplash.com/user/erondu'}} style={{borderWidth: 2, borderColor: 'rgba(212, 255, 229, 1)', borderRadius: 50, resizeMode: 'cover', width: 80, height: 80, marginRight: 10}} />
         <Image source={{uri: 'https://source.unsplash.com/user/erondu/daily'}} style={{borderWidth: 2, borderColor: 'rgba(122, 229, 130, 1)', borderRadius: 50, resizeMode: 'cover', width: 80, height: 80, marginRight: 10}} />
         <Image source={{uri: 'https://source.unsplash.com/WLUHO9A_xik/'}} style={{borderWidth: 2, borderColor: 'rgba(251, 99, 118, 1)', borderRadius: 50, resizeMode: 'cover', width: 80, height: 80, marginRight: 10}} />
         <Image source={{uri: 'https://source.unsplash.com/random'}} style={{borderWidth: 2, borderColor: 'rgba(23, 190, 152, 1)', borderRadius: 50, resizeMode: 'cover', width: 80, height: 80, marginRight: 10}} />
         <Image source={{uri: 'https://source.unsplash.com/collection/190727'}} style={{borderWidth: 2, borderColor: 'rgba(255, 255, 243, 1)', borderRadius: 50, resizeMode: 'cover', width: 80, height: 80, marginRight: 10}} />
-      </ScrollView>
+      </ScrollView> */}
     
      </ScrollView>
      </>
