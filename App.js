@@ -9,11 +9,11 @@ import BandScreen2 from './screens/BandScreen2';
 const App = () => {
   return (
     // <ProfileScreen />
-      // <BandScreen />
+      <BandScreen />
       // <BandScreen2 />
-      <NavigationContainer>
-        <RootStackScreen />
-      </NavigationContainer>
+      // <NavigationContainer>
+      //   <RootStackScreen />
+      // </NavigationContainer>
   )
 }
 

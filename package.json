@@ -44,6 +44,7 @@
     "react-native-css-gradient": "^0.4.0",
     "react-native-gesture-handler": "~1.7.0",
     "react-native-indicator": "^1.2.2",
+    "react-native-indicators": "^0.17.0",
     "react-native-maps": "0.27.1",
     "react-native-paper": "^4.2.0",
     "react-native-pose": "^0.9.1",

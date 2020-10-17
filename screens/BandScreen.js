@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, ImageBackground, TouchableOpacity, Dimensions, ScrollView, StatusBar } from 'react-native';
+import { View, Text, ImageBackground, TouchableOpacity, Dimensions, ScrollView, StatusBar, Image } from 'react-native';
 import Constants from 'expo-constants';
 import { AppLoading } from 'expo';
 import Lofi from '../assets/lofi.jpg';
@@ -16,6 +16,8 @@ import EventPoster2 from '../Components/EventPoster2';
 import BandPageVideoRender from '../Components/BandPageVideoRender';
 
 const {width, height} = Dimensions.get("screen");
+
+const description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean enim quam, commodo id orci in, dignissim dapibus orci. Donec pretium sodales suscipit. Nullam non nunc consequat, faucibus turpis quis, ultrices tortor.'
 
 export default function BandScreen() {
 
@@ -154,7 +156,34 @@ export default function BandScreen() {
           <BandPageVideoRender source={'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'}/>
 
       </ScrollView>
+      
+      <View style={{flexDirection: 'row', justifyContent: 'space-between', padding: 10, paddingHorizontal: 12, paddingTop: 14, alignItems: 'center'}}>
+        <Text
+          style={{
+            fontFamily: 'SemiBold',
+            fontSize: 22,
+            color: 'rgba(44, 54, 63, 0.834)'
+          }}
+        >
+          About
+        </Text>
+      </View>
+      
+      <View style={{flexDirection: 'column', marginBottom: 18, marginTop: 4}}>
+        <Text textBreakStrategy='highQuality' style={{fontFamily: 'Regular', fontSize: 18, color: 'rgba(44, 54, 63, 0.834)', paddingHorizontal: 12, paddingBottom: 8}}>
+          {description}
+        </Text>
+      </View>
 
+      {/* <ScrollView horizontal contentContainerStyle={{paddingHorizontal: 12}} style={{paddingBottom: 18, backgroundColor: 'rgba(44, 54, 63, 1)', paddingTop: 14}}>
+        <Image source={{uri: 'https://source.unsplash.com/weekly?water'}} style={{ borderWidth: 2, borderColor: 'rgba(102, 248, 251, 1)', borderRadius: 50, resizeMode: 'cover', width: 80, height: 80, marginRight: 10}} />
+        <Image source={{uri: 'https://source.unsplash.com/user/erondu'}} style={{borderWidth: 2, borderColor: 'rgba(212, 255, 229, 1)', borderRadius: 50, resizeMode: 'cover', width: 80, height: 80, marginRight: 10}} />
+        <Image source={{uri: 'https://source.unsplash.com/user/erondu/daily'}} style={{borderWidth: 2, borderColor: 'rgba(122, 229, 130, 1)', borderRadius: 50, resizeMode: 'cover', width: 80, height: 80, marginRight: 10}} />
+        <Image source={{uri: 'https://source.unsplash.com/WLUHO9A_xik/'}} style={{borderWidth: 2, borderColor: 'rgba(251, 99, 118, 1)', borderRadius: 50, resizeMode: 'cover', width: 80, height: 80, marginRight: 10}} />
+        <Image source={{uri: 'https://source.unsplash.com/random'}} style={{borderWidth: 2, borderColor: 'rgba(23, 190, 152, 1)', borderRadius: 50, resizeMode: 'cover', width: 80, height: 80, marginRight: 10}} />
+        <Image source={{uri: 'https://source.unsplash.com/collection/190727'}} style={{borderWidth: 2, borderColor: 'rgba(255, 255, 243, 1)', borderRadius: 50, resizeMode: 'cover', width: 80, height: 80, marginRight: 10}} />
+      </ScrollView> */}
+    
      </ScrollView>
      </>
   );
