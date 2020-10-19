@@ -3,7 +3,7 @@ import { useIsDrawerOpen } from '@react-navigation/drawer';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 import { View, Text, TouchableOpacity, BackHandler, SafeAreaView } from 'react-native';
 import Timeline from 'react-native-timeline-flatlist';
-import { ActivityScreenHeader } from '../../Components/Headers';
+import { ActivityScreenHeader } from '../../../../Components/Headers';
 import Constants from 'expo-constants';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
