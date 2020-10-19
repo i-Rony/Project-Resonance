@@ -8,12 +8,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronLeft, faPlay } from '@fortawesome/free-solid-svg-icons';
 import { useFonts } from '@use-expo/font';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
-import BandPageTrackRender from '../Components/BandPageTrackRender';
+import BandPageTrackRender from '../../../Components/BandPageTrackRender';
 import event1 from '../assets/event1.jpg';
 import event2 from '../assets/event2.jpg';
 import event3 from '../assets/event3.jpg';
-import EventPoster2 from '../Components/EventPoster2';
-import BandPageVideoRender from '../Components/BandPageVideoRender';
+import EventPoster2 from '../../../Components/EventPoster2';
+import BandPageVideoRender from '../../../Components/BandPageVideoRender';
 
 const {width, height} = Dimensions.get("screen");
 

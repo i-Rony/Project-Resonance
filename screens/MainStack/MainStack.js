@@ -10,11 +10,11 @@ import ProfileSVG from '../svg/ProfileSVG';
 import BellSVG from '../svg/BellSVG';
 
 import HomeScreen from './HomeScreen';
-import ExploreScreen from './ExploreScreen';
-import ViewEventScreen from './ViewEventScreen';
-import ViewEventRNScreen from './ViewEventRNScreen';
-import NotificationScreen from './NotificationScreen';
-import ProfileScreen from './ProfileScreen';
+import ExploreScreen from './ExploreScreen/ExploreScreen';
+import ViewEventScreen from './ExploreScreen/ViewEventScreen';
+import ViewEventRNScreen from './ExploreScreen/ViewEventRNScreen';
+import NotificationScreen from './NotificationScreen/NotificationScreen';
+import ProfileScreen from './ProfileScreen/ProfileScreen';
 import CollabScreen from './CollabScreen';
 import ConnectionScreen from './ConnectionScreen';
 import ActivityScreen from './ActivityScreen';
