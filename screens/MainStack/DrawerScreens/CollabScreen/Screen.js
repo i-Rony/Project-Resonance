@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import { useIsDrawerOpen } from '@react-navigation/drawer';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 import { View, Text, TouchableOpacity, BackHandler, ScrollView } from 'react-native';
-import CollabCard from '../Components/CollabCard';
+import CollabCard from '../../../../Components/CollabCard';
 import Constants from 'expo-constants';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
-import { CollabScreenHeader } from '../Components/Headers';
+import CollabScreenHeader from './Header';
 
 
 const CollabScreen = ({ navigation }) => {
@@ -62,11 +62,11 @@ const CollabScreen = ({ navigation }) => {
     }
 
     let [fontsLoaded] = useFonts({
-        'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
-        'SemiBold': require('../assets/fonts/Montserrat-SemiBold.ttf'),
-        'Medium': require('../assets/fonts/Montserrat-Medium.ttf'),
-        'Light': require('../assets/fonts/Montserrat-Light.ttf'),
-        'Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
+        'Bold': require('../../../../assets/fonts/Montserrat-Bold.ttf'),
+        'SemiBold': require('../../../../assets/fonts/Montserrat-SemiBold.ttf'),
+        'Medium': require('../../../../assets/fonts/Montserrat-Medium.ttf'),
+        'Light': require('../../../../assets/fonts/Montserrat-Light.ttf'),
+        'Regular': require('../../../../assets/fonts/Montserrat-Regular.ttf'),
     });
 
     if (!fontsLoaded) {

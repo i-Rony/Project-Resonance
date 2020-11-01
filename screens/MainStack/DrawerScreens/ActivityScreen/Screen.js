@@ -3,7 +3,7 @@ import { useIsDrawerOpen } from '@react-navigation/drawer';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 import { View, Text, TouchableOpacity, BackHandler, SafeAreaView } from 'react-native';
 import Timeline from 'react-native-timeline-flatlist';
-import { ActivityScreenHeader } from '../../../../Components/Headers';
+import ActivityScreenHeader from './Header';
 import Constants from 'expo-constants';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
@@ -80,11 +80,11 @@ const ActivityScreen = ({ navigation }) => {
     }
 
     let [fontsLoaded] = useFonts({
-        'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
-        'SemiBold': require('../assets/fonts/Montserrat-SemiBold.ttf'),
-        'Medium': require('../assets/fonts/Montserrat-Medium.ttf'),
-        'Light': require('../assets/fonts/Montserrat-Light.ttf'),
-        'Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
+        'Bold': require('../../../../assets/fonts/Montserrat-Bold.ttf'),
+        'SemiBold': require('../../../../assets/fonts/Montserrat-SemiBold.ttf'),
+        'Medium': require('../../../../assets/fonts/Montserrat-Medium.ttf'),
+        'Light': require('../../../../assets/fonts/Montserrat-Light.ttf'),
+        'Regular': require('../../../../assets/fonts/Montserrat-Regular.ttf'),
     });
 
     if (!fontsLoaded) {

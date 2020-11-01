@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import { View, Text, ImageBackground, TouchableOpacity, Dimensions, ScrollView, StatusBar } from 'react-native';
 import Constants from 'expo-constants';
 import { AppLoading } from 'expo';
-import Lofi from '../assets/lofi.jpg';
+import Lofi from '../../../assets/lofi.jpg';
 import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronLeft, faPlay } from '@fortawesome/free-solid-svg-icons';
 import { useFonts } from '@use-expo/font';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
-import BandPageTrackRender from '../Components/BandPageTrackRender';
-import BandPageTrackRenderCyberpunk from '../Components/BandPageTrackRenderCyberpunk';
-import BandPageVideoRender from '../Components/BandPageVideoRender';
+import BandPageTrackRender from '../../../Components/BandPageTrackRender';
+import BandPageTrackRenderCyberpunk from '../../../Components/BandPageTrackRenderCyberpunk';
+import BandPageVideoRender from '../../../Components/BandPageVideoRender';
 
 // #D271FF #22E2FF #0A72F7 #351EE9 #3D096B 
 
@@ -19,11 +19,11 @@ const {width, height} = Dimensions.get("screen");
 export default function BandScreen2() {
 
   let [fontsLoaded] = useFonts({
-    'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
-    'SemiBold': require('../assets/fonts/Montserrat-SemiBold.ttf'),
-    'Medium': require('../assets/fonts/Montserrat-Medium.ttf'),
-    'Light': require('../assets/fonts/Montserrat-Light.ttf'),
-    'Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
+    'Bold': require('../../../assets/fonts/Montserrat-Bold.ttf'),
+    'SemiBold': require('../../../assets/fonts/Montserrat-SemiBold.ttf'),
+    'Medium': require('../../../assets/fonts/Montserrat-Medium.ttf'),
+    'Light': require('../../../assets/fonts/Montserrat-Light.ttf'),
+    'Regular': require('../../../assets/fonts/Montserrat-Regular.ttf'),
   });
 
   if (!fontsLoaded) {

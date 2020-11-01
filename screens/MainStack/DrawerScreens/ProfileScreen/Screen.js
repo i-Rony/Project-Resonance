@@ -47,11 +47,11 @@ const ProfileScreen = ({ navigation }) => {
     };
 
     let [fontsLoaded] = useFonts({
-        'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
-        'SemiBold': require('../assets/fonts/Montserrat-SemiBold.ttf'),
-        'Medium': require('../assets/fonts/Montserrat-Medium.ttf'),
-        'Light': require('../assets/fonts/Montserrat-Light.ttf'),
-        'Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
+        'Bold': require('../../../../assets/fonts/Montserrat-Bold.ttf'),
+        'SemiBold': require('../../../../assets/fonts/Montserrat-SemiBold.ttf'),
+        'Medium': require('../../../../assets/fonts/Montserrat-Medium.ttf'),
+        'Light': require('../../../../assets/fonts/Montserrat-Light.ttf'),
+        'Regular': require('../../../../assets/fonts/Montserrat-Regular.ttf'),
     });
 
     function onSwipeLeft(gestureState) {
@@ -108,7 +108,7 @@ const ProfileScreen = ({ navigation }) => {
                 }}
             >
                 <ImageBackground
-                    source={require('../assets/kawaii.jpg')}
+                    source={require('../../../../assets/kawaii.jpg')}
                     style={{
                         resizeMode: "cover",
                         flex: 1,

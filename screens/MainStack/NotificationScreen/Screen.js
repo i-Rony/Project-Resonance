@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { BackHandler, SafeAreaView, FlatList } from 'react-native';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 // import { FlatList } from 'react-native-gesture-handler';
-import { NotificationScreenHeader } from '../Components/Headers';
-import NotificationCard from '../Components/NotificationCard';
+import NotificationScreenHeader from './Header';
+import NotificationCard from '../../../Components/NotificationCard';
 import Constants from 'expo-constants';
 
 

@@ -6,8 +6,8 @@ import Constants from 'expo-constants';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 
-import { ConnectionScreenHeader } from '../Components/Headers';
-import ConnectionCard from '../Components/ConnectionCard';
+import ConnectionScreenHeader from './Header';
+import ConnectionCard from '../../../../Components/ConnectionCard';
 // import { FlatList } from 'react-native-gesture-handler';
 
 
@@ -64,11 +64,11 @@ const ConnectionScreen = ({ navigation }) => {
     }
 
     let [fontsLoaded] = useFonts({
-        'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
-        'SemiBold': require('../assets/fonts/Montserrat-SemiBold.ttf'),
-        'Medium': require('../assets/fonts/Montserrat-Medium.ttf'),
-        'Light': require('../assets/fonts/Montserrat-Light.ttf'),
-        'Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
+        'Bold': require('../../../../assets/fonts/Montserrat-Bold.ttf'),
+        'SemiBold': require('../../../../assets/fonts/Montserrat-SemiBold.ttf'),
+        'Medium': require('../../../../assets/fonts/Montserrat-Medium.ttf'),
+        'Light': require('../../../../assets/fonts/Montserrat-Light.ttf'),
+        'Regular': require('../../../../assets/fonts/Montserrat-Regular.ttf'),
     });
 
     const dummyConnections = [

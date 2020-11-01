@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { View, Text, BackHandler, Alert, ToastAndroid, Platform, SafeAreaView } from 'react-native';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
-import Card from '../Components/Card';
-import { HomeScreenHeader } from '../Components/Headers';
-import { HomeScreenFilters } from '../Components/Filters';
+import Card from '../../../Components/Card';
+import HomeScreenHeader from './Header';
+import { HomeScreenFilters } from '../../../Components/Filters';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 import { ScrollView } from 'react-native-gesture-handler';
-import JohnDoe from '../assets/kawaii.jpg';
-import CardMusiq from '../Components/CardMusiq';
-import PostCard from '../Components/PostCard';
+import JohnDoe from '../../../assets/kawaii.jpg';
+import CardMusiq from '../../../Components/CardMusiq';
+import PostCard from '../../../Components/PostCard';
 
 const HomeScreen = ({ navigation }) => {
     
@@ -52,11 +52,11 @@ const HomeScreen = ({ navigation }) => {
     });
 
     let [fontsLoaded] = useFonts({
-        'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
-        'SemiBold': require('../assets/fonts/Montserrat-SemiBold.ttf'),
-        'Medium': require('../assets/fonts/Montserrat-Medium.ttf'),
-        'Light': require('../assets/fonts/Montserrat-Light.ttf'),
-        'Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
+        'Bold': require('../../../assets/fonts/Montserrat-Bold.ttf'),
+        'SemiBold': require('../../../assets/fonts/Montserrat-SemiBold.ttf'),
+        'Medium': require('../../../assets/fonts/Montserrat-Medium.ttf'),
+        'Light': require('../../../assets/fonts/Montserrat-Light.ttf'),
+        'Regular': require('../../../assets/fonts/Montserrat-Regular.ttf'),
     });
 
     function onSwipeLeft(gestureState) {

@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { View, Text, BackHandler, SafeAreaView, Dimensions } from 'react-native';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
-import EventPoster from '../Components/EventPoster';
-import EventPopularPoster from '../Components/EventPopularPoster';
-import { EventScreenFilters } from '../Components/Filters';
-import CarouselEventScreen from '../Components/CarouselEventScreen';
-import PeopleCardThree from '../Components/PeopleCardThree';
-import PlaylistCard from '../Components/PlaylistCard';
-import EventPoster2 from '../Components/EventPoster2';
+import EventPoster from '../../../Components/EventPoster';
+import EventPopularPoster from '../../../Components/EventPopularPoster';
+import { EventScreenFilters } from '../../../Components/Filters';
+import CarouselEventScreen from '../../../Components/CarouselEventScreen';
+import PeopleCardThree from '../../../Components/PeopleCardThree';
+import PlaylistCard from '../../../Components/PlaylistCard';
+import EventPoster2 from '../../../Components/EventPoster2';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
@@ -15,17 +15,17 @@ import Constants from 'expo-constants';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import TabBar from 'react-native-underline-tabbar';
 
-import StairwayToHeaven from '../assets/Heaven.png';
-import SailorMoon from '../assets/sailormoon.png';
-import DaftPunk from '../assets/daftpunk.jpg';
-import City from '../assets/city.png';
-import Lofi from '../assets/lofi.jpg';
-import Arcade from '../assets/Arcade.jpg';
-import Cool from '../assets/cool.jpg';
-import Pepsi from '../assets/pepsi.jpg';
-import event1 from '../assets/event1.jpg';
-import event2 from '../assets/event2.jpg';
-import event3 from '../assets/event3.jpg';
+import StairwayToHeaven from '../../../assets/Heaven.png';
+import SailorMoon from '../../../assets/sailormoon.png';
+import DaftPunk from '../../../assets/daftpunk.jpg';
+import City from '../../../assets/city.png';
+import Lofi from '../../../assets/lofi.jpg';
+import Arcade from '../../../assets/Arcade.jpg';
+import Cool from '../../../assets/cool.jpg';
+import Pepsi from '../../../assets/pepsi.jpg';
+import event1 from '../../../assets/event1.jpg';
+import event2 from '../../../assets/event2.jpg';
+import event3 from '../../../assets/event3.jpg';
 
 
 const {width, height} = Dimensions.get("screen");
@@ -368,11 +368,11 @@ const ExploreScreen = ({ navigation }) => {
     });
 
     let [fontsLoaded] = useFonts({
-        'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
-        'SemiBold': require('../assets/fonts/Montserrat-SemiBold.ttf'),
-        'Medium': require('../assets/fonts/Montserrat-Medium.ttf'),
-        'Light': require('../assets/fonts/Montserrat-Light.ttf'),
-        'Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
+        'Bold': require('../../../assets/fonts/Montserrat-Bold.ttf'),
+        'SemiBold': require('../../../assets/fonts/Montserrat-SemiBold.ttf'),
+        'Medium': require('../../../assets/fonts/Montserrat-Medium.ttf'),
+        'Light': require('../../../assets/fonts/Montserrat-Light.ttf'),
+        'Regular': require('../../../assets/fonts/Montserrat-Regular.ttf'),
     });
 
     function onSwipeLeft(gestureState) {
