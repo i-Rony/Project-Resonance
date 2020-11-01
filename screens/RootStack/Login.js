@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, TextInput, Platform, StyleSheet, Dimensio
 import * as Animatable from 'react-native-animatable';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
-import {f, auth, database} from '../config/config';
+import {f, auth, database} from '../../config/config';
 
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
@@ -11,11 +11,11 @@ import { AppLoading } from 'expo';
 function Login({ navigation }) {
 
 	let [fontsLoaded] = useFonts({
-		'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
-		'SemiBold': require('../assets/fonts/Montserrat-SemiBold.ttf'),
-		'Medium': require('../assets/fonts/Montserrat-Medium.ttf'),
-		'Light': require('../assets/fonts/Montserrat-Light.ttf'),
-		'Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
+		'Bold': require('../../assets/fonts/Montserrat-Bold.ttf'),
+		'SemiBold': require('../../assets/fonts/Montserrat-SemiBold.ttf'),
+		'Medium': require('../../assets/fonts/Montserrat-Medium.ttf'),
+		'Light': require('../../assets/fonts/Montserrat-Light.ttf'),
+		'Regular': require('../../assets/fonts/Montserrat-Regular.ttf'),
 	});
 
 	const [data, setData] = React.useState({

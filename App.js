@@ -1,9 +1,9 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import RootStackScreen from './screens/RootStackScreen';
+import RootStackScreen from './screens/RootStack/RootStackScreen';
 // import ProfileScreen from './screens/ProfileScreen';
-import BandScreen from './screens/BandScreen';
-import BandScreen2 from './screens/BandScreen2';
+import BandScreen from './screens/MainStack/BandScreen/Screen';
+import BandScreen2 from './screens/MainStack/BandScreen/Screen2';
 
 
 const App = () => {

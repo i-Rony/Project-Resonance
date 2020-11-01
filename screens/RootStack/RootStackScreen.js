@@ -6,10 +6,10 @@ import CreateAccount from './CreateAccount';
 import StartScreen from './StartScreen';
 import Doorway from './Doorway';
 import ChoiceScreen from './ChoiceScreen';
-import MainStack from './MainStack';
+import MainStack from '../MainStack/MainStack';
 import TermsOfService from './TermsOfService';
 import PrivacyPolicy from './PrivacyPolicy';
-import ProfileScreen from './ProfileScreen';
+import ProfileScreen from '../MainStack/DrawerScreens/ProfileScreen/Screen';
 
 const Stack = createStackNavigator();
 

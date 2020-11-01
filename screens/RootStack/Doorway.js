@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { View, Text, ImageBackground, TouchableOpacity, StyleSheet, BackHandler, Alert, ToastAndroid, Platform } from 'react-native';
 import * as Animatable from 'react-native-animatable';
-import {f, auth, database} from '../config/config';
+import {f, auth, database} from '../../config/config';
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
@@ -55,11 +55,11 @@ function Doorway({ navigation }) {
     });
 
     let [fontsLoaded] = useFonts({
-        'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
-        'SemiBold': require('../assets/fonts/Montserrat-SemiBold.ttf'),
-        'Medium': require('../assets/fonts/Montserrat-Medium.ttf'),
-        'Light': require('../assets/fonts/Montserrat-Light.ttf'),
-        'Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
+        'Bold': require('../../assets/fonts/Montserrat-Bold.ttf'),
+        'SemiBold': require('../../assets/fonts/Montserrat-SemiBold.ttf'),
+        'Medium': require('../../assets/fonts/Montserrat-Medium.ttf'),
+        'Light': require('../../assets/fonts/Montserrat-Light.ttf'),
+        'Regular': require('../../assets/fonts/Montserrat-Regular.ttf'),
     });
 
     if (!fontsLoaded) {
@@ -70,7 +70,7 @@ function Doorway({ navigation }) {
     return (
 
         <ImageBackground
-            source={require('../assets/guitarStrings.jpg')}
+            source={require('../../assets/guitarStrings.jpg')}
             style={{
                 resizeMode: "cover",
                 flex: 1,

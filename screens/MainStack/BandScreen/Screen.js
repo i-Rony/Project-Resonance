@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import { View, Text, ImageBackground, TouchableOpacity, Dimensions, ScrollView, StatusBar, Image } from 'react-native';
 import Constants from 'expo-constants';
 import { AppLoading } from 'expo';
-import Lofi from '../assets/lofi.jpg';
+import Lofi from '../../../assets/lofi.jpg';
 import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronLeft, faPlay } from '@fortawesome/free-solid-svg-icons';
 import { useFonts } from '@use-expo/font';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import BandPageTrackRender from '../../../Components/BandPageTrackRender';
-import event1 from '../assets/event1.jpg';
-import event2 from '../assets/event2.jpg';
-import event3 from '../assets/event3.jpg';
+import event1 from '../../../assets/event1.jpg';
+import event2 from '../../../assets/event2.jpg';
+import event3 from '../../../assets/event3.jpg';
 import EventPoster2 from '../../../Components/EventPoster2';
 import BandPageVideoRender from '../../../Components/BandPageVideoRender';
 
@@ -22,11 +22,11 @@ const description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ae
 export default function BandScreen() {
 
   let [fontsLoaded] = useFonts({
-    'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
-    'SemiBold': require('../assets/fonts/Montserrat-SemiBold.ttf'),
-    'Medium': require('../assets/fonts/Montserrat-Medium.ttf'),
-    'Light': require('../assets/fonts/Montserrat-Light.ttf'),
-    'Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
+    'Bold': require('../../../assets/fonts/Montserrat-Bold.ttf'),
+    'SemiBold': require('../../../assets/fonts/Montserrat-SemiBold.ttf'),
+    'Medium': require('../../../assets/fonts/Montserrat-Medium.ttf'),
+    'Light': require('../../../assets/fonts/Montserrat-Light.ttf'),
+    'Regular': require('../../../assets/fonts/Montserrat-Regular.ttf'),
   });
 
   if (!fontsLoaded) {

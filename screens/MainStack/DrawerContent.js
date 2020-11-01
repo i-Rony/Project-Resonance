@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Title, Caption, Drawer, Avatar } from 'react-native-paper';
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
-import { f, auth, database } from '../config/config';
+import { f, auth, database } from '../../config/config';
 
 
-import JohnDoe from '../assets/kawaii.jpg';
+import JohnDoe from '../../assets/kawaii.jpg';
 
 import { faUserFriends, faUser, faHandshake, faHeartbeat, faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
@@ -19,11 +19,11 @@ export function DrawerContent(props) {
     const [target_component, Activate] = useState('MyProfile');
 
     let [fontsLoaded] = useFonts({
-        'Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
-        'SemiBold': require('../assets/fonts/Montserrat-SemiBold.ttf'),
-        'Medium': require('../assets/fonts/Montserrat-Medium.ttf'),
-        'Light': require('../assets/fonts/Montserrat-Light.ttf'),
-        'Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
+        'Bold': require('../../assets/fonts/Montserrat-Bold.ttf'),
+        'SemiBold': require('../../assets/fonts/Montserrat-SemiBold.ttf'),
+        'Medium': require('../../assets/fonts/Montserrat-Medium.ttf'),
+        'Light': require('../../assets/fonts/Montserrat-Light.ttf'),
+        'Regular': require('../../assets/fonts/Montserrat-Regular.ttf'),
     });
 
     const signOutUser = () => {

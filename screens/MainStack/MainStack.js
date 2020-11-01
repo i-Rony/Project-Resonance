@@ -3,24 +3,23 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
 import AnimatedTabBar from '@gorhom/animated-tabbar';
+import HomeSVG from '../../svg/HomeSVG';
+import SearchSVG from '../../svg/SearchSVG';
+import ProfileSVG from '../../svg/ProfileSVG';
+import BellSVG from '../../svg/BellSVG';
 
-import HomeSVG from '../svg/HomeSVG';
-import SearchSVG from '../svg/SearchSVG';
-import ProfileSVG from '../svg/ProfileSVG';
-import BellSVG from '../svg/BellSVG';
-
-import HomeScreen from './HomeScreen';
-import ExploreScreen from './ExploreScreen/ExploreScreen';
+import HomeScreen from './HomeScreen/Screen';
+import ExploreScreen from './ExploreScreen/Screen';
 import ViewEventScreen from './ExploreScreen/ViewEventScreen';
 import ViewEventRNScreen from './ExploreScreen/ViewEventRNScreen';
-import NotificationScreen from './NotificationScreen/NotificationScreen';
-import ProfileScreen from './ProfileScreen/ProfileScreen';
-import CollabScreen from './DrawerScreens/CollabScreen';
-import ConnectionScreen from './DrawerScreens/ConnectionScreen';
-import ActivityScreen from './ActivityScreen';
-import SettingScreen from './SettingsScreen/Screen.js';
-import CreatePostScreen from './CreatePostScreen';
-import ChatScreen from './ChatScreen';
+import NotificationScreen from './NotificationScreen/Screen';
+import ProfileScreen from './DrawerScreens/ProfileScreen/Screen';
+import CollabScreen from './DrawerScreens/CollabScreen/Screen';
+import ConnectionScreen from './DrawerScreens/ConnectionScreen/Screen';
+import ActivityScreen from './DrawerScreens/ActivityScreen/Screen';
+import SettingScreen from './DrawerScreens/SettingsScreen/Screen.js';
+import CreatePostScreen from './HomeScreen/CreatePostScreen';
+import ChatScreen from './ChatScreen/Screen';
 import { DrawerContent } from './DrawerContent';
 
 
