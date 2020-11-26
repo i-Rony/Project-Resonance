@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, ImageBackground, TouchableOpacity, Dimensions, ScrollView, StatusBar, Image } from 'react-native';
+import { View, Text, ImageBackground, TouchableOpacity, Dimensions, ScrollView, StatusBar, Image, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 import { AppLoading } from 'expo';
 import Lofi from '../../../assets/lofi.jpg';
@@ -105,10 +105,10 @@ export default function BandScreen() {
 
         <View style={{flexDirection: 'column', marginBottom: 18, marginTop: 4}}>
           <BandPageTrackRender name='Pumped Up Kicks' />
-          <BandPageTrackRender name='Imagination' onplay={true} />
-          <BandPageTrackRender name='Sit Next To Me' />
+          <BandPageTrackRender name='Imagination'  />
+          <BandPageTrackRender name='Sit Next To Me'  />
           <BandPageTrackRender name='Houdini' />
-          <BandPageTrackRender name='Dont Stop (Color on the Walls)' />
+          <BandPageTrackRender name='Dont Stop (Color on the Walls)' onplay={true} />
         </View>
       </View>
 

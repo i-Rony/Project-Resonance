@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, ImageBackground, TouchableOpacity, Dimensions, ScrollView, StatusBar } from 'react-native';
+import { View, Text, ImageBackground, TouchableOpacity, Dimensions, ScrollView, StatusBar, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 import { AppLoading } from 'expo';
 import Lofi from '../../../assets/lofi.jpg';

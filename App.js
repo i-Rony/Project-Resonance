@@ -9,7 +9,7 @@ import BandScreen2 from './screens/MainStack/BandScreen/Screen2';
 const App = () => {
   return (
     // <ProfileScreen />
-      <BandScreen />
+      <BandScreen2 />
       // <BandScreen2 />
       // <NavigationContainer>
       //   <RootStackScreen />
