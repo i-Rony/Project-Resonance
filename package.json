@@ -29,7 +29,7 @@
     "firebase": "7.9.0",
     "flubber": "^0.4.2",
     "logkitty": "^0.7.1",
-    "moment": "^2.29.0",
+    "moment": "^2.29.2",
     "popmotion": "^8.7.5",
     "react": "16.13.1",
     "react-dom": "16.13.1",
